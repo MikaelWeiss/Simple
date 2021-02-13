@@ -1,5 +1,5 @@
 //
-//  TaskOverviewViewTests.swift
+//  TasksOverviewViewTests.swift
 //  Simple
 //
 //  Created by Mikael Weiss on 2/12/21.
@@ -9,10 +9,10 @@
 import XCTest
 @testable import Simple
 
-class TaskOverviewViewTests: XCTestCase {
-    private var interactor: TaskOverviewInteractorDouble!
-    private var viewModel: TaskOverview.ViewModel!
-    private var view: TaskOverviewView!
+class TasksOverviewViewTests: XCTestCase {
+    private var interactor: TasksOverviewInteractorDouble!
+    private var viewModel: TasksOverview.ViewModel!
+    private var view: TasksOverviewView!
     
     func testDidChangeValue() {
         // When
@@ -42,20 +42,20 @@ class TaskOverviewViewTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        interactor = TaskOverviewInteractorDouble()
-        viewModel = TaskOverview.ViewModel()
-        view = TaskOverviewView(interactor: interactor, viewModel: viewModel)
+        interactor = TasksOverviewInteractorDouble()
+        viewModel = TasksOverview.ViewModel()
+        view = TasksOverviewView(interactor: interactor, viewModel: viewModel)
     }
     
     // MARK: - Test Doubles
     
-    class TaskOverviewInteractorDouble: TaskOverviewRequesting {
+    class TasksOverviewInteractorDouble: TasksOverviewRequesting {
         var value: String?
         var updateThemeCalled = false
         var prepareRouteToSheetCalled = false
         var prepareRouteToOtherSceneCalled = false
         
-        func didChangeValue(with request: TaskOverview.ValidateValue.Request) {
+        func didChangeValue(with request: TasksOverview.ValidateValue.Request) {
             value = request.value
         }
         

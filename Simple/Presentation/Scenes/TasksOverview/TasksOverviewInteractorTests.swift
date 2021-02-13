@@ -1,5 +1,5 @@
 //
-//  TaskOverviewInteractorTests.swift
+//  TasksOverviewInteractorTests.swift
 //  Simple
 //
 //  Created by Mikael Weiss on 2/12/21.
@@ -9,10 +9,10 @@
 import XCTest
 @testable import Simple
 
-class TaskOverviewInteractorTests: XCTestCase {
-    private var service: TaskOverviewServiceDouble!
-    private var presenter: TaskOverviewPresenterDouble!
-    private var interactor: TaskOverviewInteractor!
+class TasksOverviewInteractorTests: XCTestCase {
+    private var service: TasksOverviewServiceDouble!
+    private var presenter: TasksOverviewPresenterDouble!
+    private var interactor: TasksOverviewInteractor!
     
     func testUpdateTheme() {
         // When
@@ -24,7 +24,7 @@ class TaskOverviewInteractorTests: XCTestCase {
     
     func testDidChangeValue() {
         // Given
-        let request = TaskOverview.ValidateValue.Request(value: "Some new value")
+        let request = TasksOverview.ValidateValue.Request(value: "Some new value")
         
         // When
         interactor.didChangeValue(with: request)
@@ -53,21 +53,21 @@ class TaskOverviewInteractorTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        service = TaskOverviewServiceDouble()
-        presenter = TaskOverviewPresenterDouble()
-        interactor = TaskOverviewInteractor(service: service, presenter: presenter)
+        service = TasksOverviewServiceDouble()
+        presenter = TasksOverviewPresenterDouble()
+        interactor = TasksOverviewInteractor(service: service, presenter: presenter)
     }
     
     // MARK: - Test Doubles
     
     // Either class, or struct with mutating functions
-    class TaskOverviewPresenterDouble: TaskOverviewPresenting {
+    class TasksOverviewPresenterDouble: TasksOverviewPresenting {
         var value: String?
         var presentUpdateThemeCalled = false
         var presentPrepareRouteToSheetCalled = false
         var presentPrepareRouteToOtherSceneCalled = false
         
-        func presentDidChangeValue(with response: TaskOverview.ValidateValue.Response) {
+        func presentDidChangeValue(with response: TasksOverview.ValidateValue.Response) {
             value = response.value
         }
         
@@ -84,6 +84,6 @@ class TaskOverviewInteractorTests: XCTestCase {
         }
     }
     
-    class TaskOverviewServiceDouble: TaskOverviewService {
+    class TasksOverviewServiceDouble: TasksOverviewService {
     }
 }

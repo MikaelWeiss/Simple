@@ -1,5 +1,5 @@
 //
-//  TaskOverviewModels.swift
+//  TasksOverviewModels.swift
 //  Simple
 //
 //  Created by Mikael Weiss on 2/12/21.
@@ -8,13 +8,25 @@
 
 import SwiftUI
 
-extension TaskOverview {
+extension TasksOverview {
     
     struct TaskInfo {
         let name: String
         let date: String
-        let time: String?
+        let time: String
         let image: Image?
+    }
+    
+    struct Task {
+        let name: String
+        let date: Date
+        let image: Image?
+    }
+    
+    enum FetchTasks {
+        struct Response {
+            let tasks: [Task]
+        }
     }
     
     enum Strings {

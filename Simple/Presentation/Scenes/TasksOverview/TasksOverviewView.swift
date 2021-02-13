@@ -1,5 +1,5 @@
 //
-//  TaskOverviewView.swift
+//  TasksOverviewView.swift
 //  Simple
 //
 //  Created by Mikael Weiss on 2/12/21.
@@ -8,21 +8,21 @@
 
 import SwiftUI
 
-protocol TaskOverviewInputting {
+protocol TasksOverviewInputting {
     func prepareRouteToSheet()
     func prepareRouteToOtherScene()
 }
 
-struct TaskOverviewView: View {
-    @ObservedObject private var viewModel: TaskOverview.ViewModel
-    private let interactor: TaskOverviewRequesting?
+struct TasksOverviewView: View {
+    @ObservedObject private var viewModel: TasksOverview.ViewModel
+    private let interactor: TasksOverviewRequesting?
     
-    init(interactor: TaskOverviewRequesting, viewModel: TaskOverview.ViewModel) {
+    init(interactor: TasksOverviewRequesting, viewModel: TasksOverview.ViewModel) {
         self.interactor = interactor
         self.viewModel = viewModel
     }
     
-    init(viewModel: TaskOverview.ViewModel) {
+    init(viewModel: TasksOverview.ViewModel) {
         self.viewModel = viewModel
         self.interactor = nil
     }
@@ -31,7 +31,7 @@ struct TaskOverviewView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                ForEach(0 ..< viewModel.allTasks.count) { index in
+                ForEach(0 ..< viewModel.allTasks.count , id: \.self) { index in
                     let item = viewModel.allTasks[index]
                     HStack(alignment: .center, spacing: 0) {
                         if let image = item.image {
@@ -56,7 +56,7 @@ struct TaskOverviewView: View {
                                     .font(.system(.subheadline, design: .rounded))
                             }
                             Spacer()
-                            Text(item.time ?? "")
+                            Text(item.time)
                                 .font(.system(size: 25, weight: .regular, design: .rounded))
                         }
                         Spacer()
@@ -71,12 +71,16 @@ struct TaskOverviewView: View {
             }
         }
         .navigationTitle(viewModel.title)
+        .onAppear {
+            interactor?.updateTheme()
+            interactor?.fetchTasks()
+        }
     }
 }
 
 // MARK: - Inputing
 
-extension TaskOverviewView: TaskOverviewInputting {
+extension TasksOverviewView: TasksOverviewInputting {
     func prepareRouteToSheet() {
         interactor?.prepareRouteToSheet()
     }
@@ -86,8 +90,8 @@ extension TaskOverviewView: TaskOverviewInputting {
     }
 }
 
-struct TaskOverview_Previews: PreviewProvider {
-    static var viewModel = TaskOverview.ViewModel(
+struct TasksOverview_Previews: PreviewProvider {
+    static var viewModel = TasksOverview.ViewModel(
         title: "Some title",
         allTasks: [
             .init(name: "Wake up", date: "Today", time: "10:45", image: Image(uiImage: #imageLiteral(resourceName: "testingImage"))),
@@ -96,7 +100,7 @@ struct TaskOverview_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationView {
-            TaskOverviewView(viewModel: viewModel)
+            TasksOverviewView(viewModel: viewModel)
         }
     }
 }
