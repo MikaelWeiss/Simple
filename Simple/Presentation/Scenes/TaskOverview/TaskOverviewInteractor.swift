@@ -10,7 +10,6 @@ import Foundation
 
 protocol TaskOverviewRequesting {
     func updateTheme()
-    func didChangeValue(with request: TaskOverview.ValidateValue.Request)
     func prepareRouteToSheet()
     func prepareRouteToOtherScene()
 }
@@ -26,11 +25,6 @@ struct TaskOverviewInteractor: TaskOverviewRequesting {
     
     func updateTheme() {
         presenter.presentUpdateTheme()
-    }
-    
-    func didChangeValue(with request: TaskOverview.ValidateValue.Request) {
-        let response = TaskOverview.ValidateValue.Response(value: request.value)
-        presenter.presentDidChangeValue(with: response)
     }
     
     func prepareRouteToSheet() {

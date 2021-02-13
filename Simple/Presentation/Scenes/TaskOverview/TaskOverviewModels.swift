@@ -6,30 +6,36 @@
 //  Copyright © 2021 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import Foundation
-import UIKit
+import SwiftUI
 
 extension TaskOverview {
-    enum ValidateValue {
-        struct Request {
-            let value: String
-        }
-        
-        struct Response {
-            let value: String
-        }
+    
+    struct TaskInfo {
+        let name: String
+        let date: String
+        let time: String?
+        let image: Image?
     }
     
     enum Strings {
-        static let sceneTitle = NSLocalizedString("Some title", comment: "The title for the scene")
-        static let textFieldTitle = NSLocalizedString("Some title", comment: "The title for some text field")
+        static let sceneTitle = NSLocalizedString("Overview", comment: "The title for the scene")
     }
     
     class ViewModel: ObservableObject {
-        @Published var title = ""
-        @Published var textFieldTitle = ""
-        @Published var textFieldValue = ""
-        @Published var isShowingOtherScene = false
-        @Published var isShowingSheet = false
+        @Published var title: String
+        @Published var allTasks: [TaskInfo]
+        @Published var isShowingOtherScene: Bool
+        @Published var isShowingSheet: Bool
+        
+        init(title: String = "",
+             allTasks: [TaskInfo] = [],
+             isShowingOtherScene: Bool = false,
+             isShowingSheet: Bool = false) {
+            
+            self.title = title
+            self.allTasks = allTasks
+            self.isShowingOtherScene = isShowingOtherScene
+            self.isShowingSheet = isShowingSheet
+        }
     }
 }
