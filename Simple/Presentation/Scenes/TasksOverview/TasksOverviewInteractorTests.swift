@@ -22,15 +22,18 @@ class TasksOverviewInteractorTests: XCTestCase {
         XCTAssertTrue(presenter.presentUpdateThemeCalled)
     }
     
-    func testDidChangeValue() {
+    func testFetchTasks() {
         // Given
-        let request = TasksOverview.ValidateValue.Request(value: "Some new value")
+        let date = Date()
+        service.tasksToReturn = [.init(name: "some name", date: date, image: nil)]
         
         // When
-        interactor.didChangeValue(with: request)
+        interactor.fetchTasks()
         
         // Then
-        XCTAssertEqual(presenter.value, "Some new value")
+        XCTAssertEqual(presenter.presentFetchTasksResponse.tasks.first?.name, "some name")
+        XCTAssertEqual(presenter.presentFetchTasksResponse.tasks.first?.date, date)
+        XCTAssertNil(presenter.presentFetchTasksResponse.tasks.first?.image)
     }
     
     func testPrepareRouteToSheet() {
@@ -66,13 +69,14 @@ class TasksOverviewInteractorTests: XCTestCase {
         var presentUpdateThemeCalled = false
         var presentPrepareRouteToSheetCalled = false
         var presentPrepareRouteToOtherSceneCalled = false
-        
-        func presentDidChangeValue(with response: TasksOverview.ValidateValue.Response) {
-            value = response.value
-        }
+        var presentFetchTasksResponse: TasksOverview.FetchTasks.Response!
         
         func presentUpdateTheme() {
             presentUpdateThemeCalled = true
+        }
+        
+        func presentFetchTasks(with response: TasksOverview.FetchTasks.Response) {
+            presentFetchTasksResponse = response
         }
         
         func presentPrepareRouteToSheet() {
@@ -85,5 +89,10 @@ class TasksOverviewInteractorTests: XCTestCase {
     }
     
     class TasksOverviewServiceDouble: TasksOverviewService {
+        var tasksToReturn: [TasksOverview.Task] = []
+        
+        func fetchTasks() -> [TasksOverview.Task] {
+            tasksToReturn
+        }
     }
 }
