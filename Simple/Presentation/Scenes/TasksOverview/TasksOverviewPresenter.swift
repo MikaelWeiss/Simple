@@ -23,7 +23,7 @@ struct TasksOverviewPresenter: TasksOverviewPresenting {
     }
     
     func presentFetchTasks(with response: TasksOverview.FetchTasks.Response) {
-        let sortedTasks = response.tasks.sorted(by: { $0.date > $1.date })
+        let sortedTasks = response.tasks.sorted(by: { $0.date < $1.date })
         let mappedTaskList = sortedTasks.map { (task) -> TasksOverview.TaskInfo in
             let formatter = DateFormatter()
             formatter.dateStyle = .medium

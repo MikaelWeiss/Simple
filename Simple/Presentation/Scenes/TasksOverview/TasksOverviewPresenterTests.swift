@@ -18,19 +18,23 @@ class TasksOverviewPresenterTests: XCTestCase {
         presenter.presentUpdateTheme()
         
         // Then
-        XCTAssertEqual(viewModel.title, TasksOverview.Strings.sceneTitle)
-        XCTAssertEqual(viewModel.textFieldTitle, TasksOverview.Strings.textFieldTitle)
+        XCTAssertEqual(viewModel.title, "Overview")
     }
     
-    func testPresentDidChangeValue() {
+    func testPresentFetchTasks() {
         // Given
-        let response = TasksOverview.ValidateValue.Response(value: "Some value")
+        let firstDate = Date()
+        let secondDate = Date().advanced(by: 50)
+        let response = TasksOverview.FetchTasks.Response(
+            tasks: [.init(name: "one task", date: secondDate, image: nil),
+                    .init(name: "another task", date: firstDate, image: nil)])
         
         // When
-        presenter.presentDidChangeValue(with: response)
+        presenter.presentFetchTasks(with: response)
         
         // Then
-        XCTAssertEqual(viewModel.textFieldValue, "Some value")
+        XCTAssertEqual(viewModel.allTasks[0].name, "another task")
+        XCTAssertEqual(viewModel.allTasks[1].name, "one task")
     }
     
     func testPresentPrepareRouteToSheet() {

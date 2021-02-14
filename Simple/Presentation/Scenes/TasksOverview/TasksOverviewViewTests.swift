@@ -13,15 +13,7 @@ class TasksOverviewViewTests: XCTestCase {
     private var interactor: TasksOverviewInteractorDouble!
     private var viewModel: TasksOverview.ViewModel!
     private var view: TasksOverviewView!
-    
-    func testDidChangeValue() {
-        // When
-        view.didChangeValue(to: "Some Value")
-        
-        // Then
-        XCTAssertEqual(interactor.value, "Some Value")
-    }
-    
+
     func testPrepareRouteToSheet() {
         // When
         view.prepareRouteToSheet()
@@ -54,13 +46,14 @@ class TasksOverviewViewTests: XCTestCase {
         var updateThemeCalled = false
         var prepareRouteToSheetCalled = false
         var prepareRouteToOtherSceneCalled = false
-        
-        func didChangeValue(with request: TasksOverview.ValidateValue.Request) {
-            value = request.value
-        }
+        var fetchTasksCalled = false
         
         func updateTheme() {
             updateThemeCalled = true
+        }
+        
+        func fetchTasks() {
+            fetchTasksCalled = true
         }
         
         func prepareRouteToSheet() {

@@ -74,6 +74,7 @@ struct TasksOverviewView: View {
         .onAppear {
             interactor?.updateTheme()
             interactor?.fetchTasks()
+            
         }
     }
 }
