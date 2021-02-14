@@ -17,12 +17,6 @@ extension TasksOverview {
         let image: Image?
     }
     
-    struct Task {
-        let name: String
-        let date: Date
-        let image: Image?
-    }
-    
     enum FetchTasks {
         struct Response {
             let tasks: [Task]

@@ -10,7 +10,14 @@ import Foundation
 import UIKit
 
 extension CreateTask {
-    enum ValidateValue {
+    
+    enum FetchRepetition {
+        struct Response {
+            let repetitions: [Task.Repetition]
+        }
+    }
+    
+    enum ValidateName {
         struct Request {
             let value: String
         }
@@ -20,16 +27,66 @@ extension CreateTask {
         }
     }
     
+    enum ValidateDate {
+        struct Request {
+            let value: Date
+        }
+        
+        struct Response {
+            let value: Date
+        }
+    }
+    
+    enum ValidateRepetitionSelection {
+        struct Request {
+            let selectedRepetition: Task.Repetition
+        }
+        
+        struct Response {
+            let selectedRepetition: Task.Repetition
+        }
+    }
+    
     enum Strings {
-        static let sceneTitle = NSLocalizedString("Some title", comment: "The title for the scene")
-        static let textFieldTitle = NSLocalizedString("Some title", comment: "The title for some text field")
+        static let sceneTitle = NSLocalizedString("New Task", comment: "The title for the scene")
+        static let nameCellTitle = NSLocalizedString("Name", comment: "Cell title for task name text entry")
+        static let dateCellTitle = NSLocalizedString("Date:", comment: "Cell title for task date entry")
+        static let repetitionCellTitle = NSLocalizedString("Repetition:", comment: "Cell title for task repetition")
     }
     
     class ViewModel: ObservableObject {
-        @Published var title = ""
-        @Published var textFieldTitle = ""
-        @Published var textFieldValue = ""
-        @Published var isShowingOtherScene = false
-        @Published var isShowingSheet = false
+        @Published var title: String
+        @Published var nameCellTitle: String
+        @Published var nameCellValue: String
+        @Published var dateCellTitle: String
+        @Published var dateCellValue: Date
+        @Published var repetitionCellTitle: String
+        @Published var selectedRepetition: Task.Repetition?
+        @Published var repetitions: [Task.Repetition]
+        @Published var isShowingOtherScene: Bool
+        @Published var isShowingSheet: Bool
+        
+        init(title: String = "",
+             nameCellTitle: String = "",
+             nameCellValue: String = "",
+             dateCellTitle: String = "",
+             dateCellValue: Date = Date.now,
+             repetitionCellTitle: String = "",
+             selectedRepetition: Task.Repetition? = nil,
+             repetitions: [Task.Repetition] = [.daily],
+             isShowingOtherScene: Bool = false,
+             isShowingSheet: Bool = false) {
+            
+            self.title = title
+            self.nameCellTitle = nameCellTitle
+            self.nameCellValue = nameCellValue
+            self.dateCellTitle = dateCellTitle
+            self.dateCellValue = dateCellValue
+            self.repetitionCellTitle = repetitionCellTitle
+            self.selectedRepetition = selectedRepetition
+            self.repetitions = repetitions
+            self.isShowingOtherScene = isShowingOtherScene
+            self.isShowingSheet = isShowingSheet
+        }
     }
 }

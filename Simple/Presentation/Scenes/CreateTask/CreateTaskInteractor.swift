@@ -10,7 +10,10 @@ import Foundation
 
 protocol CreateTaskRequesting {
     func updateTheme()
-    func didChangeValue(with request: CreateTask.ValidateValue.Request)
+    func fetchRepetitions()
+    func didChangeName(with request: CreateTask.ValidateName.Request)
+    func didChangeDate(with request: CreateTask.ValidateDate.Request)
+    func didChangeRepetition(with request: CreateTask.ValidateRepetitionSelection.Request)
     func prepareRouteToSheet()
     func prepareRouteToOtherScene()
 }
@@ -28,9 +31,25 @@ struct CreateTaskInteractor: CreateTaskRequesting {
         presenter.presentUpdateTheme()
     }
     
-    func didChangeValue(with request: CreateTask.ValidateValue.Request) {
-        let response = CreateTask.ValidateValue.Response(value: request.value)
-        presenter.presentDidChangeValue(with: response)
+    func fetchRepetitions() {
+        let repetitions = service.fetchRepetitions()
+        let response = CreateTask.FetchRepetition.Response(repetitions: repetitions)
+        presenter.presentFetchRepetition(with: response)
+    }
+    
+    func didChangeName(with request: CreateTask.ValidateName.Request) {
+        let response = CreateTask.ValidateName.Response(value: request.value)
+        presenter.presentDidChangeName(with: response)
+    }
+    
+    func didChangeDate(with request: CreateTask.ValidateDate.Request) {
+        let response = CreateTask.ValidateDate.Response(value: request.value)
+        presenter.presentDidChangeDate(with: response)
+    }
+    
+    func didChangeRepetition(with request: CreateTask.ValidateRepetitionSelection.Request) {
+        let response = CreateTask.ValidateRepetitionSelection.Response(selectedRepetition: request.selectedRepetition)
+        presenter.presentDidChangeRepetition(with: response)
     }
     
     func prepareRouteToSheet() {

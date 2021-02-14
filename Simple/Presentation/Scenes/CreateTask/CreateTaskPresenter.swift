@@ -10,8 +10,11 @@ import Foundation
 import UIKit
 
 protocol CreateTaskPresenting {
-    func presentDidChangeValue(with response: CreateTask.ValidateValue.Response)
     func presentUpdateTheme()
+    func presentFetchRepetition(with response: CreateTask.FetchRepetition.Response)
+    func presentDidChangeName(with response: CreateTask.ValidateName.Response)
+    func presentDidChangeDate(with response: CreateTask.ValidateDate.Response)
+    func presentDidChangeRepetition(with response: CreateTask.ValidateRepetitionSelection.Response)
     func presentPrepareRouteToSheet()
     func presentPrepareRouteToOtherScene()
 }
@@ -21,11 +24,25 @@ struct CreateTaskPresenter: CreateTaskPresenting {
     
     func presentUpdateTheme() {
         viewModel.title = CreateTask.Strings.sceneTitle
-        viewModel.textFieldTitle = CreateTask.Strings.textFieldTitle
+        viewModel.nameCellTitle = CreateTask.Strings.nameCellTitle
+        viewModel.dateCellTitle = CreateTask.Strings.dateCellTitle
+        viewModel.dateCellTitle = CreateTask.Strings.dateCellTitle
     }
     
-    func presentDidChangeValue(with response: CreateTask.ValidateValue.Response) {
-        viewModel.textFieldValue = response.value
+    func presentFetchRepetition(with response: CreateTask.FetchRepetition.Response) {
+        viewModel.repetitions = response.repetitions
+    }
+    
+    func presentDidChangeName(with response: CreateTask.ValidateName.Response) {
+        viewModel.nameCellValue = response.value
+    }
+    
+    func presentDidChangeDate(with response: CreateTask.ValidateDate.Response) {
+        viewModel.dateCellValue = response.value
+    }
+    
+    func presentDidChangeRepetition(with response: CreateTask.ValidateRepetitionSelection.Response) {
+        
     }
     
     func presentPrepareRouteToSheet() {

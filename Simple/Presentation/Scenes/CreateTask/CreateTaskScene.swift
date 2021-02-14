@@ -18,13 +18,5 @@ enum CreateTask {
             let interactor = CreateTaskInteractor(service: service, presenter: presenter)
             view = CreateTaskView(interactor: interactor, viewModel: presenter.viewModel)
         }
-        
-        private func buildService() -> CreateTaskService {
-            if true {
-                return CreateTask.DemoService()
-            }
-        }
-        
-        let service = CreateTask.Service()
     }
 }

@@ -25,12 +25,12 @@ struct SimpleApp: App {
                 }
                     .tabItem {
                         Image(systemName: "pencil.circle.fill")
-                        Text("Entry")
+                        Text("Overview")
                     }.tag(Tabs.tasksOverview)
                 Text("Tab Content 2")
                     .tabItem {
                         Image(systemName: "line.horizontal.3.circle")
-                        Text("Overview")
+                        Text("Next up")
                     }.tag(Tabs.nextUp)
             }
         }

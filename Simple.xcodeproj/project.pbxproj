@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A514522C25D8A7520005070F /* CellStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514522B25D8A7520005070F /* CellStyle.swift */; };
+		A514523225D8A7B10005070F /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514523125D8A7B10005070F /* Color+Extensions.swift */; };
+		A514523925D8A8800005070F /* DateSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514523725D8A8800005070F /* DateSelection.swift */; };
+		A514523A25D8A8800005070F /* TextEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514523825D8A8800005070F /* TextEntry.swift */; };
+		A514524125D8A9020005070F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514524025D8A9020005070F /* Date+Extensions.swift */; };
+		A514524925D8A9540005070F /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514524825D8A9540005070F /* View+Extensions.swift */; };
+		A514525025D8B9D40005070F /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514524F25D8B9D40005070F /* Task.swift */; };
+		A514526925D8BCB00005070F /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514526825D8BCB00005070F /* FontStyle.swift */; };
+		A514526E25D8BCEF0005070F /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514526D25D8BCEF0005070F /* Styles.swift */; };
 		A56E0C2725D855E600247227 /* CreateTaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2125D855E600247227 /* CreateTaskPresenter.swift */; };
 		A56E0C2825D855E600247227 /* CreateTaskModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2225D855E600247227 /* CreateTaskModels.swift */; };
 		A56E0C2925D855E600247227 /* CreateTaskScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2325D855E600247227 /* CreateTaskScene.swift */; };
@@ -54,6 +63,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A514522B25D8A7520005070F /* CellStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellStyle.swift; sourceTree = "<group>"; };
+		A514523125D8A7B10005070F /* Color+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extensions.swift"; sourceTree = "<group>"; };
+		A514523725D8A8800005070F /* DateSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateSelection.swift; sourceTree = "<group>"; };
+		A514523825D8A8800005070F /* TextEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEntry.swift; sourceTree = "<group>"; };
+		A514524025D8A9020005070F /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		A514524825D8A9540005070F /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
+		A514524F25D8B9D40005070F /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		A514526825D8BCB00005070F /* FontStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
+		A514526D25D8BCEF0005070F /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		A56E0C2125D855E600247227 /* CreateTaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskPresenter.swift; sourceTree = "<group>"; };
 		A56E0C2225D855E600247227 /* CreateTaskModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskModels.swift; sourceTree = "<group>"; };
 		A56E0C2325D855E600247227 /* CreateTaskScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskScene.swift; sourceTree = "<group>"; };
@@ -114,6 +132,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A514522A25D8A7380005070F /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				A514526D25D8BCEF0005070F /* Styles.swift */,
+				A514522B25D8A7520005070F /* CellStyle.swift */,
+				A514526825D8BCB00005070F /* FontStyle.swift */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		A514523025D8A7A00005070F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A514523125D8A7B10005070F /* Color+Extensions.swift */,
+				A514524825D8A9540005070F /* View+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A514523625D8A8680005070F /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				A514523725D8A8800005070F /* DateSelection.swift */,
+				A514523825D8A8800005070F /* TextEntry.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		A514523E25D8A8B70005070F /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				A514524D25D8B87D0005070F /* Objects */,
+				A514523F25D8A8F40005070F /* Extensions */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		A514523F25D8A8F40005070F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A514524025D8A9020005070F /* Date+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A514524D25D8B87D0005070F /* Objects */ = {
+			isa = PBXGroup;
+			children = (
+				A514524F25D8B9D40005070F /* Task.swift */,
+			);
+			path = Objects;
+			sourceTree = "<group>";
+		};
 		A56E0C1F25D854E100247227 /* TasksOverview */ = {
 			isa = PBXGroup;
 			children = (
@@ -173,8 +244,7 @@
 			children = (
 				A5AC070725D7856F00504FEE /* Presentation */,
 				A5AC070925D7857C00504FEE /* Application */,
-				A5AC070825D7857800504FEE /* Domain */,
-				A5AC06D425D7830A00504FEE /* Preview Content */,
+				A514523E25D8A8B70005070F /* Domain */,
 			);
 			path = Simple;
 			sourceTree = "<group>";
@@ -209,15 +279,11 @@
 			isa = PBXGroup;
 			children = (
 				A5AC070D25D785E600504FEE /* Scenes */,
+				A514522A25D8A7380005070F /* Styles */,
+				A514523025D8A7A00005070F /* Extensions */,
+				A514523625D8A8680005070F /* Cells */,
 			);
 			path = Presentation;
-			sourceTree = "<group>";
-		};
-		A5AC070825D7857800504FEE /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Domain;
 			sourceTree = "<group>";
 		};
 		A5AC070925D7857C00504FEE /* Application */ = {
@@ -241,6 +307,7 @@
 		A5AC070E25D785F500504FEE /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				A5AC06D425D7830A00504FEE /* Preview Content */,
 				A5AC06CE25D7830900504FEE /* SimpleApp.swift */,
 				A5AC06D225D7830A00504FEE /* Assets.xcassets */,
 				A5AC06DC25D7830A00504FEE /* Info.plist */,
@@ -388,16 +455,25 @@
 			files = (
 				A5AC071925D7865E00504FEE /* TasksOverviewPresenter.swift in Sources */,
 				A56E0C2B25D855E600247227 /* CreateTaskView.swift in Sources */,
+				A514526925D8BCB00005070F /* FontStyle.swift in Sources */,
 				A5AC071E25D7865E00504FEE /* TasksOverviewService.swift in Sources */,
 				A5AC071A25D7865E00504FEE /* TasksOverviewModels.swift in Sources */,
+				A514525025D8B9D40005070F /* Task.swift in Sources */,
 				A56E0C2725D855E600247227 /* CreateTaskPresenter.swift in Sources */,
 				A5AC06D825D7830A00504FEE /* Persistence.swift in Sources */,
 				A5AC06DB25D7830A00504FEE /* Simple.xcdatamodeld in Sources */,
 				A56E0C2C25D855E600247227 /* CreateTaskService.swift in Sources */,
 				A56E0C2825D855E600247227 /* CreateTaskModels.swift in Sources */,
 				A5AC071B25D7865E00504FEE /* TasksOverviewScene.swift in Sources */,
+				A514524925D8A9540005070F /* View+Extensions.swift in Sources */,
 				A56E0C2A25D855E600247227 /* CreateTaskInteractor.swift in Sources */,
+				A514523A25D8A8800005070F /* TextEntry.swift in Sources */,
+				A514526E25D8BCEF0005070F /* Styles.swift in Sources */,
+				A514522C25D8A7520005070F /* CellStyle.swift in Sources */,
+				A514524125D8A9020005070F /* Date+Extensions.swift in Sources */,
 				A5AC071C25D7865E00504FEE /* TasksOverviewInteractor.swift in Sources */,
+				A514523225D8A7B10005070F /* Color+Extensions.swift in Sources */,
+				A514523925D8A8800005070F /* DateSelection.swift in Sources */,
 				A56E0C2925D855E600247227 /* CreateTaskScene.swift in Sources */,
 				A5AC071D25D7865E00504FEE /* TasksOverviewView.swift in Sources */,
 				A5AC06CF25D7830900504FEE /* SimpleApp.swift in Sources */,
@@ -495,7 +571,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -550,7 +626,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -566,11 +642,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Simple/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Simple/Application/Main/Preview Content\"";
 				DEVELOPMENT_TEAM = X7WM6K9T24;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Simple/Application/Main/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -588,11 +664,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"Simple/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Simple/Application/Main/Preview Content\"";
 				DEVELOPMENT_TEAM = X7WM6K9T24;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Simple/Application/Main/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -612,7 +688,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X7WM6K9T24;
 				INFOPLIST_FILE = SimpleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -634,7 +710,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X7WM6K9T24;
 				INFOPLIST_FILE = SimpleTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -655,6 +731,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X7WM6K9T24;
 				INFOPLIST_FILE = SimpleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -675,6 +752,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X7WM6K9T24;
 				INFOPLIST_FILE = SimpleUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
