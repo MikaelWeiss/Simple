@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A570996625DAE01D0050B3B5 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570996525DAE01D0050B3B5 /* TaskRepository.swift */; };
+		A570996C25DAE1030050B3B5 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570996B25DAE1030050B3B5 /* Task.swift */; };
+		A570997225DAE2620050B3B5 /* Repetition.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570997125DAE2620050B3B5 /* Repetition.swift */; };
+		A570997825DAE7C10050B3B5 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570997725DAE7C10050B3B5 /* Image+Extensions.swift */; };
 		A5AC06CF25D7830900504FEE /* SimpleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC06CE25D7830900504FEE /* SimpleApp.swift */; };
 		A5AC06D325D7830A00504FEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AC06D225D7830A00504FEE /* Assets.xcassets */; };
 		A5AC06D625D7830A00504FEE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AC06D525D7830A00504FEE /* Preview Assets.xcassets */; };
@@ -44,6 +48,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A570996525DAE01D0050B3B5 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
+		A570996B25DAE1030050B3B5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		A570997125DAE2620050B3B5 /* Repetition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repetition.swift; sourceTree = "<group>"; };
+		A570997725DAE7C10050B3B5 /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
 		A5AC06CB25D7830900504FEE /* Simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AC06CE25D7830900504FEE /* SimpleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleApp.swift; sourceTree = "<group>"; };
 		A5AC06D225D7830A00504FEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,6 +117,39 @@
 				A5AC072325D7868900504FEE /* TasksOverviewViewTests.swift */,
 			);
 			path = TasksOverview;
+			sourceTree = "<group>";
+		};
+		A570996325DADFCF0050B3B5 /* DataStore */ = {
+			isa = PBXGroup;
+			children = (
+				A570996525DAE01D0050B3B5 /* TaskRepository.swift */,
+			);
+			path = DataStore;
+			sourceTree = "<group>";
+		};
+		A570996A25DAE0F60050B3B5 /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				A570996B25DAE1030050B3B5 /* Task.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		A570997025DAE23A0050B3B5 /* SupportTypes */ = {
+			isa = PBXGroup;
+			children = (
+				A570997625DAE7AF0050B3B5 /* Extensions */,
+				A570997125DAE2620050B3B5 /* Repetition.swift */,
+			);
+			path = SupportTypes;
+			sourceTree = "<group>";
+		};
+		A570997625DAE7AF0050B3B5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A570997725DAE7C10050B3B5 /* Image+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A5AC06C225D7830900504FEE = {
@@ -179,6 +220,8 @@
 		A5AC070825D7857800504FEE /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				A570997025DAE23A0050B3B5 /* SupportTypes */,
+				A570996A25DAE0F60050B3B5 /* Tasks */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -186,6 +229,7 @@
 		A5AC070925D7857C00504FEE /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				A570996325DADFCF0050B3B5 /* DataStore */,
 				A5AC070F25D785F900504FEE /* Persistence */,
 				A5AC070E25D785F500504FEE /* Main */,
 			);
@@ -350,8 +394,12 @@
 			files = (
 				A5AC071925D7865E00504FEE /* TasksOverviewPresenter.swift in Sources */,
 				A5AC071E25D7865E00504FEE /* TasksOverviewService.swift in Sources */,
+				A570997225DAE2620050B3B5 /* Repetition.swift in Sources */,
 				A5AC071A25D7865E00504FEE /* TasksOverviewModels.swift in Sources */,
 				A5AC06D825D7830A00504FEE /* Persistence.swift in Sources */,
+				A570996C25DAE1030050B3B5 /* Task.swift in Sources */,
+				A570997825DAE7C10050B3B5 /* Image+Extensions.swift in Sources */,
+				A570996625DAE01D0050B3B5 /* TaskRepository.swift in Sources */,
 				A5AC06DB25D7830A00504FEE /* Simple.xcdatamodeld in Sources */,
 				A5AC071B25D7865E00504FEE /* TasksOverviewScene.swift in Sources */,
 				A5AC071C25D7865E00504FEE /* TasksOverviewInteractor.swift in Sources */,
