@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A5285AC225DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5285AC125DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift */; };
+		A542CD4025DB75070082C365 /* DomainToStorageTransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542CD3F25DB75070082C365 /* DomainToStorageTransformerTests.swift */; };
 		A570996625DAE01D0050B3B5 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570996525DAE01D0050B3B5 /* TaskRepository.swift */; };
 		A570996C25DAE1030050B3B5 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570996B25DAE1030050B3B5 /* Task.swift */; };
 		A570997225DAE2620050B3B5 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570997125DAE2620050B3B5 /* Frequency.swift */; };
@@ -95,6 +96,7 @@
 
 /* Begin PBXFileReference section */
 		A5285AC125DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreStorageFactoryTests.swift; sourceTree = "<group>"; };
+		A542CD3F25DB75070082C365 /* DomainToStorageTransformerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainToStorageTransformerTests.swift; sourceTree = "<group>"; };
 		A570996525DAE01D0050B3B5 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		A570996B25DAE1030050B3B5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A570997125DAE2620050B3B5 /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
@@ -286,6 +288,7 @@
 				A5709A1525DB2F130050B3B5 /* StorageToDomainTransformer.swift */,
 				A5709A2F25DB589E0050B3B5 /* StorageToDomainTransformerTests.swift */,
 				A5709A1A25DB2F870050B3B5 /* DomainToStorageTransformer.swift */,
+				A542CD3F25DB75070082C365 /* DomainToStorageTransformerTests.swift */,
 			);
 			path = Transformers;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				A5AC072925D7868900504FEE /* TasksOverviewServiceTests.swift in Sources */,
 				A5285AC225DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift in Sources */,
 				A5AC072725D7868900504FEE /* TasksOverviewViewTests.swift in Sources */,
+				A542CD4025DB75070082C365 /* DomainToStorageTransformerTests.swift in Sources */,
 				A5AC06E625D7830A00504FEE /* SimpleTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

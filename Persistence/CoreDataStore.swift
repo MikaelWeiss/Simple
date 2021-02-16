@@ -22,7 +22,7 @@ public class CoreDataStore {
     public convenience init() {
         let bundle = Bundle(for: CoreDataStore.self)
         
-        guard let modelURL = bundle.url(forResource: "Model", withExtension: "momd") else {
+        guard let modelURL = bundle.url(forResource: "Simple", withExtension: "momd") else {
             os_log(.error, log: .persistence, "Unable to generate model url in bundle: %@.", bundle)
             fatalError()
         }
