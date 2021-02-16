@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5285AC225DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5285AC125DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift */; };
 		A570996625DAE01D0050B3B5 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570996525DAE01D0050B3B5 /* TaskRepository.swift */; };
 		A570996C25DAE1030050B3B5 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570996B25DAE1030050B3B5 /* Task.swift */; };
 		A570997225DAE2620050B3B5 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570997125DAE2620050B3B5 /* Frequency.swift */; };
@@ -93,6 +94,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		A5285AC125DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreStorageFactoryTests.swift; sourceTree = "<group>"; };
 		A570996525DAE01D0050B3B5 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		A570996B25DAE1030050B3B5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A570997125DAE2620050B3B5 /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 			children = (
 				A570999125DAF02D0050B3B5 /* CoreDataStorage.swift */,
 				A57099F525DB0CAC0050B3B5 /* CoreDataStoreStorageFactory.swift */,
+				A5285AC125DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift */,
 				A5709A0A25DB2D7D0050B3B5 /* CoreDataStorage+Read.swift */,
 				A5709A0F25DB2DB80050B3B5 /* CoreDataStorage+Write.swift */,
 			);
@@ -604,6 +607,7 @@
 				A5AC072825D7868900504FEE /* TasksOverviewPresenterTests.swift in Sources */,
 				A5AC072625D7868900504FEE /* TasksOverviewInteractorTests.swift in Sources */,
 				A5AC072925D7868900504FEE /* TasksOverviewServiceTests.swift in Sources */,
+				A5285AC225DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift in Sources */,
 				A5AC072725D7868900504FEE /* TasksOverviewViewTests.swift in Sources */,
 				A5AC06E625D7830A00504FEE /* SimpleTests.swift in Sources */,
 			);
@@ -647,7 +651,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Persistence/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -675,7 +679,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Persistence/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -698,6 +702,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X7WM6K9T24;
 				INFOPLIST_FILE = PersistenceTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -718,6 +723,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X7WM6K9T24;
 				INFOPLIST_FILE = PersistenceTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -858,7 +864,7 @@
 				DEVELOPMENT_TEAM = X7WM6K9T24;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Simple/Application/Main/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -881,7 +887,7 @@
 				DEVELOPMENT_TEAM = X7WM6K9T24;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Simple/Application/Main/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
