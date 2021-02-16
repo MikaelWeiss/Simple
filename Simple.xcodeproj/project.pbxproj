@@ -236,11 +236,11 @@
 		A570998025DAEEB50050B3B5 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
+				A57099FA25DB0EF80050B3B5 /* Storage.swift */,
 				A570998125DAEEC70050B3B5 /* StorageProvider.swift */,
 				A570998625DAEF8D0050B3B5 /* StorageReadable.swift */,
 				A570998B25DAEFC70050B3B5 /* StorageWritable.swift */,
 				A570999025DAF0000050B3B5 /* CoreData */,
-				A57099FA25DB0EF80050B3B5 /* Storage.swift */,
 			);
 			path = Storage;
 			sourceTree = "<group>";
