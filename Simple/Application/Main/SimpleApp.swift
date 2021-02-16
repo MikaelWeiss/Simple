@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct SimpleApp: App {
-    let persistenceController = PersistenceController.shared
     @State private var selectedTab = Tabs.tasksOverview
     
     enum Tabs: Hashable {

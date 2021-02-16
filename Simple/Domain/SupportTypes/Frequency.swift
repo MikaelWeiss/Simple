@@ -1,5 +1,5 @@
 //
-//  Repetition.swift
+//  Frequency.swift
 //  Simple
 //
 //  Created by Mikael Weiss on 2/15/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Repetition {
+enum Frequency {
     case daily
     case weekly
     case monthly
@@ -16,14 +16,15 @@ enum Repetition {
     
     // MARK: - Initialization
     
-    init?(with string: String) {
+    init(with string: String?) {
+        guard let string = string else { self = .daily; return }
         switch string {
         case "daily": self = .daily
         case "weekly": self = .weekly
         case "monthly": self = .monthly
         case "annually": self = .annually
         case "biannually": self = .biannually
-        default: return nil
+        default: self = .daily
         }
     }
     

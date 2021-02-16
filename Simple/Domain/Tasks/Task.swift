@@ -17,27 +17,32 @@ class Task: Identifiable {
         self.name = name
     }
     
-    private(set) var date: Date
-    func set(date: Date) throws {
-        self.date = date
+    private(set) var preferredTime: Date
+    func set(preferredTime: Date) throws {
+        self.preferredTime = preferredTime
     }
     
-    private(set) var repetition: Repetition
-    func set(repetition: Repetition) throws {
-        self.repetition = repetition
+    private(set) var frequency: Frequency
+    func set(repetition: Frequency) throws {
+        self.frequency = repetition
     }
     
-    private(set) var image: Image?
-    func set(image: Image?) throws {
+    private(set) var image: UIImage?
+    func set(image: UIImage?) throws {
         self.image = image
     }
     
     // MARK: - Initialization
     
-    init(id: UUID = UUID(), date: Date = Date(), repetition: Repetition, image: Image? = nil) {
+    init(id: UUID = UUID(),
+         name: String,
+         preferredTime: Date = Date.today,
+         frequency: Frequency,
+         image: UIImage? = nil) {
         self.id = id
-        self.date = date
-        self.repetition = repetition
+        self.name = name
+        self.preferredTime = preferredTime
+        self.frequency = frequency
         self.image = image
     }
     
@@ -46,15 +51,16 @@ class Task: Identifiable {
     struct ReconstitutionInfo {
         let id: UUID
         let name: String
-        let date: Date
-        let repetition: String
+        let preferredTime: Date
+        let frequency: String?
         let imageData: Data?
     }
     
     init(with info: ReconstitutionInfo) throws {
         self.id = info.id
-        self.date = info.date
+        self.preferredTime = info.preferredTime
+        self.frequency = Frequency(with: info.frequency)
         self.name = info.name
-        self.image = Image(data: info.imageData)
+        self.image = UIImage(optionalData: info.imageData)
     }
 }
