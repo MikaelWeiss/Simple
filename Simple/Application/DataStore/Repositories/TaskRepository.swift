@@ -24,7 +24,7 @@ class MainTaskRepository: TaskRepository {
     private let toDomain: StorageToDomainTransformer
     private let toStorage: DomainToStorageTransformer
     
-    init(storageProvider: StorageProvider = StorageProvider(),
+    init(storageProvider: StorageProvider = MainStorageProvider.shared,
          toDomainTransformer: StorageToDomainTransformer = StorageToDomainFactory(),
          toStorageTransformer: DomainToStorageTransformer = DomainToStorageFactory()) {
         

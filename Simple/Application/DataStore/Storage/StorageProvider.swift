@@ -7,7 +7,14 @@
 
 import Foundation
 
-class StorageProvider {
+protocol StorageProvider {
+    var storageRead: StorageReadable { get }
+    var storageWrite:  StorageWritable { get }
+}
+
+class MainStorageProvider: StorageProvider {
+    static let shared = MainStorageProvider()
+    
     private let storage = CoreDataStorage()
     
     var storageRead: StorageReadable { storage }
