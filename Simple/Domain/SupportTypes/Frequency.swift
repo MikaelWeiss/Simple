@@ -16,15 +16,15 @@ enum Frequency {
     
     // MARK: - Initialization
     
-    init(with string: String?) {
-        guard let string = string else { self = .daily; return }
+    init?(with string: String?) {
+        guard let string = string else { return nil }
         switch string {
         case "daily": self = .daily
         case "weekly": self = .weekly
         case "monthly": self = .monthly
         case "annually": self = .annually
         case "biannually": self = .biannually
-        default: self = .daily
+        default: return nil
         }
     }
     

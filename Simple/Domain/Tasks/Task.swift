@@ -59,7 +59,7 @@ class Task: Identifiable {
     init(with info: ReconstitutionInfo) throws {
         self.id = info.id
         self.preferredTime = info.preferredTime
-        self.frequency = Frequency(with: info.frequency)
+        self.frequency = Frequency(with: info.frequency) ?? .daily
         self.name = info.name
         self.image = UIImage(optionalData: info.imageData)
     }
