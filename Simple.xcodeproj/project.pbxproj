@@ -10,13 +10,11 @@
 		A5285AC225DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5285AC125DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift */; };
 		A542CD4025DB75070082C365 /* DomainToStorageTransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542CD3F25DB75070082C365 /* DomainToStorageTransformerTests.swift */; };
 		A542CD4525DB78AA0082C365 /* TaskRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542CD4425DB78AA0082C365 /* TaskRepositoryTests.swift */; };
-		A542CD4F25DB7B480082C365 /* StorageDoubles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542CD4A25DB7B400082C365 /* StorageDoubles.swift */; };
+		A55DCA7725DD6085009D933E /* RepositoryRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55DCA7625DD6085009D933E /* RepositoryRoot.swift */; };
 		A570996625DAE01D0050B3B5 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570996525DAE01D0050B3B5 /* TaskRepository.swift */; };
 		A570996C25DAE1030050B3B5 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570996B25DAE1030050B3B5 /* Task.swift */; };
 		A570997225DAE2620050B3B5 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570997125DAE2620050B3B5 /* Frequency.swift */; };
 		A570998225DAEEC70050B3B5 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570998125DAEEC70050B3B5 /* StorageProvider.swift */; };
-		A570998725DAEF8D0050B3B5 /* StorageReadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570998625DAEF8D0050B3B5 /* StorageReadable.swift */; };
-		A570998C25DAEFC70050B3B5 /* StorageWritable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570998B25DAEFC70050B3B5 /* StorageWritable.swift */; };
 		A570999225DAF02D0050B3B5 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570999125DAF02D0050B3B5 /* CoreDataStorage.swift */; };
 		A57099A925DAF5180050B3B5 /* Persistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57099A025DAF5180050B3B5 /* Persistence.framework */; };
 		A57099B025DAF5180050B3B5 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57099AF25DAF5180050B3B5 /* PersistenceTests.swift */; };
@@ -100,13 +98,11 @@
 		A5285AC125DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreStorageFactoryTests.swift; sourceTree = "<group>"; };
 		A542CD3F25DB75070082C365 /* DomainToStorageTransformerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainToStorageTransformerTests.swift; sourceTree = "<group>"; };
 		A542CD4425DB78AA0082C365 /* TaskRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositoryTests.swift; sourceTree = "<group>"; };
-		A542CD4A25DB7B400082C365 /* StorageDoubles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageDoubles.swift; sourceTree = "<group>"; };
+		A55DCA7625DD6085009D933E /* RepositoryRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryRoot.swift; sourceTree = "<group>"; };
 		A570996525DAE01D0050B3B5 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		A570996B25DAE1030050B3B5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A570997125DAE2620050B3B5 /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
 		A570998125DAEEC70050B3B5 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
-		A570998625DAEF8D0050B3B5 /* StorageReadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageReadable.swift; sourceTree = "<group>"; };
-		A570998B25DAEFC70050B3B5 /* StorageWritable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageWritable.swift; sourceTree = "<group>"; };
 		A570999125DAF02D0050B3B5 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		A57099A025DAF5180050B3B5 /* Persistence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Persistence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57099A225DAF5180050B3B5 /* Persistence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Persistence.h; sourceTree = "<group>"; };
@@ -180,12 +176,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A542CD4925DB7B100082C365 /* StorageDoubles */ = {
+		A55DCA7525DD6076009D933E /* RepositoryRoot */ = {
 			isa = PBXGroup;
 			children = (
-				A542CD4A25DB7B400082C365 /* StorageDoubles.swift */,
+				A55DCA7625DD6085009D933E /* RepositoryRoot.swift */,
 			);
-			path = StorageDoubles;
+			path = RepositoryRoot;
 			sourceTree = "<group>";
 		};
 		A56E0C1F25D854E100247227 /* TasksOverview */ = {
@@ -243,9 +239,9 @@
 		A570997F25DAEEAB0050B3B5 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				A55DCA7525DD6076009D933E /* RepositoryRoot */,
 				A570996525DAE01D0050B3B5 /* TaskRepository.swift */,
 				A542CD4425DB78AA0082C365 /* TaskRepositoryTests.swift */,
-				A542CD4925DB7B100082C365 /* StorageDoubles */,
 				A5709A1425DB2EFF0050B3B5 /* Transformers */,
 			);
 			path = Repositories;
@@ -256,8 +252,6 @@
 			children = (
 				A57099FA25DB0EF80050B3B5 /* Storage.swift */,
 				A570998125DAEEC70050B3B5 /* StorageProvider.swift */,
-				A570998625DAEF8D0050B3B5 /* StorageReadable.swift */,
-				A570998B25DAEFC70050B3B5 /* StorageWritable.swift */,
 				A570999025DAF0000050B3B5 /* CoreData */,
 			);
 			path = Storage;
@@ -599,7 +593,6 @@
 				A570997225DAE2620050B3B5 /* Frequency.swift in Sources */,
 				A5709A0B25DB2D7D0050B3B5 /* CoreDataStorage+Read.swift in Sources */,
 				A5AC071A25D7865E00504FEE /* TasksOverviewModels.swift in Sources */,
-				A570998725DAEF8D0050B3B5 /* StorageReadable.swift in Sources */,
 				A570996C25DAE1030050B3B5 /* Task.swift in Sources */,
 				A57099F625DB0CAC0050B3B5 /* CoreDataStoreStorageFactory.swift in Sources */,
 				A570998225DAEEC70050B3B5 /* StorageProvider.swift in Sources */,
@@ -612,7 +605,7 @@
 				A5AC071D25D7865E00504FEE /* TasksOverviewView.swift in Sources */,
 				A5AC06CF25D7830900504FEE /* SimpleApp.swift in Sources */,
 				A57099FB25DB0EF80050B3B5 /* Storage.swift in Sources */,
-				A570998C25DAEFC70050B3B5 /* StorageWritable.swift in Sources */,
+				A55DCA7725DD6085009D933E /* RepositoryRoot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -622,7 +615,6 @@
 			files = (
 				A5709A3025DB589E0050B3B5 /* StorageToDomainTransformerTests.swift in Sources */,
 				A5AC072825D7868900504FEE /* TasksOverviewPresenterTests.swift in Sources */,
-				A542CD4F25DB7B480082C365 /* StorageDoubles.swift in Sources */,
 				A5AC072625D7868900504FEE /* TasksOverviewInteractorTests.swift in Sources */,
 				A5AC072925D7868900504FEE /* TasksOverviewServiceTests.swift in Sources */,
 				A5285AC225DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift in Sources */,

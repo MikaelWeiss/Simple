@@ -11,8 +11,8 @@ import XCTest
 class TaskRepositoryTests: XCTestCase {
     
     var repository: TaskRepository!
-    var storageRead: StorageReadWriteDouble!
-    var storageWrite: StorageReadWriteDouble!
+    var storageRead: TaskRepositoryReadable!
+    var storageWrite: TaskRepositoryWritable!
     var toDomain: StorageToDomainTransformer!
     var toStorage: DomainToStorageTransformer!
     
@@ -105,12 +105,37 @@ class TaskRepositoryTests: XCTestCase {
         super.setUp()
         toDomain = StorageToDomainFactory()
         toStorage = DomainToStorageFactory()
-        storageRead = StorageReadWriteDouble()
-        storageWrite = StorageReadWriteDouble()
-        let storageProvider = StorageProviderDouble(storageRead: storageRead, storageWrite: storageWrite)
+        storageRead = TaskRepositoryReadableDouble()
+        storageWrite = TaskRepositoryWritableDouble()
         repository = MainTaskRepository(
-            storageProvider: storageProvider,
+            storageRead: storageRead,
+            storageWrite: storageWrite,
             toDomainTransformer: toDomain,
             toStorageTransformer: toStorage)
+    }
+    
+    // MARK: - Doubles
+    class TaskRepositoryReadableDouble: TaskRepositoryReadable {
+        func getTask(with id: UUID) throws -> Storage.Task? {
+            <#code#>
+        }
+        
+        func getAllTasks() throws -> [Storage.Task] {
+            <#code#>
+        }
+    }
+    
+    class TaskRepositoryWritableDouble: TaskRepositoryWritable {
+        func addTask(_ storageTask: Storage.Task) throws {
+            <#code#>
+        }
+        
+        func updateTask(_ storageTask: Storage.Task) throws {
+            <#code#>
+        }
+        
+        func deleteTask(with id: UUID) throws {
+            <#code#>
+        }
     }
 }

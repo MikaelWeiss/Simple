@@ -17,43 +17,55 @@ protocol TaskRepository {
     func deleteTask(_ id: UUID) throws
 }
 
+protocol TaskRepositoryReadable {
+    func getTask(with id: UUID) throws -> Storage.Task?
+    func getAllTasks() throws -> [Storage.Task]
+}
+protocol TaskRepositoryWritable {
+    func addTask(_ storageTask: Storage.Task) throws
+    func updateTask(_ storageTask: Storage.Task) throws
+    func deleteTask(with id: UUID) throws
+}
 
 class MainTaskRepository: TaskRepository {
     
-    private let storageProvider: StorageProvider
+    private let storageRead: TaskRepositoryReadable
+    private let storageWrite: TaskRepositoryWritable
     private let toDomain: StorageToDomainTransformer
     private let toStorage: DomainToStorageTransformer
     
-    init(storageProvider: StorageProvider = MainStorageProvider.shared,
+    init(storageRead: TaskRepositoryReadable,
+         storageWrite: TaskRepositoryWritable,
          toDomainTransformer: StorageToDomainTransformer = StorageToDomainFactory(),
          toStorageTransformer: DomainToStorageTransformer = DomainToStorageFactory()) {
         
-        self.storageProvider = storageProvider
+        self.storageRead = storageRead
+        self.storageWrite = storageWrite
         self.toDomain = toDomainTransformer
         self.toStorage = toStorageTransformer
     }
     
     func allTasks() throws -> [Task] {
-        guard let allTasks = try? storageProvider.storageRead.getAllTasks() else { return [] }
+        guard let allTasks = try? storageRead.getAllTasks() else { return [] }
         return allTasks.compactMap { try? toDomain.task(from: $0) }
     }
     
     func task(withID: UUID) throws -> Task? {
-        guard let storageTask = try storageProvider.storageRead.getTask(with: withID) else { return nil }
+        guard let storageTask = try storageRead.getTask(with: withID) else { return nil }
         return try toDomain.task(from: storageTask)
     }
     
     func addTask(_ task: Task) throws {
         let storageTask = toStorage.task(from: task)
-        try storageProvider.storageWrite.addTask(storageTask)
+        try storageWrite.addTask(storageTask)
     }
     
     func updateTask(_ task: Task) throws {
         let storageTask = toStorage.task(from: task)
-        try storageProvider.storageWrite.updateTask(storageTask)
+        try storageWrite.updateTask(storageTask)
     }
     
     func deleteTask(_ id: UUID) throws {
-        try storageProvider.storageWrite.deleteTask(with: id)
+        try storageWrite.deleteTask(with: id)
     }
 }
