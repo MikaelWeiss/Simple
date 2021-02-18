@@ -78,13 +78,8 @@ public class CoreDataStore {
     
     // MARK: - Delete All
     
-    public func deleteAll(preserveAccountLinking: Bool = false) throws {
-        var entityNames = container.managedObjectModel.entities.compactMap { $0.name }
-        
-        if preserveAccountLinking {
-            let accountLinkingEntityNames = ["AccessToken", "Institution", "InstitutionAccessToken", "InstitutionAccount"]
-            entityNames = entityNames.filter { !accountLinkingEntityNames.contains($0) }
-        }
+    public func deleteAll() throws {
+        let entityNames = container.managedObjectModel.entities.compactMap { $0.name }
         
         for entityName in entityNames {
             let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
@@ -129,7 +124,7 @@ public class CoreDataStore {
                 container.viewContext.delete(task)
             }
         } catch {
-            os_log(.error, log: .persistence, "Failed to delete business. Error: %@", error as NSError)
+            os_log(.error, log: .persistence, "Failed to delete task. Error: %@", error as NSError)
             throw error
         }
     }
