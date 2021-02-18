@@ -14,7 +14,7 @@ class CoreDataStorageReadTests: XCTestCase {
     var store: CoreDataStore!
     var storage: CoreDataStorage!
     
-    // MARK: - Task
+    // MARK: - Tasks
     
     func testGetTask() throws {
         // Given
@@ -29,6 +29,11 @@ class CoreDataStorageReadTests: XCTestCase {
         XCTAssertEqual(storageTask?.id, id)
     }
     
+    func testGetTaskObjectNotFound() throws {
+        // When/Then
+        XCTAssertThrowsError(try storage.getTask(with: UUID()))
+    }
+    
     func testGetAllTask() throws {
         // Given
         _ = store.newTask()
@@ -36,7 +41,7 @@ class CoreDataStorageReadTests: XCTestCase {
         _ = store.newTask()
         
         // When
-        let storageTasks = try store.getAllTasks()
+        let storageTasks = try storage.getAllTasks()
         
         // Then
         XCTAssertEqual(storageTasks.count, 3)
@@ -55,6 +60,4 @@ class CoreDataStorageReadTests: XCTestCase {
         try? store.deleteAll()
         super.tearDown()
     }
-    
-    // MARK: - Helpers
 }
