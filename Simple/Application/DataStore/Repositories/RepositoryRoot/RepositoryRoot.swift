@@ -11,8 +11,9 @@ typealias StorageReadable = TaskRepositoryReadable
 typealias StorageWritable = TaskRepositoryWritable
 
 class Repositories {
-    static let storageRead = MainStorageProvider.shared.storageRead
-    static let storageWrite = MainStorageProvider.shared.storageWrite
+    static private let storage = CoreDataStorage()
+    static private let storageRead = storage
+    static private let storageWrite = storage
     
     var taskRepository = MainTaskRepository(
         storageRead: storageRead,

@@ -17,8 +17,29 @@ class CoreDataStorageReadTests: XCTestCase {
     // MARK: - Task
     
     func testGetTask() throws {
-//        let userID = UUID(uuidString: "123E4567-E89B-12D3-A456-426655440000")!
-//        let user = makeUser(id: userID, firstName: "Gus", lastName: "Dentist")
+        // Given
+        let id = UUID()
+        let task = store.newTask()
+        task.id = id
+        
+        // When
+        let storageTask = try storage.getTask(with: id)
+        
+        // Then
+        XCTAssertEqual(storageTask?.id, id)
+    }
+    
+    func testGetAllTask() throws {
+        // Given
+        _ = store.newTask()
+        _ = store.newTask()
+        _ = store.newTask()
+        
+        // When
+        let storageTasks = try store.getAllTasks()
+        
+        // Then
+        XCTAssertEqual(storageTasks.count, 3)
     }
     
     // MARK: - setUp / tearDown

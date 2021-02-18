@@ -14,7 +14,6 @@
 		A570996625DAE01D0050B3B5 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570996525DAE01D0050B3B5 /* TaskRepository.swift */; };
 		A570996C25DAE1030050B3B5 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570996B25DAE1030050B3B5 /* Task.swift */; };
 		A570997225DAE2620050B3B5 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570997125DAE2620050B3B5 /* Frequency.swift */; };
-		A570998225DAEEC70050B3B5 /* StorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570998125DAEEC70050B3B5 /* StorageProvider.swift */; };
 		A570999225DAF02D0050B3B5 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570999125DAF02D0050B3B5 /* CoreDataStorage.swift */; };
 		A57099A925DAF5180050B3B5 /* Persistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57099A025DAF5180050B3B5 /* Persistence.framework */; };
 		A57099B025DAF5180050B3B5 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57099AF25DAF5180050B3B5 /* PersistenceTests.swift */; };
@@ -105,7 +104,6 @@
 		A570996525DAE01D0050B3B5 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		A570996B25DAE1030050B3B5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		A570997125DAE2620050B3B5 /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
-		A570998125DAEEC70050B3B5 /* StorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProvider.swift; sourceTree = "<group>"; };
 		A570999125DAF02D0050B3B5 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		A57099A025DAF5180050B3B5 /* Persistence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Persistence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57099A225DAF5180050B3B5 /* Persistence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Persistence.h; sourceTree = "<group>"; };
@@ -258,7 +256,6 @@
 			isa = PBXGroup;
 			children = (
 				A57099FA25DB0EF80050B3B5 /* Storage.swift */,
-				A570998125DAEEC70050B3B5 /* StorageProvider.swift */,
 				A570999025DAF0000050B3B5 /* CoreData */,
 			);
 			path = Storage;
@@ -613,7 +610,6 @@
 				A5AC071A25D7865E00504FEE /* TasksOverviewModels.swift in Sources */,
 				A570996C25DAE1030050B3B5 /* Task.swift in Sources */,
 				A57099F625DB0CAC0050B3B5 /* CoreDataStoreStorageFactory.swift in Sources */,
-				A570998225DAEEC70050B3B5 /* StorageProvider.swift in Sources */,
 				A5709A1B25DB2F870050B3B5 /* DomainToStorageTransformer.swift in Sources */,
 				A5709A1625DB2F130050B3B5 /* StorageToDomainTransformer.swift in Sources */,
 				A570996625DAE01D0050B3B5 /* TaskRepository.swift in Sources */,
