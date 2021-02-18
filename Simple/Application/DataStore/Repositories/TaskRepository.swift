@@ -6,15 +6,17 @@
 //
 
 import Foundation
+import Combine
 
 protocol TaskRepository {
     func allTasks() throws -> [Task]
     func task(withID: UUID) throws -> Task?
     
     func addTask(_ task: Task) throws
-    
     func updateTask(_ task: Task) throws
     func deleteTask(_ id: UUID) throws
+    
+    var updatePublisher: RepositoryPublisher { get }
 }
 
 protocol TaskRepositoryReadable {
@@ -28,6 +30,11 @@ protocol TaskRepositoryWritable {
 }
 
 class MainTaskRepository: TaskRepository {
+    
+    private let subject = PassthroughSubject<RepositoryAction, Never>()
+    var updatePublisher: RepositoryPublisher {
+        subject.eraseToAnyPublisher()
+    }
     
     private let storageRead: TaskRepositoryReadable
     private let storageWrite: TaskRepositoryWritable
@@ -58,14 +65,17 @@ class MainTaskRepository: TaskRepository {
     func addTask(_ task: Task) throws {
         let storageTask = toStorage.task(from: task)
         try storageWrite.addTask(storageTask)
+        subject.send(.add(task.id))
     }
     
     func updateTask(_ task: Task) throws {
         let storageTask = toStorage.task(from: task)
         try storageWrite.updateTask(storageTask)
+        subject.send(.update(task.id))
     }
     
     func deleteTask(_ id: UUID) throws {
         try storageWrite.deleteTask(with: id)
+        subject.send(.delete(id))
     }
 }
