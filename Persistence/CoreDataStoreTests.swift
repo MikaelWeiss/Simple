@@ -14,12 +14,12 @@ class CoreDataStoreTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        store = CoreDataStore()
-        try? store.deleteAll()
+        store = CoreDataStore(storageType: .inMemory)
+        try! store.deleteAll()
     }
     
     override func tearDown() {
-        try? store.deleteAll()
+        try! store.deleteAll()
         super.tearDown()
     }
     
@@ -60,5 +60,72 @@ class CoreDataStoreTests: XCTestCase {
         // Then
         XCTAssertNoThrow(result = try store.getTask(with: id))
         XCTAssertNil(result)
+    }
+    
+    // MARK: - Task
+    
+    func testNewTask() {
+        // When
+        let result = store.newTask()
+        
+        // Then
+        XCTAssertNotNil(result)
+    }
+    
+    func testGetTaskWithUnknownID() {
+        // Given
+        var result: Persistence.Task?
+        let randomID = UUID()
+        
+        // When
+        XCTAssertNoThrow(result = try store.getTask(with: randomID))
+        
+        // Then
+        XCTAssertNil(result)
+    }
+    
+    func testGetTaskWithKnownID() {
+        // Given
+        var result: Persistence.Task?
+        let id = UUID()
+        let newEntity = store.newTask()
+        newEntity.id = id
+        XCTAssertNoThrow(try store.save())
+        
+        // When
+        XCTAssertNoThrow(result = try store.getTask(with: id))
+        
+        // Then
+        XCTAssertNotNil(result)
+        XCTAssertEqual(result?.id, id)
+    }
+    
+    func testDeleteTask() {
+        // Given
+        var result: Persistence.Task?
+        let id = UUID()
+        let newEntity = store.newTask()
+        newEntity.id = id
+        XCTAssertNoThrow(try store.save())
+        
+        // When
+        XCTAssertNoThrow(try store.deleteTask(with: id))
+        
+        // Then
+        XCTAssertNoThrow(result = try store.getTask(with: id))
+        XCTAssertNil(result)
+    }
+    
+    func testGetAllTasks() throws {
+        // Given
+        _ = store.newTask()
+        _ = store.newTask()
+        _ = store.newTask()
+        XCTAssertNoThrow(try store.save())
+        
+        // When
+        let entities = try store.getAllTasks()
+        
+        XCTAssertEqual(entities.count, 3)
     }
 }

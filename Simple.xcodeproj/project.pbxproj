@@ -182,14 +182,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A55DCA7525DD6076009D933E /* RepositoryRoot */ = {
-			isa = PBXGroup;
-			children = (
-				A55DCA7625DD6085009D933E /* RepositoryRoot.swift */,
-			);
-			path = RepositoryRoot;
-			sourceTree = "<group>";
-		};
 		A56E0C1F25D854E100247227 /* TasksOverview */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,10 +237,9 @@
 		A570997F25DAEEAB0050B3B5 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				A570996525DAE01D0050B3B5 /* TaskRepository.swift */,
-				A542CD4425DB78AA0082C365 /* TaskRepositoryTests.swift */,
+				A55DCA7625DD6085009D933E /* RepositoryRoot.swift */,
+				A5C60D7125E186CE00C61ABE /* Repositories */,
 				A5EC5D4825DE04C7002B3D94 /* Combine */,
-				A55DCA7525DD6076009D933E /* RepositoryRoot */,
 				A5709A1425DB2EFF0050B3B5 /* Transformers */,
 			);
 			path = Repositories;
@@ -402,6 +393,15 @@
 				A5AC06DC25D7830A00504FEE /* Info.plist */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		A5C60D7125E186CE00C61ABE /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				A570996525DAE01D0050B3B5 /* TaskRepository.swift */,
+				A542CD4425DB78AA0082C365 /* TaskRepositoryTests.swift */,
+			);
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		A5EC5D4825DE04C7002B3D94 /* Combine */ = {

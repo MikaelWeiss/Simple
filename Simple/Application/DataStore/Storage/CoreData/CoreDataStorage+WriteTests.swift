@@ -31,14 +31,14 @@ class CoreDataStorageWriteTests: XCTestCase {
         try storage.addTask(storageTask)
         
         // Then
-//        let storeTasks = try store.getAllTasks()
-//        let storeTask = try store.getTask(with: id)
-//        XCTAssertEqual(storeTask?.id, id)
-//        XCTAssertEqual(storeTask?.name, "Some name")
-//        XCTAssertEqual(storeTask?.preferredTime, date)
-//        XCTAssertEqual(storeTask?.frequency, "daily")
-//        XCTAssertEqual(storeTask?.imageData, nil)
-//        XCTAssertEqual(storeTasks.count, 1)
+        let storeTasks = try store.getAllTasks()
+        let storeTask = try store.getTask(with: id)
+        XCTAssertEqual(storeTask?.id, id)
+        XCTAssertEqual(storeTask?.name, "Some name")
+        XCTAssertEqual(storeTask?.preferredTime, date)
+        XCTAssertEqual(storeTask?.frequency, "daily")
+        XCTAssertEqual(storeTask?.imageData, nil)
+        XCTAssertEqual(storeTasks.count, 1)
     }
     
     func testUpdateTaskMissingID() {
@@ -68,7 +68,7 @@ class CoreDataStorageWriteTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        store = CoreDataStore()
+        store = CoreDataStore(storageType: .inMemory)
         storage = CoreDataStorage(store: store)
         try? store.deleteAll()
     }

@@ -12,7 +12,7 @@ import Persistence
 class CoreDataStoreStorageFactoryTests: XCTestCase {
     
     var factory = CoreDataStoreStorageFactory()
-    var store = CoreDataStore()
+    var store = CoreDataStore(storageType: .inMemory)
     
     func testTask() {
         // Given

@@ -51,7 +51,7 @@ class CoreDataStorageReadTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        store = CoreDataStore()
+        store = CoreDataStore(storageType: .inMemory)
         storage = CoreDataStorage(store: store)
         try? store.deleteAll()
     }

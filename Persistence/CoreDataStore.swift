@@ -10,6 +10,12 @@ import os.log
 
 public class CoreDataStore {
     
+    public enum StorageType {
+        case persistent
+        case inMemory
+    }
+    
+    /// Using a store other than the default store may result in an inaccurate context.
     public static let `default` = CoreDataStore()
     
     private let container: NSPersistentContainer
@@ -19,7 +25,7 @@ public class CoreDataStore {
         self.container.viewContext.automaticallyMergesChangesFromParent = true
     }
     
-    public convenience init() {
+    public convenience init(storageType: StorageType = .persistent) {
         let bundle = Bundle(for: CoreDataStore.self)
         
         guard let modelURL = bundle.url(forResource: "Simple", withExtension: "momd") else {
@@ -32,7 +38,23 @@ public class CoreDataStore {
             fatalError()
         }
         
-        let container = Self.persistentContainer(model: model)
+        let container: NSPersistentContainer
+        switch storageType {
+        case .persistent:
+            container = Self.persistentContainer(model: model)
+            #if DEBUG
+            print("🔥🔥🔥🔥🔥🔥")
+            fatalError("Using the wrong store")
+            #endif
+        case .inMemory:
+            container = Self.inMemoryContainer(model: model)
+            #if DEBUG
+            #else
+            print("🔥🔥🔥🔥🔥🔥")
+            fatalError("Using the wrong store")
+            #endif
+        }
+        
         
         container.loadPersistentStores { store, error in
             if let error = error as NSError? {
@@ -51,14 +73,19 @@ public class CoreDataStore {
             fatalError("Failed to resolve documents directory")
         }
         
-        let localStore = NSPersistentStoreDescription(url: docURL.appendingPathComponent("Model.sqlite"))
+        let localStore = NSPersistentStoreDescription(url: docURL.appendingPathComponent("Simple.sqlite"))
         localStore.configuration = "Local"
         
-        let cloudStore = NSPersistentStoreDescription(url: docURL.appendingPathComponent("Cloud.sqlite"))
-        cloudStore.configuration = "Cloud"
-        
         let container = NSPersistentContainer(name: "Model", managedObjectModel: model)
-        container.persistentStoreDescriptions = [localStore, cloudStore]
+        container.persistentStoreDescriptions = [localStore]
+        
+        return container
+    }
+    
+    private static func inMemoryContainer(model: NSManagedObjectModel) -> NSPersistentContainer {
+        let container = NSPersistentContainer(name: "Model", managedObjectModel: model)
+        let description = NSPersistentStoreDescription(url: URL(fileURLWithPath: "/dev/null"))
+        container.persistentStoreDescriptions = [description]
         
         return container
     }
