@@ -21,7 +21,13 @@ protocol EditTaskService {
 }
 
 protocol EditTaskTaskUpdating {
+    func task(withID: UUID) throws -> Task?
     
+    func addTask(_ task: Task) throws
+    func updateTask(_ task: Task) throws
+    func deleteTask(_ id: UUID) throws
+    
+    var updatePublisher: RepositoryPublisher { get }
 }
 
 extension EditTask {
@@ -31,6 +37,7 @@ extension EditTask {
         case missingRequiredFields
         case validationError
         case saveFailed
+        case deleteFailed
     }
     
     struct TaskInfo {
@@ -42,7 +49,7 @@ extension EditTask {
     
     class Service: EditTaskService {
         
-        private var taskRepository: TaskRepository
+        private var taskRepository: EditTaskTaskUpdating
         private var task: Task?
         private var taskInfo: TaskInfo
         
@@ -50,7 +57,7 @@ extension EditTask {
             taskRepository.updatePublisher
         }
         
-        init(task: Task?, taskRepository: TaskRepository) {
+        init(task: Task?, taskRepository: EditTaskTaskUpdating) {
             self.task = task
             self.taskRepository = taskRepository
             taskInfo = TaskInfo(
@@ -98,16 +105,15 @@ extension EditTask {
         
         func save() throws {
             guard canSave() else { throw ServiceError.missingRequiredFields }
-            let taskToSave: Task
-            
-            if let task = self.task {
-                taskToSave = task
-            } else {
-                taskToSave = try makeTask(with: taskInfo)
-            }
             
             do {
-                try taskRepository.addTask(taskToSave)
+                if let task = self.task {
+                    try taskRepository.updateTask(task)
+                } else {
+                    let task = try makeTask(with: taskInfo)
+                    try taskRepository.addTask(task)
+                    self.task = task
+                }
             } catch {
                 throw ServiceError.saveFailed
             }
@@ -122,6 +128,15 @@ extension EditTask {
                         preferredTime: preferredTime,
                         frequency: frequency,
                         image: info.image)
+        }
+        
+        func deleteTask() throws {
+            guard let id = task?.id else { throw ServiceError.syncFailed }
+            do {
+                try taskRepository.deleteTask(id)
+            } catch {
+                throw ServiceError.deleteFailed
+            }
         }
         
         func syncTask() throws {
