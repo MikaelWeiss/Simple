@@ -1,5 +1,5 @@
 //
-//  CreateTaskInteractorTests.swift
+//  EditTaskInteractorTests.swift
 //  Simple
 //
 //  Created by Mikael Weiss on 2/13/21.
@@ -9,10 +9,10 @@
 import XCTest
 @testable import Simple
 
-class CreateTaskInteractorTests: XCTestCase {
-    private var service: CreateTaskServiceDouble!
-    private var presenter: CreateTaskPresenterDouble!
-    private var interactor: CreateTaskInteractor!
+class EditTaskInteractorTests: XCTestCase {
+    private var service: EditTaskServiceDouble!
+    private var presenter: EditTaskPresenterDouble!
+    private var interactor: EditTaskInteractor!
     
     func testUpdateTheme() {
         // When
@@ -24,7 +24,7 @@ class CreateTaskInteractorTests: XCTestCase {
     
     func testDidChangeValue() {
         // Given
-        let request = CreateTask.ValidateValue.Request(value: "Some new value")
+        let request = EditTask.ValidateValue.Request(value: "Some new value")
         
         // When
         interactor.didChangeValue(with: request)
@@ -53,21 +53,21 @@ class CreateTaskInteractorTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        service = CreateTaskServiceDouble()
-        presenter = CreateTaskPresenterDouble()
-        interactor = CreateTaskInteractor(service: service, presenter: presenter)
+        service = EditTaskServiceDouble()
+        presenter = EditTaskPresenterDouble()
+        interactor = EditTaskInteractor(service: service, presenter: presenter)
     }
     
     // MARK: - Test Doubles
     
     // Either class, or struct with mutating functions
-    class CreateTaskPresenterDouble: CreateTaskPresenting {
+    class EditTaskPresenterDouble: EditTaskPresenting {
         var value: String?
         var presentUpdateThemeCalled = false
         var presentPrepareRouteToSheetCalled = false
         var presentPrepareRouteToOtherSceneCalled = false
         
-        func presentDidChangeValue(with response: CreateTask.ValidateValue.Response) {
+        func presentDidChangeValue(with response: EditTask.ValidateValue.Response) {
             value = response.value
         }
         
@@ -84,6 +84,6 @@ class CreateTaskInteractorTests: XCTestCase {
         }
     }
     
-    class CreateTaskServiceDouble: CreateTaskService {
+    class EditTaskServiceDouble: EditTaskService {
     }
 }

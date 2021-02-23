@@ -22,12 +22,12 @@
 		A542CD4525DB78AA0082C365 /* TaskRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542CD4425DB78AA0082C365 /* TaskRepositoryTests.swift */; };
 		A548D44125DEC15A0092027A /* CoreDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548D43C25DEC1460092027A /* CoreDataStoreTests.swift */; };
 		A55DCA7725DD6085009D933E /* RepositoryRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55DCA7625DD6085009D933E /* RepositoryRoot.swift */; };
-		A56E0C2725D855E600247227 /* CreateTaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2125D855E600247227 /* CreateTaskPresenter.swift */; };
-		A56E0C2825D855E600247227 /* CreateTaskModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2225D855E600247227 /* CreateTaskModels.swift */; };
-		A56E0C2925D855E600247227 /* CreateTaskScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2325D855E600247227 /* CreateTaskScene.swift */; };
-		A56E0C2A25D855E600247227 /* CreateTaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2425D855E600247227 /* CreateTaskInteractor.swift */; };
-		A56E0C2B25D855E600247227 /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2525D855E600247227 /* CreateTaskView.swift */; };
-		A56E0C2C25D855E600247227 /* CreateTaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2625D855E600247227 /* CreateTaskService.swift */; };
+		A56E0C2725D855E600247227 /* EditTaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2125D855E600247227 /* EditTaskPresenter.swift */; };
+		A56E0C2825D855E600247227 /* EditTaskModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2225D855E600247227 /* EditTaskModels.swift */; };
+		A56E0C2925D855E600247227 /* EditTaskScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2325D855E600247227 /* EditTaskScene.swift */; };
+		A56E0C2A25D855E600247227 /* EditTaskInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2425D855E600247227 /* EditTaskInteractor.swift */; };
+		A56E0C2B25D855E600247227 /* EditTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2525D855E600247227 /* EditTaskView.swift */; };
+		A56E0C2C25D855E600247227 /* EditTaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2625D855E600247227 /* EditTaskService.swift */; };
 		A570996625DAE01D0050B3B5 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570996525DAE01D0050B3B5 /* TaskRepository.swift */; };
 		A570999225DAF02D0050B3B5 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570999125DAF02D0050B3B5 /* CoreDataStorage.swift */; };
 		A57099A925DAF5180050B3B5 /* Persistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57099A025DAF5180050B3B5 /* Persistence.framework */; };
@@ -127,16 +127,16 @@
 		A542CD4425DB78AA0082C365 /* TaskRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositoryTests.swift; sourceTree = "<group>"; };
 		A548D43C25DEC1460092027A /* CoreDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreTests.swift; sourceTree = "<group>"; };
 		A55DCA7625DD6085009D933E /* RepositoryRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryRoot.swift; sourceTree = "<group>"; };
-		A56E0C2125D855E600247227 /* CreateTaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskPresenter.swift; sourceTree = "<group>"; };
-		A56E0C2225D855E600247227 /* CreateTaskModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskModels.swift; sourceTree = "<group>"; };
-		A56E0C2325D855E600247227 /* CreateTaskScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskScene.swift; sourceTree = "<group>"; };
-		A56E0C2425D855E600247227 /* CreateTaskInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskInteractor.swift; sourceTree = "<group>"; };
-		A56E0C2525D855E600247227 /* CreateTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskView.swift; sourceTree = "<group>"; };
-		A56E0C2625D855E600247227 /* CreateTaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskService.swift; sourceTree = "<group>"; };
-		A56E0C3025D855F100247227 /* CreateTaskInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskInteractorTests.swift; sourceTree = "<group>"; };
-		A56E0C3125D855F100247227 /* CreateTaskViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskViewTests.swift; sourceTree = "<group>"; };
-		A56E0C3225D855F100247227 /* CreateTaskPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskPresenterTests.swift; sourceTree = "<group>"; };
-		A56E0C3325D855F100247227 /* CreateTaskServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateTaskServiceTests.swift; sourceTree = "<group>"; };
+		A56E0C2125D855E600247227 /* EditTaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskPresenter.swift; sourceTree = "<group>"; };
+		A56E0C2225D855E600247227 /* EditTaskModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskModels.swift; sourceTree = "<group>"; };
+		A56E0C2325D855E600247227 /* EditTaskScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskScene.swift; sourceTree = "<group>"; };
+		A56E0C2425D855E600247227 /* EditTaskInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskInteractor.swift; sourceTree = "<group>"; };
+		A56E0C2525D855E600247227 /* EditTaskView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskView.swift; sourceTree = "<group>"; };
+		A56E0C2625D855E600247227 /* EditTaskService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskService.swift; sourceTree = "<group>"; };
+		A56E0C3025D855F100247227 /* EditTaskInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskInteractorTests.swift; sourceTree = "<group>"; };
+		A56E0C3125D855F100247227 /* EditTaskViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskViewTests.swift; sourceTree = "<group>"; };
+		A56E0C3225D855F100247227 /* EditTaskPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskPresenterTests.swift; sourceTree = "<group>"; };
+		A56E0C3325D855F100247227 /* EditTaskServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskServiceTests.swift; sourceTree = "<group>"; };
 		A570996525DAE01D0050B3B5 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		A570996B25DAE1030050B3B5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Task.swift; path = Simple/Domain/Tasks/Task.swift; sourceTree = "<group>"; };
 		A570997125DAE2620050B3B5 /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Frequency.swift; path = Simple/Domain/SupportTypes/Frequency.swift; sourceTree = "<group>"; };
@@ -310,16 +310,16 @@
 		A56E0C2025D855C500247227 /* CreateTask */ = {
 			isa = PBXGroup;
 			children = (
-				A56E0C2425D855E600247227 /* CreateTaskInteractor.swift */,
-				A56E0C3025D855F100247227 /* CreateTaskInteractorTests.swift */,
-				A56E0C2225D855E600247227 /* CreateTaskModels.swift */,
-				A56E0C2125D855E600247227 /* CreateTaskPresenter.swift */,
-				A56E0C3225D855F100247227 /* CreateTaskPresenterTests.swift */,
-				A56E0C2325D855E600247227 /* CreateTaskScene.swift */,
-				A56E0C2625D855E600247227 /* CreateTaskService.swift */,
-				A56E0C3325D855F100247227 /* CreateTaskServiceTests.swift */,
-				A56E0C2525D855E600247227 /* CreateTaskView.swift */,
-				A56E0C3125D855F100247227 /* CreateTaskViewTests.swift */,
+				A56E0C2425D855E600247227 /* EditTaskInteractor.swift */,
+				A56E0C3025D855F100247227 /* EditTaskInteractorTests.swift */,
+				A56E0C2225D855E600247227 /* EditTaskModels.swift */,
+				A56E0C2125D855E600247227 /* EditTaskPresenter.swift */,
+				A56E0C3225D855F100247227 /* EditTaskPresenterTests.swift */,
+				A56E0C2325D855E600247227 /* EditTaskScene.swift */,
+				A56E0C2625D855E600247227 /* EditTaskService.swift */,
+				A56E0C3325D855F100247227 /* EditTaskServiceTests.swift */,
+				A56E0C2525D855E600247227 /* EditTaskView.swift */,
+				A56E0C3125D855F100247227 /* EditTaskViewTests.swift */,
 			);
 			path = CreateTask;
 			sourceTree = "<group>";
@@ -701,7 +701,7 @@
 				A5AC071925D7865E00504FEE /* TasksOverviewPresenter.swift in Sources */,
 				A570999225DAF02D0050B3B5 /* CoreDataStorage.swift in Sources */,
 				A5709A1025DB2DB80050B3B5 /* CoreDataStorage+Write.swift in Sources */,
-				A56E0C2B25D855E600247227 /* CreateTaskView.swift in Sources */,
+				A56E0C2B25D855E600247227 /* EditTaskView.swift in Sources */,
 				A514526925D8BCB00005070F /* FontStyle.swift in Sources */,
 				A5AC071E25D7865E00504FEE /* TasksOverviewService.swift in Sources */,
 				A5EC5D4A25DE04DB002B3D94 /* RepositoryAction.swift in Sources */,
@@ -714,12 +714,12 @@
 				A570996625DAE01D0050B3B5 /* TaskRepository.swift in Sources */,
 				A53D4A3B25E4B4C700070FF3 /* Date+Extension.swift in Sources */,
 				A5709A2825DB34850050B3B5 /* UIImage+Extensions.swift in Sources */,
-				A56E0C2725D855E600247227 /* CreateTaskPresenter.swift in Sources */,
-				A56E0C2C25D855E600247227 /* CreateTaskService.swift in Sources */,
-				A56E0C2825D855E600247227 /* CreateTaskModels.swift in Sources */,
+				A56E0C2725D855E600247227 /* EditTaskPresenter.swift in Sources */,
+				A56E0C2C25D855E600247227 /* EditTaskService.swift in Sources */,
+				A56E0C2825D855E600247227 /* EditTaskModels.swift in Sources */,
 				A5AC071B25D7865E00504FEE /* TasksOverviewScene.swift in Sources */,
 				A514524925D8A9540005070F /* View+Extensions.swift in Sources */,
-				A56E0C2A25D855E600247227 /* CreateTaskInteractor.swift in Sources */,
+				A56E0C2A25D855E600247227 /* EditTaskInteractor.swift in Sources */,
 				A514523A25D8A8800005070F /* TextEntry.swift in Sources */,
 				A514526E25D8BCEF0005070F /* Styles.swift in Sources */,
 				A514522C25D8A7520005070F /* CellStyle.swift in Sources */,
@@ -727,7 +727,7 @@
 				A514523225D8A7B10005070F /* Color+Extensions.swift in Sources */,
 				A53D4A3D25E4B4C700070FF3 /* Task.swift in Sources */,
 				A514523925D8A8800005070F /* DateSelection.swift in Sources */,
-				A56E0C2925D855E600247227 /* CreateTaskScene.swift in Sources */,
+				A56E0C2925D855E600247227 /* EditTaskScene.swift in Sources */,
 				A5AC071D25D7865E00504FEE /* TasksOverviewView.swift in Sources */,
 				A5AC06CF25D7830900504FEE /* SimpleApp.swift in Sources */,
 				A57099FB25DB0EF80050B3B5 /* Storage.swift in Sources */,

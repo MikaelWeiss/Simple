@@ -1,5 +1,5 @@
 //
-//  CreateTaskViewTests.swift
+//  EditTaskViewTests.swift
 //  Simple
 //
 //  Created by Mikael Weiss on 2/13/21.
@@ -9,10 +9,10 @@
 import XCTest
 @testable import Simple
 
-class CreateTaskViewTests: XCTestCase {
-    private var interactor: CreateTaskInteractorDouble!
-    private var viewModel: CreateTask.ViewModel!
-    private var view: CreateTaskView!
+class EditTaskViewTests: XCTestCase {
+    private var interactor: EditTaskInteractorDouble!
+    private var viewModel: EditTask.ViewModel!
+    private var view: EditTaskView!
     
     func testDidChangeValue() {
         // When
@@ -42,20 +42,20 @@ class CreateTaskViewTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        interactor = CreateTaskInteractorDouble()
-        viewModel = CreateTask.ViewModel()
-        view = CreateTaskView(interactor: interactor, viewModel: viewModel)
+        interactor = EditTaskInteractorDouble()
+        viewModel = EditTask.ViewModel()
+        view = EditTaskView(interactor: interactor, viewModel: viewModel)
     }
     
     // MARK: - Test Doubles
     
-    class CreateTaskInteractorDouble: CreateTaskRequesting {
+    class EditTaskInteractorDouble: EditTaskRequesting {
         var value: String?
         var updateThemeCalled = false
         var prepareRouteToSheetCalled = false
         var prepareRouteToOtherSceneCalled = false
         
-        func didChangeValue(with request: CreateTask.ValidateValue.Request) {
+        func didChangeValue(with request: EditTask.ValidateValue.Request) {
             value = request.value
         }
         

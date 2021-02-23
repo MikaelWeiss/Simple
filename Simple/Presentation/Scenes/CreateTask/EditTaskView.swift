@@ -1,5 +1,5 @@
 //
-//  CreateTaskView.swift
+//  EditTaskView.swift
 //  Simple
 //
 //  Created by Mikael Weiss on 2/13/21.
@@ -8,22 +8,22 @@
 
 import SwiftUI
 
-protocol CreateTaskInputting {
+protocol EditTaskInputting {
     func didChangeValue(to value: String)
     func prepareRouteToSheet()
     func prepareRouteToOtherScene()
 }
 
-struct CreateTaskView: View {
-    @ObservedObject private var viewModel: CreateTask.ViewModel
-    private let interactor: CreateTaskRequesting?
+struct EditTaskView: View {
+    @ObservedObject private var viewModel: EditTask.ViewModel
+    private let interactor: EditTaskRequesting?
     
-    init(interactor: CreateTaskRequesting, viewModel: CreateTask.ViewModel) {
+    init(interactor: EditTaskRequesting, viewModel: EditTask.ViewModel) {
         self.interactor = interactor
         self.viewModel = viewModel
     }
     
-    init(viewModel: CreateTask.ViewModel) {
+    init(viewModel: EditTask.ViewModel) {
         self.viewModel = viewModel
         self.interactor = nil
     }
@@ -55,19 +55,19 @@ struct CreateTaskView: View {
 
 // MARK: - Inputing
 
-extension CreateTaskView: CreateTaskInputting {
+extension EditTaskView: EditTaskInputting {
     func didChangeValue(to value: String) {
-        let request = CreateTask.ValidateName.Request(value: value)
+        let request = EditTask.ValidateName.Request(value: value)
         interactor?.didChangeName(with: request)
     }
     
     func didChangeDate(to date: Date) {
-        let request = CreateTask.ValidateDate.Request(value: date)
+        let request = EditTask.ValidateDate.Request(value: date)
         interactor?.didChangeDate(with: request)
     }
     
     func didChangeRepetition(to repetition: Frequency) {
-        let request = CreateTask.ValidateRepetitionSelection.Request(selectedRepetition: repetition)
+        let request = EditTask.ValidateRepetitionSelection.Request(selectedRepetition: repetition)
         interactor?.didChangeRepetition(with: request)
     }
     
@@ -80,11 +80,11 @@ extension CreateTaskView: CreateTaskInputting {
     }
 }
 
-struct CreateTask_Previews: PreviewProvider {
+struct EditTask_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            return CreateTaskView(viewModel:
-                                    CreateTask.ViewModel(
+            return EditTaskView(viewModel:
+                                    EditTask.ViewModel(
                                         title: "New Task",
                                         nameCellTitle: "Name",
                                         nameCellValue: "",

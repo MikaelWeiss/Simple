@@ -1,5 +1,5 @@
 //
-//  CreateTaskModels.swift
+//  EditTaskModels.swift
 //  Simple
 //
 //  Created by Mikael Weiss on 2/13/21.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-extension CreateTask {
+extension EditTask {
     
     enum FetchRepetition {
         struct Response {

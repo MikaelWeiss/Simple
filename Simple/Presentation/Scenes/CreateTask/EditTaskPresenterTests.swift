@@ -1,5 +1,5 @@
 //
-//  CreateTaskPresenterTests.swift
+//  EditTaskPresenterTests.swift
 //  Simple
 //
 //  Created by Mikael Weiss on 2/13/21.
@@ -9,22 +9,22 @@
 import XCTest
 @testable import Simple
 
-class CreateTaskPresenterTests: XCTestCase {
-    private var presenter: CreateTaskPresenter!
-    private var viewModel: CreateTask.ViewModel!
+class EditTaskPresenterTests: XCTestCase {
+    private var presenter: EditTaskPresenter!
+    private var viewModel: EditTask.ViewModel!
     
     func testPresentUpdateTheme() {
         // When
         presenter.presentUpdateTheme()
         
         // Then
-        XCTAssertEqual(viewModel.title, CreateTask.Strings.sceneTitle)
-        XCTAssertEqual(viewModel.textFieldTitle, CreateTask.Strings.textFieldTitle)
+        XCTAssertEqual(viewModel.title, EditTask.Strings.sceneTitle)
+        XCTAssertEqual(viewModel.textFieldTitle, EditTask.Strings.textFieldTitle)
     }
     
     func testPresentDidChangeValue() {
         // Given
-        let response = CreateTask.ValidateValue.Response(value: "Some value")
+        let response = EditTask.ValidateValue.Response(value: "Some value")
         
         // When
         presenter.presentDidChangeValue(with: response)
@@ -53,7 +53,7 @@ class CreateTaskPresenterTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        presenter = CreateTaskPresenter()
+        presenter = EditTaskPresenter()
         viewModel = presenter.viewModel
     }
 }
