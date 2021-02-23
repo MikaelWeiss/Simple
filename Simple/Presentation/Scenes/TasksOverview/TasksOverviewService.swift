@@ -16,9 +16,9 @@ extension TasksOverview {
     
     class Service: TasksOverviewService {
         func fetchTasks() -> [Task] {
-            [Task(name: "Wake up", date: Date(), image: Image(uiImage: #imageLiteral(resourceName: "testingImage"))),
-             Task(name: "Wake up", date: Date(), image: Image(uiImage: #imageLiteral(resourceName: "testingImage"))),
-             Task(name: "Wake up", date: Date(), image: nil)]
+            [Task(name: "Wake up", preferredTime: Date(), frequency: .daily, image: UIImage(#imageLiteral(resourceName: "testingImage"))),
+             Task(name: "Wake up", preferredTime: Date(), frequency: .daily, image: UIImage(#imageLiteral(resourceName: "testingImage"))),
+             Task(name: "Wake up", preferredTime: Date(), frequency: .daily, image: nil)]
         }
     }
 }

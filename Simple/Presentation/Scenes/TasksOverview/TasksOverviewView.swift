@@ -35,7 +35,7 @@ struct TasksOverviewView: View {
                     let item = viewModel.allTasks[index]
                     HStack(alignment: .center, spacing: 0) {
                         if let image = item.image {
-                            image
+                            Image(uiImage: image)
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .clipShape(Circle())
@@ -74,6 +74,7 @@ struct TasksOverviewView: View {
         .onAppear {
             interactor?.updateTheme()
             interactor?.fetchTasks()
+            
         }
     }
 }
@@ -94,7 +95,7 @@ struct TasksOverview_Previews: PreviewProvider {
     static var viewModel = TasksOverview.ViewModel(
         title: "Some title",
         allTasks: [
-            .init(name: "Wake up", date: "Today", time: "10:45", image: Image(uiImage: #imageLiteral(resourceName: "testingImage"))),
+            .init(name: "Wake up", date: "Today", time: "10:45", image: UIImage(#imageLiteral(resourceName: "testingImage"))),
             .init(name: "Wake up", date: "Dec 12, 2020", time: "12:30", image: nil)
         ])
     

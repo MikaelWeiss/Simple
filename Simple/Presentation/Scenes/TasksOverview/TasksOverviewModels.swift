@@ -14,7 +14,7 @@ extension TasksOverview {
         let name: String
         let date: String
         let time: String
-        let image: Image?
+        let image: UIImage?
     }
     
     enum FetchTasks {

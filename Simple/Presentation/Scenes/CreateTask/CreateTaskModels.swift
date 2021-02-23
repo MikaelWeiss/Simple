@@ -13,7 +13,7 @@ extension CreateTask {
     
     enum FetchRepetition {
         struct Response {
-            let repetitions: [Task.Repetition]
+            let repetitions: [Frequency]
         }
     }
     
@@ -39,11 +39,11 @@ extension CreateTask {
     
     enum ValidateRepetitionSelection {
         struct Request {
-            let selectedRepetition: Task.Repetition
+            let selectedRepetition: Frequency
         }
         
         struct Response {
-            let selectedRepetition: Task.Repetition
+            let selectedRepetition: Frequency
         }
     }
     
@@ -61,8 +61,8 @@ extension CreateTask {
         @Published var dateCellTitle: String
         @Published var dateCellValue: Date
         @Published var repetitionCellTitle: String
-        @Published var selectedRepetition: Task.Repetition?
-        @Published var repetitions: [Task.Repetition]
+        @Published var selectedRepetition: Frequency?
+        @Published var repetitions: [Frequency]
         @Published var isShowingOtherScene: Bool
         @Published var isShowingSheet: Bool
         
@@ -72,8 +72,8 @@ extension CreateTask {
              dateCellTitle: String = "",
              dateCellValue: Date = Date.now,
              repetitionCellTitle: String = "",
-             selectedRepetition: Task.Repetition? = nil,
-             repetitions: [Task.Repetition] = [.daily],
+             selectedRepetition: Frequency? = nil,
+             repetitions: [Frequency] = [.daily],
              isShowingOtherScene: Bool = false,
              isShowingSheet: Bool = false) {
             

@@ -66,7 +66,7 @@ extension CreateTaskView: CreateTaskInputting {
         interactor?.didChangeDate(with: request)
     }
     
-    func didChangeRepetition(to repetition: Task.Repetition) {
+    func didChangeRepetition(to repetition: Frequency) {
         let request = CreateTask.ValidateRepetitionSelection.Request(selectedRepetition: repetition)
         interactor?.didChangeRepetition(with: request)
     }
@@ -92,7 +92,7 @@ struct CreateTask_Previews: PreviewProvider {
                                         dateCellValue: Date.now,
                                         repetitionCellTitle: "Repetition:",
                                         selectedRepetition: .daily,
-                                        repetitions: Task.Repetition.allRepetitions(),
+                                        repetitions: Frequency.allCases,
                                         isShowingOtherScene: false,
                                         isShowingSheet: false)
             )
@@ -107,14 +107,14 @@ struct RepetitionSelectionCell: View {
     @State private var isShowingSelectionSheet = false
     
     let title: String
-    let repetitionOptions: [Task.Repetition]
-    let selectedRepetition: Task.Repetition?
-    let onSelectedRepetition: (Task.Repetition) -> Void
+    let repetitionOptions: [Frequency]
+    let selectedRepetition: Frequency?
+    let onSelectedRepetition: (Frequency) -> Void
     
     init(_ title: String,
-         repetitionOptions: [Task.Repetition],
-         selectedRepetition: Task.Repetition?,
-         onSelectedRepetition: @escaping (Task.Repetition) -> Void) {
+         repetitionOptions: [Frequency],
+         selectedRepetition: Frequency?,
+         onSelectedRepetition: @escaping (Frequency) -> Void) {
         self.title = title
         self.repetitionOptions = repetitionOptions
         self.selectedRepetition = selectedRepetition
@@ -125,7 +125,7 @@ struct RepetitionSelectionCell: View {
         HStack {
             Text(title)
             Spacer()
-            Text(selectedRepetition?.stringValue().capitalized ?? "Select Value")
+            Text(selectedRepetition?.stringValue.capitalized ?? "Select Value")
                 .valueFontStyle()
                 .lineLimit(1)
             Image(systemName: "arrowtriangle.down.square.fill")
@@ -148,13 +148,13 @@ struct RepetitionSelectionCell: View {
 
 struct SelectRepetitionView: View {
     @Environment(\.presentationMode) var presentationMode
-    let repetitionOptions: [Task.Repetition]
-    let onSelectedRepetition: (Task.Repetition) -> Void
-    let currentlySelectedRepetition: Task.Repetition?
+    let repetitionOptions: [Frequency]
+    let onSelectedRepetition: (Frequency) -> Void
+    let currentlySelectedRepetition: Frequency?
     
-    init(repetitionOptions: [Task.Repetition],
-         currentlySelectedRepetition: Task.Repetition?,
-         onSelectedRepetition: @escaping (Task.Repetition) -> Void) {
+    init(repetitionOptions: [Frequency],
+         currentlySelectedRepetition: Frequency?,
+         onSelectedRepetition: @escaping (Frequency) -> Void) {
         self.repetitionOptions = repetitionOptions
         self.currentlySelectedRepetition = currentlySelectedRepetition
         self.onSelectedRepetition = onSelectedRepetition
@@ -167,7 +167,7 @@ struct SelectRepetitionView: View {
                 
                 HStack {
                     Image(systemName: repetition == currentlySelectedRepetition ? "circle.fill" : "circle")
-                    Text("\(repetition.stringValue().capitalized)")
+                    Text("\(repetition.stringValue.capitalized)")
                     Spacer()
                 }
                 .padding(.vertical, 5)

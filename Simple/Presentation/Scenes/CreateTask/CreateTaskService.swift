@@ -9,14 +9,14 @@
 import Foundation
 
 protocol CreateTaskService {
-    func fetchRepetitions() -> [Task.Repetition]
+    func fetchRepetitions() -> [Frequency]
 }
 
 extension CreateTask {
     
     class Service: CreateTaskService {
-        func fetchRepetitions() -> [Task.Repetition] {
-            Task.Repetition.allRepetitions()
+        func fetchRepetitions() -> [Frequency] {
+            Frequency.allCases
         }
     }
 }
