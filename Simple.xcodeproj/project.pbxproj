@@ -17,7 +17,6 @@
 		A5285AC225DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5285AC125DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift */; };
 		A53D4A3A25E4B4C700070FF3 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3425E4B4C700070FF3 /* Frequency.swift */; };
 		A53D4A3B25E4B4C700070FF3 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3625E4B4C700070FF3 /* Date+Extension.swift */; };
-		A53D4A3C25E4B4C700070FF3 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3725E4B4C700070FF3 /* UIImage+Extensions.swift */; };
 		A53D4A3D25E4B4C700070FF3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3925E4B4C700070FF3 /* Task.swift */; };
 		A542CD4025DB75070082C365 /* DomainToStorageTransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542CD3F25DB75070082C365 /* DomainToStorageTransformerTests.swift */; };
 		A542CD4525DB78AA0082C365 /* TaskRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542CD4425DB78AA0082C365 /* TaskRepositoryTests.swift */; };
@@ -30,8 +29,6 @@
 		A56E0C2B25D855E600247227 /* CreateTaskView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2525D855E600247227 /* CreateTaskView.swift */; };
 		A56E0C2C25D855E600247227 /* CreateTaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2625D855E600247227 /* CreateTaskService.swift */; };
 		A570996625DAE01D0050B3B5 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570996525DAE01D0050B3B5 /* TaskRepository.swift */; };
-		A570996C25DAE1030050B3B5 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570996B25DAE1030050B3B5 /* Task.swift */; };
-		A570997225DAE2620050B3B5 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570997125DAE2620050B3B5 /* Frequency.swift */; };
 		A570999225DAF02D0050B3B5 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570999125DAF02D0050B3B5 /* CoreDataStorage.swift */; };
 		A57099A925DAF5180050B3B5 /* Persistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57099A025DAF5180050B3B5 /* Persistence.framework */; };
 		A57099B025DAF5180050B3B5 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57099AF25DAF5180050B3B5 /* PersistenceTests.swift */; };
@@ -47,7 +44,6 @@
 		A5709A1025DB2DB80050B3B5 /* CoreDataStorage+Write.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A0F25DB2DB80050B3B5 /* CoreDataStorage+Write.swift */; };
 		A5709A1625DB2F130050B3B5 /* StorageToDomainTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A1525DB2F130050B3B5 /* StorageToDomainTransformer.swift */; };
 		A5709A1B25DB2F870050B3B5 /* DomainToStorageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A1A25DB2F870050B3B5 /* DomainToStorageTransformer.swift */; };
-		A5709A2325DB319C0050B3B5 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A2225DB319C0050B3B5 /* Date+Extension.swift */; };
 		A5709A2825DB34850050B3B5 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A2725DB34850050B3B5 /* UIImage+Extensions.swift */; };
 		A5709A3025DB589E0050B3B5 /* StorageToDomainTransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A2F25DB589E0050B3B5 /* StorageToDomainTransformerTests.swift */; };
 		A5AC06CF25D7830900504FEE /* SimpleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC06CE25D7830900504FEE /* SimpleApp.swift */; };
@@ -703,18 +699,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5AC071925D7865E00504FEE /* TasksOverviewPresenter.swift in Sources */,
-				A5709A2325DB319C0050B3B5 /* Date+Extension.swift in Sources */,
 				A570999225DAF02D0050B3B5 /* CoreDataStorage.swift in Sources */,
 				A5709A1025DB2DB80050B3B5 /* CoreDataStorage+Write.swift in Sources */,
 				A56E0C2B25D855E600247227 /* CreateTaskView.swift in Sources */,
 				A514526925D8BCB00005070F /* FontStyle.swift in Sources */,
 				A5AC071E25D7865E00504FEE /* TasksOverviewService.swift in Sources */,
 				A5EC5D4A25DE04DB002B3D94 /* RepositoryAction.swift in Sources */,
-				A570997225DAE2620050B3B5 /* Frequency.swift in Sources */,
 				A5709A0B25DB2D7D0050B3B5 /* CoreDataStorage+Read.swift in Sources */,
 				A5AC071A25D7865E00504FEE /* TasksOverviewModels.swift in Sources */,
 				A53D4A3A25E4B4C700070FF3 /* Frequency.swift in Sources */,
-				A570996C25DAE1030050B3B5 /* Task.swift in Sources */,
 				A57099F625DB0CAC0050B3B5 /* CoreDataStoreStorageFactory.swift in Sources */,
 				A5709A1B25DB2F870050B3B5 /* DomainToStorageTransformer.swift in Sources */,
 				A5709A1625DB2F130050B3B5 /* StorageToDomainTransformer.swift in Sources */,
@@ -737,7 +730,6 @@
 				A56E0C2925D855E600247227 /* CreateTaskScene.swift in Sources */,
 				A5AC071D25D7865E00504FEE /* TasksOverviewView.swift in Sources */,
 				A5AC06CF25D7830900504FEE /* SimpleApp.swift in Sources */,
-				A53D4A3C25E4B4C700070FF3 /* UIImage+Extensions.swift in Sources */,
 				A57099FB25DB0EF80050B3B5 /* Storage.swift in Sources */,
 				A55DCA7725DD6085009D933E /* RepositoryRoot.swift in Sources */,
 			);
