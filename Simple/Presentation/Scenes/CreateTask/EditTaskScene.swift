@@ -9,11 +9,16 @@
 import UIKit
 
 enum EditTask {
+    
+    struct SceneInfo {
+        let task: Task?
+    }
+    
     struct Scene {
         let view: EditTaskView
         
-        init() {
-            let service = EditTask.Service()
+        init(sceneInfo: SceneInfo = SceneInfo(task: nil)) {
+            let service = EditTask.Service(task: sceneInfo.task)
             let presenter = EditTaskPresenter()
             let interactor = EditTaskInteractor(service: service, presenter: presenter)
             view = EditTaskView(interactor: interactor, viewModel: presenter.viewModel)
