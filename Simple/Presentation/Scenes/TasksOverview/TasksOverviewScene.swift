@@ -13,7 +13,7 @@ enum TasksOverview {
         let view: TasksOverviewView
         
         init() {
-            let service = TasksOverview.Service()
+            let service = TasksOverview.Service(taskRepository: RepositoryRoot.shared.taskRepository)
             let presenter = TasksOverviewPresenter()
             let interactor = TasksOverviewInteractor(service: service, presenter: presenter)
             view = TasksOverviewView(interactor: interactor, viewModel: presenter.viewModel)

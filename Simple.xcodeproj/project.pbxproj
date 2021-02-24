@@ -12,7 +12,6 @@
 		A514523925D8A8800005070F /* DateSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514523725D8A8800005070F /* DateSelection.swift */; };
 		A514523A25D8A8800005070F /* TextEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514523825D8A8800005070F /* TextEntry.swift */; };
 		A514524925D8A9540005070F /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514524825D8A9540005070F /* View+Extensions.swift */; };
-		A514526925D8BCB00005070F /* FontStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514526825D8BCB00005070F /* FontStyle.swift */; };
 		A514526E25D8BCEF0005070F /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514526D25D8BCEF0005070F /* Styles.swift */; };
 		A5285AC225DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5285AC125DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift */; };
 		A53D4A3A25E4B4C700070FF3 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3425E4B4C700070FF3 /* Frequency.swift */; };
@@ -36,7 +35,7 @@
 		A57099B525DAF5180050B3B5 /* Persistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57099A025DAF5180050B3B5 /* Persistence.framework */; };
 		A57099B625DAF5180050B3B5 /* Persistence.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A57099A025DAF5180050B3B5 /* Persistence.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A57099CA25DAF6FD0050B3B5 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57099C125DAF6250050B3B5 /* CoreDataStore.swift */; };
-		A57099D725DAF7140050B3B5 /* Simple.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5AC06D925D7830A00504FEE /* Simple.xcdatamodeld */; };
+		A57099D725DAF7140050B3B5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5AC06D925D7830A00504FEE /* Model.xcdatamodeld */; };
 		A57099EE25DAF8DB0050B3B5 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57099ED25DAF8DB0050B3B5 /* Logging.swift */; };
 		A57099F625DB0CAC0050B3B5 /* CoreDataStoreStorageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57099F525DB0CAC0050B3B5 /* CoreDataStoreStorageFactory.swift */; };
 		A57099FB25DB0EF80050B3B5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57099FA25DB0EF80050B3B5 /* Storage.swift */; };
@@ -116,7 +115,6 @@
 		A514523725D8A8800005070F /* DateSelection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateSelection.swift; sourceTree = "<group>"; };
 		A514523825D8A8800005070F /* TextEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextEntry.swift; sourceTree = "<group>"; };
 		A514524825D8A9540005070F /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
-		A514526825D8BCB00005070F /* FontStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontStyle.swift; sourceTree = "<group>"; };
 		A514526D25D8BCEF0005070F /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		A5285AC125DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreStorageFactoryTests.swift; sourceTree = "<group>"; };
 		A53D4A3425E4B4C700070FF3 /* Frequency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
@@ -155,7 +153,7 @@
 		A5709A0F25DB2DB80050B3B5 /* CoreDataStorage+Write.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStorage+Write.swift"; sourceTree = "<group>"; };
 		A5709A1525DB2F130050B3B5 /* StorageToDomainTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageToDomainTransformer.swift; sourceTree = "<group>"; };
 		A5709A1A25DB2F870050B3B5 /* DomainToStorageTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainToStorageTransformer.swift; sourceTree = "<group>"; };
-		A5709A2225DB319C0050B3B5 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date+Extension.swift"; path = "Simple/Domain/SupportTypes/Extensions/Date+Extension.swift"; sourceTree = "<group>"; };
+		A5709A2225DB319C0050B3B5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date+Extensions.swift"; path = "Simple/Domain/SupportTypes/Extensions/Date+Extensions.swift"; sourceTree = "<group>"; };
 		A5709A2725DB34850050B3B5 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImage+Extensions.swift"; path = "Simple/Domain/SupportTypes/Extensions/UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		A5709A2F25DB589E0050B3B5 /* StorageToDomainTransformerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageToDomainTransformerTests.swift; sourceTree = "<group>"; };
 		A5AC06CB25D7830900504FEE /* Simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simple.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -221,7 +219,6 @@
 			children = (
 				A514526D25D8BCEF0005070F /* Styles.swift */,
 				A514522B25D8A7520005070F /* CellStyle.swift */,
-				A514526825D8BCB00005070F /* FontStyle.swift */,
 			);
 			path = Styles;
 			sourceTree = "<group>";
@@ -256,7 +253,7 @@
 		A53D4A2F25E4B48300070FF3 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				A5709A2225DB319C0050B3B5 /* Date+Extension.swift */,
+				A5709A2225DB319C0050B3B5 /* Date+Extensions.swift */,
 				A570997125DAE2620050B3B5 /* Frequency.swift */,
 				A570996B25DAE1030050B3B5 /* Task.swift */,
 				A5709A2725DB34850050B3B5 /* UIImage+Extensions.swift */,
@@ -374,7 +371,7 @@
 				A57099A325DAF5180050B3B5 /* Info.plist */,
 				A57099C125DAF6250050B3B5 /* CoreDataStore.swift */,
 				A548D43C25DEC1460092027A /* CoreDataStoreTests.swift */,
-				A5AC06D925D7830A00504FEE /* Simple.xcdatamodeld */,
+				A5AC06D925D7830A00504FEE /* Model.xcdatamodeld */,
 				A57099ED25DAF8DB0050B3B5 /* Logging.swift */,
 			);
 			path = Persistence;
@@ -681,7 +678,7 @@
 			files = (
 				A57099CA25DAF6FD0050B3B5 /* CoreDataStore.swift in Sources */,
 				A57099EE25DAF8DB0050B3B5 /* Logging.swift in Sources */,
-				A57099D725DAF7140050B3B5 /* Simple.xcdatamodeld in Sources */,
+				A57099D725DAF7140050B3B5 /* Model.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -702,7 +699,6 @@
 				A570999225DAF02D0050B3B5 /* CoreDataStorage.swift in Sources */,
 				A5709A1025DB2DB80050B3B5 /* CoreDataStorage+Write.swift in Sources */,
 				A56E0C2B25D855E600247227 /* EditTaskView.swift in Sources */,
-				A514526925D8BCB00005070F /* FontStyle.swift in Sources */,
 				A5AC071E25D7865E00504FEE /* TasksOverviewService.swift in Sources */,
 				A5EC5D4A25DE04DB002B3D94 /* RepositoryAction.swift in Sources */,
 				A5709A0B25DB2D7D0050B3B5 /* CoreDataStorage+Read.swift in Sources */,
@@ -932,6 +928,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -986,6 +983,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -1004,7 +1002,7 @@
 				DEVELOPMENT_TEAM = X7WM6K9T24;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Simple/Application/Main/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1027,7 +1025,7 @@
 				DEVELOPMENT_TEAM = X7WM6K9T24;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Simple/Application/Main/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1134,13 +1132,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A5AC06D925D7830A00504FEE /* Simple.xcdatamodeld */ = {
+		A5AC06D925D7830A00504FEE /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				A5AC06DA25D7830A00504FEE /* Simple.xcdatamodel */,
 			);
 			currentVersion = A5AC06DA25D7830A00504FEE /* Simple.xcdatamodel */;
-			path = Simple.xcdatamodeld;
+			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

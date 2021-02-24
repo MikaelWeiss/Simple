@@ -7,21 +7,29 @@
 //
 
 import SwiftUI
+import Combine
 
 protocol TasksOverviewRequesting {
     func updateTheme()
     func fetchTasks()
-    func prepareRouteToSheet()
-    func prepareRouteToOtherScene()
+    func prepareRouteToEditTask()
 }
 
 struct TasksOverviewInteractor: TasksOverviewRequesting {
+    
     private let service: TasksOverviewService
     private let presenter: TasksOverviewPresenting
+    
+    private var updateSubscriber: AnyCancellable?
     
     init(service: TasksOverviewService, presenter: TasksOverviewPresenting) {
         self.service = service
         self.presenter = presenter
+        updateSubscriber = service.updatePublisher
+            .receive(on: RunLoop.main)
+            .sink { [self] _ in
+                self.fetchTasks()
+            }
     }
     
     func updateTheme() {
@@ -29,16 +37,17 @@ struct TasksOverviewInteractor: TasksOverviewRequesting {
     }
     
     func fetchTasks() {
-        let fetchedTasks = service.fetchTasks()
-        let response = TasksOverview.FetchTasks.Response(tasks: fetchedTasks)
-        presenter.presentFetchTasks(with: response)
+        do {
+            let fetchedTasks = try service.fetchTasks()
+            let response = TasksOverview.FetchTasks.Response(tasks: fetchedTasks)
+            presenter.presentFetchTasks(with: response)
+        } catch {
+            let response = TasksOverview.ShowError.Response(error: error as? TasksOverview.ServiceError ?? .unknownError)
+            presenter.presentShowError(with: response)
+        }
     }
     
-    func prepareRouteToSheet() {
-        presenter.presentPrepareRouteToSheet()
-    }
-    
-    func prepareRouteToOtherScene() {
-        presenter.presentPrepareRouteToOtherScene()
+    func prepareRouteToEditTask() {
+        presenter.presentPrepareRouteToEditTask()
     }
 }

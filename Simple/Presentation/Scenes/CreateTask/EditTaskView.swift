@@ -9,12 +9,13 @@
 import SwiftUI
 
 protocol EditTaskInputting {
-    func didChangeValue(to value: String)
-    func prepareRouteToSheet()
-    func prepareRouteToOtherScene()
+    func didChangeName(to value: String)
+    func didChangeDate(to date: Date)
+    func didTapSave()
 }
 
 struct EditTaskView: View {
+    @Environment(\.presentationMode) var presentationMode
     @ObservedObject private var viewModel: EditTask.ViewModel
     private let interactor: EditTaskRequesting?
     
@@ -32,16 +33,16 @@ struct EditTaskView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 16) {
-                TextEntry(viewModel.nameCellTitle, value: viewModel.nameCellValue) {
-                    didChangeValue(to: $0)
+                Spacer().frame(height: 0)
+                TextEntry(viewModel.nameTitle, value: viewModel.name) {
+                    didChangeName(to: $0)
                 }
                 DateSelection("Date", value: Date()) {
                     didChangeDate(to: $0)
                 }
-                RepetitionSelectionCell(viewModel.repetitionCellTitle,
-                                        repetitionOptions: viewModel.repetitions,
-                                        selectedRepetition: viewModel.selectedRepetition) {
-                    didChangeRepetition(to: $0)
+                RepetitionSelectionCell(viewModel.frequencyTitle,
+                                        selectedRepetition: viewModel.selectedFrequency) {
+                    didChangeFrequency(to: $0)
                 }
             }
             .padding(.horizontal)
@@ -50,52 +51,54 @@ struct EditTaskView: View {
             interactor?.updateTheme()
         }
         .navigationBarTitle(viewModel.title)
+        .navigationBarItems(trailing:
+                                Button("Save") {
+                                    didTapSave()
+                                }
+                                .disabled(!viewModel.canSave)
+        )
     }
 }
 
 // MARK: - Inputing
 
 extension EditTaskView: EditTaskInputting {
-    func didChangeValue(to value: String) {
+    func didChangeName(to value: String) {
         let request = EditTask.ValidateName.Request(value: value)
         interactor?.didChangeName(with: request)
+        interactor?.checkCanSave()
     }
     
     func didChangeDate(to date: Date) {
         let request = EditTask.ValidateDate.Request(value: date)
         interactor?.didChangeDate(with: request)
+        interactor?.checkCanSave()
     }
     
-    func didChangeRepetition(to repetition: Frequency) {
-        let request = EditTask.ValidateRepetitionSelection.Request(selectedRepetition: repetition)
-        interactor?.didChangeRepetition(with: request)
+    func didChangeFrequency(to frequency: Frequency) {
+        let request = EditTask.ValidateFrequencySelection.Request(selectedFrequency: frequency)
+        interactor?.didChangeFrequency(with: request)
+        interactor?.checkCanSave()
     }
     
-    func prepareRouteToSheet() {
-        interactor?.prepareRouteToSheet()
-    }
-    
-    func prepareRouteToOtherScene() {
-        interactor?.prepareRouteToOtherScene()
+    func didTapSave() {
+        interactor?.didTapSave()
+        presentationMode.wrappedValue.dismiss()
     }
 }
 
 struct EditTask_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            return EditTaskView(viewModel:
+            EditTaskView(viewModel:
                                     EditTask.ViewModel(
                                         title: "New Task",
-                                        nameCellTitle: "Name",
-                                        nameCellValue: "",
-                                        dateCellTitle: "Date:",
-                                        dateCellValue: Date.now,
-                                        repetitionCellTitle: "Repetition:",
-                                        selectedRepetition: .daily,
-                                        repetitions: Frequency.allCases,
-                                        isShowingOtherScene: false,
-                                        isShowingSheet: false)
-            )
+                                        nameTitle: "Name",
+                                        name: "",
+                                        preferredTimeTitle: "Date:",
+                                        preferredTime: Date.now,
+                                        frequencyTitle: "Repetition:",
+                                        selectedFrequency: .daily))
         }
     }
 }
@@ -106,17 +109,15 @@ struct EditTask_Previews: PreviewProvider {
 struct RepetitionSelectionCell: View {
     @State private var isShowingSelectionSheet = false
     
+    private let frequencyOptions: [Frequency] = Frequency.allCases
     let title: String
-    let repetitionOptions: [Frequency]
     let selectedRepetition: Frequency?
     let onSelectedRepetition: (Frequency) -> Void
     
     init(_ title: String,
-         repetitionOptions: [Frequency],
          selectedRepetition: Frequency?,
          onSelectedRepetition: @escaping (Frequency) -> Void) {
         self.title = title
-        self.repetitionOptions = repetitionOptions
         self.selectedRepetition = selectedRepetition
         self.onSelectedRepetition = onSelectedRepetition
     }
@@ -124,7 +125,7 @@ struct RepetitionSelectionCell: View {
     var body: some View {
         HStack {
             Text(title)
-            Spacer()
+            Spacer().tappable()
             Text(selectedRepetition?.stringValue.capitalized ?? "Select Value")
                 .valueFontStyle()
                 .lineLimit(1)
@@ -138,7 +139,7 @@ struct RepetitionSelectionCell: View {
         }
         .sheet(isPresented: $isShowingSelectionSheet) {
             SelectRepetitionView(
-                repetitionOptions: repetitionOptions,
+                repetitionOptions: frequencyOptions,
                 currentlySelectedRepetition: selectedRepetition) {
                 onSelectedRepetition($0)
             }
@@ -178,6 +179,7 @@ struct SelectRepetitionView: View {
                 }
             }
             .cellStyle()
+            .padding()
         }
     }
 }

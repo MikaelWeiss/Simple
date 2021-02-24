@@ -9,7 +9,6 @@
 import UIKit
 
 protocol EditTaskService {
-    func fetchFrequencies() -> [Frequency]
     func fetchTask() -> EditTask.TaskInfo
     func canSave() -> Bool
     func validateTaskName(to name: String) throws
@@ -18,6 +17,7 @@ protocol EditTaskService {
     func validateTaskImage(to image: UIImage) throws
     func save() throws
     func syncTask() throws
+    var updatePublisher: RepositoryPublisher { get }
 }
 
 protocol EditTaskTaskUpdating {
@@ -29,6 +29,7 @@ protocol EditTaskTaskUpdating {
     
     var updatePublisher: RepositoryPublisher { get }
 }
+extension MainTaskRepository: EditTaskTaskUpdating { }
 
 extension EditTask {
     
@@ -38,6 +39,7 @@ extension EditTask {
         case validationError
         case saveFailed
         case deleteFailed
+        case unknown
     }
     
     struct TaskInfo {
@@ -48,6 +50,9 @@ extension EditTask {
     }
     
     class Service: EditTaskService {
+        
+        typealias ServiceError = EditTask.ServiceError
+        typealias TaskInfo = EditTask.TaskInfo
         
         private var taskRepository: EditTaskTaskUpdating
         private var task: Task?
@@ -67,17 +72,13 @@ extension EditTask {
                 image: task?.image)
         }
         
-        func fetchFrequencies() -> [Frequency] {
-            Frequency.allCases
-        }
-        
         func fetchTask() -> TaskInfo {
             taskInfo
         }
         
         func canSave() -> Bool {
             guard let name = taskInfo.name,
-                  name.isEmpty,
+                  !name.isEmpty,
                   taskInfo.frequency != nil,
                   taskInfo.preferredTime != nil
             else { return false }

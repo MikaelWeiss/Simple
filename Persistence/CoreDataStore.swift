@@ -28,7 +28,7 @@ public class CoreDataStore {
     public convenience init(storageType: StorageType = .persistent) {
         let bundle = Bundle(for: CoreDataStore.self)
         
-        guard let modelURL = bundle.url(forResource: "Simple", withExtension: "momd") else {
+        guard let modelURL = bundle.url(forResource: "Model", withExtension: "momd") else {
             os_log(.error, log: .persistence, "Unable to generate model url in bundle: %@.", bundle)
             fatalError()
         }
@@ -42,17 +42,8 @@ public class CoreDataStore {
         switch storageType {
         case .persistent:
             container = Self.persistentContainer(model: model)
-            #if DEBUG
-            print("🔥🔥🔥🔥🔥🔥")
-            fatalError("Using the wrong store")
-            #endif
         case .inMemory:
             container = Self.inMemoryContainer(model: model)
-            #if DEBUG
-            #else
-            print("🔥🔥🔥🔥🔥🔥")
-            fatalError("Using the wrong store")
-            #endif
         }
         
         
@@ -73,7 +64,7 @@ public class CoreDataStore {
             fatalError("Failed to resolve documents directory")
         }
         
-        let localStore = NSPersistentStoreDescription(url: docURL.appendingPathComponent("Simple.sqlite"))
+        let localStore = NSPersistentStoreDescription(url: docURL.appendingPathComponent("Model.sqlite"))
         localStore.configuration = "Local"
         
         let container = NSPersistentContainer(name: "Model", managedObjectModel: model)
@@ -98,7 +89,7 @@ public class CoreDataStore {
         do {
             try container.viewContext.save()
         } catch {
-            os_log(.error, log: .persistence, "Failed to save. Error: %@", error as NSError)
+            os_log(.error, log: .persistence, "Failed to save. Error 🔥: %@", error as NSError)
             throw error
         }
     }

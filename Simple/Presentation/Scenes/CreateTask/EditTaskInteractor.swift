@@ -10,12 +10,11 @@ import Foundation
 
 protocol EditTaskRequesting {
     func updateTheme()
-    func fetchRepetitions()
     func didChangeName(with request: EditTask.ValidateName.Request)
     func didChangeDate(with request: EditTask.ValidateDate.Request)
-    func didChangeRepetition(with request: EditTask.ValidateRepetitionSelection.Request)
-    func prepareRouteToSheet()
-    func prepareRouteToOtherScene()
+    func didChangeFrequency(with request: EditTask.ValidateFrequencySelection.Request)
+    func checkCanSave()
+    func didTapSave()
 }
 
 struct EditTaskInteractor: EditTaskRequesting {
@@ -31,32 +30,42 @@ struct EditTaskInteractor: EditTaskRequesting {
         presenter.presentUpdateTheme()
     }
     
-    func fetchRepetitions() {
-        let repetitions = service.fetchFrequencies()
-        let response = EditTask.FetchRepetition.Response(repetitions: repetitions)
-        presenter.presentFetchRepetition(with: response)
+    func fetchTask() {
+        let task = service.fetchTask()
+        let response = EditTask.FetchTask.Response(task: task)
+        presenter.presentFetchTask(with: response)
     }
     
     func didChangeName(with request: EditTask.ValidateName.Request) {
+        try? service.validateTaskName(to: request.value)
         let response = EditTask.ValidateName.Response(value: request.value)
         presenter.presentDidChangeName(with: response)
     }
     
     func didChangeDate(with request: EditTask.ValidateDate.Request) {
+        try? service.validateTaskPreferredTime(to: request.value)
         let response = EditTask.ValidateDate.Response(value: request.value)
         presenter.presentDidChangeDate(with: response)
     }
     
-    func didChangeRepetition(with request: EditTask.ValidateRepetitionSelection.Request) {
-        let response = EditTask.ValidateRepetitionSelection.Response(selectedRepetition: request.selectedRepetition)
-        presenter.presentDidChangeRepetition(with: response)
+    func didChangeFrequency(with request: EditTask.ValidateFrequencySelection.Request) {
+        try? service.validateTaskFrequency(to: request.selectedFrequency)
+        let response = EditTask.ValidateFrequencySelection.Response(selectedFrequency: request.selectedFrequency)
+        presenter.presentDidChangeFrequency(with: response)
     }
     
-    func prepareRouteToSheet() {
-        presenter.presentPrepareRouteToSheet()
+    func didTapSave() {
+        do {
+            try service.save()
+        } catch {
+            let response = EditTask.ShowError.Response(error: error as? EditTask.ServiceError ?? .unknown)
+            presenter.presentShowError(with: response)
+        }
     }
     
-    func prepareRouteToOtherScene() {
-        presenter.presentPrepareRouteToOtherScene()
+    func checkCanSave() {
+        let canSave = service.canSave()
+        let response = EditTask.CanSave.Response(canSave: canSave)
+        presenter.presentCanSave(with: response)
     }
 }

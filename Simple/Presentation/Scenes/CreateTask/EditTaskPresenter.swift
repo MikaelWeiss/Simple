@@ -11,45 +11,63 @@ import UIKit
 
 protocol EditTaskPresenting {
     func presentUpdateTheme()
-    func presentFetchRepetition(with response: EditTask.FetchRepetition.Response)
+    func presentFetchTask(with response: EditTask.FetchTask.Response)
     func presentDidChangeName(with response: EditTask.ValidateName.Response)
     func presentDidChangeDate(with response: EditTask.ValidateDate.Response)
-    func presentDidChangeRepetition(with response: EditTask.ValidateRepetitionSelection.Response)
-    func presentPrepareRouteToSheet()
-    func presentPrepareRouteToOtherScene()
+    func presentDidChangeFrequency(with response: EditTask.ValidateFrequencySelection.Response)
+    func presentCanSave(with response: EditTask.CanSave.Response)
+    func presentShowError(with response: EditTask.ShowError.Response)
 }
 
 struct EditTaskPresenter: EditTaskPresenting {
+    typealias Strings = EditTask.Strings
+    
     let viewModel = EditTask.ViewModel()
     
     func presentUpdateTheme() {
         viewModel.title = EditTask.Strings.sceneTitle
-        viewModel.nameCellTitle = EditTask.Strings.nameCellTitle
-        viewModel.dateCellTitle = EditTask.Strings.dateCellTitle
-        viewModel.dateCellTitle = EditTask.Strings.dateCellTitle
+        viewModel.nameTitle = EditTask.Strings.nameCellTitle
+        viewModel.preferredTimeTitle = EditTask.Strings.dateCellTitle
+        viewModel.frequencyTitle = EditTask.Strings.frequencyCellTitle
     }
     
-    func presentFetchRepetition(with response: EditTask.FetchRepetition.Response) {
-        viewModel.repetitions = response.repetitions
+    func presentFetchTask(with response: EditTask.FetchTask.Response) {
+        let taskInfo = response.task
+        viewModel.name = taskInfo.name ?? ""
+        viewModel.preferredTime = taskInfo.preferredTime ?? Date.now
+        viewModel.selectedFrequency = taskInfo.frequency ?? .daily
+        viewModel.taskImage = taskInfo.image
     }
     
     func presentDidChangeName(with response: EditTask.ValidateName.Response) {
-        viewModel.nameCellValue = response.value
+        viewModel.name = response.value
     }
     
     func presentDidChangeDate(with response: EditTask.ValidateDate.Response) {
-        viewModel.dateCellValue = response.value
+        viewModel.preferredTime = response.value
     }
     
-    func presentDidChangeRepetition(with response: EditTask.ValidateRepetitionSelection.Response) {
-        
+    func presentDidChangeFrequency(with response: EditTask.ValidateFrequencySelection.Response) {
+        viewModel.selectedFrequency = response.selectedFrequency
     }
     
-    func presentPrepareRouteToSheet() {
-        viewModel.isShowingSheet = true
+    func presentCanSave(with response: EditTask.CanSave.Response) {
+        viewModel.canSave = response.canSave
     }
     
-    func presentPrepareRouteToOtherScene() {
-        viewModel.isShowingOtherScene = true
+    func presentShowError(with response: EditTask.ShowError.Response) {
+        let alertInfo: (title: String, message: String, actionTitle: String)
+        switch response.error {
+        case .saveFailed: alertInfo = (
+            title: Strings.saveFailedAlertTitle,
+            message: Strings.saveFailedAlertMessage,
+            actionTitle: Strings.defaultAlertActionTitle)
+        default: alertInfo = (
+            title: Strings.unknownErrorAlertTitle,
+            message: Strings.unknownErrorAlertMessage,
+            actionTitle: Strings.defaultAlertActionTitle)
+        }
+        viewModel.alertInfo = alertInfo
+        viewModel.isShowingAlert = true
     }
 }

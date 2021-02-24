@@ -10,10 +10,12 @@ import Foundation
 typealias StorageReadable = TaskRepositoryReadable
 typealias StorageWritable = TaskRepositoryWritable
 
-class Repositories {
+class RepositoryRoot {
     static private let storage = CoreDataStorage()
     static private let storageRead = storage
     static private let storageWrite = storage
+    
+    static var shared = RepositoryRoot()
     
     var taskRepository = MainTaskRepository(
         storageRead: storageRead,

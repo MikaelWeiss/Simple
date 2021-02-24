@@ -23,25 +23,45 @@ extension TasksOverview {
         }
     }
     
+    enum ShowError {
+        struct Response {
+            let error: ServiceError
+        }
+    }
+    
     enum Strings {
         static let sceneTitle = NSLocalizedString("Overview", comment: "The title for the scene")
+        static let fetchFailedAlertTitle = NSLocalizedString("Fetch failed", comment: "The title for the fetch failed alert")
+        static let fetchFailedAlertMessage = NSLocalizedString("We were unable to fetch your tasks", comment: "The message for the fetch failed alert")
+        static let defaultAlertActionTitle = NSLocalizedString("OK", comment: "The default alert action title")
+        static let unknownErrorAlertTitle = NSLocalizedString("Unknown Error", comment: "unknown error alert title")
+        static let unknownErrorAlertMessage = NSLocalizedString("Something unexpected happened", comment: "unknown error alert message")
     }
     
     class ViewModel: ObservableObject {
         @Published var title: String
         @Published var allTasks: [TaskInfo]
-        @Published var isShowingOtherScene: Bool
-        @Published var isShowingSheet: Bool
+        @Published var isShowingEditTask: Bool
+        @Published var alertInfo: (title: String, message: String, actionTitle: String)
+        @Published var isShowingAlert: Bool
         
         init(title: String = "",
              allTasks: [TaskInfo] = [],
-             isShowingOtherScene: Bool = false,
-             isShowingSheet: Bool = false) {
+             isShowingEditTask: Bool = false,
+             alertInfo: (
+                title: String,
+                message: String,
+                actionTitle: String) = (
+                    title: Strings.unknownErrorAlertTitle,
+                    message: Strings.unknownErrorAlertMessage,
+                    actionTitle: Strings.defaultAlertActionTitle),
+             isShowingAlert: Bool = false) {
             
             self.title = title
             self.allTasks = allTasks
-            self.isShowingOtherScene = isShowingOtherScene
-            self.isShowingSheet = isShowingSheet
+            self.isShowingEditTask = isShowingEditTask
+            self.alertInfo = alertInfo
+            self.isShowingAlert = isShowingAlert
         }
     }
 }

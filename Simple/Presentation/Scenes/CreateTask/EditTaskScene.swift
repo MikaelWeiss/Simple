@@ -18,7 +18,9 @@ enum EditTask {
         let view: EditTaskView
         
         init(sceneInfo: SceneInfo = SceneInfo(task: nil)) {
-            let service = EditTask.Service(task: sceneInfo.task)
+            let service = EditTask.Service(
+                task: sceneInfo.task,
+                taskRepository: RepositoryRoot.shared.taskRepository)
             let presenter = EditTaskPresenter()
             let interactor = EditTaskInteractor(service: service, presenter: presenter)
             view = EditTaskView(interactor: interactor, viewModel: presenter.viewModel)

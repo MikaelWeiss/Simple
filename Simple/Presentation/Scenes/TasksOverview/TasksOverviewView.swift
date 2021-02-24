@@ -9,8 +9,7 @@
 import SwiftUI
 
 protocol TasksOverviewInputting {
-    func prepareRouteToSheet()
-    func prepareRouteToOtherScene()
+    func prepareRouteToEditTask()
 }
 
 struct TasksOverviewView: View {
@@ -70,24 +69,35 @@ struct TasksOverviewView: View {
                 }
             }
         }
+        .navigationBarItems(trailing: Button(action: {
+            prepareRouteToEditTask()
+        }, label: {
+            Image(systemName: "plus")
+                .font(.system(size: 24, weight: .black, design: .rounded))
+        }))
         .navigationTitle(viewModel.title)
         .onAppear {
             interactor?.updateTheme()
             interactor?.fetchTasks()
-            
         }
+        .sheet(isPresented: $viewModel.isShowingEditTask, content: {
+            NavigationView {
+                EditTask.Scene().view
+            }
+        })
+        .alert(isPresented: $viewModel.isShowingAlert, content: {
+            Alert(title: Text(viewModel.alertInfo.title),
+                  message: Text(viewModel.alertInfo.message),
+                  dismissButton: .default(Text(viewModel.alertInfo.actionTitle)))
+        })
     }
 }
 
 // MARK: - Inputing
 
 extension TasksOverviewView: TasksOverviewInputting {
-    func prepareRouteToSheet() {
-        interactor?.prepareRouteToSheet()
-    }
-    
-    func prepareRouteToOtherScene() {
-        interactor?.prepareRouteToOtherScene()
+    func prepareRouteToEditTask() {
+        interactor?.prepareRouteToEditTask()
     }
 }
 

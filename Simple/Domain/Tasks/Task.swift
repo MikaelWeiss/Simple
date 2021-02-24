@@ -24,7 +24,7 @@ class Task: Identifiable {
     
     private(set) var frequency: Frequency
     func set(frequency: Frequency) throws {
-        self.frequency = repetition
+        self.frequency = frequency
     }
     
     private(set) var image: UIImage?

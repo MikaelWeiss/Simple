@@ -11,11 +11,13 @@ import SwiftUI
 protocol TasksOverviewPresenting {
     func presentUpdateTheme()
     func presentFetchTasks(with response: TasksOverview.FetchTasks.Response)
-    func presentPrepareRouteToSheet()
-    func presentPrepareRouteToOtherScene()
+    func presentShowError(with response: TasksOverview.ShowError.Response)
+    func presentPrepareRouteToEditTask()
 }
 
 struct TasksOverviewPresenter: TasksOverviewPresenting {
+    typealias Strings = TasksOverview.Strings
+    
     let viewModel = TasksOverview.ViewModel()
     
     func presentUpdateTheme() {
@@ -38,11 +40,23 @@ struct TasksOverviewPresenter: TasksOverviewPresenting {
         viewModel.allTasks = mappedTaskList
     }
     
-    func presentPrepareRouteToSheet() {
-        viewModel.isShowingSheet = true
+    func presentShowError(with response: TasksOverview.ShowError.Response) {
+        let alertInfo: (title: String, message: String, actionTitle: String)
+        switch response.error {
+        case .fetchFailed: alertInfo = (
+            title: Strings.fetchFailedAlertTitle,
+            message: Strings.fetchFailedAlertMessage,
+            actionTitle: Strings.defaultAlertActionTitle)
+        case .unknownError: alertInfo = (
+            title: Strings.unknownErrorAlertTitle,
+            message: Strings.unknownErrorAlertMessage,
+            actionTitle: Strings.defaultAlertActionTitle)
+        }
+        viewModel.alertInfo = alertInfo
+        viewModel.isShowingAlert = true
     }
     
-    func presentPrepareRouteToOtherScene() {
-        viewModel.isShowingOtherScene = true
+    func presentPrepareRouteToEditTask() {
+        viewModel.isShowingEditTask = true
     }
 }

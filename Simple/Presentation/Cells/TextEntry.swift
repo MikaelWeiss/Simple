@@ -24,7 +24,7 @@ struct TextEntry: View {
             get: { value }, set: { onTextChanged($0) })
         ZStack(alignment: .leading) {
             TextField(title, text: binding, onEditingChanged: { isTyping = $0 })
-                .valueFontStyle()
+                .placeholderFontStyle()
         }
         .cellStyle()
         .overlay(

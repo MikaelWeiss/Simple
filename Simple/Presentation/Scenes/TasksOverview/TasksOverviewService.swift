@@ -8,17 +8,41 @@
 
 import SwiftUI
 
+protocol TaskOverviewTaskFetching {
+    func allTasks() throws -> [Task]
+    var updatePublisher: RepositoryPublisher { get }
+}
+extension MainTaskRepository: TaskOverviewTaskFetching { }
+
 protocol TasksOverviewService {
-    func fetchTasks() -> [Task]
+    func fetchTasks() throws -> [Task]
+    var updatePublisher: RepositoryPublisher { get }
 }
 
 extension TasksOverview {
+    enum ServiceError: Error {
+        case fetchFailed
+        case unknownError
+    }
     
     class Service: TasksOverviewService {
-        func fetchTasks() -> [Task] {
-            [Task(name: "Wake up", preferredTime: Date(), frequency: .daily, image: UIImage(#imageLiteral(resourceName: "testingImage"))),
-             Task(name: "Wake up", preferredTime: Date(), frequency: .daily, image: UIImage(#imageLiteral(resourceName: "testingImage"))),
-             Task(name: "Wake up", preferredTime: Date(), frequency: .daily, image: nil)]
+        private var taskRepository: TaskOverviewTaskFetching
+        
+        var updatePublisher: RepositoryPublisher {
+            taskRepository.updatePublisher
+        }
+        
+        init(taskRepository: TaskOverviewTaskFetching) {
+            self.taskRepository = taskRepository
+        }
+        
+        func fetchTasks() throws -> [Task] {
+            do {
+                let tasks = try taskRepository.allTasks()
+                return tasks
+            } catch {
+                throw ServiceError.fetchFailed
+            }
         }
     }
 }
