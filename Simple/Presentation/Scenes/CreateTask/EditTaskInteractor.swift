@@ -10,6 +10,7 @@ import Foundation
 
 protocol EditTaskRequesting {
     func updateTheme()
+    func fetchTask()
     func didChangeName(with request: EditTask.ValidateName.Request)
     func didChangeDate(with request: EditTask.ValidateDate.Request)
     func didChangeFrequency(with request: EditTask.ValidateFrequencySelection.Request)

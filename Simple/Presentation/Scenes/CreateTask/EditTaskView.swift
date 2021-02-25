@@ -49,6 +49,7 @@ struct EditTaskView: View {
         }
         .onAppear {
             interactor?.updateTheme()
+            interactor?.fetchTask()
         }
         .navigationBarTitle(viewModel.title)
         .navigationBarItems(trailing:

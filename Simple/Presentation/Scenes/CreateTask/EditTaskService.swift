@@ -67,8 +67,8 @@ extension EditTask {
             self.taskRepository = taskRepository
             taskInfo = TaskInfo(
                 name: task?.name,
-                preferredTime: task?.preferredTime,
-                frequency: task?.frequency,
+                preferredTime: task?.preferredTime ?? Date.now,
+                frequency: task?.frequency ?? .daily,
                 image: task?.image)
         }
         
