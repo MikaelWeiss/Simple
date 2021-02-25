@@ -17,6 +17,8 @@ class CoreDataStorage {
     let store: CoreDataStore
     let factory: CoreDataStoreStorage
     
+    static var shared = CoreDataStorage()
+    
     init(store: CoreDataStore = CoreDataStore.default,
          factory: CoreDataStoreStorage = CoreDataStoreStorageFactory()) {
         self.store = store

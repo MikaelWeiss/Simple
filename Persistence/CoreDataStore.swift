@@ -28,11 +28,12 @@ public class CoreDataStore {
     public convenience init(storageType: StorageType = .persistent) {
         let bundle = Bundle(for: CoreDataStore.self)
         
-        guard let modelURL = bundle.url(forResource: "Model", withExtension: "momd") else {
+        guard let modelURL = bundle.url(forResource: "Simple", withExtension: "momd") else {
             os_log(.error, log: .persistence, "Unable to generate model url in bundle: %@.", bundle)
             fatalError()
         }
         
+        // Managed Object Model - Simple.xcdatamodeld (stored as Simple.momd)
         guard let model = NSManagedObjectModel(contentsOf: modelURL) else {
             os_log(.error, log: .persistence, "Unable to load core data model from url: %@!", modelURL as NSURL)
             fatalError()
@@ -64,10 +65,11 @@ public class CoreDataStore {
             fatalError("Failed to resolve documents directory")
         }
         
-        let localStore = NSPersistentStoreDescription(url: docURL.appendingPathComponent("Model.sqlite"))
-        localStore.configuration = "Local"
+        // Persistant Store - the file that is saved to the device. eg. ``Simple.sqlite``
+        let localStore = NSPersistentStoreDescription(url: docURL.appendingPathComponent("Simple.sqlite"))
         
-        let container = NSPersistentContainer(name: "Model", managedObjectModel: model)
+        // Persistent Container - the object that holds the Model, Context, and Coordinator.
+        let container = NSPersistentContainer(name: "Container", managedObjectModel: model)
         container.persistentStoreDescriptions = [localStore]
         
         return container

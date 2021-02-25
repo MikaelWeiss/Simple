@@ -35,7 +35,7 @@
 		A57099B525DAF5180050B3B5 /* Persistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57099A025DAF5180050B3B5 /* Persistence.framework */; };
 		A57099B625DAF5180050B3B5 /* Persistence.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A57099A025DAF5180050B3B5 /* Persistence.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A57099CA25DAF6FD0050B3B5 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57099C125DAF6250050B3B5 /* CoreDataStore.swift */; };
-		A57099D725DAF7140050B3B5 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5AC06D925D7830A00504FEE /* Model.xcdatamodeld */; };
+		A57099D725DAF7140050B3B5 /* Simple.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A5AC06D925D7830A00504FEE /* Simple.xcdatamodeld */; };
 		A57099EE25DAF8DB0050B3B5 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57099ED25DAF8DB0050B3B5 /* Logging.swift */; };
 		A57099F625DB0CAC0050B3B5 /* CoreDataStoreStorageFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57099F525DB0CAC0050B3B5 /* CoreDataStoreStorageFactory.swift */; };
 		A57099FB25DB0EF80050B3B5 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57099FA25DB0EF80050B3B5 /* Storage.swift */; };
@@ -371,7 +371,7 @@
 				A57099A325DAF5180050B3B5 /* Info.plist */,
 				A57099C125DAF6250050B3B5 /* CoreDataStore.swift */,
 				A548D43C25DEC1460092027A /* CoreDataStoreTests.swift */,
-				A5AC06D925D7830A00504FEE /* Model.xcdatamodeld */,
+				A5AC06D925D7830A00504FEE /* Simple.xcdatamodeld */,
 				A57099ED25DAF8DB0050B3B5 /* Logging.swift */,
 			);
 			path = Persistence;
@@ -678,7 +678,7 @@
 			files = (
 				A57099CA25DAF6FD0050B3B5 /* CoreDataStore.swift in Sources */,
 				A57099EE25DAF8DB0050B3B5 /* Logging.swift in Sources */,
-				A57099D725DAF7140050B3B5 /* Model.xcdatamodeld in Sources */,
+				A57099D725DAF7140050B3B5 /* Simple.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1132,13 +1132,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		A5AC06D925D7830A00504FEE /* Model.xcdatamodeld */ = {
+		A5AC06D925D7830A00504FEE /* Simple.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				A5AC06DA25D7830A00504FEE /* Simple.xcdatamodel */,
 			);
 			currentVersion = A5AC06DA25D7830A00504FEE /* Simple.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			path = Simple.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

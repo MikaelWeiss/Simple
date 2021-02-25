@@ -11,7 +11,9 @@ typealias StorageReadable = TaskRepositoryReadable
 typealias StorageWritable = TaskRepositoryWritable
 
 class RepositoryRoot {
-    static private let storage = CoreDataStorage()
+    static private var storage: CoreDataStorage {
+        SimpleApp.storage
+    }
     static private let storageRead = storage
     static private let storageWrite = storage
     
