@@ -43,7 +43,6 @@
 		A5709A1025DB2DB80050B3B5 /* CoreDataStorage+Write.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A0F25DB2DB80050B3B5 /* CoreDataStorage+Write.swift */; };
 		A5709A1625DB2F130050B3B5 /* StorageToDomainTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A1525DB2F130050B3B5 /* StorageToDomainTransformer.swift */; };
 		A5709A1B25DB2F870050B3B5 /* DomainToStorageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A1A25DB2F870050B3B5 /* DomainToStorageTransformer.swift */; };
-		A5709A2825DB34850050B3B5 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A2725DB34850050B3B5 /* UIImage+Extensions.swift */; };
 		A5709A3025DB589E0050B3B5 /* StorageToDomainTransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A2F25DB589E0050B3B5 /* StorageToDomainTransformerTests.swift */; };
 		A5AC06CF25D7830900504FEE /* SimpleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC06CE25D7830900504FEE /* SimpleApp.swift */; };
 		A5AC06D325D7830A00504FEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AC06D225D7830A00504FEE /* Assets.xcassets */; };
@@ -136,8 +135,6 @@
 		A56E0C3225D855F100247227 /* EditTaskPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskPresenterTests.swift; sourceTree = "<group>"; };
 		A56E0C3325D855F100247227 /* EditTaskServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskServiceTests.swift; sourceTree = "<group>"; };
 		A570996525DAE01D0050B3B5 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
-		A570996B25DAE1030050B3B5 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Task.swift; path = Simple/Domain/Tasks/Task.swift; sourceTree = "<group>"; };
-		A570997125DAE2620050B3B5 /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Frequency.swift; path = Simple/Domain/SupportTypes/Frequency.swift; sourceTree = "<group>"; };
 		A570999125DAF02D0050B3B5 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		A57099A025DAF5180050B3B5 /* Persistence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Persistence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57099A225DAF5180050B3B5 /* Persistence.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Persistence.h; sourceTree = "<group>"; };
@@ -153,8 +150,6 @@
 		A5709A0F25DB2DB80050B3B5 /* CoreDataStorage+Write.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStorage+Write.swift"; sourceTree = "<group>"; };
 		A5709A1525DB2F130050B3B5 /* StorageToDomainTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageToDomainTransformer.swift; sourceTree = "<group>"; };
 		A5709A1A25DB2F870050B3B5 /* DomainToStorageTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainToStorageTransformer.swift; sourceTree = "<group>"; };
-		A5709A2225DB319C0050B3B5 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Date+Extensions.swift"; path = "Simple/Domain/SupportTypes/Extensions/Date+Extensions.swift"; sourceTree = "<group>"; };
-		A5709A2725DB34850050B3B5 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "UIImage+Extensions.swift"; path = "Simple/Domain/SupportTypes/Extensions/UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		A5709A2F25DB589E0050B3B5 /* StorageToDomainTransformerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageToDomainTransformerTests.swift; sourceTree = "<group>"; };
 		A5AC06CB25D7830900504FEE /* Simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AC06CE25D7830900504FEE /* SimpleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleApp.swift; sourceTree = "<group>"; };
@@ -248,17 +243,6 @@
 				A53D4A3825E4B4C700070FF3 /* Tasks */,
 			);
 			path = Domain;
-			sourceTree = "<group>";
-		};
-		A53D4A2F25E4B48300070FF3 /* Recovered References */ = {
-			isa = PBXGroup;
-			children = (
-				A5709A2225DB319C0050B3B5 /* Date+Extensions.swift */,
-				A570997125DAE2620050B3B5 /* Frequency.swift */,
-				A570996B25DAE1030050B3B5 /* Task.swift */,
-				A5709A2725DB34850050B3B5 /* UIImage+Extensions.swift */,
-			);
-			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		A53D4A3325E4B4C700070FF3 /* SupportTypes */ = {
@@ -405,7 +389,6 @@
 				A57099A125DAF5180050B3B5 /* Persistence */,
 				A57099AE25DAF5180050B3B5 /* PersistenceTests */,
 				A5AC06CC25D7830900504FEE /* Products */,
-				A53D4A2F25E4B48300070FF3 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -709,7 +692,6 @@
 				A5709A1625DB2F130050B3B5 /* StorageToDomainTransformer.swift in Sources */,
 				A570996625DAE01D0050B3B5 /* TaskRepository.swift in Sources */,
 				A53D4A3B25E4B4C700070FF3 /* Date+Extensions.swift in Sources */,
-				A5709A2825DB34850050B3B5 /* UIImage+Extensions.swift in Sources */,
 				A56E0C2725D855E600247227 /* EditTaskPresenter.swift in Sources */,
 				A56E0C2C25D855E600247227 /* EditTaskService.swift in Sources */,
 				A56E0C2825D855E600247227 /* EditTaskModels.swift in Sources */,
