@@ -16,6 +16,7 @@ protocol EditTaskService {
     func validateTaskFrequency(to frequency: Frequency) throws
     func validateTaskImage(to image: UIImage) throws
     func save() throws
+    func deleteTask() throws
     func syncTask() throws
     var updatePublisher: RepositoryPublisher { get }
 }
@@ -55,6 +56,7 @@ extension EditTask {
         typealias TaskInfo = EditTask.TaskInfo
         
         private var taskRepository: EditTaskTaskUpdating
+        private var taskID: UUID?
         private var task: Task?
         private var taskInfo: TaskInfo
         
@@ -62,18 +64,30 @@ extension EditTask {
             taskRepository.updatePublisher
         }
         
-        init(task: Task?, taskRepository: EditTaskTaskUpdating) {
-            self.task = task
+        init(taskID: UUID?, taskRepository: EditTaskTaskUpdating) {
             self.taskRepository = taskRepository
+            self.taskID = taskID
+            self.task = nil
+            
+            taskInfo = TaskInfo(
+                name: nil,
+                preferredTime: Date.now,
+                frequency: .daily,
+                image: nil)
+        }
+        
+        func fetchTask() -> TaskInfo {
+            
+            if let taskID = taskID {
+                task = try? taskRepository.task(withID: taskID)
+            }
             taskInfo = TaskInfo(
                 name: task?.name,
                 preferredTime: task?.preferredTime ?? Date.now,
                 frequency: task?.frequency ?? .daily,
                 image: task?.image)
-        }
-        
-        func fetchTask() -> TaskInfo {
-            taskInfo
+            
+            return taskInfo
         }
         
         func canSave() -> Bool {

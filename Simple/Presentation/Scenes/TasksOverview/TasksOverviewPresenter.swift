@@ -35,7 +35,7 @@ struct TasksOverviewPresenter: TasksOverviewPresenting {
             formatter.timeStyle = .short
             let time = formatter.string(from: task.preferredTime)
             
-            return TasksOverview.TaskInfo(name: task.name, date: date, time: time, image: task.image)
+            return TasksOverview.TaskInfo(id: task.id, name: task.name, date: date, time: time, image: task.image)
         }
         viewModel.allTasks = mappedTaskList
     }

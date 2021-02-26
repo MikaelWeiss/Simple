@@ -15,6 +15,7 @@ protocol EditTaskRequesting {
     func didChangeDate(with request: EditTask.ValidateDate.Request)
     func didChangeFrequency(with request: EditTask.ValidateFrequencySelection.Request)
     func checkCanSave()
+    func didTapDelete()
     func didTapSave()
 }
 
@@ -53,6 +54,15 @@ struct EditTaskInteractor: EditTaskRequesting {
         try? service.validateTaskFrequency(to: request.selectedFrequency)
         let response = EditTask.ValidateFrequencySelection.Response(selectedFrequency: request.selectedFrequency)
         presenter.presentDidChangeFrequency(with: response)
+    }
+    
+    func didTapDelete() {
+        do {
+            try service.deleteTask()
+        } catch {
+            let response = EditTask.ShowError.Response(error: error as? EditTask.ServiceError ?? .unknown)
+            presenter.presentShowError(with: response)
+        }
     }
     
     func didTapSave() {

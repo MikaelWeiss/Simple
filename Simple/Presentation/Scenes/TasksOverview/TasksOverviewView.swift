@@ -9,7 +9,8 @@
 import SwiftUI
 
 protocol TasksOverviewInputting {
-    func prepareRouteToEditTask()
+    func didTapAddTask()
+    func didTapTask(with id: UUID)
 }
 
 struct TasksOverviewView: View {
@@ -66,11 +67,14 @@ struct TasksOverviewView: View {
                         RoundedRectangle(cornerRadius: 25.0, style: .continuous)
                     )
                     .padding(.horizontal)
+                    .onTapGesture {
+                        didTapTask(with: item.id)
+                    }
                 }
             }
         }
         .navigationBarItems(trailing: Button(action: {
-            prepareRouteToEditTask()
+            didTapAddTask()
         }, label: {
             Image(systemName: "plus")
                 .font(.system(size: 24, weight: .black, design: .rounded))
@@ -96,8 +100,12 @@ struct TasksOverviewView: View {
 // MARK: - Inputing
 
 extension TasksOverviewView: TasksOverviewInputting {
-    func prepareRouteToEditTask() {
-        interactor?.prepareRouteToEditTask()
+    func didTapAddTask() {
+        interactor?.didTapAddTask()
+    }
+    
+    func didTapTask(with id: UUID) {
+        interactor?.didTapTask(with: id)
     }
 }
 
@@ -105,8 +113,8 @@ struct TasksOverview_Previews: PreviewProvider {
     static var viewModel = TasksOverview.ViewModel(
         title: "Some title",
         allTasks: [
-            .init(name: "Wake up", date: "Today", time: "10:45", image: UIImage(#imageLiteral(resourceName: "testingImage"))),
-            .init(name: "Wake up", date: "Dec 12, 2020", time: "12:30", image: nil)
+            .init(id: UUID(), name: "Wake up", date: "Today", time: "10:45", image: UIImage(#imageLiteral(resourceName: "testingImage"))),
+            .init(id: UUID(), name: "Wake up", date: "Dec 12, 2020", time: "12:30", image: nil)
         ])
     
     static var previews: some View {

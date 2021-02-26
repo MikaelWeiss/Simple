@@ -12,7 +12,8 @@ import Combine
 protocol TasksOverviewRequesting {
     func updateTheme()
     func fetchTasks()
-    func prepareRouteToEditTask()
+    func didTapTask(with id: UUID)
+    func didTapAddTask()
 }
 
 struct TasksOverviewInteractor: TasksOverviewRequesting {
@@ -47,7 +48,12 @@ struct TasksOverviewInteractor: TasksOverviewRequesting {
         }
     }
     
-    func prepareRouteToEditTask() {
+    func didTapAddTask() {
+        presenter.presentPrepareRouteToEditTask()
+    }
+    
+    func didTapTask(with id: UUID) {
+        service.prepareRouteToEditTask(with: id)
         presenter.presentPrepareRouteToEditTask()
     }
 }

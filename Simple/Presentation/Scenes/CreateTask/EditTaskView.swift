@@ -11,6 +11,7 @@ import SwiftUI
 protocol EditTaskInputting {
     func didChangeName(to value: String)
     func didChangeDate(to date: Date)
+    func didTapDelete()
     func didTapSave()
 }
 
@@ -44,6 +45,10 @@ struct EditTaskView: View {
                                         selectedRepetition: viewModel.selectedFrequency) {
                     didChangeFrequency(to: $0)
                 }
+                Button("Delete Task") {
+                    didTapDelete()
+                }
+                .disabled(true)
             }
             .padding(.horizontal)
         }
@@ -80,6 +85,11 @@ extension EditTaskView: EditTaskInputting {
         let request = EditTask.ValidateFrequencySelection.Request(selectedFrequency: frequency)
         interactor?.didChangeFrequency(with: request)
         interactor?.checkCanSave()
+    }
+    
+    func didTapDelete() {
+        interactor?.didTapDelete()
+        presentationMode.wrappedValue.dismiss()
     }
     
     func didTapSave() {

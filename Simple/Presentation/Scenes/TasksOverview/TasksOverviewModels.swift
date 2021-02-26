@@ -11,6 +11,7 @@ import SwiftUI
 extension TasksOverview {
     
     struct TaskInfo {
+        let id: UUID
         let name: String
         let date: String
         let time: String
