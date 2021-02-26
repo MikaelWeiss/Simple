@@ -72,11 +72,11 @@ struct EditTaskView: View {
                 message: Text(info.message),
                 dismissButton: .default(Text(info.actionTitle)))
         }
-        .onReceive(viewModel.$isShowing, perform: { isShowing in
+        .onReceive(viewModel.$isShowing) { isShowing in
             if !isShowing {
                 presentationMode.wrappedValue.dismiss()
             }
-        })
+        }
     }
 }
 
