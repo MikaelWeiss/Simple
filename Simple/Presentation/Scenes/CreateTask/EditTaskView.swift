@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import Combine
 
 protocol EditTaskInputting {
     func didChangeName(to value: String)
@@ -19,7 +20,7 @@ struct EditTaskView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject private var viewModel: EditTask.ViewModel
     private let interactor: EditTaskRequesting?
-    
+        
     init(interactor: EditTaskRequesting, viewModel: EditTask.ViewModel) {
         self.interactor = interactor
         self.viewModel = viewModel
@@ -48,13 +49,14 @@ struct EditTaskView: View {
                 Button("Delete Task") {
                     didTapDelete()
                 }
-                .disabled(true)
+//                .disabled(true)
             }
             .padding(.horizontal)
         }
         .onAppear {
             interactor?.updateTheme()
             interactor?.fetchTask()
+            interactor?.checkCanSave()
         }
         .navigationBarTitle(viewModel.title)
         .navigationBarItems(trailing:
@@ -63,6 +65,18 @@ struct EditTaskView: View {
                                 }
                                 .disabled(!viewModel.canSave)
         )
+        .alert(isPresented: $viewModel.isShowingAlert) {
+            let info = viewModel.alertInfo
+            return Alert(
+                title: Text(info.title),
+                message: Text(info.message),
+                dismissButton: .default(Text(info.actionTitle)))
+        }
+        .onReceive(viewModel.$isShowing, perform: { isShowing in
+            if !isShowing {
+                presentationMode.wrappedValue.dismiss()
+            }
+        })
     }
 }
 
@@ -89,12 +103,10 @@ extension EditTaskView: EditTaskInputting {
     
     func didTapDelete() {
         interactor?.didTapDelete()
-        presentationMode.wrappedValue.dismiss()
     }
     
     func didTapSave() {
         interactor?.didTapSave()
-        presentationMode.wrappedValue.dismiss()
     }
 }
 

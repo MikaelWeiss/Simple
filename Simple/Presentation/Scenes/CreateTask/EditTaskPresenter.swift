@@ -16,6 +16,8 @@ protocol EditTaskPresenting {
     func presentDidChangeDate(with response: EditTask.ValidateDate.Response)
     func presentDidChangeFrequency(with response: EditTask.ValidateFrequencySelection.Response)
     func presentCanSave(with response: EditTask.CanSave.Response)
+    func presentDidTapSave(with response: EditTask.DidTapSave.Response)
+    func presentDidTapDelete(with response: EditTask.DidTapDelete.Response)
     func presentShowError(with response: EditTask.ShowError.Response)
 }
 
@@ -53,6 +55,18 @@ struct EditTaskPresenter: EditTaskPresenting {
     
     func presentCanSave(with response: EditTask.CanSave.Response) {
         viewModel.canSave = response.canSave
+    }
+    
+    func presentDidTapSave(with response: EditTask.DidTapSave.Response) {
+        if response.didSave {
+            viewModel.isShowing = false
+        }
+    }
+    
+    func presentDidTapDelete(with response: EditTask.DidTapDelete.Response) {
+        if response.didDelete {
+            viewModel.isShowing = false
+        }
     }
     
     func presentShowError(with response: EditTask.ShowError.Response) {

@@ -33,9 +33,14 @@ struct EditTaskInteractor: EditTaskRequesting {
     }
     
     func fetchTask() {
-        let task = service.fetchTask()
-        let response = EditTask.FetchTask.Response(task: task)
-        presenter.presentFetchTask(with: response)
+        do {
+            let task = try service.fetchTask()
+            let response = EditTask.FetchTask.Response(task: task)
+            presenter.presentFetchTask(with: response)
+        } catch {
+            let response = EditTask.ShowError.Response(error: error as? EditTask.ServiceError ?? .unknown)
+            presenter.presentShowError(with: response)
+        }
     }
     
     func didChangeName(with request: EditTask.ValidateName.Request) {
@@ -59,6 +64,8 @@ struct EditTaskInteractor: EditTaskRequesting {
     func didTapDelete() {
         do {
             try service.deleteTask()
+            let response = EditTask.DidTapDelete.Response(didDelete: true)
+            presenter.presentDidTapDelete(with: response)
         } catch {
             let response = EditTask.ShowError.Response(error: error as? EditTask.ServiceError ?? .unknown)
             presenter.presentShowError(with: response)
@@ -68,6 +75,8 @@ struct EditTaskInteractor: EditTaskRequesting {
     func didTapSave() {
         do {
             try service.save()
+            let response = EditTask.DidTapSave.Response(didSave: true)
+            presenter.presentDidTapSave(with: response)
         } catch {
             let response = EditTask.ShowError.Response(error: error as? EditTask.ServiceError ?? .unknown)
             presenter.presentShowError(with: response)

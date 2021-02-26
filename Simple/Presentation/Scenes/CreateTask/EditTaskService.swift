@@ -9,7 +9,7 @@
 import UIKit
 
 protocol EditTaskService {
-    func fetchTask() -> EditTask.TaskInfo
+    func fetchTask() throws -> EditTask.TaskInfo
     func canSave() -> Bool
     func validateTaskName(to name: String) throws
     func validateTaskPreferredTime(to time: Date) throws
@@ -40,6 +40,7 @@ extension EditTask {
         case validationError
         case saveFailed
         case deleteFailed
+        case fetchFailed
         case unknown
     }
     
@@ -76,10 +77,13 @@ extension EditTask {
                 image: nil)
         }
         
-        func fetchTask() -> TaskInfo {
-            
+        func fetchTask() throws -> TaskInfo {
             if let taskID = taskID {
-                task = try? taskRepository.task(withID: taskID)
+                do {
+                    task = try taskRepository.task(withID: taskID)
+                } catch {
+                    throw ServiceError.fetchFailed
+                }
             }
             taskInfo = TaskInfo(
                 name: task?.name,
@@ -158,6 +162,7 @@ extension EditTask {
             guard let id = task?.id else { throw ServiceError.syncFailed }
             do {
                 self.task = try taskRepository.task(withID: id)
+                // Add code to update the ui?
             } catch {
                 throw ServiceError.syncFailed
             }

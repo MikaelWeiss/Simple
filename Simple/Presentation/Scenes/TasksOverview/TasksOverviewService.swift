@@ -16,6 +16,7 @@ extension MainTaskRepository: TaskOverviewTaskFetching { }
 
 protocol TasksOverviewService {
     func fetchTasks() throws -> [Task]
+    func prepareRouteToEditTask(with id: UUID)
     var updatePublisher: RepositoryPublisher { get }
 }
 
@@ -43,6 +44,10 @@ extension TasksOverview {
             } catch {
                 throw ServiceError.fetchFailed
             }
+        }
+        
+        func prepareRouteToEditTask(with id: UUID) {
+            EditTask.input = .init(taskID: id)
         }
     }
 }

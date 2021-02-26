@@ -26,6 +26,7 @@ enum EditTask {
             let presenter = EditTaskPresenter()
             let interactor = EditTaskInteractor(service: service, presenter: presenter)
             view = EditTaskView(interactor: interactor, viewModel: presenter.viewModel)
+            EditTask.input = nil
         }
     }
 }

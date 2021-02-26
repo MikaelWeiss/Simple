@@ -59,6 +59,18 @@ extension EditTask {
         }
     }
     
+    enum DidTapSave {
+        struct Response {
+            let didSave: Bool
+        }
+    }
+    
+    enum DidTapDelete {
+        struct Response {
+            let didDelete: Bool
+        }
+    }
+    
     enum ShowError {
         struct Response {
             let error: ServiceError
@@ -89,6 +101,7 @@ extension EditTask {
         @Published var canSave: Bool
         @Published var alertInfo: (title: String, message: String, actionTitle: String)
         @Published var isShowingAlert: Bool
+        @Published var isShowing: Bool = true
         
         init(title: String = "",
              nameTitle: String = "",
