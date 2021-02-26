@@ -58,6 +58,11 @@ struct EditTaskView: View {
             interactor?.fetchTask()
             interactor?.checkCanSave()
         }
+        .onReceive(viewModel.$isShowing) { isShowing in
+            if !isShowing {
+                presentationMode.wrappedValue.dismiss()
+            }
+        }
         .navigationBarTitle(viewModel.title)
         .navigationBarItems(trailing:
                                 Button("Save") {
@@ -71,11 +76,6 @@ struct EditTaskView: View {
                 title: Text(info.title),
                 message: Text(info.message),
                 dismissButton: .default(Text(info.actionTitle)))
-        }
-        .onReceive(viewModel.$isShowing) { isShowing in
-            if !isShowing {
-                presentationMode.wrappedValue.dismiss()
-            }
         }
     }
 }
