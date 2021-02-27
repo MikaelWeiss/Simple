@@ -38,13 +38,10 @@ struct TasksOverviewInteractor: TasksOverviewRequesting {
     }
     
     func fetchTasks() {
-        do {
+        tryOrThrow {
             let fetchedTasks = try service.fetchTasks()
             let response = TasksOverview.FetchTasks.Response(tasks: fetchedTasks)
             presenter.presentFetchTasks(with: response)
-        } catch {
-            let response = TasksOverview.ShowError.Response(error: error as? TasksOverview.ServiceError ?? .unknownError)
-            presenter.presentShowError(with: response)
         }
     }
     
@@ -55,5 +52,14 @@ struct TasksOverviewInteractor: TasksOverviewRequesting {
     func didTapTask(with id: UUID) {
         service.prepareRouteToEditTask(with: id)
         presenter.presentPrepareRouteToEditTask()
+    }
+    
+    private func tryOrThrow(_ do: () throws -> Void) {
+        do {
+            try `do`()
+        } catch {
+            let response = TasksOverview.ShowError.Response(error: error as? TasksOverview.ServiceError ?? .unknownError)
+            presenter.presentShowError(with: response)
+        }
     }
 }

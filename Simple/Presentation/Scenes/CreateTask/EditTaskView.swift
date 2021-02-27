@@ -39,7 +39,7 @@ struct EditTaskView: View {
                 TextEntry(viewModel.nameTitle, value: viewModel.name) {
                     didChangeName(to: $0)
                 }
-                DateSelection("Date", value: Date()) {
+                DateSelection("Date", value: viewModel.preferredTime) {
                     didChangeDate(to: $0)
                 }
                 RepetitionSelectionCell(viewModel.frequencyTitle,

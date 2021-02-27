@@ -33,53 +33,50 @@ struct EditTaskInteractor: EditTaskRequesting {
     }
     
     func fetchTask() {
-        do {
+        tryOrThrow {
             let task = try service.fetchTask()
             let response = EditTask.FetchTask.Response(task: task)
             presenter.presentFetchTask(with: response)
-        } catch {
-            let response = EditTask.ShowError.Response(error: error as? EditTask.ServiceError ?? .unknown)
-            presenter.presentShowError(with: response)
         }
     }
     
     func didChangeName(with request: EditTask.ValidateName.Request) {
-        try? service.validateTaskName(to: request.value)
-        let response = EditTask.ValidateName.Response(value: request.value)
-        presenter.presentDidChangeName(with: response)
+        tryOrThrow {
+            try service.validateTaskName(to: request.value)
+            let response = EditTask.ValidateName.Response(value: request.value)
+            presenter.presentDidChangeName(with: response)
+        }
     }
     
     func didChangeDate(with request: EditTask.ValidateDate.Request) {
-        try? service.validateTaskPreferredTime(to: request.value)
-        let response = EditTask.ValidateDate.Response(value: request.value)
-        presenter.presentDidChangeDate(with: response)
+        tryOrThrow {
+            try service.validateTaskPreferredTime(to: request.value)
+            let response = EditTask.ValidateDate.Response(value: request.value)
+            presenter.presentDidChangeDate(with: response)
+        }
     }
     
     func didChangeFrequency(with request: EditTask.ValidateFrequencySelection.Request) {
-        try? service.validateTaskFrequency(to: request.selectedFrequency)
-        let response = EditTask.ValidateFrequencySelection.Response(selectedFrequency: request.selectedFrequency)
-        presenter.presentDidChangeFrequency(with: response)
+        tryOrThrow {
+            try service.validateTaskFrequency(to: request.selectedFrequency)
+            let response = EditTask.ValidateFrequencySelection.Response(selectedFrequency: request.selectedFrequency)
+            presenter.presentDidChangeFrequency(with: response)
+        }
     }
     
     func didTapDelete() {
-        do {
+        tryOrThrow {
             try service.deleteTask()
             let response = EditTask.DidTapDelete.Response(didDelete: true)
             presenter.presentDidTapDelete(with: response)
-        } catch {
-            let response = EditTask.ShowError.Response(error: error as? EditTask.ServiceError ?? .unknown)
-            presenter.presentShowError(with: response)
         }
     }
     
     func didTapSave() {
-        do {
+        tryOrThrow {
             try service.save()
             let response = EditTask.DidTapSave.Response(didSave: true)
             presenter.presentDidTapSave(with: response)
-        } catch {
-            let response = EditTask.ShowError.Response(error: error as? EditTask.ServiceError ?? .unknown)
-            presenter.presentShowError(with: response)
         }
     }
     
@@ -87,5 +84,14 @@ struct EditTaskInteractor: EditTaskRequesting {
         let canSave = service.canSave()
         let response = EditTask.CanSave.Response(canSave: canSave)
         presenter.presentCanSave(with: response)
+    }
+    
+    private func tryOrThrow(_ do: () throws -> Void) {
+        do {
+            try `do`()
+        } catch {
+            let response = EditTask.ShowError.Response(error: error as? EditTask.ServiceError ?? .unknown)
+            presenter.presentShowError(with: response)
+        }
     }
 }
