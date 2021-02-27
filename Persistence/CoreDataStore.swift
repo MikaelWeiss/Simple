@@ -47,7 +47,6 @@ public class CoreDataStore {
             container = Self.inMemoryContainer(model: model)
         }
         
-        
         container.loadPersistentStores { store, error in
             if let error = error as NSError? {
                 os_log(.error, log: .persistence, "Unable to load stores! Error: %@; Info: %@", error, error.userInfo)
