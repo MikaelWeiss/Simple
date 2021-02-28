@@ -289,7 +289,7 @@
 			path = TasksOverview;
 			sourceTree = "<group>";
 		};
-		A56E0C2025D855C500247227 /* CreateTask */ = {
+		A56E0C2025D855C500247227 /* EditTask */ = {
 			isa = PBXGroup;
 			children = (
 				A56E0C2425D855E600247227 /* EditTaskInteractor.swift */,
@@ -303,7 +303,7 @@
 				A56E0C2525D855E600247227 /* EditTaskView.swift */,
 				A56E0C3125D855F100247227 /* EditTaskViewTests.swift */,
 			);
-			path = CreateTask;
+			path = EditTask;
 			sourceTree = "<group>";
 		};
 		A570996325DADFCF0050B3B5 /* DataStore */ = {
@@ -454,7 +454,7 @@
 		A5AC070D25D785E600504FEE /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				A56E0C2025D855C500247227 /* CreateTask */,
+				A56E0C2025D855C500247227 /* EditTask */,
 				A56E0C1F25D854E100247227 /* TasksOverview */,
 			);
 			path = Scenes;
