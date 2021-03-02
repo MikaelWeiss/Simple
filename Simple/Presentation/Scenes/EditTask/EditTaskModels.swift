@@ -30,6 +30,12 @@ extension EditTask {
         
         struct Response {
             let value: String
+            let valid: Bool
+        }
+        
+        struct TaskInfo {
+            let value: String
+            let state: TextEntry.ValueState
         }
     }
     
@@ -92,26 +98,28 @@ extension EditTask {
     class ViewModel: ObservableObject {
         @Published var title: String
         @Published var nameTitle: String
-        @Published var name: String
+        @Published var nameInfo: EditTask.ValidateName.TaskInfo
         @Published var preferredTimeTitle: String
         @Published var preferredTime: Date
         @Published var frequencyTitle: String
         @Published var selectedFrequency: Frequency
         @Published var taskImage: UIImage?
         @Published var canSave: Bool
+        @Published var canDelete: Bool
         @Published var alertInfo: (title: String, message: String, actionTitle: String)
         @Published var isShowingAlert: Bool
         @Published var isShowing: Bool = true
         
         init(title: String = "",
              nameTitle: String = "",
-             name: String = "",
+             nameInfo: EditTask.ValidateName.TaskInfo = .init(value: "", state: .normal),
              preferredTimeTitle: String = "",
              preferredTime: Date = Date.now,
              frequencyTitle: String = "",
              selectedFrequency: Frequency = .daily,
              taskImage: UIImage? = nil,
              canSave: Bool = false,
+             canDelete: Bool = false,
              alertInfo: (
                 title: String,
                 message: String,
@@ -123,13 +131,14 @@ extension EditTask {
             
             self.title = title
             self.nameTitle = nameTitle
-            self.name = name
+            self.nameInfo = nameInfo
             self.preferredTimeTitle = preferredTimeTitle
             self.preferredTime = preferredTime
             self.frequencyTitle = frequencyTitle
             self.selectedFrequency = selectedFrequency
             self.taskImage = taskImage
             self.canSave = canSave
+            self.canDelete = canDelete
             self.alertInfo = alertInfo
             self.isShowingAlert = isShowingAlert
         }

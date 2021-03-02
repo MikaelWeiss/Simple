@@ -8,15 +8,22 @@
 import SwiftUI
 
 struct TextEntry: View {
+    enum ValueState {
+        case error
+        case normal
+    }
+    
     @State private var isTyping = false
     let title: String
     let value: String
+    let state: ValueState
     let onTextChanged: (String) -> Void
     
-    init(_ title: String, value: String, onTextChanged: @escaping (String) -> Void) {
+    init(_ title: String, value: String, state: ValueState, onTextChanged: @escaping (String) -> Void) {
         self.title = title
         self.value = value
         self.onTextChanged = onTextChanged
+        self.state = state
     }
     
     var body: some View {
@@ -26,13 +33,13 @@ struct TextEntry: View {
             TextField(title, text: binding, onEditingChanged: { isTyping = $0 })
                 .placeholderFontStyle()
         }
-        .cellStyle()
+        .cellStyle(outlineColor: state == .normal ? Color.cellOutlineColor : Color.red)
         .overlay(
             Text(title)
                 .padding(.horizontal, 4)
                 .background(Color(.systemBackground))
                 .font(.system(size: 16, weight: .bold, design: .rounded))
-                .offset(x: 28, y: -19)
+                .offset(x: 28, y: -27)
                 .if(value.isEmpty) { $0.hidden() }
                 .animation(.default)
             , alignment: .leading)
@@ -42,9 +49,11 @@ struct TextEntry: View {
 struct TextEntry_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            TextEntry("Some title", value: "", onTextChanged: {_ in })
+            ZStack {
+                TextEntry("Some title", value: "asdf", state: .error, onTextChanged: {_ in })
+            }.frame(height: 100)
             
-            TextEntry("Some title", value: "", onTextChanged: {_ in })
+            TextEntry("Some title", value: "", state: .normal, onTextChanged: {_ in })
                 .background(Color(.systemBackground))
                 .colorScheme(.dark)
         }.previewLayout(.sizeThatFits)

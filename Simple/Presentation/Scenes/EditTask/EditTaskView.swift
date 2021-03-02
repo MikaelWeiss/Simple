@@ -36,7 +36,7 @@ struct EditTaskView: View {
         ScrollView {
             VStack(spacing: 16) {
                 Spacer().frame(height: 0)
-                TextEntry(viewModel.nameTitle, value: viewModel.name) {
+                TextEntry(viewModel.nameTitle, value: viewModel.nameInfo.value, state: viewModel.nameInfo.state) {
                     didChangeName(to: $0)
                 }
                 DateSelection("Date", value: viewModel.preferredTime) {
@@ -49,7 +49,7 @@ struct EditTaskView: View {
                 Button("Delete Task") {
                     didTapDelete()
                 }
-//                .disabled(true)
+                .disabled(viewModel.canDelete)
             }
             .padding(.horizontal)
         }
@@ -117,7 +117,7 @@ struct EditTask_Previews: PreviewProvider {
                                     EditTask.ViewModel(
                                         title: "New Task",
                                         nameTitle: "Name",
-                                        name: "",
+                                        nameInfo: .init(value: "", state: .normal),
                                         preferredTimeTitle: "Date:",
                                         preferredTime: Date.now,
                                         frequencyTitle: "Repetition:",

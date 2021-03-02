@@ -35,14 +35,14 @@ struct EditTaskPresenter: EditTaskPresenting {
     
     func presentFetchTask(with response: EditTask.FetchTask.Response) {
         let taskInfo = response.task
-        viewModel.name = taskInfo.name ?? ""
+        viewModel.nameInfo = .init(value: response.task.name ?? "", state: .normal)
         viewModel.preferredTime = taskInfo.preferredTime ?? Date.now
         viewModel.selectedFrequency = taskInfo.frequency ?? .daily
         viewModel.taskImage = taskInfo.image
     }
     
     func presentDidChangeName(with response: EditTask.ValidateName.Response) {
-        viewModel.name = response.value
+        viewModel.nameInfo = EditTask.ValidateName.TaskInfo(value: response.value, state: response.valid ? .normal : .error)
     }
     
     func presentDidChangeDate(with response: EditTask.ValidateDate.Response) {

@@ -41,9 +41,12 @@ struct EditTaskInteractor: EditTaskRequesting {
     }
     
     func didChangeName(with request: EditTask.ValidateName.Request) {
-        tryOrThrow {
+        do {
             try service.validateTaskName(to: request.value)
-            let response = EditTask.ValidateName.Response(value: request.value)
+            let response = EditTask.ValidateName.Response(value: request.value, valid: true)
+            presenter.presentDidChangeName(with: response)
+        } catch {
+            let response = EditTask.ValidateName.Response(value: request.value, valid: false)
             presenter.presentDidChangeName(with: response)
         }
     }

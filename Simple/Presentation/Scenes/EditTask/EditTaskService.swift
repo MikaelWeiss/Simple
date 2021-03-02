@@ -38,8 +38,7 @@ extension EditTask {
         case syncFailed
         case missingRequiredFields
         case validationError
-        case saveFailed
-        case deleteFailed
+        case saveFailed, updateFailed, deleteFailed
         case fetchFailed
         case unknown
     }
@@ -105,6 +104,7 @@ extension EditTask {
         
         func validateTaskName(to name: String) throws {
             if name.isEmpty {
+                taskInfo.name = nil
                 throw ServiceError.validationError
             }
             taskInfo.name = name
@@ -127,6 +127,7 @@ extension EditTask {
             
             do {
                 if let task = self.task {
+                    try updateTask(task, withInfo: taskInfo)
                     try taskRepository.updateTask(task)
                 } else {
                     let task = try makeTask(with: taskInfo)
@@ -134,6 +135,9 @@ extension EditTask {
                     self.task = task
                 }
             } catch {
+                if error is ServiceError {
+                    throw error
+                }
                 throw ServiceError.saveFailed
             }
         }
@@ -147,6 +151,22 @@ extension EditTask {
                         preferredTime: preferredTime,
                         frequency: frequency,
                         image: info.image)
+        }
+        
+        private func updateTask(_ task: Task, withInfo info: TaskInfo) throws {
+            guard let name = info.name,
+                  let preferredTime = info.preferredTime,
+                  let frequency = info.frequency
+            else { throw ServiceError.saveFailed }
+            
+            do {
+                try task.set(name: name)
+                try task.set(preferredTime: preferredTime)
+                try task.set(frequency: frequency)
+                try task.set(image: info.image)
+            } catch {
+                throw ServiceError.updateFailed
+            }
         }
         
         func deleteTask() throws {
