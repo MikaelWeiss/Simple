@@ -17,6 +17,7 @@ extension Color {
 }
 
 extension Color {
+    /// Example: Color(hex: 0xA10115)
     init(hex: UInt, alpha: Double = 1) {
         self.init(
             .sRGB,
