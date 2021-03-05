@@ -8,4 +8,6 @@ All notable changes to this project will be documented in this file.
 
 ### Added
 
+- Added the ability for a task to repeate.
+
 ### Changed
