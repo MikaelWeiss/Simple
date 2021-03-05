@@ -14,6 +14,8 @@
 		A514524925D8A9540005070F /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514524825D8A9540005070F /* View+Extensions.swift */; };
 		A514526E25D8BCEF0005070F /* Styles.swift in Sources */ = {isa = PBXBuildFile; fileRef = A514526D25D8BCEF0005070F /* Styles.swift */; };
 		A5285AC225DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5285AC125DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift */; };
+		A53AC71525F1DBEA003B305E /* Recurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AC71425F1DBEA003B305E /* Recurrence.swift */; };
+		A53AC71A25F1DBFC003B305E /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AC71925F1DBFC003B305E /* Int+Extensions.swift */; };
 		A53D4A3A25E4B4C700070FF3 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3425E4B4C700070FF3 /* Frequency.swift */; };
 		A53D4A3B25E4B4C700070FF3 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3625E4B4C700070FF3 /* Date+Extensions.swift */; };
 		A53D4A3D25E4B4C700070FF3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3925E4B4C700070FF3 /* Task.swift */; };
@@ -117,6 +119,8 @@
 		A514524825D8A9540005070F /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		A514526D25D8BCEF0005070F /* Styles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Styles.swift; sourceTree = "<group>"; };
 		A5285AC125DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreStorageFactoryTests.swift; sourceTree = "<group>"; };
+		A53AC71425F1DBEA003B305E /* Recurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recurrence.swift; sourceTree = "<group>"; };
+		A53AC71925F1DBFC003B305E /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
 		A53D4A3425E4B4C700070FF3 /* Frequency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
 		A53D4A3625E4B4C700070FF3 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		A53D4A3725E4B4C700070FF3 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
@@ -240,10 +244,19 @@
 		A514523E25D8A8B70005070F /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				A53AC71325F1DBD3003B305E /* Recurrence */,
 				A53D4A3325E4B4C700070FF3 /* SupportTypes */,
 				A53D4A3825E4B4C700070FF3 /* Tasks */,
 			);
 			path = Domain;
+			sourceTree = "<group>";
+		};
+		A53AC71325F1DBD3003B305E /* Recurrence */ = {
+			isa = PBXGroup;
+			children = (
+				A53AC71425F1DBEA003B305E /* Recurrence.swift */,
+			);
+			path = Recurrence;
 			sourceTree = "<group>";
 		};
 		A53D4A3325E4B4C700070FF3 /* SupportTypes */ = {
@@ -260,6 +273,7 @@
 			children = (
 				A53D4A3625E4B4C700070FF3 /* Date+Extensions.swift */,
 				A53D4A3725E4B4C700070FF3 /* UIImage+Extensions.swift */,
+				A53AC71925F1DBFC003B305E /* Int+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -683,6 +697,7 @@
 				A570999225DAF02D0050B3B5 /* CoreDataStorage.swift in Sources */,
 				A5709A1025DB2DB80050B3B5 /* CoreDataStorage+Write.swift in Sources */,
 				A56E0C2B25D855E600247227 /* EditTaskView.swift in Sources */,
+				A53AC71A25F1DBFC003B305E /* Int+Extensions.swift in Sources */,
 				A5AC071E25D7865E00504FEE /* TasksOverviewService.swift in Sources */,
 				A5EC5D4A25DE04DB002B3D94 /* RepositoryAction.swift in Sources */,
 				A5709A0B25DB2D7D0050B3B5 /* CoreDataStorage+Read.swift in Sources */,
@@ -698,6 +713,7 @@
 				A56E0C2C25D855E600247227 /* EditTaskService.swift in Sources */,
 				A56E0C2825D855E600247227 /* EditTaskModels.swift in Sources */,
 				A5AC071B25D7865E00504FEE /* TasksOverviewScene.swift in Sources */,
+				A53AC71525F1DBEA003B305E /* Recurrence.swift in Sources */,
 				A514524925D8A9540005070F /* View+Extensions.swift in Sources */,
 				A56E0C2A25D855E600247227 /* EditTaskInteractor.swift in Sources */,
 				A514523A25D8A8800005070F /* TextEntry.swift in Sources */,

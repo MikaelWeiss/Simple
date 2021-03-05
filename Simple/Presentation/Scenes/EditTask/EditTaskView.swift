@@ -42,8 +42,8 @@ struct EditTaskView: View {
                 DateSelection("Date", value: viewModel.preferredTime) {
                     didChangeDate(to: $0)
                 }
-                RepetitionSelectionCell(viewModel.frequencyTitle,
-                                        selectedRepetition: viewModel.selectedFrequency) {
+                RecurrenceSelectionCell(viewModel.frequencyTitle,
+                                        selectedRecurrence: viewModel.selectedFrequency) {
                     didChangeFrequency(to: $0)
                 }
                 Button("Delete Task") {
@@ -129,19 +129,19 @@ struct EditTask_Previews: PreviewProvider {
 
 // MARK: - Other Views
 
-struct RepetitionSelectionCell: View {
+struct RecurrenceSelectionCell: View {
     @State private var isShowingSelectionSheet = false
     
     private let frequencyOptions: [Frequency] = Frequency.allCases
     let title: String
-    let selectedRepetition: Frequency?
+    let selectedRecurrence: Frequency?
     let onSelectedRepetition: (Frequency) -> Void
     
     init(_ title: String,
-         selectedRepetition: Frequency?,
+         selectedRecurrence: Frequency?,
          onSelectedRepetition: @escaping (Frequency) -> Void) {
         self.title = title
-        self.selectedRepetition = selectedRepetition
+        self.selectedRecurrence = selectedRecurrence
         self.onSelectedRepetition = onSelectedRepetition
     }
     
@@ -149,7 +149,7 @@ struct RepetitionSelectionCell: View {
         HStack {
             Text(title)
             Spacer().tappable()
-            Text(selectedRepetition?.stringValue.capitalized ?? "Select Value")
+            Text(selectedRecurrence?.stringValue.capitalized ?? "Select Value")
                 .valueFontStyle()
                 .lineLimit(1)
             Image(systemName: "arrowtriangle.down.square.fill")
@@ -163,7 +163,7 @@ struct RepetitionSelectionCell: View {
         .sheet(isPresented: $isShowingSelectionSheet) {
             SelectRepetitionView(
                 repetitionOptions: frequencyOptions,
-                currentlySelectedRepetition: selectedRepetition) {
+                currentlySelectedRepetition: selectedRecurrence) {
                 onSelectedRepetition($0)
             }
         }
