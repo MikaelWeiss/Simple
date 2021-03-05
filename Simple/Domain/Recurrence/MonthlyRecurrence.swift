@@ -36,10 +36,11 @@ extension MonthlyRecurrence {
             let computedDayOfTheMonth: ComputedDayOfTheMonth.ReconstitutionInfo?
         }
         
-        init(with info: ReconstitutionInfo) {
+        init(with info: ReconstitutionInfo) throws {
             switch (info.daysOfTheMonth, info.computedDayOfTheMonth) {
             case (.some(let daysOfTheMonth), nil):
-                self = .daysOfTheMonth(Set(arrayLiteral: daysOfTheMonth.map { try IntegerDayOfTheMonth.init(with: $0) }))
+                let mappedDays = try daysOfTheMonth.map { try IntegerDayOfTheMonth(with: $0) }
+                self = .daysOfTheMonth(Set(mappedDays))
             case (nil, .some(let computedDayOfTheMonth)):
                 self = .computedDayOfTheMonth(try ComputedDayOfTheMonth(with: computedDayOfTheMonth))
             default: throw ReconstitutionError.invalidOption("Failed")
