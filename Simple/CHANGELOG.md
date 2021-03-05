@@ -9,7 +9,7 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Added the code that makes saving data possible.
-- Added the ability for the user to add a Task.
+- Added the ability for the user to add, edit, and delete Tasks.
 - Added the ability for a Task to repeate.
 
 ### Changed
