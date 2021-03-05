@@ -13,14 +13,12 @@ struct Recurrence {
         case hourly
         case daily(DailyRecurrence)
         case weekly(WeeklyRecurrence)
-        case monthly(MontlyRecurrence)
+        case monthly(MonthlyRecurrence)
         case yearly(YearlyRecurrence)
         
         struct DailyRecurrence {
             enum HoursOfTheDay: Int {
-                case one, two, three, four, five, six, seven, eight, nine, ten
-                case eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty
-                case twentyone, twentytwo, twentythree
+                case one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree
             }
             var hoursOfTheDay: Set<HoursOfTheDay>
         }
@@ -32,7 +30,7 @@ struct Recurrence {
             var daysOfTheWeek: Set<DayOfTheWeek>
         }
         
-        struct MontlyRecurrence {
+        struct MonthlyRecurrence {
             enum DayOfTheMonth {
                 case dayOfTheMonth(Set<IntegerDayOfTheMonth>)
                 case computedDayOfTheMonth(ComputedDayOfTheMonth)
@@ -70,7 +68,7 @@ struct Recurrence {
                 case january, february, march, april, may, june, july, august, september, october, november, december
             }
             var monthsOfTheYear: Set<MonthOfTheYear>
-            var dayOfTheMonth: MontlyRecurrence.DayOfTheMonth
+            var dayOfTheMonth: MonthlyRecurrence.DayOfTheMonth
         }
     }
     
