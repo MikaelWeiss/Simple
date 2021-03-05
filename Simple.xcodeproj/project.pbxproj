@@ -61,6 +61,7 @@
 		A5AC072725D7868900504FEE /* TasksOverviewViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC072325D7868900504FEE /* TasksOverviewViewTests.swift */; };
 		A5AC072825D7868900504FEE /* TasksOverviewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC072425D7868900504FEE /* TasksOverviewPresenterTests.swift */; };
 		A5AC072925D7868900504FEE /* TasksOverviewServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC072525D7868900504FEE /* TasksOverviewServiceTests.swift */; };
+		A5BF0D5B25F27FC800044D86 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = A5BF0D5A25F27FC800044D86 /* CHANGELOG.md */; };
 		A5EC5D4A25DE04DB002B3D94 /* RepositoryAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC5D4925DE04DB002B3D94 /* RepositoryAction.swift */; };
 		A5FA9BC525DE068400595C33 /* CoreDataStorage+ReadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC5D4E25DE0647002B3D94 /* CoreDataStorage+ReadTests.swift */; };
 		A5FA9BD425DE06AE00595C33 /* CoreDataStorage+WriteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FA9BCF25DE06A900595C33 /* CoreDataStorage+WriteTests.swift */; };
@@ -175,6 +176,7 @@
 		A5AC072325D7868900504FEE /* TasksOverviewViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksOverviewViewTests.swift; sourceTree = "<group>"; };
 		A5AC072425D7868900504FEE /* TasksOverviewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksOverviewPresenterTests.swift; sourceTree = "<group>"; };
 		A5AC072525D7868900504FEE /* TasksOverviewServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksOverviewServiceTests.swift; sourceTree = "<group>"; };
+		A5BF0D5A25F27FC800044D86 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = Simple/CHANGELOG.md; sourceTree = "<group>"; };
 		A5EC5D4925DE04DB002B3D94 /* RepositoryAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryAction.swift; sourceTree = "<group>"; };
 		A5EC5D4E25DE0647002B3D94 /* CoreDataStorage+ReadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStorage+ReadTests.swift"; sourceTree = "<group>"; };
 		A5FA9BCF25DE06A900595C33 /* CoreDataStorage+WriteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStorage+WriteTests.swift"; sourceTree = "<group>"; };
@@ -399,6 +401,7 @@
 		A5AC06C225D7830900504FEE = {
 			isa = PBXGroup;
 			children = (
+				A5BF0D5A25F27FC800044D86 /* CHANGELOG.md */,
 				A5AC06CD25D7830900504FEE /* Simple */,
 				A5AC06E425D7830A00504FEE /* SimpleTests */,
 				A57099A125DAF5180050B3B5 /* Persistence */,
@@ -656,6 +659,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5AC06D625D7830A00504FEE /* Preview Assets.xcassets in Resources */,
+				A5BF0D5B25F27FC800044D86 /* CHANGELOG.md in Resources */,
 				A5AC06D325D7830A00504FEE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
