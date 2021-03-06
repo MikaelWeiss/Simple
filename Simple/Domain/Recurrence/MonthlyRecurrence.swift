@@ -132,14 +132,14 @@ extension MonthlyRecurrence {
         private(set) var dayOfTheMonth: Int
         mutating func set(dayOfTheMonth: Int) throws {
             try this(error: DomainError.setFailed) {
-                self.dayOfTheMonth = try dayOfTheMonth.residesInRange(min: 0, max: 24)
+                self.dayOfTheMonth = try dayOfTheMonth.residesInRange(min: 0, max: 31)
             }
         }
         
         // MARK: init
         init(dayOfTheMonth: Int) throws {
             do {
-                self.dayOfTheMonth = try dayOfTheMonth.residesInRange(min: 0, max: 24)
+                self.dayOfTheMonth = try dayOfTheMonth.residesInRange(min: 0, max: 31)
             } catch {
                 throw DomainError.initFailed
             }
@@ -152,7 +152,7 @@ extension MonthlyRecurrence {
         
         init(with info: ReconstitutionInfo) throws {
             do {
-                self.dayOfTheMonth = try info.dayOfTheMonth.residesInRange(min: 0, max: 24)
+                self.dayOfTheMonth = try info.dayOfTheMonth.residesInRange(min: 0, max: 31)
             } catch {
                 throw ReconstitutionError.invalidOption("Outside of range: \(info.dayOfTheMonth)")
             }

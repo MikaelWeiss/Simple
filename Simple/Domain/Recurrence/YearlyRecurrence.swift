@@ -8,8 +8,8 @@
 import Foundation
 
 struct YearlyRecurrence {
-    enum MonthOfTheYear {
-        case january, february, march, april, may, june, july, august, september, october, november, december
+    enum MonthOfTheYear: Int {
+        case january = 1, february, march, april, may, june, july, august, september, october, november, december
     }
     var monthsOfTheYear: Set<MonthOfTheYear>
     var dayOfTheMonth: MonthlyRecurrence.DayOfTheMonth

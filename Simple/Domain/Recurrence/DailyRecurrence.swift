@@ -8,8 +8,8 @@
 import Foundation
 
 struct DailyRecurrence {
-    enum HoursOfTheDay {
-        case one, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree
+    enum HoursOfTheDay: Int {
+        case one = 1, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree
         
         var stringValue: String {
             switch self {

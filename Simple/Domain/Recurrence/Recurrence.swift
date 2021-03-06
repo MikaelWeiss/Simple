@@ -9,7 +9,6 @@ import Foundation
 
 
 struct Recurrence {
-    
     private(set) var id: UUID
     private(set) var frequency: Frequency
     mutating func set(frequency: Frequency) throws {
@@ -37,7 +36,7 @@ struct Recurrence {
         id = UUID()
         frequency = .daily(DailyRecurrence(hoursOfTheDay: Set(arrayLiteral: .eight)))
         recurrenceEnd = .occurrenceCount(1)
-        interval = try! Interval()
+        interval = Interval()
     }
     
 //    struct ReconstitutionInfo {
@@ -47,4 +46,18 @@ struct Recurrence {
 //    init(with: ReconstitutionInfo) {
 //
 //    }
+}
+
+extension Recurrence {
+    enum DefaultRecurrence {
+        case never
+        case hourly
+        case daily
+        case weekly
+        case biweekly
+        case monthly
+        case everyThreeMonths
+        case everySixMonths
+        case yearly
+    }
 }

@@ -17,8 +17,12 @@ struct Interval {
     
     // MARK: - Init
     
-    init(interval: Int = 1) throws {
+    init(interval: Int) throws {
         self.interval = try interval.residesInRange(min: 0, max: 24)
+    }
+    
+    init() {
+        self.interval = 1
     }
     
     // MARK: - Reconstitution
