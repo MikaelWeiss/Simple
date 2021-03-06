@@ -9,10 +9,8 @@
 import Foundation
 
 protocol CustomRecurrenceRequesting {
-    func updateTheme()
-    func didChangeValue(with request: CustomRecurrence.ValidateValue.Request)
-    func prepareRouteToSheet()
-    func prepareRouteToOtherScene()
+    func didSelectFrequency(with request: CustomRecurrence.SelectedFrequency.Request)
+    func didSelectInterval(with request: CustomRecurrence.SelectedInterval.Request)
 }
 
 struct CustomRecurrenceInteractor: CustomRecurrenceRequesting {
@@ -24,20 +22,14 @@ struct CustomRecurrenceInteractor: CustomRecurrenceRequesting {
         self.presenter = presenter
     }
     
-    func updateTheme() {
-        presenter.presentUpdateTheme()
+    func didSelectFrequency(with request: CustomRecurrence.SelectedFrequency.Request) {
+        let response = CustomRecurrence.SelectedFrequency.Response(value: request.value)
+        presenter.presentDidSelectFrequency(with: response)
     }
     
-    func didChangeValue(with request: CustomRecurrence.ValidateValue.Request) {
-        let response = CustomRecurrence.ValidateValue.Response(value: request.value)
-        presenter.presentDidChangeValue(with: response)
-    }
-    
-    func prepareRouteToSheet() {
-        presenter.presentPrepareRouteToSheet()
-    }
-    
-    func prepareRouteToOtherScene() {
-        presenter.presentPrepareRouteToOtherScene()
+    func didSelectInterval(with request: CustomRecurrence.SelectedInterval.Request) {
+        let response = CustomRecurrence.SelectedInterval.Response(value: request.value)
+        presenter.presentDidSelectInterval(with: response)
+        
     }
 }

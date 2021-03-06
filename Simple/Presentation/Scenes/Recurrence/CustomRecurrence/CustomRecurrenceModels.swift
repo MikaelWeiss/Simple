@@ -10,26 +10,29 @@ import Foundation
 import UIKit
 
 extension CustomRecurrence {
-    enum ValidateValue {
+    enum SelectedFrequency {
         struct Request {
-            let value: String
+            let value: CustomRecurrence.Frequency
         }
-        
         struct Response {
-            let value: String
+            let value: CustomRecurrence.Frequency
+        }
+    }
+    
+    enum SelectedInterval {
+        struct Request {
+            let value: Int
+        }
+        struct Response {
+            let value: Int
         }
     }
     
     enum Strings {
-        static let sceneTitle = NSLocalizedString("Some title", comment: "The title for the scene")
-        static let textFieldTitle = NSLocalizedString("Some title", comment: "The title for some text field")
+        static let sceneTitle = NSLocalizedString("Custom Repeat", comment: "The title for the scene")
     }
     
     class ViewModel: ObservableObject {
-        @Published var title = ""
-        @Published var textFieldTitle = ""
-        @Published var textFieldValue = ""
-        @Published var isShowingOtherScene = false
-        @Published var isShowingSheet = false
+        @Published var sceneTitle = Strings.sceneTitle
     }
 }

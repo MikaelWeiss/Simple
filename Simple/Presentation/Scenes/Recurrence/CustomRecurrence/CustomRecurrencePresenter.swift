@@ -10,29 +10,16 @@ import Foundation
 import UIKit
 
 protocol CustomRecurrencePresenting {
-    func presentDidChangeValue(with response: CustomRecurrence.ValidateValue.Response)
-    func presentUpdateTheme()
-    func presentPrepareRouteToSheet()
-    func presentPrepareRouteToOtherScene()
+    func presentDidSelectFrequency(with request: CustomRecurrence.SelectedFrequency.Response)
+    func presentDidSelectInterval(with request: CustomRecurrence.SelectedInterval.Response)
 }
 
 struct CustomRecurrencePresenter: CustomRecurrencePresenting {
     let viewModel = CustomRecurrence.ViewModel()
     
-    func presentUpdateTheme() {
-        viewModel.title = CustomRecurrence.Strings.sceneTitle
-        viewModel.textFieldTitle = CustomRecurrence.Strings.textFieldTitle
+    func presentDidSelectFrequency(with request: CustomRecurrence.SelectedFrequency.Response) {
     }
     
-    func presentDidChangeValue(with response: CustomRecurrence.ValidateValue.Response) {
-        viewModel.textFieldValue = response.value
-    }
-    
-    func presentPrepareRouteToSheet() {
-        viewModel.isShowingSheet = true
-    }
-    
-    func presentPrepareRouteToOtherScene() {
-        viewModel.isShowingOtherScene = true
+    func presentDidSelectInterval(with request: CustomRecurrence.SelectedInterval.Response) {
     }
 }

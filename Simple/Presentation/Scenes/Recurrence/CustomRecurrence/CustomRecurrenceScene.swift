@@ -18,13 +18,5 @@ enum CustomRecurrence {
             let interactor = CustomRecurrenceInteractor(service: service, presenter: presenter)
             view = CustomRecurrenceView(interactor: interactor, viewModel: presenter.viewModel)
         }
-        
-        private func buildService() -> CustomRecurrenceService {
-            if true {
-                return CustomRecurrence.DemoService()
-            }
-        }
-        
-        let service = CustomRecurrence.Service()
     }
 }
