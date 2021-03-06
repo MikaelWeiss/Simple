@@ -526,8 +526,8 @@
 		A5AC070D25D785E600504FEE /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				A5649C7625F2A26700E322A1 /* Recurrence */,
 				A56E0C2025D855C500247227 /* EditTask */,
+				A5649C7625F2A26700E322A1 /* Recurrence */,
 				A56E0C1F25D854E100247227 /* TasksOverview */,
 			);
 			path = Scenes;
