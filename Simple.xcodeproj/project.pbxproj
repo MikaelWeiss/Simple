@@ -267,7 +267,6 @@
 			children = (
 				A514523125D8A7B10005070F /* Color+Extensions.swift */,
 				A514524825D8A9540005070F /* View+Extensions.swift */,
-				A5BF0D8825F28FAB00044D86 /* Swift+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -285,8 +284,8 @@
 			isa = PBXGroup;
 			children = (
 				A5BF0D8D25F2905300044D86 /* DomainError.swift */,
+				A53D4A3525E4B4C700070FF3 /* Extensions */,
 				A53AC71325F1DBD3003B305E /* Recurrence */,
-				A53D4A3325E4B4C700070FF3 /* SupportTypes */,
 				A53D4A3825E4B4C700070FF3 /* Tasks */,
 			);
 			path = Domain;
@@ -307,20 +306,13 @@
 			path = Recurrence;
 			sourceTree = "<group>";
 		};
-		A53D4A3325E4B4C700070FF3 /* SupportTypes */ = {
-			isa = PBXGroup;
-			children = (
-				A53D4A3525E4B4C700070FF3 /* Extensions */,
-			);
-			path = SupportTypes;
-			sourceTree = "<group>";
-		};
 		A53D4A3525E4B4C700070FF3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
 				A53D4A3625E4B4C700070FF3 /* Date+Extensions.swift */,
-				A53D4A3725E4B4C700070FF3 /* UIImage+Extensions.swift */,
 				A53AC71925F1DBFC003B305E /* Int+Extensions.swift */,
+				A5BF0D8825F28FAB00044D86 /* Swift+Extensions.swift */,
+				A53D4A3725E4B4C700070FF3 /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
