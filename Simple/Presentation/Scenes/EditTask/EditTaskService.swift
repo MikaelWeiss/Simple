@@ -13,7 +13,7 @@ protocol EditTaskService {
     func canSave() -> Bool
     func validateTaskName(to name: String) throws
     func validateTaskPreferredTime(to time: Date) throws
-    func validateTaskFrequency(to frequency: Frequency) throws
+//    func validateTaskFrequency(to frequency: Frequency) throws
     func validateTaskImage(to image: UIImage) throws
     func save() throws
     func deleteTask() throws
@@ -46,7 +46,7 @@ extension EditTask {
     struct TaskInfo {
         var name: String?
         var preferredTime: Date?
-        var frequency: Frequency?
+//        var frequency: Frequency?
         var image: UIImage?
     }
     
@@ -72,7 +72,7 @@ extension EditTask {
             taskInfo = TaskInfo(
                 name: nil,
                 preferredTime: Date.now,
-                frequency: .daily,
+//                frequency: .daily,
                 image: nil)
         }
         
@@ -87,7 +87,7 @@ extension EditTask {
             taskInfo = TaskInfo(
                 name: task?.name,
                 preferredTime: task?.preferredTime ?? Date.now,
-                frequency: task?.frequency ?? .daily,
+//                frequency: task?.frequency ?? .daily,
                 image: task?.image)
             
             return taskInfo
@@ -96,7 +96,7 @@ extension EditTask {
         func canSave() -> Bool {
             guard let name = taskInfo.name,
                   !name.isEmpty,
-                  taskInfo.frequency != nil,
+//                  taskInfo.frequency != nil,
                   taskInfo.preferredTime != nil
             else { return false }
             return true
@@ -114,9 +114,9 @@ extension EditTask {
             taskInfo.preferredTime = time
         }
         
-        func validateTaskFrequency(to frequency: Frequency) throws {
-            taskInfo.frequency = frequency
-        }
+//        func validateTaskFrequency(to frequency: Frequency) throws {
+//            taskInfo.frequency = frequency
+//        }
         
         func validateTaskImage(to image: UIImage) throws {
             taskInfo.image = image
@@ -144,25 +144,25 @@ extension EditTask {
         
         private func makeTask(with info: TaskInfo) throws -> Task {
             guard let name = info.name,
-                  let preferredTime = info.preferredTime,
-                  let frequency = info.frequency
+                  let preferredTime = info.preferredTime
+//                  let frequency = info.frequency
             else { throw ServiceError.saveFailed }
             return Task(name: name,
                         preferredTime: preferredTime,
-                        frequency: frequency,
+//                        frequency: frequency,
                         image: info.image)
         }
         
         private func updateTask(_ task: Task, withInfo info: TaskInfo) throws {
             guard let name = info.name,
-                  let preferredTime = info.preferredTime,
-                  let frequency = info.frequency
+                  let preferredTime = info.preferredTime
+//                  let frequency = info.frequency
             else { throw ServiceError.saveFailed }
             
             do {
                 try task.set(name: name)
                 try task.set(preferredTime: preferredTime)
-                try task.set(frequency: frequency)
+//                try task.set(frequency: frequency)
                 try task.set(image: info.image)
             } catch {
                 throw ServiceError.updateFailed

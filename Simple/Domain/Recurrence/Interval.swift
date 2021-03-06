@@ -10,7 +10,7 @@ import Foundation
 struct Interval {
     private(set) var interval: Int
     mutating func set(value: Int) throws {
-        try tryThis(error: DomainError.setFailed) {
+        try this(error: DomainError.setFailed) {
             self.interval = try value.residesInRange(min: 0, max: 24)
         }
     }

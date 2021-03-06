@@ -49,15 +49,15 @@ extension EditTask {
         }
     }
     
-    enum ValidateFrequencySelection {
-        struct Request {
-            let selectedFrequency: Frequency
-        }
-        
-        struct Response {
-            let selectedFrequency: Frequency
-        }
-    }
+//    enum ValidateFrequencySelection {
+//        struct Request {
+//            let selectedFrequency: Frequency
+//        }
+//        
+//        struct Response {
+//            let selectedFrequency: Frequency
+//        }
+//    }
     
     enum CanSave {
         struct Response {
@@ -102,7 +102,7 @@ extension EditTask {
         @Published var preferredTimeTitle: String
         @Published var preferredTime: Date
         @Published var frequencyTitle: String
-        @Published var selectedFrequency: Frequency
+//        @Published var selectedFrequency: Frequency
         @Published var taskImage: UIImage?
         @Published var canSave: Bool
         @Published var canDelete: Bool
@@ -116,7 +116,7 @@ extension EditTask {
              preferredTimeTitle: String = "",
              preferredTime: Date = Date.now,
              frequencyTitle: String = "",
-             selectedFrequency: Frequency = .daily,
+//             selectedFrequency: Frequency = .daily,
              taskImage: UIImage? = nil,
              canSave: Bool = false,
              canDelete: Bool = false,
@@ -135,7 +135,7 @@ extension EditTask {
             self.preferredTimeTitle = preferredTimeTitle
             self.preferredTime = preferredTime
             self.frequencyTitle = frequencyTitle
-            self.selectedFrequency = selectedFrequency
+//            self.selectedFrequency = selectedFrequency
             self.taskImage = taskImage
             self.canSave = canSave
             self.canDelete = canDelete

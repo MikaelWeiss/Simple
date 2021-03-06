@@ -14,7 +14,7 @@ protocol EditTaskPresenting {
     func presentFetchTask(with response: EditTask.FetchTask.Response)
     func presentDidChangeName(with response: EditTask.ValidateName.Response)
     func presentDidChangeDate(with response: EditTask.ValidateDate.Response)
-    func presentDidChangeFrequency(with response: EditTask.ValidateFrequencySelection.Response)
+//    func presentDidChangeFrequency(with response: EditTask.ValidateFrequencySelection.Response)
     func presentCanSave(with response: EditTask.CanSave.Response)
     func presentDidTapSave(with response: EditTask.DidTapSave.Response)
     func presentDidTapDelete(with response: EditTask.DidTapDelete.Response)
@@ -37,7 +37,6 @@ struct EditTaskPresenter: EditTaskPresenting {
         let taskInfo = response.task
         viewModel.nameInfo = .init(value: response.task.name ?? "", state: .normal)
         viewModel.preferredTime = taskInfo.preferredTime ?? Date.now
-        viewModel.selectedFrequency = taskInfo.frequency ?? .daily
         viewModel.taskImage = taskInfo.image
     }
     
@@ -49,9 +48,9 @@ struct EditTaskPresenter: EditTaskPresenting {
         viewModel.preferredTime = response.value
     }
     
-    func presentDidChangeFrequency(with response: EditTask.ValidateFrequencySelection.Response) {
-        viewModel.selectedFrequency = response.selectedFrequency
-    }
+//    func presentDidChangeFrequency(with response: EditTask.ValidateFrequencySelection.Response) {
+//        viewModel.selectedFrequency = response.selectedFrequency
+//    }
     
     func presentCanSave(with response: EditTask.CanSave.Response) {
         viewModel.canSave = response.canSave

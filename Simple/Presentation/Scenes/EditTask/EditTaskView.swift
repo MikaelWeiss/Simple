@@ -42,10 +42,7 @@ struct EditTaskView: View {
                 DateSelection("Date", value: viewModel.preferredTime) {
                     didChangeDate(to: $0)
                 }
-                RecurrenceSelectionCell(viewModel.frequencyTitle,
-                                        selectedRecurrence: viewModel.selectedFrequency) {
-                    didChangeFrequency(to: $0)
-                }
+                RecurrenceSelectionCell(viewModel.frequencyTitle)
                 Button("Delete Task") {
                     didTapDelete()
                 }
@@ -95,11 +92,11 @@ extension EditTaskView: EditTaskInputting {
         interactor?.checkCanSave()
     }
     
-    func didChangeFrequency(to frequency: Frequency) {
-        let request = EditTask.ValidateFrequencySelection.Request(selectedFrequency: frequency)
-        interactor?.didChangeFrequency(with: request)
-        interactor?.checkCanSave()
-    }
+//    func didChangeFrequency(to frequency: Frequency) {
+//        let request = EditTask.ValidateFrequencySelection.Request(selectedFrequency: frequency)
+//        interactor?.didChangeFrequency(with: request)
+//        interactor?.checkCanSave()
+//    }
     
     func didTapDelete() {
         interactor?.didTapDelete()
@@ -120,8 +117,7 @@ struct EditTask_Previews: PreviewProvider {
                                         nameInfo: .init(value: "", state: .normal),
                                         preferredTimeTitle: "Date:",
                                         preferredTime: Date.now,
-                                        frequencyTitle: "Repetition:",
-                                        selectedFrequency: .daily))
+                                        frequencyTitle: "Repetition:"))
         }
     }
 }
@@ -132,24 +128,17 @@ struct EditTask_Previews: PreviewProvider {
 struct RecurrenceSelectionCell: View {
     @State private var isShowingSelectionSheet = false
     
-    private let frequencyOptions: [Frequency] = Frequency.allCases
     let title: String
-    let selectedRecurrence: Frequency?
-    let onSelectedRepetition: (Frequency) -> Void
     
-    init(_ title: String,
-         selectedRecurrence: Frequency?,
-         onSelectedRepetition: @escaping (Frequency) -> Void) {
+    init(_ title: String) {
         self.title = title
-        self.selectedRecurrence = selectedRecurrence
-        self.onSelectedRepetition = onSelectedRepetition
     }
     
     var body: some View {
         HStack {
             Text(title)
             Spacer().tappable()
-            Text(selectedRecurrence?.stringValue.capitalized ?? "Select Value")
+            Text("Select Value")
                 .valueFontStyle()
                 .lineLimit(1)
             Image(systemName: "arrowtriangle.down.square.fill")
@@ -161,48 +150,36 @@ struct RecurrenceSelectionCell: View {
             isShowingSelectionSheet = true
         }
         .sheet(isPresented: $isShowingSelectionSheet) {
-            SelectRepetitionView(
-                repetitionOptions: frequencyOptions,
-                currentlySelectedRepetition: selectedRecurrence) {
-                onSelectedRepetition($0)
-            }
+            SelectRepetitionView()
         }
     }
 }
 
 struct SelectRepetitionView: View {
     @Environment(\.presentationMode) var presentationMode
-    let repetitionOptions: [Frequency]
-    let onSelectedRepetition: (Frequency) -> Void
-    let currentlySelectedRepetition: Frequency?
     
-    init(repetitionOptions: [Frequency],
-         currentlySelectedRepetition: Frequency?,
-         onSelectedRepetition: @escaping (Frequency) -> Void) {
-        self.repetitionOptions = repetitionOptions
-        self.currentlySelectedRepetition = currentlySelectedRepetition
-        self.onSelectedRepetition = onSelectedRepetition
-    }
+    init() { }
     
     var body: some View {
         ScrollView {
-            ForEach(0 ..< repetitionOptions.count) { index in
-                let repetition = repetitionOptions[index]
-                
-                HStack {
-                    Image(systemName: repetition == currentlySelectedRepetition ? "circle.fill" : "circle")
-                    Text("\(repetition.stringValue.capitalized)")
-                    Spacer()
-                }
-                .padding(.vertical, 5)
-                .valueFontStyle()
-                .onTapGesture {
-                    self.onSelectedRepetition(repetition)
-                    presentationMode.wrappedValue.dismiss()
-                }
-            }
-            .cellStyle()
-            .padding()
+//            ForEach(0 ..< repetitionOptions.count) { index in
+//                let repetition = repetitionOptions[index]
+//
+//                HStack {
+//                    Image(systemName: repetition == currentlySelectedRepetition ? "circle.fill" : "circle")
+//                    Text("\(repetition.stringValue.capitalized)")
+//                    Spacer()
+//                }
+//                .padding(.vertical, 5)
+//                .valueFontStyle()
+//                .onTapGesture {
+//                    self.onSelectedRepetition(repetition)
+//                    presentationMode.wrappedValue.dismiss()
+//                }
+//            }
+            Circle()
+                .cellStyle()
+                .padding()
         }
     }
 }

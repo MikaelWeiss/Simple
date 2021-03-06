@@ -15,6 +15,7 @@ struct Recurrence {
     var interval: Interval
     
     init(id: UUID = UUID(), frequency: Frequency, recurrenceEnd: RecurrenceEnd, interval: Interval) {
+        self.id = id
         self.frequency = frequency
         self.recurrenceEnd = recurrenceEnd
         self.interval = interval
@@ -22,16 +23,16 @@ struct Recurrence {
     
     init() {
         id = UUID()
-        frequency = .daily(Frequency.DailyRecurrence(hoursOfTheDay: Set(arrayLiteral: .eight)))
+        frequency = .daily(DailyRecurrence(hoursOfTheDay: Set(arrayLiteral: .eight)))
         recurrenceEnd = .occurrenceCount(1)
-        interval = Interval()
+        interval = try! Interval()
     }
     
-    struct ReconstitutionInfo {
-        
-    }
-    
-    init(with: ReconstitutionInfo) {
-        
-    }
+//    struct ReconstitutionInfo {
+//
+//    }
+//
+//    init(with: ReconstitutionInfo) {
+//
+//    }
 }

@@ -25,7 +25,7 @@ class CoreDataStoreStorageFactory: CoreDataStoreStorage {
             id: storeTask.id,
             name: storeTask.name,
             preferredTime: storeTask.preferredTime,
-            frequency: storeTask.frequency,
+//            frequency: storeTask.frequency,
             imageData: storeTask.imageData)
     }
     
@@ -34,7 +34,7 @@ class CoreDataStoreStorageFactory: CoreDataStoreStorage {
         storeTask.id = task.id
         storeTask.name = task.name
         storeTask.preferredTime = task.preferredTime
-        storeTask.frequency = task.frequency
+//        storeTask.frequency = task.frequency
         storeTask.imageData = task.imageData
     }
 }
