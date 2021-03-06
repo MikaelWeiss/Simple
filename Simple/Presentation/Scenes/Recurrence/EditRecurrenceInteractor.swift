@@ -10,9 +10,8 @@ import Foundation
 
 protocol EditRecurrenceRequesting {
     func updateTheme()
-    func didChangeValue(with request: EditRecurrence.ValidateValue.Request)
-    func prepareRouteToSheet()
-    func prepareRouteToOtherScene()
+    func didTapDefaultRecurrence(with request: EditRecurrence.DidTapDefaultRecurrence.Request)
+    func didTapCustomRepeat()
 }
 
 struct EditRecurrenceInteractor: EditRecurrenceRequesting {
@@ -28,16 +27,12 @@ struct EditRecurrenceInteractor: EditRecurrenceRequesting {
         presenter.presentUpdateTheme()
     }
     
-    func didChangeValue(with request: EditRecurrence.ValidateValue.Request) {
-        let response = EditRecurrence.ValidateValue.Response(value: request.value)
-        presenter.presentDidChangeValue(with: response)
+    func didTapDefaultRecurrence(with request: EditRecurrence.DidTapDefaultRecurrence.Request) {
+        let response = EditRecurrence.DidTapDefaultRecurrence.Response(recurrence: request.recurrence)
+        presenter.presentDidTapDefaultRecurrence(with: response)
     }
     
-    func prepareRouteToSheet() {
-        presenter.presentPrepareRouteToSheet()
-    }
-    
-    func prepareRouteToOtherScene() {
-        presenter.presentPrepareRouteToOtherScene()
+    func didTapCustomRepeat() {
+        presenter.presentDidTapCustomRepeat()
     }
 }

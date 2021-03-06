@@ -27,7 +27,6 @@ struct EditTaskPresenter: EditTaskPresenting {
     let viewModel = EditTask.ViewModel()
     
     func presentUpdateTheme() {
-        viewModel.title = EditTask.Strings.sceneTitle
         viewModel.nameTitle = EditTask.Strings.nameCellTitle
         viewModel.preferredTimeTitle = EditTask.Strings.dateCellTitle
         viewModel.frequencyTitle = EditTask.Strings.frequencyCellTitle
@@ -38,6 +37,7 @@ struct EditTaskPresenter: EditTaskPresenting {
         viewModel.nameInfo = .init(value: response.task.name ?? "", state: .normal)
         viewModel.preferredTime = taskInfo.preferredTime ?? Date.now
         viewModel.taskImage = taskInfo.image
+        viewModel.title = taskInfo.taskExists ? EditTask.Strings.editSceneTitle : EditTask.Strings.creationSceneTitle
     }
     
     func presentDidChangeName(with response: EditTask.ValidateName.Response) {

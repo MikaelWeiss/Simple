@@ -49,7 +49,7 @@ struct Recurrence {
 }
 
 extension Recurrence {
-    enum DefaultRecurrence {
+    enum DefaultRecurrence: CaseIterable {
         case never
         case hourly
         case daily

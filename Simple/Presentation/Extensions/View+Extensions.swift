@@ -62,9 +62,18 @@ extension View {
     }
 }
 
-extension Spacer {
-    /// Used to make a Spacer able to register a tap
-    func tappable() -> some View {
-        Color.blue.opacity(0.0001)
+extension View {
+    func wrapInPlainButton(action: @escaping () -> Void) -> some View {
+        Button(action: action, label: {
+            self
+        })
+        .buttonStyle(NoButtonStyle())
+    }
+}
+
+private struct NoButtonStyle: ButtonStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        configuration.label
+            .background(Color.black.opacity(0.0001))
     }
 }

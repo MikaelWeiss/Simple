@@ -6,15 +6,15 @@
 //  Copyright © 2021 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 enum EditRecurrence {
     struct Scene {
         let view: EditRecurrenceView
         
-        init() {
+        init(isShowing: Binding<Bool>) {
             let service = EditRecurrence.Service()
-            let presenter = EditRecurrencePresenter()
+            let presenter = EditRecurrencePresenter(isShowing: isShowing)
             let interactor = EditRecurrenceInteractor(service: service, presenter: presenter)
             view = EditRecurrenceView(interactor: interactor, viewModel: presenter.viewModel)
         }

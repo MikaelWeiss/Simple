@@ -16,6 +16,16 @@
 		A5285AC225DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5285AC125DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift */; };
 		A53AC71525F1DBEA003B305E /* Recurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AC71425F1DBEA003B305E /* Recurrence.swift */; };
 		A53AC71A25F1DBFC003B305E /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AC71925F1DBFC003B305E /* Int+Extensions.swift */; };
+		A53D391A25F4188E009D99C7 /* CustomRecurrencePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D391425F4188E009D99C7 /* CustomRecurrencePresenter.swift */; };
+		A53D391B25F4188E009D99C7 /* CustomRecurrenceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D391525F4188E009D99C7 /* CustomRecurrenceModels.swift */; };
+		A53D391C25F4188E009D99C7 /* CustomRecurrenceScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D391625F4188E009D99C7 /* CustomRecurrenceScene.swift */; };
+		A53D391D25F4188E009D99C7 /* CustomRecurrenceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D391725F4188E009D99C7 /* CustomRecurrenceInteractor.swift */; };
+		A53D391E25F4188E009D99C7 /* CustomRecurrenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D391825F4188E009D99C7 /* CustomRecurrenceView.swift */; };
+		A53D391F25F4188E009D99C7 /* CustomRecurrenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D391925F4188E009D99C7 /* CustomRecurrenceService.swift */; };
+		A53D393425F418CC009D99C7 /* CustomRecurrenceInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D392325F41896009D99C7 /* CustomRecurrenceInteractorTests.swift */; };
+		A53D393525F418CC009D99C7 /* CustomRecurrencePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D392525F41896009D99C7 /* CustomRecurrencePresenterTests.swift */; };
+		A53D393625F418CC009D99C7 /* CustomRecurrenceViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D392425F41896009D99C7 /* CustomRecurrenceViewTests.swift */; };
+		A53D393725F418CC009D99C7 /* CustomRecurrenceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D392625F41896009D99C7 /* CustomRecurrenceServiceTests.swift */; };
 		A53D4A3B25E4B4C700070FF3 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3625E4B4C700070FF3 /* Date+Extensions.swift */; };
 		A53D4A3D25E4B4C700070FF3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3925E4B4C700070FF3 /* Task.swift */; };
 		A542CD4025DB75070082C365 /* DomainToStorageTransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542CD3F25DB75070082C365 /* DomainToStorageTransformerTests.swift */; };
@@ -140,6 +150,16 @@
 		A5285AC125DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreStorageFactoryTests.swift; sourceTree = "<group>"; };
 		A53AC71425F1DBEA003B305E /* Recurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recurrence.swift; sourceTree = "<group>"; };
 		A53AC71925F1DBFC003B305E /* Int+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Extensions.swift"; sourceTree = "<group>"; };
+		A53D391425F4188E009D99C7 /* CustomRecurrencePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecurrencePresenter.swift; sourceTree = "<group>"; };
+		A53D391525F4188E009D99C7 /* CustomRecurrenceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecurrenceModels.swift; sourceTree = "<group>"; };
+		A53D391625F4188E009D99C7 /* CustomRecurrenceScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecurrenceScene.swift; sourceTree = "<group>"; };
+		A53D391725F4188E009D99C7 /* CustomRecurrenceInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecurrenceInteractor.swift; sourceTree = "<group>"; };
+		A53D391825F4188E009D99C7 /* CustomRecurrenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecurrenceView.swift; sourceTree = "<group>"; };
+		A53D391925F4188E009D99C7 /* CustomRecurrenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecurrenceService.swift; sourceTree = "<group>"; };
+		A53D392325F41896009D99C7 /* CustomRecurrenceInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecurrenceInteractorTests.swift; sourceTree = "<group>"; };
+		A53D392425F41896009D99C7 /* CustomRecurrenceViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecurrenceViewTests.swift; sourceTree = "<group>"; };
+		A53D392525F41896009D99C7 /* CustomRecurrencePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecurrencePresenterTests.swift; sourceTree = "<group>"; };
+		A53D392625F41896009D99C7 /* CustomRecurrenceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomRecurrenceServiceTests.swift; sourceTree = "<group>"; };
 		A53D4A3625E4B4C700070FF3 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		A53D4A3725E4B4C700070FF3 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		A53D4A3925E4B4C700070FF3 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -306,6 +326,23 @@
 			path = Recurrence;
 			sourceTree = "<group>";
 		};
+		A53D391225F41874009D99C7 /* CustomRecurrence */ = {
+			isa = PBXGroup;
+			children = (
+				A53D391725F4188E009D99C7 /* CustomRecurrenceInteractor.swift */,
+				A53D392325F41896009D99C7 /* CustomRecurrenceInteractorTests.swift */,
+				A53D391525F4188E009D99C7 /* CustomRecurrenceModels.swift */,
+				A53D391425F4188E009D99C7 /* CustomRecurrencePresenter.swift */,
+				A53D392525F41896009D99C7 /* CustomRecurrencePresenterTests.swift */,
+				A53D391625F4188E009D99C7 /* CustomRecurrenceScene.swift */,
+				A53D391925F4188E009D99C7 /* CustomRecurrenceService.swift */,
+				A53D392625F41896009D99C7 /* CustomRecurrenceServiceTests.swift */,
+				A53D391825F4188E009D99C7 /* CustomRecurrenceView.swift */,
+				A53D392425F41896009D99C7 /* CustomRecurrenceViewTests.swift */,
+			);
+			path = CustomRecurrence;
+			sourceTree = "<group>";
+		};
 		A53D4A3525E4B4C700070FF3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,6 +365,7 @@
 		A5649C7625F2A26700E322A1 /* Recurrence */ = {
 			isa = PBXGroup;
 			children = (
+				A53D391225F41874009D99C7 /* CustomRecurrence */,
 				A5649C7A25F2A29100E322A1 /* EditRecurrenceInteractor.swift */,
 				A5A9916E25F354310050E982 /* EditRecurrenceInteractorTests.swift */,
 				A5649C7825F2A29100E322A1 /* EditRecurrenceModels.swift */,
@@ -764,6 +802,7 @@
 				A5BF0D8425F2868000044D86 /* Interval.swift in Sources */,
 				A5BF0D7025F285F900044D86 /* WeeklyRecurrence.swift in Sources */,
 				A53AC71A25F1DBFC003B305E /* Int+Extensions.swift in Sources */,
+				A53D391E25F4188E009D99C7 /* CustomRecurrenceView.swift in Sources */,
 				A5AC071E25D7865E00504FEE /* TasksOverviewService.swift in Sources */,
 				A5649C7E25F2A29100E322A1 /* EditRecurrenceModels.swift in Sources */,
 				A5EC5D4A25DE04DB002B3D94 /* RepositoryAction.swift in Sources */,
@@ -777,6 +816,7 @@
 				A56E0C2725D855E600247227 /* EditTaskPresenter.swift in Sources */,
 				A57ABE4425E85CF200083BDA /* UIImage+Extensions.swift in Sources */,
 				A56E0C2C25D855E600247227 /* EditTaskService.swift in Sources */,
+				A53D391F25F4188E009D99C7 /* CustomRecurrenceService.swift in Sources */,
 				A5649C8025F2A29100E322A1 /* EditRecurrenceInteractor.swift in Sources */,
 				A5BF0D6B25F285DF00044D86 /* DailyRecurrence.swift in Sources */,
 				A56E0C2825D855E600247227 /* EditTaskModels.swift in Sources */,
@@ -784,13 +824,17 @@
 				A53AC71525F1DBEA003B305E /* Recurrence.swift in Sources */,
 				A514524925D8A9540005070F /* View+Extensions.swift in Sources */,
 				A56E0C2A25D855E600247227 /* EditTaskInteractor.swift in Sources */,
+				A53D391D25F4188E009D99C7 /* CustomRecurrenceInteractor.swift in Sources */,
 				A514523A25D8A8800005070F /* TextEntry.swift in Sources */,
 				A514526E25D8BCEF0005070F /* Styles.swift in Sources */,
 				A514522C25D8A7520005070F /* CellStyle.swift in Sources */,
 				A5BF0D8925F28FAB00044D86 /* Swift+Extensions.swift in Sources */,
 				A5BF0D8E25F2905300044D86 /* DomainError.swift in Sources */,
 				A56B699725F3630200DBB18C /* PresentationSupport.swift in Sources */,
+				A53D391A25F4188E009D99C7 /* CustomRecurrencePresenter.swift in Sources */,
+				A53D391C25F4188E009D99C7 /* CustomRecurrenceScene.swift in Sources */,
 				A5AC071C25D7865E00504FEE /* TasksOverviewInteractor.swift in Sources */,
+				A53D391B25F4188E009D99C7 /* CustomRecurrenceModels.swift in Sources */,
 				A514523225D8A7B10005070F /* Color+Extensions.swift in Sources */,
 				A53D4A3D25E4B4C700070FF3 /* Task.swift in Sources */,
 				A514523925D8A8800005070F /* DateSelection.swift in Sources */,
@@ -811,11 +855,15 @@
 			files = (
 				A5A9917325F354310050E982 /* EditRecurrenceViewTests.swift in Sources */,
 				A5FA9BC525DE068400595C33 /* CoreDataStorage+ReadTests.swift in Sources */,
+				A53D393525F418CC009D99C7 /* CustomRecurrencePresenterTests.swift in Sources */,
 				A5709A3025DB589E0050B3B5 /* StorageToDomainTransformerTests.swift in Sources */,
 				A5AC072825D7868900504FEE /* TasksOverviewPresenterTests.swift in Sources */,
+				A53D393725F418CC009D99C7 /* CustomRecurrenceServiceTests.swift in Sources */,
+				A53D393625F418CC009D99C7 /* CustomRecurrenceViewTests.swift in Sources */,
 				A5AC072625D7868900504FEE /* TasksOverviewInteractorTests.swift in Sources */,
 				A5AC072925D7868900504FEE /* TasksOverviewServiceTests.swift in Sources */,
 				A5285AC225DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift in Sources */,
+				A53D393425F418CC009D99C7 /* CustomRecurrenceInteractorTests.swift in Sources */,
 				A5AC072725D7868900504FEE /* TasksOverviewViewTests.swift in Sources */,
 				A5A9917525F354310050E982 /* EditRecurrenceServiceTests.swift in Sources */,
 				A5A9917425F354310050E982 /* EditRecurrencePresenterTests.swift in Sources */,

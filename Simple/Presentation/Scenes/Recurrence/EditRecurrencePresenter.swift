@@ -6,33 +6,31 @@
 //  Copyright © 2021 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import Foundation
-import UIKit
+import SwiftUI
 
 protocol EditRecurrencePresenting {
-    func presentDidChangeValue(with response: EditRecurrence.ValidateValue.Response)
     func presentUpdateTheme()
-    func presentPrepareRouteToSheet()
-    func presentPrepareRouteToOtherScene()
+    func presentDidTapDefaultRecurrence(with response: EditRecurrence.DidTapDefaultRecurrence.Response)
+    func presentDidTapCustomRepeat()
 }
 
 struct EditRecurrencePresenter: EditRecurrencePresenting {
-    let viewModel = EditRecurrence.ViewModel()
+    let viewModel: EditRecurrence.ViewModel
+    
+    init(isShowing: Binding<Bool>) {
+        self.viewModel = EditRecurrence.ViewModel(isShowing: isShowing)
+    }
     
     func presentUpdateTheme() {
-        viewModel.title = EditRecurrence.Strings.sceneTitle
-        viewModel.textFieldTitle = EditRecurrence.Strings.textFieldTitle
+        viewModel.sceneTitle = EditRecurrence.Strings.sceneTitle
     }
     
-    func presentDidChangeValue(with response: EditRecurrence.ValidateValue.Response) {
-        viewModel.textFieldValue = response.value
+    func presentDidTapDefaultRecurrence(with response: EditRecurrence.DidTapDefaultRecurrence.Response) {
+        viewModel.selectedDefaultRecurrence = response.recurrence
+        viewModel.isShowing = false
     }
     
-    func presentPrepareRouteToSheet() {
-        viewModel.sheetShowing = true
-    }
-    
-    func presentPrepareRouteToOtherScene() {
-        viewModel.isShowingOtherScene = true
+    func presentDidTapCustomRepeat() {
+        viewModel.isShowingCustomRepeat = true
     }
 }

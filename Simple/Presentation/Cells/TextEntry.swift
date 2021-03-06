@@ -62,7 +62,7 @@ struct TextEntry: View {
                             binding.wrappedValue = ""
                         }
                         .font(.system(size: 22, weight: .black, design: .rounded))
-                        .padding(.trailing, 8)
+                        .padding(.trailing, 12)
                         .foregroundColor(xColor)
                 }
             )

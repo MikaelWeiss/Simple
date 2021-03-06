@@ -8,14 +8,17 @@
 import SwiftUI
 
 extension View {
-    func cellStyle(outlineColor: Color = Color.cellOutlineColor, lineWidth: CGFloat = 1.5) -> some View {
+    func cellStyle(outlineColor: Color = Color.cellOutlineColor, lineWidth: CGFloat = 1.5, hasPadding: Bool = true) -> some View {
         self
-            .padding()
+            .if(hasPadding, content: { $0.padding() })
+            .clipShape (
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+            )
             .overlay (
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
                     .stroke(outlineColor, lineWidth: lineWidth)
             )
-            .frame(minWidth: 56)
+            .frame(minHeight: 56)
     }
 }
 
@@ -25,6 +28,9 @@ struct CellStyle_Previews: PreviewProvider {
     static var previews: some View {
         Text("Sup")
             .cellStyle()
+            .makePreviewKind()
+        Text("Sup")
+            .cellStyle(hasPadding: false)
             .makePreviewKind()
     }
 }

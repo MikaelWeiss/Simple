@@ -6,30 +6,31 @@
 //  Copyright © 2021 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import Foundation
-import UIKit
+import SwiftUI
 
 extension EditRecurrence {
-    enum ValidateValue {
+    
+    enum DidTapDefaultRecurrence {
         struct Request {
-            let value: String
+            let recurrence: Recurrence.DefaultRecurrence
         }
-        
         struct Response {
-            let value: String
+            let recurrence: Recurrence.DefaultRecurrence
         }
     }
     
     enum Strings {
-        static let sceneTitle = NSLocalizedString("Some title", comment: "The title for the scene")
-        static let textFieldTitle = NSLocalizedString("Some title", comment: "The title for some text field")
+        static let sceneTitle = NSLocalizedString("Repeat", comment: "The title for the scene")
     }
     
     class ViewModel: ObservableObject {
-        @Published var title = ""
-        @Published var textFieldTitle = ""
-        @Published var textFieldValue = ""
-        @Published var isShowingOtherScene = false
-        @Published var sheetShowing = false
+        @Published var sceneTitle = Strings.sceneTitle
+        @Published var isShowingCustomRepeat = false
+        @Published var selectedDefaultRecurrence: Recurrence.DefaultRecurrence? = nil
+        @Binding var isShowing: Bool
+        
+        init(isShowing: Binding<Bool>) {
+            self._isShowing = isShowing
+        }
     }
 }

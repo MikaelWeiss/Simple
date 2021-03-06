@@ -126,9 +126,9 @@ struct EditTask_Previews: PreviewProvider {
 // MARK: - Other Views
 
 struct RecurrenceSelectionCell: View {
-    @State private var isShowingSelectionSheet = false
+    @State private var isShowingRepetitionSelection = false
     
-    let title: String
+    private let title: String
     
     init(_ title: String) {
         self.title = title
@@ -137,49 +137,18 @@ struct RecurrenceSelectionCell: View {
     var body: some View {
         HStack {
             Text(title)
-            Spacer().tappable()
+            Spacer()
             Text("Select Value")
-                .valueFontStyle()
+                .fontWeight(.medium)
                 .lineLimit(1)
-            Image(systemName: "arrowtriangle.down.square.fill")
-                .valueFontStyle()
+            Image(systemName: "chevron.right")
+                .font(.system(size: 18, weight: .medium, design: .rounded))
         }
         .valueFontStyle()
         .cellStyle()
-        .onTapGesture {
-            isShowingSelectionSheet = true
-        }
-        .sheet(isPresented: $isShowingSelectionSheet) {
-            SelectRepetitionView()
-        }
-    }
-}
-
-struct SelectRepetitionView: View {
-    @Environment(\.presentationMode) var presentationMode
-    
-    init() { }
-    
-    var body: some View {
-        ScrollView {
-//            ForEach(0 ..< repetitionOptions.count) { index in
-//                let repetition = repetitionOptions[index]
-//
-//                HStack {
-//                    Image(systemName: repetition == currentlySelectedRepetition ? "circle.fill" : "circle")
-//                    Text("\(repetition.stringValue.capitalized)")
-//                    Spacer()
-//                }
-//                .padding(.vertical, 5)
-//                .valueFontStyle()
-//                .onTapGesture {
-//                    self.onSelectedRepetition(repetition)
-//                    presentationMode.wrappedValue.dismiss()
-//                }
-//            }
-            Circle()
-                .cellStyle()
-                .padding()
+        .wrapInPlainButton { isShowingRepetitionSelection = true }
+        .wrapInNavigationLink(isActive: $isShowingRepetitionSelection) {
+            EditRecurrence.Scene(isShowing: $isShowingRepetitionSelection).view
         }
     }
 }

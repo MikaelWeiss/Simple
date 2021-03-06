@@ -46,8 +46,8 @@ extension EditTask {
     struct TaskInfo {
         var name: String?
         var preferredTime: Date?
-//        var frequency: Frequency?
         var image: UIImage?
+        var taskExists: Bool = false
     }
     
     class Service: EditTaskService {
@@ -88,7 +88,8 @@ extension EditTask {
                 name: task?.name,
                 preferredTime: task?.preferredTime ?? Date.now,
 //                frequency: task?.frequency ?? .daily,
-                image: task?.image)
+                image: task?.image,
+                taskExists: task != nil)
             
             return taskInfo
         }
