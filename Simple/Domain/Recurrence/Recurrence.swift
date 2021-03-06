@@ -9,10 +9,22 @@ import Foundation
 
 
 struct Recurrence {
-    var id: UUID
-    var frequency: Frequency
-    var recurrenceEnd: RecurrenceEnd
-    var interval: Interval
+    
+    private(set) var id: UUID
+    private(set) var frequency: Frequency
+    mutating func set(frequency: Frequency) throws {
+        self.frequency = frequency
+    }
+    
+    private(set) var recurrenceEnd: RecurrenceEnd
+    mutating func set(recurrenceEnd: RecurrenceEnd) {
+        self.recurrenceEnd = recurrenceEnd
+    }
+    
+    private(set) var interval: Interval
+    mutating func set(interval: Interval) throws {
+        self.interval = interval
+    }
     
     init(id: UUID = UUID(), frequency: Frequency, recurrenceEnd: RecurrenceEnd, interval: Interval) {
         self.id = id

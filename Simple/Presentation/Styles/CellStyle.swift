@@ -15,6 +15,7 @@ extension View {
                 RoundedRectangle(cornerRadius: 14, style: .continuous)
                     .stroke(outlineColor, lineWidth: lineWidth)
             )
+            .frame(minWidth: 56)
     }
 }
 

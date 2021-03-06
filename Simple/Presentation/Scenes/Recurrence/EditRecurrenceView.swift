@@ -26,7 +26,9 @@ struct EditRecurrenceView: View {
     // MARK: - View Lifecycle
     var body: some View {
         VStack {
-            Text("Wassup")
+            ForEach(data: Recurrence.Default) {_ in 
+                
+            }
         }
         .onAppear {
             interactor.updateTheme()

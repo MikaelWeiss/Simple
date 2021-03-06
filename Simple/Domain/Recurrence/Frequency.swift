@@ -8,6 +8,7 @@
 import Foundation
 
 enum Frequency {
+    case never
     case hourly
     case daily(DailyRecurrence)
     case weekly(WeeklyRecurrence)

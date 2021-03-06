@@ -28,6 +28,7 @@
 		A5649C8025F2A29100E322A1 /* EditRecurrenceInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5649C7A25F2A29100E322A1 /* EditRecurrenceInteractor.swift */; };
 		A5649C8125F2A29100E322A1 /* EditRecurrenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5649C7B25F2A29100E322A1 /* EditRecurrenceView.swift */; };
 		A5649C8225F2A29100E322A1 /* EditRecurrenceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5649C7C25F2A29100E322A1 /* EditRecurrenceService.swift */; };
+		A56B699725F3630200DBB18C /* PresentationSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56B699625F3630200DBB18C /* PresentationSupport.swift */; };
 		A56E0C2725D855E600247227 /* EditTaskPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2125D855E600247227 /* EditTaskPresenter.swift */; };
 		A56E0C2825D855E600247227 /* EditTaskModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2225D855E600247227 /* EditTaskModels.swift */; };
 		A56E0C2925D855E600247227 /* EditTaskScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2325D855E600247227 /* EditTaskScene.swift */; };
@@ -152,6 +153,7 @@
 		A5649C7A25F2A29100E322A1 /* EditRecurrenceInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecurrenceInteractor.swift; sourceTree = "<group>"; };
 		A5649C7B25F2A29100E322A1 /* EditRecurrenceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecurrenceView.swift; sourceTree = "<group>"; };
 		A5649C7C25F2A29100E322A1 /* EditRecurrenceService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecurrenceService.swift; sourceTree = "<group>"; };
+		A56B699625F3630200DBB18C /* PresentationSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationSupport.swift; sourceTree = "<group>"; };
 		A56E0C2125D855E600247227 /* EditTaskPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskPresenter.swift; sourceTree = "<group>"; };
 		A56E0C2225D855E600247227 /* EditTaskModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskModels.swift; sourceTree = "<group>"; };
 		A56E0C2325D855E600247227 /* EditTaskScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskScene.swift; sourceTree = "<group>"; };
@@ -511,10 +513,11 @@
 		A5AC070725D7856F00504FEE /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				A56B699625F3630200DBB18C /* PresentationSupport.swift */,
+				A514523625D8A8680005070F /* Cells */,
+				A514523025D8A7A00005070F /* Extensions */,
 				A5AC070D25D785E600504FEE /* Scenes */,
 				A514522A25D8A7380005070F /* Styles */,
-				A514523025D8A7A00005070F /* Extensions */,
-				A514523625D8A8680005070F /* Cells */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -794,6 +797,7 @@
 				A514522C25D8A7520005070F /* CellStyle.swift in Sources */,
 				A5BF0D8925F28FAB00044D86 /* Swift+Extensions.swift in Sources */,
 				A5BF0D8E25F2905300044D86 /* DomainError.swift in Sources */,
+				A56B699725F3630200DBB18C /* PresentationSupport.swift in Sources */,
 				A5AC071C25D7865E00504FEE /* TasksOverviewInteractor.swift in Sources */,
 				A514523225D8A7B10005070F /* Color+Extensions.swift in Sources */,
 				A53D4A3D25E4B4C700070FF3 /* Task.swift in Sources */,
