@@ -37,8 +37,12 @@ struct CustomRecurrenceView: View {
                 })
             .animation(.none)
             
+            Section {
+                
+            }
+            
             if viewModel.selectedFrequency == .weekly {
-                DaysOfTheWeekView(selectedDays: viewModel.selectedDaysOfTheWeek) { day in
+                DaysOfTheWeekSection(selectedDays: viewModel.selectedDaysOfTheWeek) { day in
                     selectedDayOfTheWeek(day)
                 }
             }
@@ -46,6 +50,9 @@ struct CustomRecurrenceView: View {
         .animation(.easeIn)
         .listStyle(InsetGroupedListStyle())
         .navigationTitle(viewModel.sceneTitle)
+        .onAppear {
+            interactor?.fetchTheme()
+        }
     }
 }
 
@@ -149,7 +156,7 @@ extension CustomRecurrenceView {
         }
     }
     
-    struct DaysOfTheWeekView: View {
+    struct DaysOfTheWeekSection: View {
         let selectedDays: Set<WeeklyRecurrence.DayOfTheWeek>
         let onSelectedDay: (WeeklyRecurrence.DayOfTheWeek) -> Void
         
@@ -164,7 +171,7 @@ extension CustomRecurrenceView {
                                 .foregroundColor(.accentColor)
                         }
                     }
-                    .wrapInPlainButton { }
+                    .wrapInPlainButton { onSelectedDay(dayOfTheWeek) }
                 }
             }
         }

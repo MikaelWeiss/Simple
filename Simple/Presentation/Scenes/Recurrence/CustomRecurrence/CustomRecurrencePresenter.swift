@@ -9,6 +9,7 @@
 import SwiftUI
 
 protocol CustomRecurrencePresenting {
+    func presentFetchTheme()
     func presentDidSelectFrequency(with response: CustomRecurrence.SelectedFrequency.Response)
     func presentDidSelectInterval(with response: CustomRecurrence.SelectedInterval.Response)
     func presentDidSelectDayOfTheWeek(with response: CustomRecurrence.SelectedDayOfTheWeek.Response)
@@ -28,9 +29,17 @@ struct CustomRecurrencePresenter: CustomRecurrencePresenting {
     }
     
     func presentDidSelectInterval(with response: CustomRecurrence.SelectedInterval.Response) {
+        let interval = response.value
+        viewModel.selectedInterval = interval
     }
     
     func presentDidSelectDayOfTheWeek(with response: CustomRecurrence.SelectedDayOfTheWeek.Response) {
-        
+        let selectedDayOfTheWeek = response.value
+        let daysOfTheWeek = viewModel.selectedDaysOfTheWeek
+        if daysOfTheWeek.contains(selectedDayOfTheWeek) {
+            viewModel.selectedDaysOfTheWeek.remove(selectedDayOfTheWeek)
+        } else {
+            viewModel.selectedDaysOfTheWeek.insert(selectedDayOfTheWeek)
+        }
     }
 }
