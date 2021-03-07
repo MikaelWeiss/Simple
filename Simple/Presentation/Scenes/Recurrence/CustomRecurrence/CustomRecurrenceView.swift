@@ -11,6 +11,7 @@ import SwiftUI
 protocol CustomRecurrenceInputting {
     func selectedFrequency(_ frequency: CustomRecurrence.Frequency)
     func selectedInterval(_ interval: Int)
+    func selectedDayOfTheWeek(_ day: WeeklyRecurrence.DayOfTheWeek)
 }
 
 struct CustomRecurrenceView: View {
@@ -25,13 +26,22 @@ struct CustomRecurrenceView: View {
     // MARK: - View Lifecycle
     var body: some View {
         return List {
-            FrequencySection()
-            { frequency in
-                selectedFrequency(frequency)
-            } onSelectedInterval: { interval in
-                selectedInterval(interval)
-            }
+            FrequencySection(
+                frequency: viewModel.selectedFrequency,
+                interval: viewModel.selectedInterval,
+                onUpdatedFrequency: { frequency in
+                    selectedFrequency(frequency)
+                },
+                onUpdatedInterval: { interval in
+                    selectedInterval(interval)
+                })
             .animation(.none)
+            
+            if viewModel.selectedFrequency == .weekly {
+                DaysOfTheWeekView(selectedDays: viewModel.selectedDaysOfTheWeek) { day in
+                    selectedDayOfTheWeek(day)
+                }
+            }
         }
         .animation(.easeIn)
         .listStyle(InsetGroupedListStyle())
@@ -58,7 +68,13 @@ extension CustomRecurrenceView: CustomRecurrenceInputting {
     }
     
     func selectedInterval(_ interval: Int) {
-        
+        let request = CustomRecurrence.SelectedInterval.Request(value: interval)
+        interactor?.didSelectInterval(with: request)
+    }
+    
+    func selectedDayOfTheWeek(_ day: WeeklyRecurrence.DayOfTheWeek) {
+        let request = CustomRecurrence.SelectedDayOfTheWeek.Request(value: day)
+        interactor?.didSelectDayOfTheWeek(with: request)
     }
 }
 
@@ -67,15 +83,23 @@ extension CustomRecurrenceView: CustomRecurrenceInputting {
 extension CustomRecurrenceView {
     
     struct FrequencySection: View {
-        
         @State private var showingFrequencySelection = false
         @State private var showingIntervalSelection = false
-        @State private var frequency: CustomRecurrence.Frequency = .daily
-        @State private var interval: Int = 1
-        let onSelectedFrequency: (CustomRecurrence.Frequency) -> Void
-        let onSelectedInterval: (Int) -> Void
+        let frequency: CustomRecurrence.Frequency
+        let interval: Int
+        let onUpdatedFrequency: (CustomRecurrence.Frequency) -> Void
+        let onUpdatedInterval: (Int) -> Void
         
         var body: some View {
+            let frequencyBinding = Binding<CustomRecurrence.Frequency> (
+                get: { frequency },
+                set: { onUpdatedFrequency($0) }
+            )
+            let intervalBinding = Binding<Int> (
+                get: { interval },
+                set: { onUpdatedInterval($0) }
+            )
+
             Section {
                 HStack {
                     Text("Frequency")
@@ -86,7 +110,7 @@ extension CustomRecurrenceView {
                 .wrapInPlainButton { showingFrequencySelection.toggle() }
                 
                 if showingFrequencySelection {
-                    Picker("Frequency", selection: $frequency) {
+                    Picker("Frequency", selection: frequencyBinding) {
                         ForEach(CustomRecurrence.Frequency.allCases, id: \.self) { frequency in
                             Text(frequency.rawValue)
                         }
@@ -104,7 +128,7 @@ extension CustomRecurrenceView {
                 .wrapInPlainButton { showingIntervalSelection.toggle() }
                 
                 if showingIntervalSelection {
-                    Picker("Frequency", selection: $interval) {
+                    Picker("Frequency", selection: intervalBinding) {
                         ForEach(1 ... 24, id: \.self) { interval in
                             Text("\(interval)")
                         }
@@ -124,6 +148,27 @@ extension CustomRecurrenceView {
         case .yearly: return int == 1 ? "Year" : "\(int) years"
         }
     }
+    
+    struct DaysOfTheWeekView: View {
+        let selectedDays: Set<WeeklyRecurrence.DayOfTheWeek>
+        let onSelectedDay: (WeeklyRecurrence.DayOfTheWeek) -> Void
+        
+        var body: some View {
+            Section {
+                ForEach(WeeklyRecurrence.DayOfTheWeek.allCases, id: \.self) { dayOfTheWeek in
+                    HStack {
+                        Text(PresentationSupport.string(for: dayOfTheWeek))
+                        Spacer()
+                        if selectedDays.contains(dayOfTheWeek) {
+                            Image(systemName: "checkmark")
+                                .foregroundColor(.accentColor)
+                        }
+                    }
+                    .wrapInPlainButton { }
+                }
+            }
+        }
+    }
 }
 
 // MARK: - Previews
@@ -131,6 +176,7 @@ struct CustomRecurrence_Previews: PreviewProvider {
     
     static var vm: CustomRecurrence.ViewModel {
         let vm = CustomRecurrence.ViewModel()
+        vm.selectedFrequency = .weekly
         return vm
     }
     

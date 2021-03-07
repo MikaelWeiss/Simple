@@ -15,7 +15,7 @@ enum PresentationSupport {
     
     // MARK: - Recurrence
     
-    func defaultRecurrence(_ recurrence: Recurrence.DefaultRecurrence, for date: Date) throws -> Recurrence {
+    static func defaultRecurrence(_ recurrence: Recurrence.DefaultRecurrence, for date: Date) throws -> Recurrence {
         switch recurrence {
         case .never: return Recurrence(frequency: .never, recurrenceEnd: .occurrenceCount(1), interval: Interval())
         case .hourly: return recurrenceFor(frequency: .hourly)
@@ -29,36 +29,65 @@ enum PresentationSupport {
         }
     }
     
-    private func recurrenceFor(frequency: Frequency) -> Recurrence {
+    private static func recurrenceFor(frequency: Frequency) -> Recurrence {
         Recurrence(frequency: frequency, recurrenceEnd: .never, interval: Interval())
     }
     
-    private func dailyRecurrence(for date: Date) throws -> DailyRecurrence {
+    static func hourOfTheDay(date: Date = Date.now) throws -> DailyRecurrence.HoursOfTheDay {
         let hour = Calendar.current.component(.hour, from: date)
         guard let hoursOfTheDay =  DailyRecurrence.HoursOfTheDay.init(rawValue: hour) else { throw PresentationError.unwrapFailed }
-        let hourOfTheDay = Set(arrayLiteral: hoursOfTheDay)
-        return DailyRecurrence(hoursOfTheDay: hourOfTheDay)
+        return hoursOfTheDay
     }
     
-    private func weeklyRecurrence(for date: Date) throws -> WeeklyRecurrence {
+    private static func dailyRecurrence(for date: Date) throws -> DailyRecurrence {
+        let hourOfTheDaySet = Set(arrayLiteral: try hourOfTheDay())
+        return DailyRecurrence(hoursOfTheDay: hourOfTheDaySet)
+    }
+    
+    static func dayOfTheWeek(for date: Date = Date.now) throws -> WeeklyRecurrence.DayOfTheWeek {
         let integerDayOfTheWeek = Calendar.current.component(.weekday, from: date)
         guard let dayOfTheWeek = WeeklyRecurrence.DayOfTheWeek(rawValue: integerDayOfTheWeek) else { throw PresentationError.unwrapFailed }
-        let dayOfTheWeekSet = Set(arrayLiteral: dayOfTheWeek)
+        return dayOfTheWeek
+    }
+    
+    private static func weeklyRecurrence(for date: Date) throws -> WeeklyRecurrence {
+        let dayOfTheWeekSet = Set(arrayLiteral: try dayOfTheWeek(for: date))
         return WeeklyRecurrence(daysOfTheWeek: dayOfTheWeekSet)
     }
     
-    private func monthlyRecurrency(for date: Date) throws -> MonthlyRecurrence {
+    static func dayOfTheMonth(for date: Date = Date.now) throws -> MonthlyRecurrence.IntegerDayOfTheMonth {
         let integerDayOfTheMonth = Calendar.current.component(.month, from: date)
         guard let dayOfTheMonth = try? MonthlyRecurrence.IntegerDayOfTheMonth(dayOfTheMonth: integerDayOfTheMonth) else { throw PresentationError.unwrapFailed }
-        let monthOfTheYear = MonthlyRecurrence.DayOfTheMonth.daysOfTheMonth(Set(arrayLiteral: dayOfTheMonth))
+        return dayOfTheMonth
+    }
+    
+    private static func monthlyRecurrency(for date: Date) throws -> MonthlyRecurrence {
+        let monthOfTheYear = MonthlyRecurrence.DayOfTheMonth.daysOfTheMonth(Set(arrayLiteral: try dayOfTheMonth(for: date)))
         return MonthlyRecurrence(recurrence: monthOfTheYear)
     }
     
-    private func yearlyRecurrence(for date: Date) throws -> YearlyRecurrence {
+    static func monthOfTheYear(for date: Date = Date.now) throws -> YearlyRecurrence.MonthOfTheYear {
         let integerMonthOfTheYear = Calendar.current.component(.month, from: date)
         guard let monthOfTheYear = YearlyRecurrence.MonthOfTheYear(rawValue: integerMonthOfTheYear) else { throw PresentationError.unwrapFailed }
-        guard let dayOfTheMonth = try? monthlyRecurrency(for: date).recurrence else { throw PresentationError.unwrapFailed }
-        return YearlyRecurrence(monthsOfTheYear: Set(arrayLiteral: monthOfTheYear), dayOfTheMonth: dayOfTheMonth)
+        return monthOfTheYear
     }
     
+    private static func yearlyRecurrence(for date: Date) throws -> YearlyRecurrence {
+        guard let dayOfTheMonth = try? monthlyRecurrency(for: date).recurrence else { throw PresentationError.unwrapFailed }
+        return YearlyRecurrence(monthsOfTheYear: Set(arrayLiteral: try monthOfTheYear(for: date)), dayOfTheMonth: dayOfTheMonth)
+    }
+    
+    // MARK: - Frequency
+    
+    static func string(for weeklyRecurrence: WeeklyRecurrence.DayOfTheWeek) -> String {
+        switch weeklyRecurrence {
+        case .sunday: return "Sunday"
+        case .monday: return "Monday"
+        case .tuesday: return "Tuesday"
+        case .wednesday: return "Wednesday"
+        case .thursday: return "Thursday"
+        case .friday: return "Friday"
+        case .saturday: return "Saturday"
+        }
+    }
 }

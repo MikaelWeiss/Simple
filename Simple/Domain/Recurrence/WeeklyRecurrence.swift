@@ -8,7 +8,7 @@
 import Foundation
 
 struct WeeklyRecurrence {
-    enum DayOfTheWeek: Int {
+    enum DayOfTheWeek: Int, CaseIterable {
         case sunday = 1, monday, tuesday, wednesday, thursday, friday, saturday
     }
     var daysOfTheWeek: Set<DayOfTheWeek>

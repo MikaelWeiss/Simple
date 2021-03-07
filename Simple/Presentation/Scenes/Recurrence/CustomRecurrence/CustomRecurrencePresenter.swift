@@ -6,20 +6,31 @@
 //  Copyright © 2021 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import Foundation
-import UIKit
+import SwiftUI
 
 protocol CustomRecurrencePresenting {
-    func presentDidSelectFrequency(with request: CustomRecurrence.SelectedFrequency.Response)
-    func presentDidSelectInterval(with request: CustomRecurrence.SelectedInterval.Response)
+    func presentDidSelectFrequency(with response: CustomRecurrence.SelectedFrequency.Response)
+    func presentDidSelectInterval(with response: CustomRecurrence.SelectedInterval.Response)
+    func presentDidSelectDayOfTheWeek(with response: CustomRecurrence.SelectedDayOfTheWeek.Response)
 }
 
 struct CustomRecurrencePresenter: CustomRecurrencePresenting {
     let viewModel = CustomRecurrence.ViewModel()
     
-    func presentDidSelectFrequency(with request: CustomRecurrence.SelectedFrequency.Response) {
+    func presentFetchTheme() {
+        let dayOfTheWeek = try? PresentationSupport.dayOfTheWeek()
+        viewModel.selectedDaysOfTheWeek = Set(arrayLiteral: dayOfTheWeek ?? .sunday)
     }
     
-    func presentDidSelectInterval(with request: CustomRecurrence.SelectedInterval.Response) {
+    func presentDidSelectFrequency(with response: CustomRecurrence.SelectedFrequency.Response) {
+        let frequency = response.value
+        viewModel.selectedFrequency = frequency
+    }
+    
+    func presentDidSelectInterval(with response: CustomRecurrence.SelectedInterval.Response) {
+    }
+    
+    func presentDidSelectDayOfTheWeek(with response: CustomRecurrence.SelectedDayOfTheWeek.Response) {
+        
     }
 }
