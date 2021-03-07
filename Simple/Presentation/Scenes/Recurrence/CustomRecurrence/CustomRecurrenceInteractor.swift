@@ -12,7 +12,7 @@ protocol CustomRecurrenceRequesting {
     func fetchTheme()
     func didSelectFrequency(with request: CustomRecurrence.SelectedFrequency.Request)
     func didSelectInterval(with request: CustomRecurrence.SelectedInterval.Request)
-    func didSelectDayOfTheWeek(with request: CustomRecurrence.SelectedDayOfTheWeek.Request)
+//    func didSelectDayOfTheWeek(with request: CustomRecurrence.SelectedDayOfTheWeek.Request)
 }
 
 struct CustomRecurrenceInteractor: CustomRecurrenceRequesting {
@@ -38,8 +38,8 @@ struct CustomRecurrenceInteractor: CustomRecurrenceRequesting {
         presenter.presentDidSelectInterval(with: response)
     }
     
-    func didSelectDayOfTheWeek(with request: CustomRecurrence.SelectedDayOfTheWeek.Request) {
-        let response = CustomRecurrence.SelectedDayOfTheWeek.Response(value: request.value)
-        presenter.presentDidSelectDayOfTheWeek(with: response)
-    }
+//    func didSelectDayOfTheWeek(with request: CustomRecurrence.SelectedDayOfTheWeek.Request) {
+//        let response = CustomRecurrence.SelectedDayOfTheWeek.Response(value: request.value)
+//        presenter.presentDidSelectDayOfTheWeek(with: response)
+//    }
 }

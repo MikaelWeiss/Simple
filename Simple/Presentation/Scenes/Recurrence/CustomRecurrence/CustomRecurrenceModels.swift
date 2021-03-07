@@ -27,14 +27,14 @@ extension CustomRecurrence {
         }
     }
     
-    enum SelectedDayOfTheWeek {
-        struct Request {
-            let value: WeeklyRecurrence.DayOfTheWeek
-        }
-        struct Response {
-            let value: WeeklyRecurrence.DayOfTheWeek
-        }
-    }
+//    enum SelectedDayOfTheWeek {
+//        struct Request {
+//            let value: Frequency.DayOfTheWeek
+//        }
+//        struct Response {
+//            let value: Frequency.DayOfTheWeek
+//        }
+//    }
     
     enum Strings {
         static let sceneTitle = NSLocalizedString("Custom Repeat", comment: "The title for the scene")
@@ -44,6 +44,6 @@ extension CustomRecurrence {
         @Published var sceneTitle = Strings.sceneTitle
         @Published var selectedFrequency: CustomRecurrence.Frequency = .weekly
         @Published var selectedInterval: Int = 1
-        @Published var selectedDaysOfTheWeek: Set<WeeklyRecurrence.DayOfTheWeek> = Set(arrayLiteral: .sunday)
+//        @Published var selectedDaysOfTheWeek: Set<Frequency.DayOfTheWeek> = Set(arrayLiteral: .sunday)
     }
 }

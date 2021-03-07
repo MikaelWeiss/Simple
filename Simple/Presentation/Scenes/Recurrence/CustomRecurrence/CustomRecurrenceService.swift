@@ -16,8 +16,4 @@ extension CustomRecurrence {
     class Service: CustomRecurrenceService {
         
     }
-    
-    class DemoService: CustomRecurrenceService {
-        
-    }
 }

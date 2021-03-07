@@ -11,7 +11,7 @@ import SwiftUI
 protocol CustomRecurrenceInputting {
     func selectedFrequency(_ frequency: CustomRecurrence.Frequency)
     func selectedInterval(_ interval: Int)
-    func selectedDayOfTheWeek(_ day: WeeklyRecurrence.DayOfTheWeek)
+//    func selectedDayOfTheWeek(_ day: WeeklyRecurrence.DayOfTheWeek)
 }
 
 struct CustomRecurrenceView: View {
@@ -43,9 +43,7 @@ struct CustomRecurrenceView: View {
             }
             
             if viewModel.selectedFrequency == .weekly {
-                DaysOfTheWeekSection(selectedDays: viewModel.selectedDaysOfTheWeek) { day in
-                    selectedDayOfTheWeek(day)
-                }
+                DaysOfTheWeekSection()
             }
         }
         .animation(.easeIn)
@@ -80,10 +78,10 @@ extension CustomRecurrenceView: CustomRecurrenceInputting {
         interactor?.didSelectInterval(with: request)
     }
     
-    func selectedDayOfTheWeek(_ day: WeeklyRecurrence.DayOfTheWeek) {
-        let request = CustomRecurrence.SelectedDayOfTheWeek.Request(value: day)
-        interactor?.didSelectDayOfTheWeek(with: request)
-    }
+//    func selectedDayOfTheWeek(_ day: WeeklyRecurrence.DayOfTheWeek) {
+//        let request = CustomRecurrence.SelectedDayOfTheWeek.Request(value: day)
+//        interactor?.didSelectDayOfTheWeek(with: request)
+//    }
 }
 
 // MARK: - Other views
@@ -158,22 +156,23 @@ extension CustomRecurrenceView {
     }
     
     struct DaysOfTheWeekSection: View {
-        let selectedDays: Set<WeeklyRecurrence.DayOfTheWeek>
-        let onSelectedDay: (WeeklyRecurrence.DayOfTheWeek) -> Void
+//        let selectedDays: Set<WeeklyRecurrence.DayOfTheWeek>
+//        let onSelectedDay: (WeeklyRecurrence.DayOfTheWeek) -> Void
         
         var body: some View {
             Section {
-                ForEach(WeeklyRecurrence.DayOfTheWeek.allCases, id: \.self) { dayOfTheWeek in
-                    HStack {
-                        Text(PresentationSupport.string(for: dayOfTheWeek))
-                        Spacer()
-                        if selectedDays.contains(dayOfTheWeek) {
-                            Image(systemName: "checkmark")
-                                .foregroundColor(.accentColor)
-                        }
-                    }
-                    .wrapInPlainButton { onSelectedDay(dayOfTheWeek) }
-                }
+//                ForEach(WeeklyRecurrence.DayOfTheWeek.allCases, id: \.self) { dayOfTheWeek in
+//                    HStack {
+//                        Text(PresentationSupport.string(for: dayOfTheWeek))
+//                        Spacer()
+//                        if selectedDays.contains(dayOfTheWeek) {
+//                            Image(systemName: "checkmark")
+//                                .foregroundColor(.accentColor)
+//                        }
+//                    }
+//                    .wrapInPlainButton { onSelectedDay(dayOfTheWeek) }
+//                }
+                Text("Sup")
             }
         }
     }
