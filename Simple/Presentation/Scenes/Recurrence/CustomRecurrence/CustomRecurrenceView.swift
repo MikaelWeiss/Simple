@@ -38,7 +38,8 @@ struct CustomRecurrenceView: View {
             .animation(.none)
             
             Section {
-                
+                Text("Hours of the day")
+                Circle()
             }
             
             if viewModel.selectedFrequency == .weekly {
