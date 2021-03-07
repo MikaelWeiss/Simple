@@ -8,7 +8,7 @@
 import Foundation
 
 struct DailyRecurrence {
-    enum HoursOfTheDay: Int {
+    enum HoursOfTheDay: Int, CaseIterable {
         case one = 1, two, three, four, five, six, seven, eight, nine, ten, eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty, twentyone, twentytwo, twentythree
         
         var stringValue: String {
