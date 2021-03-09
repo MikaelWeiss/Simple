@@ -549,11 +549,11 @@
 			isa = PBXGroup;
 			children = (
 				A56B699625F3630200DBB18C /* PresentationSupport.swift */,
+				A5A9918525F4608A0050E982 /* VisualComponents.swift */,
 				A514523625D8A8680005070F /* Cells */,
 				A514523025D8A7A00005070F /* Extensions */,
 				A5AC070D25D785E600504FEE /* Scenes */,
 				A514522A25D8A7380005070F /* Styles */,
-				A5A9918525F4608A0050E982 /* VisualComponents.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
