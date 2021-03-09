@@ -11,27 +11,18 @@ import XCTest
 class RecurrenceTests: XCTestCase {
     
     func testNeverRepeate() {
-        _ = Recurrence(frequency: Frequency.never, recurrenceEnd: .occurrenceCount(1), interval: Interval())
+        _ = Recurrence(frequency: .never, recurrenceEnd: .occurrenceCount(1), interval: 1)
     }
     
     func testFirstSundayOfEachMonth() {
-        _ = Recurrence(
-            frequency: .monthly(MonthlyRecurrence(recurrence: .computedDayOfTheMonth(.init(weekOfTheMonth: .first, dayOfTheMonth: .sunday)))),
-            recurrenceEnd: .never,
-            interval: Interval())
+        _ = Recurrence(frequency: .monthly(.computedDayOfTheMonth(.init(weekOfTheMonth: .first, dayOfTheWeekOfTheMonth: .sunday))), recurrenceEnd: .never, interval: 1)
     }
     
-    func testFourthDayOfEachMonthEndingAfterFiveTimesWithIntervalOfFive() {
-        _ = Recurrence(
-            frequency: .monthly(MonthlyRecurrence(recurrence: .daysOfTheMonth(Set(arrayLiteral: try! MonthlyRecurrence.IntegerDayOfTheMonth(dayOfTheMonth: 4))))),
-            recurrenceEnd: RecurrenceEnd.occurrenceCount(5),
-            interval: try! Interval(interval: 5))
+    func testFourthDayOfEachMonthEndingAfterSixTimesWithIntervalOfThree() {
+        _ = Recurrence(frequency: .monthly(.daysOfTheMonth([.fourth])), recurrenceEnd: .occurrenceCount(6), interval: 3)
     }
     
     func testMealRepetition() {
-        _ = Recurrence(
-            frequency: .daily(DailyRecurrence(hoursOfTheDay: Set(arrayLiteral: DailyRecurrence.HoursOfTheDay.eight))),
-            recurrenceEnd: .never,
-            interval: try! Interval(interval: 1))
+        _ = Recurrence(frequency: .daily(DailyRecurrence(hoursOfTheDay: [.eight, .twelve, .five])), recurrenceEnd: .never, interval: 1)
     }
 }

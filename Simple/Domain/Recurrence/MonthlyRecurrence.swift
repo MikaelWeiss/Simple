@@ -21,8 +21,7 @@ enum MonthlyRecurrence {
         }
         
         enum DayOfTheWeekOfTheMonth {
-            case dayOfTheWeek(DayOfTheWeek)
-            case day, weekday, weekendDay
+            case sunday, monday, tuesday, wednesday, thursday, friday, saturday, day, weekday, weekendDay
         }
         
         enum WeekOfTheMonth {

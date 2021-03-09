@@ -20,11 +20,4 @@ struct Recurrence {
         self.recurrenceEnd = recurrenceEnd
         self.interval = interval
     }
-    
-    init() {
-        id = UUID()
-        frequency = .daily(DailyRecurrence(hoursOfTheDay: [.eight]))
-        recurrenceEnd = .occurrenceCount(1)
-        interval = 1
-    }
 }

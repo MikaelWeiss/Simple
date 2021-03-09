@@ -9,7 +9,7 @@
 import SwiftUI
 
 protocol EditRecurrenceInputing {
-    func didTapDefaultRecurrence(_ recurrence: Recurrence.DefaultRecurrence)
+    func didTapDefaultRecurrence(_ recurrence: EditRecurrence.DefaultRecurrence)
     func didTapCustomRepeate()
 }
 
@@ -46,7 +46,7 @@ struct EditRecurrenceView: View {
 // MARK: - Inputing
 
 extension EditRecurrenceView: EditRecurrenceInputing {
-    func didTapDefaultRecurrence(_ recurrence: Recurrence.DefaultRecurrence) {
+    func didTapDefaultRecurrence(_ recurrence: EditRecurrence.DefaultRecurrence) {
         let request = EditRecurrence.DidTapDefaultRecurrence.Request(recurrence: recurrence)
         interactor?.didTapDefaultRecurrence(with: request)
     }
@@ -60,13 +60,13 @@ extension EditRecurrenceView: EditRecurrenceInputing {
 
 extension EditRecurrenceView {
     struct DefaultRecurrenceSection: View {
-        let selectedRecurrence: Recurrence.DefaultRecurrence?
-        let didTapRecurrence: (Recurrence.DefaultRecurrence) -> Void
+        let selectedRecurrence: EditRecurrence.DefaultRecurrence?
+        let didTapRecurrence: (EditRecurrence.DefaultRecurrence) -> Void
         
         var body: some View {
             Section {
-                ForEach( 0 ..< Recurrence.DefaultRecurrence.allCases.count) { i in
-                    let recurrence = Recurrence.DefaultRecurrence.allCases[i]
+                ForEach( 0 ..< EditRecurrence.DefaultRecurrence.allCases.count) { i in
+                    let recurrence = EditRecurrence.DefaultRecurrence.allCases[i]
                     VStack(alignment: .leading, spacing: 0) {
                         HStack {
                             Text(stringForDefaultRecurrence(recurrence))
@@ -85,7 +85,7 @@ extension EditRecurrenceView {
     }
 }
 
-private func stringForDefaultRecurrence(_ recurrence: Recurrence.DefaultRecurrence) -> String {
+private func stringForDefaultRecurrence(_ recurrence: EditRecurrence.DefaultRecurrence) -> String {
     switch recurrence {
     case .never: return "Never"
     case .hourly: return "Hourly"

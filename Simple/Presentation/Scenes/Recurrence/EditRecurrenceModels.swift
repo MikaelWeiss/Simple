@@ -12,10 +12,10 @@ extension EditRecurrence {
     
     enum DidTapDefaultRecurrence {
         struct Request {
-            let recurrence: Recurrence.DefaultRecurrence
+            let recurrence: DefaultRecurrence
         }
         struct Response {
-            let recurrence: Recurrence.DefaultRecurrence
+            let recurrence: DefaultRecurrence
         }
     }
     
@@ -26,7 +26,7 @@ extension EditRecurrence {
     class ViewModel: ObservableObject {
         @Published var sceneTitle = Strings.sceneTitle
         @Published var isShowingCustomRepeat = false
-        @Published var selectedDefaultRecurrence: Recurrence.DefaultRecurrence? = nil
+        @Published var selectedDefaultRecurrence: DefaultRecurrence? = nil
         @Binding var isShowing: Bool
         
         init(isShowing: Binding<Bool>) {
