@@ -12,6 +12,11 @@ protocol EditRecurrenceService {
 }
 
 extension EditRecurrence {
+    
+    enum DefaultRecurrence: CaseIterable {
+        case never, hourly, daily, weekly, biweekly, monthly, everyThreeMonths, everySixMonths, yearly
+    }
+    
     class Service: EditRecurrenceService {
     }
 }
