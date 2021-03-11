@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    func cellStyle(outlineColor: Color = Color.cellOutlineColor, lineWidth: CGFloat = 1.5, hasPadding: Bool = true) -> some View {
+    func cellStyle(outlineColor: Color = Color.appCellOutlineColor, lineWidth: CGFloat = 1.5, hasPadding: Bool = true) -> some View {
         self
             .if(hasPadding, content: { $0.padding() })
             .clipShape (
@@ -28,9 +28,9 @@ struct CellStyle_Previews: PreviewProvider {
     static var previews: some View {
         Text("Sup")
             .cellStyle()
-            .makePreviewKind()
+            .previewLayout(.sizeThatFits)
         Text("Sup")
             .cellStyle(hasPadding: false)
-            .makePreviewKind()
+            .previewLayout(.sizeThatFits)
     }
 }

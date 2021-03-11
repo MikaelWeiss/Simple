@@ -8,12 +8,12 @@
 import SwiftUI
 
 extension Color {
-    public static var darkPurpleTextColor = Color(#colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1))
-    public static var standardCellFontColor = Color(#colorLiteral(red: 0.5411272645, green: 0.5412079692, blue: 0.5411095023, alpha: 1))
-    public static var entryItemValueColor = Color("entryItemValueColor")
-    public static var cellOutlineColor = Color("cellOutlineColor")
-    public static var treeGreen = Color(#colorLiteral(red: 0.1490196078, green: 0.3607843137, blue: 0.003921568627, alpha: 1))
-    public static var deepBlue = Color(#colorLiteral(red: 0.003921568627, green: 0.2470588235, blue: 0.5058823529, alpha: 1))
+    public static var appDarkPurpleTextColor = Color(#colorLiteral(red: 0.09019608051, green: 0, blue: 0.3019607961, alpha: 1))
+    public static var appStandardCellFontColor = Color(#colorLiteral(red: 0.5411272645, green: 0.5412079692, blue: 0.5411095023, alpha: 1))
+    public static var appEntryItemValueColor = Color("entryItemValueColor")
+    public static var appCellOutlineColor = Color("cellOutlineColor")
+    public static var appTreeGreen = Color(#colorLiteral(red: 0.1490196078, green: 0.3607843137, blue: 0.003921568627, alpha: 1))
+    public static var appDeepBlue = Color(#colorLiteral(red: 0.003921568627, green: 0.2470588235, blue: 0.5058823529, alpha: 1))
 }
 
 extension Color {

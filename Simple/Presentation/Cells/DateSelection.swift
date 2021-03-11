@@ -23,7 +23,7 @@ struct DateSelection: View {
         HStack {
             DatePicker(selection: binding, label: { Text(title) })
                 .frame(height: 24)
-                .accentColor(.entryItemValueColor)
+                .accentColor(.appEntryItemValueColor)
         }
         .placeholderFontStyle()
         .cellStyle()

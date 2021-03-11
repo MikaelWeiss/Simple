@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension View {
-    /// Added for when you want to have a conditional modifier
+    /// Used when you want to have a conditional modifier
     @ViewBuilder
     func `if`<Content: View>(_ condition: Bool, content: (Self) -> Content) -> some View {
         if condition {
@@ -51,6 +51,7 @@ extension View {
 
 extension View {
     /// Used to show both a dark mode and light mode preview of a view
+    @available(*, deprecated, message: "Not helpful untill light mode is suported")
     func makePreviewKind(previewLayout: PreviewLayout = .sizeThatFits) -> some View {
         Group {
             self
@@ -75,5 +76,16 @@ private struct NoButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .background(Color.black.opacity(0.0001))
+    }
+}
+
+extension View {
+    /// Used to provide an inverse masking
+    public func inverseMask<M: View>(_ mask: () -> M) -> some View {
+        ZStack {
+            self
+            mask()
+                .blendMode(.destinationOut)
+        }.compositingGroup()
     }
 }

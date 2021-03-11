@@ -26,14 +26,14 @@ struct TextEntry: View {
     }
     
     private var outlineColor: Color {
-        state == .normal ? Color.cellOutlineColor : redColor
+        state == .normal ? Color.appCellOutlineColor : redColor
     }
     
     private var xColor: Color {
         if state == .error {
             return redColor
         }
-        return colorScheme == .dark ? .deepBlue : .entryItemValueColor
+        return colorScheme == .dark ? .appDeepBlue : .appEntryItemValueColor
     }
     
     init(_ title: String, infoText: String? = nil, value: String, state: ValueState, onTextChanged: @escaping (String) -> Void) {

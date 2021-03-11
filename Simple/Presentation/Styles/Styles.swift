@@ -22,12 +22,12 @@ extension View {
     func placeholderFontStyle() -> some View {
         self
             .font(Styles.standardPlaceholderFontStyle)
-            .foregroundColor(.standardCellFontColor)
+            .foregroundColor(.appStandardCellFontColor)
     }
     
     func valueFontStyle() -> some View {
         self
             .font(Styles.standardValueFontStyle)
-            .foregroundColor(.entryItemValueColor)
+            .foregroundColor(.appEntryItemValueColor)
     }
 }
