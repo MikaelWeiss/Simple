@@ -31,12 +31,12 @@ extension TasksOverview {
     }
     
     enum Strings {
-        static let sceneTitle = NSLocalizedString("Overview", comment: "The title for the scene")
-        static let fetchFailedAlertTitle = NSLocalizedString("Fetch failed", comment: "The title for the fetch failed alert")
-        static let fetchFailedAlertMessage = NSLocalizedString("We were unable to fetch your tasks", comment: "The message for the fetch failed alert")
-        static let defaultAlertActionTitle = NSLocalizedString("OK", comment: "The default alert action title")
-        static let unknownErrorAlertTitle = NSLocalizedString("Unknown Error", comment: "unknown error alert title")
-        static let unknownErrorAlertMessage = NSLocalizedString("Something unexpected happened", comment: "unknown error alert message")
+        static let sceneTitle = NSLocalizedString("TasksOverview-sceneTitle", comment: "TasksOverview - The title for the scene")
+        static let fetchFailedAlertTitle = NSLocalizedString("TasksOverview-fetchFailedAlertTitle", comment: "TasksOverview - The title for the fetch failed alert")
+        static let fetchFailedAlertMessage = NSLocalizedString("TasksOverview-fetchFailedAlertMessage", comment: "TasksOverview - The message for the fetch failed alert")
+        static let defaultAlertActionTitle = NSLocalizedString("TasksOverview-defaultAlertActionTitle", comment: "TasksOverview - The default alert action title")
+        static let unknownErrorAlertTitle = NSLocalizedString("TasksOverview-unknownErrorAlertTitle", comment: "TasksOverview - Unknown error alert title")
+        static let unknownErrorAlertMessage = NSLocalizedString("TasksOverview-unknownErrorAlertMessage", comment: "TasksOverview - Unknown error alert message")
     }
     
     class ViewModel: ObservableObject {
