@@ -1,0 +1,44 @@
+/* EditTask - Cell title for task date entry */
+"EditTask-dateCellTitle" = "Date:";
+
+/* EditTask - The default alert action title */
+"EditTask-defaultAlertActionTitle" = "OK";
+
+/* EditTask - Cell title for task repetition */
+"EditTask-frequencyCellTitle" = "Repetition:";
+
+/* EditTask - Cell title for task name text entry */
+"EditTask-nameCellTitle" = "Name";
+
+/* EditTask - The message for the save failed alert */
+"EditTask-saveFailedAlertMessage" = "We were unable to save your tasks";
+
+/* EditTask - The title for the save failed alert */
+"EditTask-saveFailedAlertTitle" = "Save failed";
+
+/* EditTask - Scene title */
+"EditTask-sceneTitle" = "New Task";
+
+/* EditTask - Unknown error alert message */
+"EditTask-unknownErrorAlertMessage" = "Something unexpected happened";
+
+/* EditTask - Unknown error alert title */
+"EditTask-unknownErrorAlertTitle" = "Unknown Error";
+
+/* TasksOverview - The default alert action title */
+"TasksOverview-defaultAlertActionTitle" = "OK";
+
+/* TasksOverview - The message for the fetch failed alert */
+"TasksOverview-fetchFailedAlertMessage" = "We were unable to fetch your tasks";
+
+/* TasksOverview - The title for the fetch failed alert */
+"TasksOverview-fetchFailedAlertTitle" = "Fetch failed";
+
+/* TasksOverview - The title for the scene */
+"TasksOverview-sceneTitle" = "Overview";
+
+/* TasksOverview - Unknown error alert message */
+"TasksOverview-unknownErrorAlertMessage" = "Something unexpected happened";
+
+/* TasksOverview - Unknown error alert title */
+"TasksOverview-unknownErrorAlertTitle" = "Unknown Error";

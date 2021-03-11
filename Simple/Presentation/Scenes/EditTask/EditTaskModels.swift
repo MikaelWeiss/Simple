@@ -84,15 +84,15 @@ extension EditTask {
     }
     
     enum Strings {
-        static let sceneTitle = NSLocalizedString("New Task", comment: "The title for the scene")
-        static let nameCellTitle = NSLocalizedString("Name", comment: "Cell title for task name text entry")
-        static let dateCellTitle = NSLocalizedString("Date:", comment: "Cell title for task date entry")
-        static let frequencyCellTitle = NSLocalizedString("Repetition:", comment: "Cell title for task repetition")
-        static let saveFailedAlertTitle = NSLocalizedString("Save failed", comment: "The title for the save failed alert")
-        static let saveFailedAlertMessage = NSLocalizedString("We were unable to save your tasks", comment: "The message for the save failed alert")
-        static let defaultAlertActionTitle = NSLocalizedString("OK", comment: "The default alert action title")
-        static let unknownErrorAlertTitle = NSLocalizedString("Unknown Error", comment: "unknown error alert title")
-        static let unknownErrorAlertMessage = NSLocalizedString("Something unexpected happened", comment: "unknown error alert message")
+        static let sceneTitle = NSLocalizedString("EditTask-sceneTitle", comment: "EditTask - Scene title")
+        static let nameCellTitle = NSLocalizedString("EditTask-nameCellTitle", comment: "EditTask - Cell title for task name text entry")
+        static let dateCellTitle = NSLocalizedString("EditTask-dateCellTitle", comment: "EditTask - Cell title for task date entry")
+        static let frequencyCellTitle = NSLocalizedString("EditTask-frequencyCellTitle", comment: "EditTask - Cell title for task repetition")
+        static let saveFailedAlertTitle = NSLocalizedString("EditTask-saveFailedAlertTitle", comment: "EditTask - The title for the save failed alert")
+        static let saveFailedAlertMessage = NSLocalizedString("EditTask-saveFailedAlertMessage", comment: "EditTask - The message for the save failed alert")
+        static let defaultAlertActionTitle = NSLocalizedString("EditTask-defaultAlertActionTitle", comment: "EditTask - The default alert action title")
+        static let unknownErrorAlertTitle = NSLocalizedString("EditTask-unknownErrorAlertTitle", comment: "EditTask - Unknown error alert title")
+        static let unknownErrorAlertMessage = NSLocalizedString("EditTask-unknownErrorAlertMessage", comment: "EditTask - Unknown error alert message")
     }
     
     class ViewModel: ObservableObject {
