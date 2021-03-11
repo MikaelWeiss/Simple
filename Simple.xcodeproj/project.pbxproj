@@ -68,12 +68,12 @@
 		A5709A1625DB2F130050B3B5 /* StorageToDomainTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A1525DB2F130050B3B5 /* StorageToDomainTransformer.swift */; };
 		A5709A1B25DB2F870050B3B5 /* DomainToStorageTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A1A25DB2F870050B3B5 /* DomainToStorageTransformer.swift */; };
 		A5709A3025DB589E0050B3B5 /* StorageToDomainTransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A2F25DB589E0050B3B5 /* StorageToDomainTransformerTests.swift */; };
+		A577F22F25F8683000B80162 /* RecurrenceGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A577F22E25F8683000B80162 /* RecurrenceGrid.swift */; };
 		A57ABE4425E85CF200083BDA /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3725E4B4C700070FF3 /* UIImage+Extensions.swift */; };
 		A5A9917225F354310050E982 /* EditRecurrenceInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9916E25F354310050E982 /* EditRecurrenceInteractorTests.swift */; };
 		A5A9917325F354310050E982 /* EditRecurrenceViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9916F25F354310050E982 /* EditRecurrenceViewTests.swift */; };
 		A5A9917425F354310050E982 /* EditRecurrencePresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9917025F354310050E982 /* EditRecurrencePresenterTests.swift */; };
 		A5A9917525F354310050E982 /* EditRecurrenceServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9917125F354310050E982 /* EditRecurrenceServiceTests.swift */; };
-		A5A9918625F4608A0050E982 /* VisualComponents.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9918525F4608A0050E982 /* VisualComponents.swift */; };
 		A5A9918B25F4615D0050E982 /* RecurrenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */; };
 		A5AC06CF25D7830900504FEE /* SimpleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC06CE25D7830900504FEE /* SimpleApp.swift */; };
 		A5AC06D325D7830A00504FEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AC06D225D7830A00504FEE /* Assets.xcassets */; };
@@ -209,11 +209,11 @@
 		A5709A1525DB2F130050B3B5 /* StorageToDomainTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageToDomainTransformer.swift; sourceTree = "<group>"; };
 		A5709A1A25DB2F870050B3B5 /* DomainToStorageTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainToStorageTransformer.swift; sourceTree = "<group>"; };
 		A5709A2F25DB589E0050B3B5 /* StorageToDomainTransformerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageToDomainTransformerTests.swift; sourceTree = "<group>"; };
+		A577F22E25F8683000B80162 /* RecurrenceGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceGrid.swift; sourceTree = "<group>"; };
 		A5A9916E25F354310050E982 /* EditRecurrenceInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecurrenceInteractorTests.swift; sourceTree = "<group>"; };
 		A5A9916F25F354310050E982 /* EditRecurrenceViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecurrenceViewTests.swift; sourceTree = "<group>"; };
 		A5A9917025F354310050E982 /* EditRecurrencePresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecurrencePresenterTests.swift; sourceTree = "<group>"; };
 		A5A9917125F354310050E982 /* EditRecurrenceServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRecurrenceServiceTests.swift; sourceTree = "<group>"; };
-		A5A9918525F4608A0050E982 /* VisualComponents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualComponents.swift; sourceTree = "<group>"; };
 		A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceTests.swift; sourceTree = "<group>"; };
 		A5AC06CB25D7830900504FEE /* Simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AC06CE25D7830900504FEE /* SimpleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleApp.swift; sourceTree = "<group>"; };
@@ -495,6 +495,14 @@
 			path = Transformers;
 			sourceTree = "<group>";
 		};
+		A577F22D25F8680100B80162 /* VisualComponents */ = {
+			isa = PBXGroup;
+			children = (
+				A577F22E25F8683000B80162 /* RecurrenceGrid.swift */,
+			);
+			path = VisualComponents;
+			sourceTree = "<group>";
+		};
 		A5AC06C225D7830900504FEE = {
 			isa = PBXGroup;
 			children = (
@@ -549,11 +557,11 @@
 			isa = PBXGroup;
 			children = (
 				A56B699625F3630200DBB18C /* PresentationSupport.swift */,
-				A5A9918525F4608A0050E982 /* VisualComponents.swift */,
 				A514523625D8A8680005070F /* Cells */,
 				A514523025D8A7A00005070F /* Extensions */,
 				A5AC070D25D785E600504FEE /* Scenes */,
 				A514522A25D8A7380005070F /* Styles */,
+				A577F22D25F8680100B80162 /* VisualComponents */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -797,7 +805,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5649C7D25F2A29100E322A1 /* EditRecurrencePresenter.swift in Sources */,
-				A5A9918625F4608A0050E982 /* VisualComponents.swift in Sources */,
+				A577F22F25F8683000B80162 /* RecurrenceGrid.swift in Sources */,
 				A56F52CA25F716D50007DDB4 /* HourlyRecurrence.swift in Sources */,
 				A5AC071925D7865E00504FEE /* TasksOverviewPresenter.swift in Sources */,
 				A5649C8125F2A29100E322A1 /* EditRecurrenceView.swift in Sources */,
