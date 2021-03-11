@@ -17,6 +17,15 @@ extension EditRecurrence {
         struct Response {
             let recurrence: DefaultRecurrence
         }
+        struct ViewModel {
+            struct Cell {
+                let recurrence: DefaultRecurrence
+                let value: String
+                let selected: Bool
+            }
+            
+            let cells: [Cell]
+        }
     }
     
     enum Strings {
@@ -26,7 +35,7 @@ extension EditRecurrence {
     class ViewModel: ObservableObject {
         @Published var sceneTitle = Strings.sceneTitle
         @Published var isShowingCustomRepeat = false
-        @Published var selectedDefaultRecurrence: DefaultRecurrence? = nil
+        @Published var defaultRecurrences: DidTapDefaultRecurrence.ViewModel = .init(cells: [.init(recurrence: .daily, value: "Daily", selected: false)])
         @Binding var isShowing: Bool
         
         init(isShowing: Binding<Bool>) {
