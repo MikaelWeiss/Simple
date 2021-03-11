@@ -7,59 +7,65 @@
 
 import SwiftUI
 
-extension View {
-    // view.inverseMask(_:)
-    public func inverseMask<M: View>(_ mask: () -> M) -> some View {
-        ZStack {
-            self
-            mask()
-                .blendMode(.destinationOut)
-        }.compositingGroup()
-    }
-}
-
 struct RecurrenceGrid: View {
-    private let columns = [GridItem(.adaptive(minimum: 30))]
+    private let columns = [GridItem(.adaptive(minimum: 36))]
     
-    let data = Array(reapeating, 1...31).map { (val: $0, selected: False) }
+    let data: [ValueData]
     
     var body: some View {
         LazyVGrid(columns: columns) {
-            ForEach(1 ..< 30) { num in
-                Circle()
-                    .stroke(Color.gray, lineWidth: 2)
-                    .frame(width: 30, height: 30)
-                    .overlay (
-                        Text("\(num)")
-                            .font(.system(size: 17, weight: .medium, design: .rounded))
-                    )
+            ForEach(data) { value in
+                if value.selected {
+                    Circle()
+                        .frame(width: 36, height: 36)
+                        .inverseMask {
+                            Number(value.text)
+                        }
+                } else {
+                    Circle()
+                        .stroke(Color.gray, lineWidth: 2)
+                        .frame(width: 36, height: 36)
+                        .overlay (
+                            Number(value.text)
+                        )
+                }
             }
         }
-        .background(Color.darkPurpleTextColor)
+    }
+}
+
+extension RecurrenceGrid {
+    struct ValueData: Identifiable {
+        internal let id = UUID()
+        let text: String
+        let selected: Bool
+    }
+}
+
+extension RecurrenceGrid {
+    struct Number: View {
+        private let value: String
+        
+        init(_ value: String) {
+            self.value = value
+        }
+        
+        var body: some View {
+            Text(value)
+                .font(.system(size: 17, weight: .medium, design: .rounded))
+        }
     }
 }
 
 struct RecurrenceGrid_Previews: PreviewProvider {
+    
+    static let data: [RecurrenceGrid.ValueData] = {
+        var vals = Array(1...30).map { RecurrenceGrid.ValueData(text: "\($0)", selected: false) }
+        vals.append(RecurrenceGrid.ValueData(text: "31", selected: true))
+        return vals
+    }()
+    
     static var previews: some View {
-        RecurrenceGrid()
-    }
-}
-
-struct ContentView: View {
-    let data = (1...1000).map { "Item \($0)" }
-
-    let columns = [
-        GridItem(.adaptive(minimum: 80))
-    ]
-
-    var body: some View {
-        ScrollView {
-            LazyVGrid(columns: columns, spacing: 20) {
-                ForEach(data, id: \.self) { item in
-                    Text(item)
-                }
-            }
-            .padding(.horizontal)
-        }
+        RecurrenceGrid(data: data)
     }
 }
