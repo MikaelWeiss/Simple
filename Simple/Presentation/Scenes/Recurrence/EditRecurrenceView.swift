@@ -25,7 +25,7 @@ struct EditRecurrenceView: View {
     // MARK: - View Lifecycle
     var body: some View {
         List {
-            DefaultRecurrenceSection(selectedRecurrence: viewModel.selectedDefaultRecurrence) {
+            DefaultRecurrenceSection(recurrences: viewModel.defaultRecurrences) {
                 didTapDefaultRecurrence($0)
             }
             
@@ -38,7 +38,7 @@ struct EditRecurrenceView: View {
         .navigationBarTitle(viewModel.sceneTitle, displayMode: .inline)
         
         .onAppear {
-            interactor?.updateTheme()
+            interactor?.setup()
         }
     }
 }
@@ -47,7 +47,7 @@ struct EditRecurrenceView: View {
 
 extension EditRecurrenceView: EditRecurrenceInputing {
     func didTapDefaultRecurrence(_ recurrence: EditRecurrence.DefaultRecurrence) {
-        let request = EditRecurrence.DidTapDefaultRecurrence.Request(recurrence: recurrence)
+        let request = EditRecurrence.DidSelectDefaultRecurrence.Request(recurrence: recurrence)
         interactor?.didTapDefaultRecurrence(with: request)
     }
     
@@ -60,42 +60,27 @@ extension EditRecurrenceView: EditRecurrenceInputing {
 
 extension EditRecurrenceView {
     struct DefaultRecurrenceSection: View {
-        let selectedRecurrence: EditRecurrence.DefaultRecurrence?
+        let recurrences: [EditRecurrence.DidSelectDefaultRecurrence.Cell]
         let didTapRecurrence: (EditRecurrence.DefaultRecurrence) -> Void
         
         var body: some View {
             Section {
-                ForEach( 0 ..< EditRecurrence.DefaultRecurrence.allCases.count) { i in
-                    let recurrence = EditRecurrence.DefaultRecurrence.allCases[i]
+                ForEach(recurrences) { cell in
                     VStack(alignment: .leading, spacing: 0) {
                         HStack {
-                            Text(stringForDefaultRecurrence(recurrence))
+                            Text(cell.value)
                             Spacer()
                                 .frame(height: 40)
-                            if selectedRecurrence == recurrence {
+                            if cell.selected {
                                 Image(systemName: "checkmark")
                             }
                         }
                         .foregroundColor(Color(.lightGray))
                     }
-                    .wrapInPlainButton { didTapRecurrence(recurrence) }
+                    .wrapInPlainButton { didTapRecurrence(cell.recurrence) }
                 }
             }
         }
-    }
-}
-
-private func stringForDefaultRecurrence(_ recurrence: EditRecurrence.DefaultRecurrence) -> String {
-    switch recurrence {
-    case .never: return "Never"
-    case .hourly: return "Hourly"
-    case .daily: return "Daily"
-    case .weekly: return "Weekly"
-    case .biweekly: return "Biweekly"
-    case .monthly: return "Monthly"
-    case .everyThreeMonths: return "Every 3 Months"
-    case .everySixMonths: return "Every 6 Months"
-    case .yearly: return "Yearly"
     }
 }
 
@@ -123,7 +108,9 @@ struct EditRecurrence_Previews: PreviewProvider {
     
     static var vm: EditRecurrence.ViewModel {
         let vm = EditRecurrence.ViewModel(isShowing: .constant(true))
-        vm.selectedDefaultRecurrence = .daily
+        vm.defaultRecurrences = .init(cells: [.init(recurrence: .never, value: "Never", selected: false),
+                                              .init(recurrence: .daily, value: "Daily", selected: true),
+                                              .init(recurrence: .yearly, value: "Yearly", selected: false)])
         return vm
     }
     static var previews: some View {

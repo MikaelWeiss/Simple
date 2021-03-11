@@ -9,8 +9,8 @@
 import Foundation
 
 protocol EditRecurrenceRequesting {
-    func updateTheme()
-    func didTapDefaultRecurrence(with request: EditRecurrence.DidTapDefaultRecurrence.Request)
+    func setup()
+    func didTapDefaultRecurrence(with request: EditRecurrence.DidSelectDefaultRecurrence.Request)
     func didTapCustomRepeat()
 }
 
@@ -23,13 +23,17 @@ struct EditRecurrenceInteractor: EditRecurrenceRequesting {
         self.presenter = presenter
     }
     
-    func updateTheme() {
-        presenter.presentUpdateTheme()
+    func setup() {
+        let defaultRecurrences = service.fetchDefaultRecurrences()
+        let selectedDefaultRecurrence = service.fetchSelectedDefaultRecurrence()
+        let response = EditRecurrence.Setup.Response(defaultRecurrences: defaultRecurrences, selectedDefaultRecurrence: selectedDefaultRecurrence)
+        presenter.presentSetup(with: response)
     }
     
-    func didTapDefaultRecurrence(with request: EditRecurrence.DidTapDefaultRecurrence.Request) {
-        let response = EditRecurrence.DidTapDefaultRecurrence.Response(recurrence: request.recurrence)
-        presenter.presentDidTapDefaultRecurrence(with: response)
+    func didTapDefaultRecurrence(with request: EditRecurrence.DidSelectDefaultRecurrence.Request) {
+        service.didSelectDefaultRecurrence(recurrence: request.recurrence)
+        let response = EditRecurrence.DidSelectDefaultRecurrence.Response(recurrence: request.recurrence)
+        presenter.presentDidSelectDefaultRecurrence(with: response)
     }
     
     func didTapCustomRepeat() {

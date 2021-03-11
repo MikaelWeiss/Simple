@@ -15,7 +15,7 @@ class EditRecurrencePresenterTests: XCTestCase {
     
     func testPresentUpdateTheme() {
         // When
-        presenter.presentUpdateTheme()
+        presenter.presentSetup()
         
         // Then
         XCTAssertEqual(viewModel.title, EditRecurrence.Strings.sceneTitle)

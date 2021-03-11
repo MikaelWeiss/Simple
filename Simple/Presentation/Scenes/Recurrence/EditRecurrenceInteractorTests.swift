@@ -16,7 +16,7 @@ class EditRecurrenceInteractorTests: XCTestCase {
     
     func testUpdateTheme() {
         // When
-        interactor.updateTheme()
+        interactor.setup()
         
         // Then
         XCTAssertTrue(presenter.presentUpdateThemeCalled)
