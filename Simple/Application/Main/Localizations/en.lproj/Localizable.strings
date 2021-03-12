@@ -46,8 +46,11 @@
 /* EditTask - The title for the save failed alert */
 "EditTask-saveFailedAlertTitle" = "Save failed";
 
-/* EditTask - Scene title */
-"EditTask-sceneTitle" = "New Task";
+/* EditTask - Scene title - edit */
+"EditTask-editSceneTitle" = "Edit Task";
+
+/* EditTask - Scene title - create */
+"EditTask-creationSceneTitle" = "New Task";
 
 /* EditTask - Unknown error alert message */
 "EditTask-unknownErrorAlertMessage" = "Something unexpected happened";

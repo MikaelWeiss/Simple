@@ -84,7 +84,8 @@ extension EditTask {
     }
     
     enum Strings {
-        static let sceneTitle = NSLocalizedString("EditTask-sceneTitle", comment: "EditTask - Scene title")
+        static let editSceneTitle = NSLocalizedString("EditTask-editSceneTitle", comment: "EditTask - Scene title - edit")
+        static let creationSceneTitle = NSLocalizedString("EditTask-creationSceneTitle", comment: "EditTask - Scene title - create")
         static let nameCellTitle = NSLocalizedString("EditTask-nameCellTitle", comment: "EditTask - Cell title for task name text entry")
         static let dateCellTitle = NSLocalizedString("EditTask-dateCellTitle", comment: "EditTask - Cell title for task date entry")
         static let frequencyCellTitle = NSLocalizedString("EditTask-frequencyCellTitle", comment: "EditTask - Cell title for task repetition")
