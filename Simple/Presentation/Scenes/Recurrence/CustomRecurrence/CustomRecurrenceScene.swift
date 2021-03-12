@@ -15,9 +15,13 @@ enum CustomRecurrence {
         let callbacak: (Recurrence) -> Void
     }
     
+    private static var input: Input?
+    
+    static func prepareScene(currentRecurrence: Recurrence, callback: @escaping (Recurrence) -> Void) {
+        input = Input(currentRecurrence: currentRecurrence, callbacak: callback)
+    }
+    
     struct Scene {
-        private static var input: Input?
-        
         let view: CustomRecurrenceView
         
         init() {
@@ -28,15 +32,11 @@ enum CustomRecurrence {
         }
         
         private static func buildService() -> CustomRecurrence.Service {
-            guard let input = Self.input else {
+            guard let input = input else {
                 // TODO: Update to show an alert and then dismiss the scene
-                fatalError("Missing input")
+                fatalError("CustomRecurrence: Missing input")
             }
             return CustomRecurrence.Service(recurrence: input.currentRecurrence)
-        }
-        
-        static func prepNLanding(currentRecurrence: Recurrence, callback: @escaping (Recurrence) -> Void) {
-            input = Input(currentRecurrence: currentRecurrence, callbacak: callback)
         }
     }
 }
