@@ -30,6 +30,6 @@ enum MonthlyRecurrence {
     }
 }
 
-enum DayOfTheMonth {
-    case first, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth, eleventh, twelveth, thirtineth, fourteenth, fifteenth, sixteenth, seventeenth, eighteenth, nineteenth, twentieth, twentyfirst, twentysecond, twentythird, twentyfourth, twentyfifth, twentysixth, twentyseventh, twentyeighth, twentynineth, thirtieth, thirtyfirst
+enum DayOfTheMonth: Int {
+    case first = 1, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth, eleventh, twelveth, thirtineth, fourteenth, fifteenth, sixteenth, seventeenth, eighteenth, nineteenth, twentieth, twentyfirst, twentysecond, twentythird, twentyfourth, twentyfifth, twentysixth, twentyseventh, twentyeighth, twentynineth, thirtieth, thirtyfirst
 }

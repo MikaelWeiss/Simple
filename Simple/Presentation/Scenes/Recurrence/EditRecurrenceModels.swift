@@ -35,7 +35,7 @@ extension EditRecurrence {
     
     enum Strings {
         static let sceneTitle = NSLocalizedString("EditRecurrence-sceneTitle", comment: "EditRecurrence - The title for the scene")
-        static func stringForDefaultRecurrence(_ recurrence: EditRecurrence.DefaultRecurrence) -> String {
+        static func stringForDefaultRecurrence(_ recurrence: DefaultRecurrence) -> String {
             switch recurrence {
             case .never: return NSLocalizedString("EditRecurrence-defaultRecurrenceNever", comment: "EditRecurrence - Default recurrence Never title")
             case .hourly: return NSLocalizedString("EditRecurrence-defaultRecurrenceHourly", comment: "EditRecurrence - Default recurrence Hourly title")

@@ -9,7 +9,7 @@
 import SwiftUI
 
 protocol EditRecurrenceInputing {
-    func didTapDefaultRecurrence(_ recurrence: EditRecurrence.DefaultRecurrence)
+    func didTapDefaultRecurrence(_ recurrence: DefaultRecurrence)
     func didTapCustomRepeate()
 }
 
@@ -46,7 +46,7 @@ struct EditRecurrenceView: View {
 // MARK: - Inputing
 
 extension EditRecurrenceView: EditRecurrenceInputing {
-    func didTapDefaultRecurrence(_ recurrence: EditRecurrence.DefaultRecurrence) {
+    func didTapDefaultRecurrence(_ recurrence: DefaultRecurrence) {
         let request = EditRecurrence.DidSelectDefaultRecurrence.Request(recurrence: recurrence)
         interactor?.didTapDefaultRecurrence(with: request)
     }
@@ -61,7 +61,7 @@ extension EditRecurrenceView: EditRecurrenceInputing {
 extension EditRecurrenceView {
     struct DefaultRecurrenceSection: View {
         let recurrences: [EditRecurrence.DidSelectDefaultRecurrence.Cell]
-        let didTapRecurrence: (EditRecurrence.DefaultRecurrence) -> Void
+        let didTapRecurrence: (DefaultRecurrence) -> Void
         
         var body: some View {
             Section {

@@ -30,7 +30,7 @@ struct EditRecurrencePresenter: EditRecurrencePresenting {
         viewModel.defaultRecurrences = cells
     }
     
-    private func checkSelected(_ recurrence: EditRecurrence.DefaultRecurrence, selected: EditRecurrence.DefaultRecurrence?) -> Bool {
+    private func checkSelected(_ recurrence: DefaultRecurrence, selected: DefaultRecurrence?) -> Bool {
         guard let selected = selected else { return false }
         return selected == recurrence ? true : false
     }

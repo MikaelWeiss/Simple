@@ -11,4 +11,5 @@ enum RecurrenceEnd {
     case date(Date)
     case occurrenceCount(Int)
     case never
+    case rightAway
 }

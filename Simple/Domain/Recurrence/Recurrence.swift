@@ -21,3 +21,7 @@ struct Recurrence {
         self.interval = interval
     }
 }
+
+enum DefaultRecurrence: CaseIterable {
+    case never, hourly, daily, weekly, biweekly, monthly, everyThreeMonths, everySixMonths, yearly
+}

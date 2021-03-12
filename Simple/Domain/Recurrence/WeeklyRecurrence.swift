@@ -11,6 +11,6 @@ struct WeeklyRecurrence {
     let daysOfTheWeek: Set<DayOfTheWeek>
 }
 
-enum DayOfTheWeek {
-    case sunday, monday, tuesday, wednesday, thursday, friday, saturday
+enum DayOfTheWeek: Int {
+    case sunday = 1, monday, tuesday, wednesday, thursday, friday, saturday
 }

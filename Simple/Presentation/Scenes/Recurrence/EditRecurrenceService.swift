@@ -9,42 +9,46 @@
 import Foundation
 
 protocol EditRecurrenceService {
-    func fetchDefaultRecurrences() -> [EditRecurrence.DefaultRecurrence]
-    func didSelectDefaultRecurrence(recurrence: EditRecurrence.DefaultRecurrence)
-    func fetchSelectedDefaultRecurrence() -> EditRecurrence.DefaultRecurrence?
-    func prepareRouteToCustomRecurrence(callback: @escaping (Recurrence) -> Void)
+    func fetchDefaultRecurrences() -> [DefaultRecurrence]
+    func didSelectDefaultRecurrence(recurrence: DefaultRecurrence) throws
     func didSelectRecurrence(_ recurrence: Recurrence)
+    func fetchRecurrence() -> Recurrence
+    func prepareRouteToCustomRecurrence(currentRecurrence: Recurrence, callback: @escaping (Recurrence) -> Void)
 }
 
+protocol EditRecurrenceRecurrenceFactory {
+    func defaultRecurrence(_ recurrence: DefaultRecurrence, for date: Date) throws -> Recurrence
+}
+extension RecurrenceFactory: EditRecurrenceRecurrenceFactory { }
+
 extension EditRecurrence {
-    enum DefaultRecurrence: CaseIterable {
-        case never, hourly, daily, weekly, biweekly, monthly, everyThreeMonths, everySixMonths, yearly
-    }
     
     class Service: EditRecurrenceService {
         
-        private var selectedDefaultRecurrence: DefaultRecurrence?
-        private var currentRecurrence: Recurrence?
+        private var recurrenceFactory: EditRecurrenceRecurrenceFactory
+        private var currentRecurrence: Recurrence
+        private var date: Date
         
-        func fetchDefaultRecurrences() -> [EditRecurrence.DefaultRecurrence] {
+        init(recurrenceFactory: EditRecurrenceRecurrenceFactory, currentRecurrence: Recurrence, date: Date) {
+            self.recurrenceFactory = recurrenceFactory
+            self.currentRecurrence = currentRecurrence
+            self.date = date
+        }
+        
+        func fetchDefaultRecurrences() -> [DefaultRecurrence] {
             DefaultRecurrence.allCases
         }
         
-        func currentRecurrence() -> Recurrence {
-            
+        func fetchRecurrence() -> Recurrence {
+            currentRecurrence
         }
         
-        func fetchSelectedDefaultRecurrence() -> EditRecurrence.DefaultRecurrence? {
-            return selectedDefaultRecurrence
-        }
-        
-        func didSelectDefaultRecurrence(recurrence: EditRecurrence.DefaultRecurrence) {
-            self.selectedDefaultRecurrence = recurrence
+        func didSelectDefaultRecurrence(recurrence: DefaultRecurrence) throws {
+            currentRecurrence = try recurrenceFactory.defaultRecurrence(recurrence, for: date)
         }
         
         func didSelectRecurrence(_ recurrence: Recurrence) {
-            self.selectedDefaultRecurrence = nil
-            self.currentRecurrence = recurrence
+            currentRecurrence = recurrence
         }
         
         func prepareRouteToCustomRecurrence(currentRecurrence: Recurrence, callback: @escaping (Recurrence) -> Void) {
