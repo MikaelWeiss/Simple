@@ -36,11 +36,11 @@ struct EditRecurrenceView: View {
         }
         .listStyle(InsetGroupedListStyle())
         .navigationBarTitle(viewModel.sceneTitle, displayMode: .inline)
-        
         .onAppear {
             interactor?.setup()
         }
     }
+    // Leave which scene to route to up to the presenter?
 }
 
 // MARK: - Inputing
@@ -108,9 +108,9 @@ struct EditRecurrence_Previews: PreviewProvider {
     
     static var vm: EditRecurrence.ViewModel {
         let vm = EditRecurrence.ViewModel(isShowing: .constant(true))
-        vm.defaultRecurrences = .init(cells: [.init(recurrence: .never, value: "Never", selected: false),
-                                              .init(recurrence: .daily, value: "Daily", selected: true),
-                                              .init(recurrence: .yearly, value: "Yearly", selected: false)])
+        vm.defaultRecurrences = [.init(recurrence: .never, value: "Never", selected: false),
+                                 .init(recurrence: .daily, value: "Daily", selected: true),
+                                 .init(recurrence: .yearly, value: "Yearly", selected: false)]
         return vm
     }
     static var previews: some View {
