@@ -12,6 +12,8 @@ protocol EditRecurrenceService {
     func fetchDefaultRecurrences() -> [EditRecurrence.DefaultRecurrence]
     func didSelectDefaultRecurrence(recurrence: EditRecurrence.DefaultRecurrence)
     func fetchSelectedDefaultRecurrence() -> EditRecurrence.DefaultRecurrence?
+    func prepareRouteToCustomRecurrence(callback: @escaping (Recurrence) -> Void)
+    func didSelectRecurrence(_ recurrence: Recurrence)
 }
 
 extension EditRecurrence {
@@ -22,9 +24,14 @@ extension EditRecurrence {
     class Service: EditRecurrenceService {
         
         private var selectedDefaultRecurrence: DefaultRecurrence?
+        private var currentRecurrence: Recurrence?
         
         func fetchDefaultRecurrences() -> [EditRecurrence.DefaultRecurrence] {
             DefaultRecurrence.allCases
+        }
+        
+        func currentRecurrence() -> Recurrence {
+            
         }
         
         func fetchSelectedDefaultRecurrence() -> EditRecurrence.DefaultRecurrence? {
@@ -33,6 +40,15 @@ extension EditRecurrence {
         
         func didSelectDefaultRecurrence(recurrence: EditRecurrence.DefaultRecurrence) {
             self.selectedDefaultRecurrence = recurrence
+        }
+        
+        func didSelectRecurrence(_ recurrence: Recurrence) {
+            self.selectedDefaultRecurrence = nil
+            self.currentRecurrence = recurrence
+        }
+        
+        func prepareRouteToCustomRecurrence(currentRecurrence: Recurrence, callback: @escaping (Recurrence) -> Void) {
+            CustomRecurrence.Scene.prepNLanding(currentRecurrence: currentRecurrence, callback: callback)
         }
     }
 }

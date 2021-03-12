@@ -11,7 +11,7 @@ import SwiftUI
 protocol EditRecurrencePresenting {
     func presentSetup(with response: EditRecurrence.Setup.Response)
     func presentDidSelectDefaultRecurrence(with response: EditRecurrence.DidSelectDefaultRecurrence.Response)
-    func presentDidTapCustomRepeat()
+    func presentDidTapCustomRecurrence()
 }
 
 struct EditRecurrencePresenter: EditRecurrencePresenting {
@@ -39,7 +39,7 @@ struct EditRecurrencePresenter: EditRecurrencePresenting {
         viewModel.isShowing = false
     }
     
-    func presentDidTapCustomRepeat() {
+    func presentDidTapCustomRecurrence() {
         viewModel.isShowingCustomRepeat = true
     }
 }

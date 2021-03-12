@@ -9,19 +9,19 @@
 import Foundation
 
 protocol CustomRecurrenceService {
-    func fetchRecurrence() -> Recurrence?
+    func fetchRecurrence() -> Recurrence
 }
 
 extension CustomRecurrence {
     
     class Service: CustomRecurrenceService {
-        private let recurrence: Recurrence?
+        private let recurrence: Recurrence
         
-        init(recurrence: Recurrence?) {
+        init(recurrence: Recurrence) {
             self.recurrence = recurrence
         }
         
-        func fetchRecurrence() -> Recurrence? {
+        func fetchRecurrence() -> Recurrence {
             return recurrence
         }
     }

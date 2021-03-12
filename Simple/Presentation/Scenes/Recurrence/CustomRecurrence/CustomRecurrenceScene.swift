@@ -11,7 +11,8 @@ import UIKit
 enum CustomRecurrence {
     
     struct Input {
-        let currentRecurrence: Recurrence?
+        let currentRecurrence: Recurrence
+        let callbacak: (Recurrence) -> Void
     }
     
     struct Scene {
@@ -34,8 +35,8 @@ enum CustomRecurrence {
             return CustomRecurrence.Service(recurrence: input.currentRecurrence)
         }
         
-        static func prepNLanding(currentRecurrence: Recurrence) {
-            input = Input(currentRecurrence: currentRecurrence)
+        static func prepNLanding(currentRecurrence: Recurrence, callback: @escaping (Recurrence) -> Void) {
+            input = Input(currentRecurrence: currentRecurrence, callbacak: callback)
         }
     }
 }

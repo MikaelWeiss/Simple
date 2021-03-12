@@ -37,6 +37,9 @@ struct EditRecurrenceInteractor: EditRecurrenceRequesting {
     }
     
     func didTapCustomRepeat() {
-        presenter.presentDidTapCustomRepeat()
+        service.prepareRouteToCustomRecurrence { recurrence in
+            service.didSelectRecurrence(recurrence)
+        }
+        presenter.presentDidTapCustomRecurrence()
     }
 }

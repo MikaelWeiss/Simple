@@ -9,7 +9,7 @@
 import Foundation
 
 protocol CustomRecurrenceRequesting {
-    func fetchTheme()
+    func setUp()
     func didSelectFrequency(with request: CustomRecurrence.SelectedFrequency.Request)
     func didSelectInterval(with request: CustomRecurrence.SelectedInterval.Request)
 //    func didSelectDayOfTheWeek(with request: CustomRecurrence.SelectedDayOfTheWeek.Request)
@@ -24,7 +24,9 @@ struct CustomRecurrenceInteractor: CustomRecurrenceRequesting {
         self.presenter = presenter
     }
     
-    func fetchTheme() {
+    func setUp() {
+        let recurrence = service.fetchRecurrence()
+        let response = CustomRecurrence.SetUp.Response(recurrence: recurrence)
         presenter.presentFetchTheme()
     }
     

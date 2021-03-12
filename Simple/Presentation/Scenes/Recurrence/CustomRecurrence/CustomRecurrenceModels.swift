@@ -9,6 +9,13 @@
 import SwiftUI
 
 extension CustomRecurrence {
+    
+    enum SetUp {
+        struct Response {
+            let recurrence: Recurrence
+        }
+    }
+    
     enum SelectedFrequency {
         struct Request {
             let value: CustomRecurrence.Frequency
