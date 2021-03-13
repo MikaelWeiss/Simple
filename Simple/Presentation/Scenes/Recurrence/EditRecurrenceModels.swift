@@ -13,7 +13,9 @@ extension EditRecurrence {
     enum Setup {
         struct Response {
             let defaultRecurrences: [DefaultRecurrence]
-            let selectedDefaultRecurrence: DefaultRecurrence?
+            let selectedDefaultRecurrence: DefaultRecurrence
+            let recurrence: Recurrence
+            let defaultRecurrenceSelected: Bool
         }
     }
     
@@ -53,7 +55,7 @@ extension EditRecurrence {
     class ViewModel: ObservableObject {
         @Published var sceneTitle = Strings.sceneTitle
         @Published var isShowingCustomRepeat = false
-        @Published var defaultRecurrences: [DidSelectDefaultRecurrence.Cell] = [.init(recurrence: .daily, value: "Daily", selected: false)]
+        @Published var defaultRecurrences: [DidSelectDefaultRecurrence.Cell] = [.init(recurrence: .never, value: "Never", selected: true)]
         @Binding var isShowing: Bool
         
         init(isShowing: Binding<Bool>) {

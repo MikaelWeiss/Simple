@@ -13,12 +13,13 @@ enum EditRecurrence {
     struct Input {
         let currentRecurrence: Recurrence
         let date: Date
+        let callback: (Recurrence) -> Void
     }
     
     private static var input: Input?
     
-    static func prepareScene(currentRecurrence: Recurrence, date: Date) {
-        input = Input(currentRecurrence: currentRecurrence, date: date)
+    static func prepareScene(currentRecurrence: Recurrence, date: Date, callBack: @escaping (Recurrence) -> Void) {
+        input = Input(currentRecurrence: currentRecurrence, date: date, callback: callBack)
     }
     
     struct Scene {
@@ -36,6 +37,7 @@ enum EditRecurrence {
                 // TODO: Update to show an alert and then dismiss the scene
                 fatalError("EditRecurrence: Missing input")
             }
+            EditRecurrence.input = nil
             
             return EditRecurrence.Service(
                 recurrenceFactory: RecurrenceFactory(),

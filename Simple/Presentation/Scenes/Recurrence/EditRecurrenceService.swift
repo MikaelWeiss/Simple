@@ -12,7 +12,9 @@ protocol EditRecurrenceService {
     func fetchDefaultRecurrences() -> [DefaultRecurrence]
     func didSelectDefaultRecurrence(recurrence: DefaultRecurrence) throws
     func didSelectRecurrence(_ recurrence: Recurrence)
+    func fetchSelectedDefaultRecurrence() -> DefaultRecurrence
     func fetchRecurrence() -> Recurrence
+    func fetchDefaultRecurrenceIsSelected() -> Bool
     func prepareRouteToCustomRecurrence(currentRecurrence: Recurrence, callback: @escaping (Recurrence) -> Void)
 }
 
@@ -26,17 +28,29 @@ extension EditRecurrence {
     class Service: EditRecurrenceService {
         
         private var recurrenceFactory: EditRecurrenceRecurrenceFactory
+        private var selectedDefaultRecurrence: DefaultRecurrence = .never
         private var currentRecurrence: Recurrence
+        private var defaultRecurrenceIsSelected = true
         private var date: Date
+        private var callBack: (Recurrence) -> Void
         
-        init(recurrenceFactory: EditRecurrenceRecurrenceFactory, currentRecurrence: Recurrence, date: Date) {
+        init(recurrenceFactory: EditRecurrenceRecurrenceFactory, currentRecurrence: Recurrence, date: Date, callback: @escaping (Recurrence) -> Void) {
             self.recurrenceFactory = recurrenceFactory
             self.currentRecurrence = currentRecurrence
             self.date = date
+            self.callBack = callback
         }
         
         func fetchDefaultRecurrences() -> [DefaultRecurrence] {
             DefaultRecurrence.allCases
+        }
+        
+        func fetchSelectedDefaultRecurrence() -> DefaultRecurrence {
+            selectedDefaultRecurrence
+        }
+        
+        func fetchDefaultRecurrenceIsSelected() -> Bool {
+            defaultRecurrenceIsSelected
         }
         
         func fetchRecurrence() -> Recurrence {
@@ -44,15 +58,22 @@ extension EditRecurrence {
         }
         
         func didSelectDefaultRecurrence(recurrence: DefaultRecurrence) throws {
+            selectedDefaultRecurrence = recurrence
             currentRecurrence = try recurrenceFactory.defaultRecurrence(recurrence, for: date)
+            defaultRecurrenceIsSelected = true
         }
         
         func didSelectRecurrence(_ recurrence: Recurrence) {
             currentRecurrence = recurrence
+            defaultRecurrenceIsSelected = false
         }
         
         func prepareRouteToCustomRecurrence(currentRecurrence: Recurrence, callback: @escaping (Recurrence) -> Void) {
-            CustomRecurrence.Scene.prepNLanding(currentRecurrence: currentRecurrence, callback: callback)
+            CustomRecurrence.prepareScene(currentRecurrence: currentRecurrence, callback: callback)
+        }
+        
+        func prepareRouteToPrevious() {
+            callBack(currentRecurrence)
         }
     }
 }

@@ -36,6 +36,8 @@ enum CustomRecurrence {
                 // TODO: Update to show an alert and then dismiss the scene
                 fatalError("CustomRecurrence: Missing input")
             }
+            CustomRecurrence.input = nil
+            
             return CustomRecurrence.Service(recurrence: input.currentRecurrence)
         }
     }
