@@ -22,31 +22,24 @@ class EditTaskInteractorTests: XCTestCase {
         XCTAssertTrue(presenter.presentUpdateThemeCalled)
     }
     
-    func testDidChangeValue() {
+    func testFetchTask() {
         // Given
-        let request = EditTask.ValidateValue.Request(value: "Some new value")
+        let testDate = Date()
+        service.taskInfoToReturn = EditTask.TaskInfo(
+            name: "Go Running",
+            preferredTime: testDate,
+            image: .add,
+            taskExists: true)
         
         // When
-        interactor.didChangeValue(with: request)
+        interactor.fetchTask()
         
         // Then
-        XCTAssertEqual(presenter.value, "Some new value")
-    }
-    
-    func testPrepareRouteToSheet() {
-        // When
-        interactor.prepareRouteToSheet()
-        
-        // Then
-        XCTAssertTrue(presenter.presentPrepareRouteToSheetCalled)
-    }
-    
-    func testPrepareRouteToOtherScene() {
-        // When
-        interactor.prepareRouteToOtherScene()
-        
-        // Then
-        XCTAssertTrue(presenter.presentPrepareRouteToOtherSceneCalled)
+        let taskInfo = presenter.presentFetchTaskResponse?.task
+        XCTAssertEqual(taskInfo?.name, "Go Running")
+        XCTAssertEqual(taskInfo?.preferredTime, testDate)
+        XCTAssertEqual(taskInfo?.image, .add)
+        XCTAssertEqual(taskInfo?.taskExists, true)
     }
     
     // MARK: - Test Setup
@@ -62,28 +55,91 @@ class EditTaskInteractorTests: XCTestCase {
     
     // Either class, or struct with mutating functions
     class EditTaskPresenterDouble: EditTaskPresenting {
-        var value: String?
         var presentUpdateThemeCalled = false
-        var presentPrepareRouteToSheetCalled = false
-        var presentPrepareRouteToOtherSceneCalled = false
-        
-        func presentDidChangeValue(with response: EditTask.ValidateValue.Response) {
-            value = response.value
-        }
+        var presentFetchTaskResponse: EditTask.FetchTask.Response?
+        var presentDidChangeNameResponse: EditTask.ValidateName.Response?
+        var presentDidChangeDateResponse: EditTask.ValidateDate.Response?
+        var presentDidTapRecurrenceSelectionCalled = false
+        var presentCanSaveResponse: EditTask.CanSave.Response?
+        var presentDidTapSaveResponse: EditTask.DidTapSave.Response?
+        var presentDidTapDeleteResponse: EditTask.DidTapDelete.Response?
+        var presentShowErrorResponse: EditTask.ShowError.Response?
         
         func presentUpdateTheme() {
             presentUpdateThemeCalled = true
         }
         
-        func presentPrepareRouteToSheet() {
-            presentPrepareRouteToSheetCalled = true
+        func presentFetchTask(with response: EditTask.FetchTask.Response) {
+            presentFetchTaskResponse = response
         }
         
-        func presentPrepareRouteToOtherScene() {
-            presentPrepareRouteToOtherSceneCalled = true
+        func presentDidChangeName(with response: EditTask.ValidateName.Response) {
+            presentDidChangeNameResponse = response
+        }
+        
+        func presentDidChangeDate(with response: EditTask.ValidateDate.Response) {
+            presentDidChangeDateResponse = response
+        }
+        
+        func presentDidTapRecurrenceSelection() {
+            presentDidTapRecurrenceSelectionCalled = true
+        }
+        
+        func presentCanSave(with response: EditTask.CanSave.Response) {
+            presentCanSaveResponse = response
+        }
+        
+        func presentDidTapSave(with response: EditTask.DidTapSave.Response) {
+            presentDidTapSaveResponse = response
+        }
+        
+        func presentDidTapDelete(with response: EditTask.DidTapDelete.Response) {
+            presentDidTapDeleteResponse = response
+        }
+        
+        func presentShowError(with response: EditTask.ShowError.Response) {
+            presentShowErrorResponse = response
         }
     }
     
     class EditTaskServiceDouble: EditTaskService {
+        var saveCalled = false
+        var deleteTaskCalled = false
+        var name: String?
+        var time: Date?
+        var image: UIImage?
+        
+        var taskInfoToReturn: EditTask.TaskInfo!
+        var canSaveReturn: Bool!
+        
+        var updatePublisher: RepositoryPublisher
+        
+        func fetchTask() throws -> EditTask.TaskInfo {
+            taskInfoToReturn
+        }
+        
+        func canSave() -> Bool {
+            canSaveReturn
+        }
+        
+        func validateTaskName(to name: String) throws {
+            self.name = name
+        }
+        
+        func validateTaskPreferredTime(to time: Date) throws {
+            self.time = time
+        }
+        
+        func validateTaskImage(to image: UIImage) throws {
+            self.image = image
+        }
+        
+        func save() throws {
+            saveCalled = true
+        }
+        
+        func deleteTask() throws {
+            deleteTaskCalled = true
+        }
     }
 }

@@ -17,7 +17,6 @@ protocol EditTaskService {
     func validateTaskImage(to image: UIImage) throws
     func save() throws
     func deleteTask() throws
-    func syncTask() throws
     var updatePublisher: RepositoryPublisher { get }
 }
 
@@ -176,16 +175,6 @@ extension EditTask {
                 try taskRepository.deleteTask(id)
             } catch {
                 throw ServiceError.deleteFailed
-            }
-        }
-        
-        func syncTask() throws {
-            guard let id = task?.id else { throw ServiceError.syncFailed }
-            do {
-                self.task = try taskRepository.task(withID: id)
-                // Add code to update the ui?
-            } catch {
-                throw ServiceError.syncFailed
             }
         }
     }
