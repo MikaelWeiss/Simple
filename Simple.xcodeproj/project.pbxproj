@@ -55,6 +55,7 @@
 		A5ABEF4125FDA0AA00C58427 /* EditTaskServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C3325D855F100247227 /* EditTaskServiceTests.swift */; };
 		A5ABEF4225FDA0AA00C58427 /* EditTaskViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C3125D855F100247227 /* EditTaskViewTests.swift */; };
 		A5ABEF4325FDA0AA00C58427 /* EditTaskInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C3025D855F100247227 /* EditTaskInteractorTests.swift */; };
+		A5ABEF5425FDA8A700C58427 /* TestSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5ABEF5325FDA8A700C58427 /* TestSupport.swift */; };
 		A5AC06CF25D7830900504FEE /* SimpleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC06CE25D7830900504FEE /* SimpleApp.swift */; };
 		A5AC06D325D7830A00504FEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AC06D225D7830A00504FEE /* Assets.xcassets */; };
 		A5AC06D625D7830A00504FEE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5AC06D525D7830A00504FEE /* Preview Assets.xcassets */; };
@@ -172,6 +173,7 @@
 		A5709A2F25DB589E0050B3B5 /* StorageToDomainTransformerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageToDomainTransformerTests.swift; sourceTree = "<group>"; };
 		A577F22E25F8683000B80162 /* RecurrenceGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceGrid.swift; sourceTree = "<group>"; };
 		A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceTests.swift; sourceTree = "<group>"; };
+		A5ABEF5325FDA8A700C58427 /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
 		A5AC06CB25D7830900504FEE /* Simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simple.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5AC06CE25D7830900504FEE /* SimpleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleApp.swift; sourceTree = "<group>"; };
 		A5AC06D225D7830A00504FEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 			children = (
 				A5AC06E525D7830A00504FEE /* SimpleTests.swift */,
 				A5AC06E725D7830A00504FEE /* Info.plist */,
+				A5ABEF5325FDA8A700C58427 /* TestSupport.swift */,
 			);
 			path = SimpleTests;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				A5285AC225DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift in Sources */,
 				A5AC072725D7868900504FEE /* TasksOverviewViewTests.swift in Sources */,
 				A542CD4525DB78AA0082C365 /* TaskRepositoryTests.swift in Sources */,
+				A5ABEF5425FDA8A700C58427 /* TestSupport.swift in Sources */,
 				A5ABEF4125FDA0AA00C58427 /* EditTaskServiceTests.swift in Sources */,
 				A5FA9BD425DE06AE00595C33 /* CoreDataStorage+WriteTests.swift in Sources */,
 				A542CD4025DB75070082C365 /* DomainToStorageTransformerTests.swift in Sources */,

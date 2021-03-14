@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Combine
 
 protocol EditTaskRequesting {
     func updateTheme()
@@ -24,9 +25,18 @@ struct EditTaskInteractor: EditTaskRequesting {
     private let service: EditTaskService
     private let presenter: EditTaskPresenting
     
+    private var updateSubscriber: AnyCancellable?
+    
     init(service: EditTaskService, presenter: EditTaskPresenting) {
         self.service = service
         self.presenter = presenter
+        
+        updateSubscriber = service.updatePublisher
+            .receive(on: RunLoop.main)
+            .sink { [self] _ in
+                // TODO: Implement alert asking if the user wants to refresh their data (This is in the case of someone else editing this task and pushing an update)
+                self.fetchTask()
+            }
     }
     
     func updateTheme() {

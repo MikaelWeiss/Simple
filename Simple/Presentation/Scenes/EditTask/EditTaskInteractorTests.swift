@@ -42,6 +42,36 @@ class EditTaskInteractorTests: XCTestCase {
         XCTAssertEqual(taskInfo?.taskExists, true)
     }
     
+    func fetchTaskThrows() {
+        // Given
+        service.error = TestError.error
+        
+        // When
+        
+    }
+    
+//    func testDataPointUpdatePublisher() {
+//        // Given
+//        var subscription: AnyCancellable?
+//        let expectation = self.expectation(description: #function)
+//
+//        subscription = service.dataPointUpdatePublisher
+//            .delay(for: .milliseconds(1), scheduler: RunLoop.main)
+//            .sink { _ in
+//                expectation.fulfill()
+//            }
+//
+//        // When
+//        service.subject.send(.add(UUID()))
+//
+//        //  Then
+//        waitForExpectations(timeout: 5, handler: nil)
+//        XCTAssertTrue(self.service.refreshDataCalled)
+//        XCTAssertTrue(self.service.fetchDataCalled)
+//        XCTAssertTrue(self.presenter.presentFetchContentCalled)
+//        subscription?.cancel()
+//    }
+    
     // MARK: - Test Setup
     
     override func setUp() {
@@ -108,14 +138,19 @@ class EditTaskInteractorTests: XCTestCase {
         var name: String?
         var time: Date?
         var image: UIImage?
+        var error: TestError?
         
         var taskInfoToReturn: EditTask.TaskInfo!
         var canSaveReturn: Bool!
         
-        var updatePublisher: RepositoryPublisher
+        var subject = RepositorySubject()
+        var updatePublisher: RepositoryPublisher {
+            subject.eraseToAnyPublisher()
+        }
         
         func fetchTask() throws -> EditTask.TaskInfo {
-            taskInfoToReturn
+            try testError(error)
+            return taskInfoToReturn
         }
         
         func canSave() -> Bool {
@@ -123,23 +158,34 @@ class EditTaskInteractorTests: XCTestCase {
         }
         
         func validateTaskName(to name: String) throws {
+            try testError(error)
             self.name = name
         }
         
         func validateTaskPreferredTime(to time: Date) throws {
+            try testError(error)
             self.time = time
         }
         
         func validateTaskImage(to image: UIImage) throws {
+            try testError(error)
             self.image = image
         }
         
         func save() throws {
+            try testError(error)
             saveCalled = true
         }
         
         func deleteTask() throws {
+            try testError(error)
             deleteTaskCalled = true
+        }
+        
+        private func testError(_ error: TestError?) throws {
+            if let error = error {
+                throw error
+            }
         }
     }
 }

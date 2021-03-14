@@ -30,7 +30,6 @@ class StorageToDomainTransformerTests: XCTestCase {
         XCTAssertEqual(task.id, id)
         XCTAssertEqual(task.name, "Some task name")
         XCTAssertEqual(task.preferredTime, givenDate)
-        XCTAssertEqual(task.frequency, .daily)
         XCTAssertEqual(task.image?.pngData(), UIImage(named: "testingImage")?.pngData())
     }
 }
