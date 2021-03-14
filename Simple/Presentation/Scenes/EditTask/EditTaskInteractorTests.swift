@@ -8,6 +8,7 @@
 
 import XCTest
 @testable import Simple
+import Combine
 
 class EditTaskInteractorTests: XCTestCase {
     private var service: EditTaskServiceDouble!
@@ -25,7 +26,7 @@ class EditTaskInteractorTests: XCTestCase {
     func testFetchTask() {
         // Given
         let testDate = Date()
-        service.taskInfoToReturn = EditTask.TaskInfo(
+        service.taskInfoToReturn = buildTaskInfo(
             name: "Go Running",
             preferredTime: testDate,
             image: .add,
@@ -42,35 +43,175 @@ class EditTaskInteractorTests: XCTestCase {
         XCTAssertEqual(taskInfo?.taskExists, true)
     }
     
-    func fetchTaskThrows() {
+    func testFetchTaskThrows() {
         // Given
-        service.error = TestError.error
+        service.error = EditTask.ServiceError.saveFailed
+        service.taskInfoToReturn = buildTaskInfo()
         
         // When
+        interactor.fetchTask()
         
+        // Then
+        let response = presenter.presentShowErrorResponse
+        XCTAssertEqual(response?.error, .saveFailed)
     }
     
-//    func testDataPointUpdatePublisher() {
-//        // Given
-//        var subscription: AnyCancellable?
-//        let expectation = self.expectation(description: #function)
-//
-//        subscription = service.dataPointUpdatePublisher
-//            .delay(for: .milliseconds(1), scheduler: RunLoop.main)
-//            .sink { _ in
-//                expectation.fulfill()
-//            }
-//
-//        // When
-//        service.subject.send(.add(UUID()))
-//
-//        //  Then
-//        waitForExpectations(timeout: 5, handler: nil)
-//        XCTAssertTrue(self.service.refreshDataCalled)
-//        XCTAssertTrue(self.service.fetchDataCalled)
-//        XCTAssertTrue(self.presenter.presentFetchContentCalled)
-//        subscription?.cancel()
-//    }
+    func testDidChangeName() {
+        // Given
+        let request = EditTask.ValidateName.Request(value: "Work on Simple")
+        
+        // When
+        interactor.didChangeName(with: request)
+        
+        // Then
+        XCTAssertEqual(service.name, "Work on Simple")
+        let response = presenter.presentDidChangeNameResponse
+        XCTAssertEqual(response?.value, "Work on Simple")
+        XCTAssertEqual(response?.valid, true)
+    }
+    
+    func testDidChangeNameInvalid() {
+        // Given
+        service.error = .unknown
+        let request = EditTask.ValidateName.Request(value: "Work on Simple")
+        
+        // When
+        interactor.didChangeName(with: request)
+        
+        // Then
+        let response = presenter.presentDidChangeNameResponse
+        XCTAssertEqual(response?.value, "Work on Simple")
+        XCTAssertEqual(response?.valid, false)
+    }
+    
+    func testDidChangeDate() {
+        // Given
+        let testDate = Date()
+        let request = EditTask.ValidateDate.Request(value: testDate)
+        
+        // When
+        interactor.didChangeDate(with: request)
+        
+        // Then
+        XCTAssertEqual(service.time, testDate)
+        let response = presenter.presentDidChangeDateResponse
+        XCTAssertEqual(response?.value, testDate)
+    }
+    
+    func testDidChangeDateError() {
+        // Given
+        service.error = .validationError
+        let request = EditTask.ValidateDate.Request(value: Date())
+        
+        // When
+        interactor.didChangeDate(with: request)
+        
+        // Then
+        XCTAssertNil(presenter.presentDidChangeDateResponse)
+        let response = presenter.presentShowErrorResponse
+        XCTAssertEqual(response?.error, .validationError)
+    }
+    
+    func testDidTapRecurrenceSelection() {
+        // When
+        interactor.didTapRecurrenceSelection()
+        
+        // Then
+        XCTAssertTrue(presenter.presentDidTapRecurrenceSelectionCalled)
+    }
+    
+    func testDidTapDelete() {
+        // When
+        interactor.didTapDelete()
+        
+        // Then
+        let response = presenter.presentDidTapDeleteResponse
+        XCTAssertEqual(response?.didDelete, true)
+    }
+    
+    func testDidTapDeleteThrows() {
+        // Given
+        service.error = .deleteFailed
+        
+        // When
+        interactor.didTapDelete()
+        
+        // Then
+        XCTAssertNil(presenter.presentDidTapDeleteResponse)
+        let response = presenter.presentShowErrorResponse
+        XCTAssertEqual(response?.error, .deleteFailed)
+    }
+    
+    func testDidTapSave() {
+        // When
+        interactor.didTapSave()
+        
+        // Then
+        let response = presenter.presentDidTapSaveResponse
+        XCTAssertEqual(response?.didSave, true)
+    }
+    
+    func testDidTapSaveThrows() {
+        // Given
+        service.error = .saveFailed
+        
+        // When
+        interactor.didTapSave()
+        
+        // Then
+        XCTAssertNil(presenter.presentDidTapSaveResponse)
+        let response = presenter.presentShowErrorResponse
+        XCTAssertEqual(response?.error, .saveFailed)
+    }
+    
+    func testCheckCanSave() {
+        // Given
+        service.canSaveReturn = true
+        
+        // When
+        interactor.checkCanSave()
+        
+        // Then
+        let response = presenter.presentCanSaveResponse
+        XCTAssertEqual(response?.canSave, true)
+    }
+    
+    func testUpdatePublisher() {
+        // Given
+        service.taskInfoToReturn = buildTaskInfo()
+        var subscription: AnyCancellable?
+        let expectation = self.expectation(description: #function)
+
+        subscription = service.updatePublisher
+            .delay(for: .milliseconds(1), scheduler: RunLoop.main)
+            .sink { _ in
+                expectation.fulfill()
+            }
+
+        // When
+        service.subject.send(.add(UUID()))
+
+        //  Then
+        waitForExpectations(timeout: 5, handler: nil)
+        XCTAssertNotNil(presenter.presentFetchTaskResponse)
+        subscription?.cancel()
+    }
+    
+    // MARK: - Helpers
+    
+    func buildTaskInfo(
+        name: String = "",
+        preferredTime: Date = Date(),
+        image: UIImage = .add,
+        taskExists: Bool = true) -> EditTask.TaskInfo {
+        
+        EditTask.TaskInfo(
+            name: name,
+            preferredTime: preferredTime,
+            image: image,
+            taskExists: taskExists
+        )
+    }
     
     // MARK: - Test Setup
     
@@ -138,7 +279,7 @@ class EditTaskInteractorTests: XCTestCase {
         var name: String?
         var time: Date?
         var image: UIImage?
-        var error: TestError?
+        var error: EditTask.ServiceError?
         
         var taskInfoToReturn: EditTask.TaskInfo!
         var canSaveReturn: Bool!
@@ -149,7 +290,7 @@ class EditTaskInteractorTests: XCTestCase {
         }
         
         func fetchTask() throws -> EditTask.TaskInfo {
-            try testError(error)
+            try throwErrorIfNotNil(error)
             return taskInfoToReturn
         }
         
@@ -158,34 +299,28 @@ class EditTaskInteractorTests: XCTestCase {
         }
         
         func validateTaskName(to name: String) throws {
-            try testError(error)
+            try throwErrorIfNotNil(error)
             self.name = name
         }
         
         func validateTaskPreferredTime(to time: Date) throws {
-            try testError(error)
+            try throwErrorIfNotNil(error)
             self.time = time
         }
         
         func validateTaskImage(to image: UIImage) throws {
-            try testError(error)
+            try throwErrorIfNotNil(error)
             self.image = image
         }
         
         func save() throws {
-            try testError(error)
+            try throwErrorIfNotNil(error)
             saveCalled = true
         }
         
         func deleteTask() throws {
-            try testError(error)
+            try throwErrorIfNotNil(error)
             deleteTaskCalled = true
-        }
-        
-        private func testError(_ error: TestError?) throws {
-            if let error = error {
-                throw error
-            }
         }
     }
 }

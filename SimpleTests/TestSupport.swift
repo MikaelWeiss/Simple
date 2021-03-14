@@ -10,3 +10,9 @@ import Foundation
 enum TestError: Error {
     case error
 }
+
+func throwErrorIfNotNil(_ error: Error?) throws {
+    if let error = error {
+        throw error
+    }
+}
