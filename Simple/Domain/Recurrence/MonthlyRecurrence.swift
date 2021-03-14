@@ -8,7 +8,7 @@
 import Foundation
 
 enum MonthlyRecurrence {
-    case daysOfTheMonth(Set<DayOfTheMonth>)
+    case daysOfTheMonth(Set<Int>)
     case computedDayOfTheMonth(ComputedDayOfTheMonth)
     
     struct ComputedDayOfTheMonth {
@@ -28,8 +28,4 @@ enum MonthlyRecurrence {
             case first, second, third, fourth, fifth, last
         }
     }
-}
-
-enum DayOfTheMonth: Int {
-    case first = 1, second, third, fourth, fifth, sixth, seventh, eighth, nineth, tenth, eleventh, twelveth, thirtineth, fourteenth, fifteenth, sixteenth, seventeenth, eighteenth, nineteenth, twentieth, twentyfirst, twentysecond, twentythird, twentyfourth, twentyfifth, twentysixth, twentyseventh, twentyeighth, twentynineth, thirtieth, thirtyfirst
 }

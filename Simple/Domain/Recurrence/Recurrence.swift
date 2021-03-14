@@ -14,11 +14,29 @@ struct Recurrence {
     private(set) var recurrenceEnd: RecurrenceEnd
     private(set) var interval: Int
     
-    init(id: UUID = UUID(), frequency: Frequency, recurrenceEnd: RecurrenceEnd, interval: Int) {
+    private(set) var hoursOfTheDay: Set<Int>
+    private(set) var daysOfTheWeek: Set<Int>
+    private(set) var monthlyRecurrence: MonthlyRecurrence
+    private(set) var monthsOfTheYear: Set<Int>
+    
+    init(
+        id: UUID = UUID(),
+        frequency: Frequency = .never,
+        recurrenceEnd: RecurrenceEnd = .rightAway,
+        interval: Int = 1,
+        hoursOfTheDay: Set<Int> = Set<Int>(),
+        daysOfTheWeek: Set<Int> = Set<Int>(),
+        monthlyRecurrence: MonthlyRecurrence = MonthlyRecurrence.daysOfTheMonth(Set<Int>()),
+        monthsOfTheYear: Set<Int> = Set<Int>()
+    ) {
         self.id = id
         self.frequency = frequency
         self.recurrenceEnd = recurrenceEnd
         self.interval = interval
+        self.hoursOfTheDay = hoursOfTheDay
+        self.daysOfTheWeek = daysOfTheWeek
+        self.monthlyRecurrence = monthlyRecurrence
+        self.monthsOfTheYear = monthsOfTheYear
     }
 }
 

@@ -9,9 +9,9 @@ import Foundation
 
 enum Frequency {
     case never
-    case hourly(HourlyRecurrence)
-    case daily(DailyRecurrence)
-    case weekly(WeeklyRecurrence)
-    case monthly(MonthlyRecurrence)
-    case yearly(YearlyRecurrence)
+    case hourly
+    case daily
+    case weekly
+    case monthly
+    case yearly
 }

@@ -19,7 +19,7 @@ protocol EditRecurrenceService {
 }
 
 protocol EditRecurrenceRecurrenceFactory {
-    func defaultRecurrence(_ recurrence: DefaultRecurrence, for date: Date) throws -> Recurrence
+    func defaultRecurrence(_ recurrence: DefaultRecurrence) -> Recurrence
 }
 extension RecurrenceFactory: EditRecurrenceRecurrenceFactory { }
 
@@ -59,7 +59,7 @@ extension EditRecurrence {
         
         func didSelectDefaultRecurrence(recurrence: DefaultRecurrence) throws {
             selectedDefaultRecurrence = recurrence
-            currentRecurrence = try recurrenceFactory.defaultRecurrence(recurrence, for: date)
+            currentRecurrence = recurrenceFactory.defaultRecurrence(recurrence)
             defaultRecurrenceIsSelected = true
         }
         
