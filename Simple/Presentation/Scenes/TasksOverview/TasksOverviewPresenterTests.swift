@@ -26,8 +26,8 @@ class TasksOverviewPresenterTests: XCTestCase {
         let firstDate = Date()
         let secondDate = Date().advanced(by: 50)
         let response = TasksOverview.FetchTasks.Response(
-            tasks: [.init(name: "one task", preferredTime: secondDate, frequency: .daily, image: nil),
-                    .init(name: "another task", preferredTime: firstDate, frequency: .daily, image: nil)])
+            tasks: [.init(name: "one task", preferredTime: secondDate, image: nil),
+                    .init(name: "another task", preferredTime: firstDate, image: nil)])
         
         // When
         presenter.presentFetchTasks(with: response)
@@ -35,22 +35,6 @@ class TasksOverviewPresenterTests: XCTestCase {
         // Then
         XCTAssertEqual(viewModel.allTasks[0].name, "another task")
         XCTAssertEqual(viewModel.allTasks[1].name, "one task")
-    }
-    
-    func testPresentPrepareRouteToSheet() {
-        // When
-        presenter.presentPrepareRouteToSheet()
-        
-        // Then
-        XCTAssertTrue(viewModel.isShowingSheet)
-    }
-    
-    func testPresentPrepareRouteToOtherScene() {
-        // When
-        presenter.presentPrepareRouteToOtherScene()
-        
-        // Then
-        XCTAssertTrue(viewModel.isShowingOtherScene)
     }
     
     // MARK: - Test Setup

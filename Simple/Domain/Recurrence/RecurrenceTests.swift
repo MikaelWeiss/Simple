@@ -15,14 +15,11 @@ class RecurrenceTests: XCTestCase {
     }
     
     func testFirstSundayOfEachMonth() {
-        _ = Recurrence(frequency: .monthly(.computedDayOfTheMonth(.init(weekOfTheMonth: .first, dayOfTheWeekOfTheMonth: .sunday))), recurrenceEnd: .never, interval: 1)
     }
     
     func testFourthDayOfEachMonthEndingAfterSixTimesWithIntervalOfThree() {
-        _ = Recurrence(frequency: .monthly(.daysOfTheMonth([.fourth])), recurrenceEnd: .occurrenceCount(6), interval: 3)
     }
     
     func testMealRepetition() {
-        _ = Recurrence(frequency: .daily(DailyRecurrence(hoursOfTheDay: [.eight, .twelve, .five])), recurrenceEnd: .never, interval: 1)
     }
 }

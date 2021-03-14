@@ -14,6 +14,7 @@ protocol EditTaskRequesting {
     func didChangeName(with request: EditTask.ValidateName.Request)
     func didChangeDate(with request: EditTask.ValidateDate.Request)
 //    func didChangeFrequency(with request: EditTask.ValidateFrequencySelection.Request)
+    func didTapRecurrenceSelection()
     func checkCanSave()
     func didTapDelete()
     func didTapSave()
@@ -66,6 +67,10 @@ struct EditTaskInteractor: EditTaskRequesting {
 //            presenter.presentDidChangeFrequency(with: response)
 //        }
 //    }
+    
+    func didTapRecurrenceSelection() {
+        presenter.presentDidTapRecurrenceSelection()
+    }
     
     func didTapDelete() {
         tryOrThrow {

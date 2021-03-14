@@ -25,7 +25,7 @@ class TasksOverviewInteractorTests: XCTestCase {
     func testFetchTasks() {
         // Given
         let date = Date()
-        service.tasksToReturn = [.init(name: "some name", preferredTime: date, frequency: .daily, image: nil)]
+        service.tasksToReturn = [.init(name: "some name", preferredTime: date, image: nil)]
         
         // When
         interactor.fetchTasks()
@@ -34,22 +34,6 @@ class TasksOverviewInteractorTests: XCTestCase {
         XCTAssertEqual(presenter.presentFetchTasksResponse.tasks.first?.name, "some name")
         XCTAssertEqual(presenter.presentFetchTasksResponse.tasks.first?.preferredTime, date)
         XCTAssertNil(presenter.presentFetchTasksResponse.tasks.first?.image)
-    }
-    
-    func testPrepareRouteToSheet() {
-        // When
-        interactor.prepareRouteToSheet()
-        
-        // Then
-        XCTAssertTrue(presenter.presentPrepareRouteToSheetCalled)
-    }
-    
-    func testPrepareRouteToOtherScene() {
-        // When
-        interactor.prepareRouteToOtherScene()
-        
-        // Then
-        XCTAssertTrue(presenter.presentPrepareRouteToOtherSceneCalled)
     }
     
     // MARK: - Test Setup
@@ -65,6 +49,7 @@ class TasksOverviewInteractorTests: XCTestCase {
     
     // Either class, or struct with mutating functions
     class TasksOverviewPresenterDouble: TasksOverviewPresenting {
+        
         var value: String?
         var presentUpdateThemeCalled = false
         var presentPrepareRouteToSheetCalled = false
@@ -79,20 +64,26 @@ class TasksOverviewInteractorTests: XCTestCase {
             presentFetchTasksResponse = response
         }
         
-        func presentPrepareRouteToSheet() {
-            presentPrepareRouteToSheetCalled = true
+        func presentShowError(with response: TasksOverview.ShowError.Response) {
+            
         }
         
-        func presentPrepareRouteToOtherScene() {
-            presentPrepareRouteToOtherSceneCalled = true
+        func presentPrepareRouteToEditTask() {
+            
         }
     }
     
     class TasksOverviewServiceDouble: TasksOverviewService {
+        var updatePublisher: RepositoryPublisher
+        
         var tasksToReturn: [Task] = []
         
         func fetchTasks() -> [Task] {
             tasksToReturn
+        }
+        
+        func prepareRouteToEditTask(with id: UUID) {
+            
         }
     }
 }

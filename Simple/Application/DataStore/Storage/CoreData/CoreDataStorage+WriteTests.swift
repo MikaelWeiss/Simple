@@ -24,7 +24,6 @@ class CoreDataStorageWriteTests: XCTestCase {
             id: id,
             name: "Some name",
             preferredTime: date,
-            frequency: "daily",
             imageData: nil)
         
         // When
@@ -36,7 +35,6 @@ class CoreDataStorageWriteTests: XCTestCase {
         XCTAssertEqual(storeTask?.id, id)
         XCTAssertEqual(storeTask?.name, "Some name")
         XCTAssertEqual(storeTask?.preferredTime, date)
-        XCTAssertEqual(storeTask?.frequency, "daily")
         XCTAssertEqual(storeTask?.imageData, nil)
         XCTAssertEqual(storeTasks.count, 1)
     }
@@ -54,13 +52,11 @@ class CoreDataStorageWriteTests: XCTestCase {
         id: UUID? = UUID(),
         name: String? = nil,
         preferredTime: Date? = nil,
-        frequency: String? = nil,
         imageData: Data? = nil) -> Storage.Task {
         
         Storage.Task(id: id,
                      name: name,
                      preferredTime: preferredTime,
-                     frequency: frequency,
                      imageData: imageData)
     }
     

@@ -21,7 +21,6 @@ class StorageToDomainTransformerTests: XCTestCase {
             id: id,
             name: "Some task name",
             preferredTime: givenDate,
-            frequency: "daily",
             imageData: UIImage(named: "testingImage")?.pngData())
         
         // When

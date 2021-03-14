@@ -11,12 +11,24 @@ import XCTest
 
 class TasksOverviewServiceTests: XCTestCase {
     private var service: TasksOverviewService!
+    private var fetchingDouble: TaskOverviewTaskFetchingDouble!
     
     // MARK: - Setup
     
     override func setUp() {
         super.setUp()
-        service = TasksOverview.Service()
+        fetchingDouble = TaskOverviewTaskFetchingDouble()
+        service = TasksOverview.Service(taskRepository: fetchingDouble)
+    }
+    
+    // MARK: - Doubles
+    
+    class TaskOverviewTaskFetchingDouble: TaskOverviewTaskFetching {
+        var updatePublisher: RepositoryPublisher
+        
+        func allTasks() throws -> [Task] {
+            
+        }
     }
 }
 

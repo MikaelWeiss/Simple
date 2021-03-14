@@ -42,7 +42,11 @@ struct EditTaskView: View {
                 DateSelection("Date", value: viewModel.preferredTime) {
                     didChangeDate(to: $0)
                 }
-                RecurrenceSelectionCell(viewModel.frequencyTitle)
+                RecurrenceSelectionCell(viewModel.recurrenceTitle)
+                    .wrapInPlainButton {
+                        didTapRecurrenceSelection()
+                    }
+                
                 Button("Delete Task") {
                     didTapDelete()
                 }
@@ -98,6 +102,10 @@ extension EditTaskView: EditTaskInputting {
 //        interactor?.checkCanSave()
 //    }
     
+    func didTapRecurrenceSelection() {
+        interactor?.didTapRecurrenceSelection()
+    }
+    
     func didTapDelete() {
         interactor?.didTapDelete()
     }
@@ -126,8 +134,6 @@ struct EditTask_Previews: PreviewProvider {
 // MARK: - Other Views
 
 struct RecurrenceSelectionCell: View {
-    @State private var isShowingRepetitionSelection = false
-    
     private let title: String
     
     init(_ title: String) {
@@ -146,9 +152,5 @@ struct RecurrenceSelectionCell: View {
         }
         .valueFontStyle()
         .cellStyle()
-        .wrapInPlainButton { isShowingRepetitionSelection = true }
-        .wrapInNavigationLink(isActive: $isShowingRepetitionSelection) {
-            EditRecurrence.Scene(isShowing: $isShowingRepetitionSelection).view
-        }
     }
 }
