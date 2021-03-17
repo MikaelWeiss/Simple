@@ -14,14 +14,33 @@ class EditTaskPresenterTests: XCTestCase {
     private var viewModel: EditTask.ViewModel!
     
     func testPresentUpdateTheme() {
-        // Given
+        // When
         presenter.presentUpdateTheme()
         
+        // Then
+        XCTAssertEqual(viewModel.nameTitle, "Name")
+        XCTAssertEqual(viewModel.preferredTimeTitle, "Date:")
+        XCTAssertEqual(viewModel.recurrenceTitle, "Repetition:")
+    }
+    
+    func testPresentFetchTask() {
+        // Given
+        let testDate = Date()
+        let task = EditTask.TaskInfo(
+            name: "Wake up",
+            preferredTime: testDate,
+            image: UIImage.add,
+            taskExists: true)
+        let response = EditTask.FetchTask.Response(task: task)
+        
         // When
-        <#When#>
+        presenter.presentFetchTask(with: response)
         
         // Then
-        <#Then#>
+        XCTAssertEqual(viewModel.nameInfo.value, "Wake up")
+        XCTAssertEqual(viewModel.nameInfo.state, .normal)
+        XCTAssertEqual(viewModel.preferredTime, testDate)
+        XCTAssertEqual(viewModel.title, "Edit Task")
     }
     
     // MARK: - Test Setup
@@ -32,6 +51,3 @@ class EditTaskPresenterTests: XCTestCase {
         viewModel = presenter.viewModel
     }
 }
-
-
-
