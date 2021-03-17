@@ -22,11 +22,6 @@ class Task: Identifiable {
         self.preferredTime = preferredTime
     }
     
-    private(set) var frequency: Frequency
-    func set(frequency: Frequency) throws {
-        self.frequency = frequency
-    }
-    
     private(set) var image: UIImage?
     func set(image: UIImage?) throws {
         self.image = image
@@ -37,12 +32,10 @@ class Task: Identifiable {
     init(id: UUID = UUID(),
          name: String,
          preferredTime: Date = Date.today,
-         frequency: Frequency,
          image: UIImage? = nil) {
         self.id = id
         self.name = name
         self.preferredTime = preferredTime
-        self.frequency = frequency
         self.image = image
     }
     
@@ -52,14 +45,12 @@ class Task: Identifiable {
         let id: UUID
         let name: String
         let preferredTime: Date
-        let frequency: String?
         let imageData: Data?
     }
     
     init(with info: ReconstitutionInfo) throws {
         self.id = info.id
         self.preferredTime = info.preferredTime
-        self.frequency = Frequency(with: info.frequency) ?? .daily
         self.name = info.name
         self.image = UIImage(optionalData: info.imageData)
     }

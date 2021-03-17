@@ -42,10 +42,11 @@ struct EditTaskView: View {
                 DateSelection("Date", value: viewModel.preferredTime) {
                     didChangeDate(to: $0)
                 }
-                RepetitionSelectionCell(viewModel.frequencyTitle,
-                                        selectedRepetition: viewModel.selectedFrequency) {
-                    didChangeFrequency(to: $0)
-                }
+                RecurrenceSelectionCell(viewModel.recurrenceTitle)
+                    .wrapInPlainButton {
+                        didTapRecurrenceSelection()
+                    }
+                
                 Button("Delete Task") {
                     didTapDelete()
                 }
@@ -95,10 +96,14 @@ extension EditTaskView: EditTaskInputting {
         interactor?.checkCanSave()
     }
     
-    func didChangeFrequency(to frequency: Frequency) {
-        let request = EditTask.ValidateFrequencySelection.Request(selectedFrequency: frequency)
-        interactor?.didChangeFrequency(with: request)
-        interactor?.checkCanSave()
+//    func didChangeFrequency(to frequency: Frequency) {
+//        let request = EditTask.ValidateFrequencySelection.Request(selectedFrequency: frequency)
+//        interactor?.didChangeFrequency(with: request)
+//        interactor?.checkCanSave()
+//    }
+    
+    func didTapRecurrenceSelection() {
+        interactor?.didTapRecurrenceSelection()
     }
     
     func didTapDelete() {
@@ -120,8 +125,7 @@ struct EditTask_Previews: PreviewProvider {
                                         nameInfo: .init(value: "", state: .normal),
                                         preferredTimeTitle: "Date:",
                                         preferredTime: Date.now,
-                                        frequencyTitle: "Repetition:",
-                                        selectedFrequency: .daily))
+                                        frequencyTitle: "Repetition:"))
         }
     }
 }
@@ -129,80 +133,24 @@ struct EditTask_Previews: PreviewProvider {
 
 // MARK: - Other Views
 
-struct RepetitionSelectionCell: View {
-    @State private var isShowingSelectionSheet = false
+struct RecurrenceSelectionCell: View {
+    private let title: String
     
-    private let frequencyOptions: [Frequency] = Frequency.allCases
-    let title: String
-    let selectedRepetition: Frequency?
-    let onSelectedRepetition: (Frequency) -> Void
-    
-    init(_ title: String,
-         selectedRepetition: Frequency?,
-         onSelectedRepetition: @escaping (Frequency) -> Void) {
+    init(_ title: String) {
         self.title = title
-        self.selectedRepetition = selectedRepetition
-        self.onSelectedRepetition = onSelectedRepetition
     }
     
     var body: some View {
         HStack {
             Text(title)
-            Spacer().tappable()
-            Text(selectedRepetition?.stringValue.capitalized ?? "Select Value")
-                .valueFontStyle()
+            Spacer()
+            Text("Select Value")
+                .fontWeight(.medium)
                 .lineLimit(1)
-            Image(systemName: "arrowtriangle.down.square.fill")
-                .valueFontStyle()
+            Image(systemName: "chevron.right")
+                .font(.system(size: 18, weight: .medium, design: .rounded))
         }
         .valueFontStyle()
         .cellStyle()
-        .onTapGesture {
-            isShowingSelectionSheet = true
-        }
-        .sheet(isPresented: $isShowingSelectionSheet) {
-            SelectRepetitionView(
-                repetitionOptions: frequencyOptions,
-                currentlySelectedRepetition: selectedRepetition) {
-                onSelectedRepetition($0)
-            }
-        }
-    }
-}
-
-struct SelectRepetitionView: View {
-    @Environment(\.presentationMode) var presentationMode
-    let repetitionOptions: [Frequency]
-    let onSelectedRepetition: (Frequency) -> Void
-    let currentlySelectedRepetition: Frequency?
-    
-    init(repetitionOptions: [Frequency],
-         currentlySelectedRepetition: Frequency?,
-         onSelectedRepetition: @escaping (Frequency) -> Void) {
-        self.repetitionOptions = repetitionOptions
-        self.currentlySelectedRepetition = currentlySelectedRepetition
-        self.onSelectedRepetition = onSelectedRepetition
-    }
-    
-    var body: some View {
-        ScrollView {
-            ForEach(0 ..< repetitionOptions.count) { index in
-                let repetition = repetitionOptions[index]
-                
-                HStack {
-                    Image(systemName: repetition == currentlySelectedRepetition ? "circle.fill" : "circle")
-                    Text("\(repetition.stringValue.capitalized)")
-                    Spacer()
-                }
-                .padding(.vertical, 5)
-                .valueFontStyle()
-                .onTapGesture {
-                    self.onSelectedRepetition(repetition)
-                    presentationMode.wrappedValue.dismiss()
-                }
-            }
-            .cellStyle()
-            .padding()
-        }
     }
 }

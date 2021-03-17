@@ -27,7 +27,6 @@ class StorageToDomainFactory: StorageToDomainTransformer {
             id: id,
             name: name,
             preferredTime: preferredTime,
-            frequency: storageTask.frequency,
             imageData: storageTask.imageData)
         
         return try Task(with: taskInfo)

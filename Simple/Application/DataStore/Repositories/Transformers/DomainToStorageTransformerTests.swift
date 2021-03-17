@@ -22,7 +22,6 @@ class DomainToStorageTransformerTests: XCTestCase {
         let domainTask = Task(id: id,
                         name: "Some name",
                         preferredTime: date,
-                        frequency: Frequency.weekly,
                         image: image)
         
         // When
@@ -32,7 +31,6 @@ class DomainToStorageTransformerTests: XCTestCase {
         XCTAssertEqual(task.id, id)
         XCTAssertEqual(task.name, "Some name")
         XCTAssertEqual(task.preferredTime, date)
-        XCTAssertEqual(task.frequency, "weekly")
         XCTAssertEqual(task.imageData, image.pngData())
     }
 }

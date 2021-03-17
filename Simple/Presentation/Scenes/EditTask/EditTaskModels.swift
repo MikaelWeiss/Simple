@@ -6,8 +6,7 @@
 //  Copyright © 2021 ___ORGANIZATIONNAME___. All rights reserved.
 //
 
-import Foundation
-import UIKit
+import SwiftUI
 
 extension EditTask {
     
@@ -49,15 +48,15 @@ extension EditTask {
         }
     }
     
-    enum ValidateFrequencySelection {
-        struct Request {
-            let selectedFrequency: Frequency
-        }
-        
-        struct Response {
-            let selectedFrequency: Frequency
-        }
-    }
+//    enum ValidateFrequencySelection {
+//        struct Request {
+//            let selectedFrequency: Frequency
+//        }
+//        
+//        struct Response {
+//            let selectedFrequency: Frequency
+//        }
+//    }
     
     enum CanSave {
         struct Response {
@@ -84,15 +83,22 @@ extension EditTask {
     }
     
     enum Strings {
-        static let sceneTitle = NSLocalizedString("EditTask-sceneTitle", comment: "EditTask - Scene title")
+        static let editSceneTitle = NSLocalizedString("EditTask-editSceneTitle", comment: "EditTask - Scene title - edit")
+        static let creationSceneTitle = NSLocalizedString("EditTask-creationSceneTitle", comment: "EditTask - Scene title - create")
+        
         static let nameCellTitle = NSLocalizedString("EditTask-nameCellTitle", comment: "EditTask - Cell title for task name text entry")
         static let dateCellTitle = NSLocalizedString("EditTask-dateCellTitle", comment: "EditTask - Cell title for task date entry")
         static let frequencyCellTitle = NSLocalizedString("EditTask-frequencyCellTitle", comment: "EditTask - Cell title for task repetition")
+        
         static let saveFailedAlertTitle = NSLocalizedString("EditTask-saveFailedAlertTitle", comment: "EditTask - The title for the save failed alert")
         static let saveFailedAlertMessage = NSLocalizedString("EditTask-saveFailedAlertMessage", comment: "EditTask - The message for the save failed alert")
-        static let defaultAlertActionTitle = NSLocalizedString("EditTask-defaultAlertActionTitle", comment: "EditTask - The default alert action title")
+        
+        static let comingSoonAlertTitle = NSLocalizedString("EditTask-comingSoonAlertTitle", comment: "EditTask - The title for the coming soon alert") // "Coming Soon!"
+        static let comingSoonAlertMessage = NSLocalizedString("EditTask-comingSoonAlertMessage", comment: "EditTask - The message for the coming soon alert") // "Recurrences will soon be added to the app"
+        
         static let unknownErrorAlertTitle = NSLocalizedString("EditTask-unknownErrorAlertTitle", comment: "EditTask - Unknown error alert title")
         static let unknownErrorAlertMessage = NSLocalizedString("EditTask-unknownErrorAlertMessage", comment: "EditTask - Unknown error alert message")
+        static let defaultAlertActionTitle = NSLocalizedString("EditTask-defaultAlertActionTitle", comment: "EditTask - The default alert action title")
     }
     
     class ViewModel: ObservableObject {
@@ -101,12 +107,14 @@ extension EditTask {
         @Published var nameInfo: EditTask.ValidateName.TaskInfo
         @Published var preferredTimeTitle: String
         @Published var preferredTime: Date
-        @Published var frequencyTitle: String
-        @Published var selectedFrequency: Frequency
+        @Published var recurrenceTitle: String
         @Published var taskImage: UIImage?
         @Published var canSave: Bool
         @Published var canDelete: Bool
-        @Published var alertInfo: (title: String, message: String, actionTitle: String)
+        var alertInfo: (title: String, message: String, actionTitle: String)
+        var alert: Alert {
+            Alert(title: Text(alertInfo.title), message: Text(alertInfo.message), dismissButton: .default(Text(alertInfo.actionTitle)))
+        }
         @Published var isShowingAlert: Bool
         @Published var isShowing: Bool = true
         
@@ -116,7 +124,6 @@ extension EditTask {
              preferredTimeTitle: String = "",
              preferredTime: Date = Date.now,
              frequencyTitle: String = "",
-             selectedFrequency: Frequency = .daily,
              taskImage: UIImage? = nil,
              canSave: Bool = false,
              canDelete: Bool = false,
@@ -134,8 +141,7 @@ extension EditTask {
             self.nameInfo = nameInfo
             self.preferredTimeTitle = preferredTimeTitle
             self.preferredTime = preferredTime
-            self.frequencyTitle = frequencyTitle
-            self.selectedFrequency = selectedFrequency
+            self.recurrenceTitle = frequencyTitle
             self.taskImage = taskImage
             self.canSave = canSave
             self.canDelete = canDelete

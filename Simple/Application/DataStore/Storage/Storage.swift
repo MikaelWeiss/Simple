@@ -12,7 +12,6 @@ enum Storage {
         let id: UUID?
         let name: String?
         let preferredTime: Date?
-        let frequency: String?
         let imageData: Data?
     }
 }

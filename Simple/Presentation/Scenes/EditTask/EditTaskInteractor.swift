@@ -7,13 +7,15 @@
 //
 
 import Foundation
+import Combine
 
 protocol EditTaskRequesting {
     func updateTheme()
     func fetchTask()
     func didChangeName(with request: EditTask.ValidateName.Request)
     func didChangeDate(with request: EditTask.ValidateDate.Request)
-    func didChangeFrequency(with request: EditTask.ValidateFrequencySelection.Request)
+//    func didChangeFrequency(with request: EditTask.ValidateFrequencySelection.Request)
+    func didTapRecurrenceSelection()
     func checkCanSave()
     func didTapDelete()
     func didTapSave()
@@ -23,9 +25,18 @@ struct EditTaskInteractor: EditTaskRequesting {
     private let service: EditTaskService
     private let presenter: EditTaskPresenting
     
+    private var updateSubscriber: AnyCancellable?
+    
     init(service: EditTaskService, presenter: EditTaskPresenting) {
         self.service = service
         self.presenter = presenter
+        
+        updateSubscriber = service.updatePublisher
+            .receive(on: RunLoop.main)
+            .sink { [self] _ in
+                // TODO: Implement alert asking if the user wants to refresh their data (This is in the case of someone else editing this task and pushing an update)
+                self.fetchTask()
+            }
     }
     
     func updateTheme() {
@@ -59,12 +70,16 @@ struct EditTaskInteractor: EditTaskRequesting {
         }
     }
     
-    func didChangeFrequency(with request: EditTask.ValidateFrequencySelection.Request) {
-        tryOrThrow {
-            try service.validateTaskFrequency(to: request.selectedFrequency)
-            let response = EditTask.ValidateFrequencySelection.Response(selectedFrequency: request.selectedFrequency)
-            presenter.presentDidChangeFrequency(with: response)
-        }
+//    func didChangeFrequency(with request: EditTask.ValidateFrequencySelection.Request) {
+//        tryOrThrow {
+//            try service.validateTaskFrequency(to: request.selectedFrequency)
+//            let response = EditTask.ValidateFrequencySelection.Response(selectedFrequency: request.selectedFrequency)
+//            presenter.presentDidChangeFrequency(with: response)
+//        }
+//    }
+    
+    func didTapRecurrenceSelection() {
+        presenter.presentDidTapRecurrenceSelection()
     }
     
     func didTapDelete() {

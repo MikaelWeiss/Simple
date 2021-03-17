@@ -17,7 +17,6 @@ class DomainToStorageFactory: DomainToStorageTransformer {
             id: domainTask.id,
             name: domainTask.name,
             preferredTime: domainTask.preferredTime,
-            frequency: domainTask.frequency.stringValue,
             imageData: domainTask.image?.pngData())
     }
 }

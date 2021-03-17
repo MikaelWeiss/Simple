@@ -1,3 +1,33 @@
+/* EditRecurrence - Default recurrence Biweekly title */
+"EditRecurrence-defaultRecurrenceBiweekly" = "Biweekly";
+
+/* EditRecurrence - Default recurrence Daily title */
+"EditRecurrence-defaultRecurrenceDaily" = "Daily";
+
+/* EditRecurrence - Default recurrence Every Six Months title */
+"EditRecurrence-defaultRecurrenceEverySixMonths" = "Every 6 Months";
+
+/* EditRecurrence - Default recurrence Every three Months title */
+"EditRecurrence-defaultRecurrenceEveryThreeMonths" = "Every 3 Months";
+
+/* EditRecurrence - Default recurrence Hourly title */
+"EditRecurrence-defaultRecurrenceHourly" = "Hourly";
+
+/* EditRecurrence - Default recurrence Monthly title */
+"EditRecurrence-defaultRecurrenceMonthly" = "Monthly";
+
+/* EditRecurrence - Default recurrence Never title */
+"EditRecurrence-defaultRecurrenceNever" = "Never";
+
+/* EditRecurrence - Default recurrence Weekly title */
+"EditRecurrence-defaultRecurrenceWeekly" = "Weekly";
+
+/* EditRecurrence - Default recurrence Yearly title */
+"EditRecurrence-defaultRecurrenceYearly" = "Yearly";
+
+/* EditRecurrence - The title for the scene */
+"EditRecurrence-sceneTitle" = "Recurrence";
+
 /* EditTask - Cell title for task date entry */
 "EditTask-dateCellTitle" = "Date:";
 
@@ -16,8 +46,11 @@
 /* EditTask - The title for the save failed alert */
 "EditTask-saveFailedAlertTitle" = "Save failed";
 
-/* EditTask - Scene title */
-"EditTask-sceneTitle" = "New Task";
+/* EditTask - Scene title - edit */
+"EditTask-editSceneTitle" = "Edit Task";
+
+/* EditTask - Scene title - create */
+"EditTask-creationSceneTitle" = "New Task";
 
 /* EditTask - Unknown error alert message */
 "EditTask-unknownErrorAlertMessage" = "Something unexpected happened";

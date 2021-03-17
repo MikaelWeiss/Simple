@@ -50,7 +50,7 @@ class TaskRepositoryTests: XCTestCase {
     func testAddTask() throws {
         // Given
         let id = UUID()
-        let task = makeTask(id: id, frequency: .monthly)
+        let task = makeTask(id: id)
         
         // When
         try repository.addTask(task)
@@ -58,7 +58,6 @@ class TaskRepositoryTests: XCTestCase {
         // Then
         let storageTask = storageWrite.addTaskTask
         XCTAssertEqual(storageTask?.id, id)
-        XCTAssertEqual(storageTask?.frequency, "monthly")
     }
     
     func testAddTaskPublishes() throws {
@@ -160,12 +159,11 @@ class TaskRepositoryTests: XCTestCase {
         Storage.Task(id: id,
                      name: name,
                      preferredTime: time,
-                     frequency: nil,
                      imageData: nil)
     }
     
-    private func makeTask(id: UUID = UUID(), name: String = "", frequency: Frequency = .weekly) -> Task {
-        Task(id: id, name: name, preferredTime: Date.now, frequency: frequency, image: nil)
+    private func makeTask(id: UUID = UUID(), name: String = "") -> Task {
+        Task(id: id, name: name, preferredTime: Date.now, image: nil)
     }
     
     // MARK: - Setup

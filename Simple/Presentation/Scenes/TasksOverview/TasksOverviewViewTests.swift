@@ -13,22 +13,6 @@ class TasksOverviewViewTests: XCTestCase {
     private var interactor: TasksOverviewInteractorDouble!
     private var viewModel: TasksOverview.ViewModel!
     private var view: TasksOverviewView!
-
-    func testPrepareRouteToSheet() {
-        // When
-        view.prepareRouteToSheet()
-        
-        // Then
-        XCTAssertTrue(interactor.prepareRouteToSheetCalled)
-    }
-    
-    func testPrepareRouteToOtherScene() {
-        // When
-        view.prepareRouteToOtherScene()
-        
-        // Then
-        XCTAssertTrue(interactor.prepareRouteToOtherSceneCalled)
-    }
     
     // MARK: - Test Setup
     
@@ -42,6 +26,7 @@ class TasksOverviewViewTests: XCTestCase {
     // MARK: - Test Doubles
     
     class TasksOverviewInteractorDouble: TasksOverviewRequesting {
+        
         var value: String?
         var updateThemeCalled = false
         var prepareRouteToSheetCalled = false
@@ -56,12 +41,12 @@ class TasksOverviewViewTests: XCTestCase {
             fetchTasksCalled = true
         }
         
-        func prepareRouteToSheet() {
-            prepareRouteToSheetCalled = true
+        func didTapTask(with id: UUID) {
+            
         }
         
-        func prepareRouteToOtherScene() {
-            prepareRouteToOtherSceneCalled = true
+        func didTapAddTask() {
+            
         }
     }
 }

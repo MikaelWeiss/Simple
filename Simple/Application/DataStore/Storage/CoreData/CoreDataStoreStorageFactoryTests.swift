@@ -31,7 +31,6 @@ class CoreDataStoreStorageFactoryTests: XCTestCase {
         XCTAssertEqual(storageTask.id, UUID(uuidString: "123E4567-E89B-12D3-A456-426655440000"))
         XCTAssertEqual(storageTask.name, "Some Task Name")
         XCTAssertEqual(storageTask.preferredTime, preferredTimeDate)
-        XCTAssertEqual(storageTask.frequency, "Some frequency")
         XCTAssertEqual(storageTask.imageData, Data(base64Encoded: "Some data"))
     }
 }
