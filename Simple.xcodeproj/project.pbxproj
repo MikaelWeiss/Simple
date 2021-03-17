@@ -31,6 +31,8 @@
 		A56E0C2C25D855E600247227 /* EditTaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C2625D855E600247227 /* EditTaskService.swift */; };
 		A56F52C025F7161A0007DDB4 /* MonthlyRecurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F52BF25F7161A0007DDB4 /* MonthlyRecurrence.swift */; };
 		A56F52D225F71F9B0007DDB4 /* RecurrenceEnd.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F52D125F71F9B0007DDB4 /* RecurrenceEnd.swift */; };
+		A56FD3782601A70B00F5FE99 /* TaskAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56FD3772601A70B00F5FE99 /* TaskAnalyzer.swift */; };
+		A56FD37D2601A76900F5FE99 /* TaskFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56FD37C2601A76900F5FE99 /* TaskFilter.swift */; };
 		A570996625DAE01D0050B3B5 /* TaskRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570996525DAE01D0050B3B5 /* TaskRepository.swift */; };
 		A570999225DAF02D0050B3B5 /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = A570999125DAF02D0050B3B5 /* CoreDataStorage.swift */; };
 		A57099A925DAF5180050B3B5 /* Persistence.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57099A025DAF5180050B3B5 /* Persistence.framework */; };
@@ -154,6 +156,8 @@
 		A56E0C3325D855F100247227 /* EditTaskServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditTaskServiceTests.swift; sourceTree = "<group>"; };
 		A56F52BF25F7161A0007DDB4 /* MonthlyRecurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthlyRecurrence.swift; sourceTree = "<group>"; };
 		A56F52D125F71F9B0007DDB4 /* RecurrenceEnd.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceEnd.swift; sourceTree = "<group>"; };
+		A56FD3772601A70B00F5FE99 /* TaskAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskAnalyzer.swift; sourceTree = "<group>"; };
+		A56FD37C2601A76900F5FE99 /* TaskFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskFilter.swift; sourceTree = "<group>"; };
 		A570996525DAE01D0050B3B5 /* TaskRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepository.swift; sourceTree = "<group>"; };
 		A570999125DAF02D0050B3B5 /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		A57099A025DAF5180050B3B5 /* Persistence.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Persistence.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -268,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				A5BF0D8D25F2905300044D86 /* DomainError.swift */,
+				A56FD3762601A6E800F5FE99 /* Analyzer */,
 				A53D4A3525E4B4C700070FF3 /* Extensions */,
 				A53AC71325F1DBD3003B305E /* Recurrence */,
 				A53D4A3825E4B4C700070FF3 /* Tasks */,
@@ -339,6 +344,15 @@
 				A56E0C3125D855F100247227 /* EditTaskViewTests.swift */,
 			);
 			path = EditTask;
+			sourceTree = "<group>";
+		};
+		A56FD3762601A6E800F5FE99 /* Analyzer */ = {
+			isa = PBXGroup;
+			children = (
+				A56FD3772601A70B00F5FE99 /* TaskAnalyzer.swift */,
+				A56FD37C2601A76900F5FE99 /* TaskFilter.swift */,
+			);
+			path = Analyzer;
 			sourceTree = "<group>";
 		};
 		A570996325DADFCF0050B3B5 /* DataStore */ = {
@@ -758,6 +772,7 @@
 				A5AC071B25D7865E00504FEE /* TasksOverviewScene.swift in Sources */,
 				A53AC71525F1DBEA003B305E /* Recurrence.swift in Sources */,
 				A514524925D8A9540005070F /* View+Extensions.swift in Sources */,
+				A56FD37D2601A76900F5FE99 /* TaskFilter.swift in Sources */,
 				A56E0C2A25D855E600247227 /* EditTaskInteractor.swift in Sources */,
 				A56F52C025F7161A0007DDB4 /* MonthlyRecurrence.swift in Sources */,
 				A514523A25D8A8800005070F /* TextEntry.swift in Sources */,
@@ -772,6 +787,7 @@
 				A514523925D8A8800005070F /* DateSelection.swift in Sources */,
 				A56E0C2925D855E600247227 /* EditTaskScene.swift in Sources */,
 				A5AC071D25D7865E00504FEE /* TasksOverviewView.swift in Sources */,
+				A56FD3782601A70B00F5FE99 /* TaskAnalyzer.swift in Sources */,
 				A5BF0D6325F2859200044D86 /* Frequency.swift in Sources */,
 				A5AC06CF25D7830900504FEE /* SimpleApp.swift in Sources */,
 				A57099FB25DB0EF80050B3B5 /* Storage.swift in Sources */,
