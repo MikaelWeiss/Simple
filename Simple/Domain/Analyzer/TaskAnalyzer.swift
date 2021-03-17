@@ -8,5 +8,5 @@
 import Foundation
 
 protocol TaskAnalyzer {
-    func sorted(tasks: [Task]) -> [Task]
+    func sorted(tasks: [Task], given date: Date) -> [Task]
 }
