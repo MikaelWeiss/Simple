@@ -18,6 +18,9 @@
 		A53AC71A25F1DBFC003B305E /* Int+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53AC71925F1DBFC003B305E /* Int+Extensions.swift */; };
 		A53D4A3B25E4B4C700070FF3 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3625E4B4C700070FF3 /* Date+Extensions.swift */; };
 		A53D4A3D25E4B4C700070FF3 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3925E4B4C700070FF3 /* Task.swift */; };
+		A540055D26067CCB00E4F78C /* TimeFrame.swift in Sources */ = {isa = PBXBuildFile; fileRef = A540055C26067CCB00E4F78C /* TimeFrame.swift */; };
+		A54005812606872200E4F78C /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54005802606872200E4F78C /* List.swift */; };
+		A54005892606876900E4F78C /* ObservedTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = A54005882606876900E4F78C /* ObservedTask.swift */; };
 		A542CD4025DB75070082C365 /* DomainToStorageTransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542CD3F25DB75070082C365 /* DomainToStorageTransformerTests.swift */; };
 		A542CD4525DB78AA0082C365 /* TaskRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A542CD4425DB78AA0082C365 /* TaskRepositoryTests.swift */; };
 		A548D44125DEC15A0092027A /* CoreDataStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A548D43C25DEC1460092027A /* CoreDataStoreTests.swift */; };
@@ -140,6 +143,9 @@
 		A53D4A3625E4B4C700070FF3 /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		A53D4A3725E4B4C700070FF3 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		A53D4A3925E4B4C700070FF3 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		A540055C26067CCB00E4F78C /* TimeFrame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFrame.swift; sourceTree = "<group>"; };
+		A54005802606872200E4F78C /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
+		A54005882606876900E4F78C /* ObservedTask.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservedTask.swift; sourceTree = "<group>"; };
 		A542CD3F25DB75070082C365 /* DomainToStorageTransformerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainToStorageTransformerTests.swift; sourceTree = "<group>"; };
 		A542CD4425DB78AA0082C365 /* TaskRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskRepositoryTests.swift; sourceTree = "<group>"; };
 		A548D43C25DEC1460092027A /* CoreDataStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStoreTests.swift; sourceTree = "<group>"; };
@@ -276,8 +282,10 @@
 				A5BF0D8D25F2905300044D86 /* DomainError.swift */,
 				A56FD3762601A6E800F5FE99 /* Analyzer */,
 				A53D4A3525E4B4C700070FF3 /* Extensions */,
+				A540057F2606871100E4F78C /* List */,
 				A53AC71325F1DBD3003B305E /* Recurrence */,
 				A53D4A3825E4B4C700070FF3 /* Tasks */,
+				A540055B26067CBF00E4F78C /* TimeFrame */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -310,8 +318,25 @@
 			isa = PBXGroup;
 			children = (
 				A53D4A3925E4B4C700070FF3 /* Task.swift */,
+				A54005882606876900E4F78C /* ObservedTask.swift */,
 			);
 			path = Tasks;
+			sourceTree = "<group>";
+		};
+		A540055B26067CBF00E4F78C /* TimeFrame */ = {
+			isa = PBXGroup;
+			children = (
+				A540055C26067CCB00E4F78C /* TimeFrame.swift */,
+			);
+			path = TimeFrame;
+			sourceTree = "<group>";
+		};
+		A540057F2606871100E4F78C /* List */ = {
+			isa = PBXGroup;
+			children = (
+				A54005802606872200E4F78C /* List.swift */,
+			);
+			path = List;
 			sourceTree = "<group>";
 		};
 		A56E0C1F25D854E100247227 /* TasksOverview */ = {
@@ -752,6 +777,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A540055D26067CCB00E4F78C /* TimeFrame.swift in Sources */,
 				A577F22F25F8683000B80162 /* RecurrenceGrid.swift in Sources */,
 				A5AC071925D7865E00504FEE /* TasksOverviewPresenter.swift in Sources */,
 				A570999225DAF02D0050B3B5 /* CoreDataStorage.swift in Sources */,
@@ -772,8 +798,10 @@
 				A56E0C2C25D855E600247227 /* EditTaskService.swift in Sources */,
 				A55AE8EA25FBA66C0006FF89 /* RecurrenceFactory.swift in Sources */,
 				A56E0C2825D855E600247227 /* EditTaskModels.swift in Sources */,
+				A54005812606872200E4F78C /* List.swift in Sources */,
 				A5AC071B25D7865E00504FEE /* TasksOverviewScene.swift in Sources */,
 				A53AC71525F1DBEA003B305E /* Recurrence.swift in Sources */,
+				A54005892606876900E4F78C /* ObservedTask.swift in Sources */,
 				A514524925D8A9540005070F /* View+Extensions.swift in Sources */,
 				A56FD37D2601A76900F5FE99 /* TaskFilter.swift in Sources */,
 				A56E0C2A25D855E600247227 /* EditTaskInteractor.swift in Sources */,
