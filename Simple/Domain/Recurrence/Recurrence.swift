@@ -39,6 +39,36 @@ struct Recurrence {
         self.monthsOfTheYear = monthsOfTheYear
         self.timeFrames = timeFrames
     }
+    
+    func shouldRecur(startDate: Date, currentDate: Date) -> Bool {
+        let includedTimeFrames = timeFrames.filter({ date(currentDate, isWithin: $0) })
+        guard !includedTimeFrames.isEmpty else { return false }
+        return true
+    }
+    
+    private func date(_ date: Date, isWithin timeFrame: TimeFrame) -> Bool {
+        let hourAndMinute = Calendar.current.dateComponents([.hour, .minute], from: date)
+        guard let hour = hourAndMinute.hour,
+              let minute = hourAndMinute.minute
+        else { return false }
+        
+        if hour < timeFrame.startHour || hour > timeFrame.endHour {
+            return false
+        } else if hour == timeFrame.startHour {
+            if minute < timeFrame.startMinute {
+               return false
+            } else {
+                return true
+            }
+        } else if hour == timeFrame.endHour {
+            if minute > timeFrame.endMinute {
+                return false
+            } else {
+                return true
+            }
+        }
+        return false
+    }
 }
 
 enum DefaultRecurrence: CaseIterable {

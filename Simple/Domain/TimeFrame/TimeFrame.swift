@@ -8,5 +8,8 @@
 import Foundation
 
 struct TimeFrame: Hashable {
-    
+    var startHour: Int
+    var startMinute: Int
+    var endHour: Int
+    var endMinute: Int
 }
