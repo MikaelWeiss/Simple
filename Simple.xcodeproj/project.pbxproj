@@ -296,8 +296,8 @@
 				A5BF0D6225F2859200044D86 /* Frequency.swift */,
 				A56F52BF25F7161A0007DDB4 /* MonthlyRecurrence.swift */,
 				A53AC71425F1DBEA003B305E /* Recurrence.swift */,
-				A56F52D125F71F9B0007DDB4 /* RecurrenceEnd.swift */,
 				A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */,
+				A56F52D125F71F9B0007DDB4 /* RecurrenceEnd.swift */,
 				A55AE8E925FBA66C0006FF89 /* RecurrenceFactory.swift */,
 			);
 			path = Recurrence;
