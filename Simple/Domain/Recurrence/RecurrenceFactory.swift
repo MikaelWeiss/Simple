@@ -17,7 +17,6 @@ struct RecurrenceFactory {
     func defaultRecurrence(_ recurrence: DefaultRecurrence) -> Recurrence {
         switch recurrence {
         case .never: return Recurrence(frequency: .never, recurrenceEnd: .rightAway)
-        case .hourly: return neverEndingRecurrence(for: .hourly)
         case .daily: return neverEndingRecurrence(for: .daily)
         case .weekly: return neverEndingRecurrence(for: .weekly)
         case .biweekly: return neverEndingRecurrence(for: .weekly, interval: 2)
