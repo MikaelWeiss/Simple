@@ -13,3 +13,9 @@ struct TimeFrame: Hashable {
     var endHour: Int
     var endMinute: Int
 }
+
+extension TimeFrame {
+    static var defaultTimeFrame: TimeFrame {
+        TimeFrame(startHour: 0, startMinute: 0, endHour: 23, endMinute: 59)
+    }
+}
