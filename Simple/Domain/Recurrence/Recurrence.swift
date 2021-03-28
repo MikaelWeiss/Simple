@@ -59,40 +59,12 @@ struct Recurrence {
             let intervalCheck = check(interval: interval, for: .monthly, given: startDate, currentDate: currentDate)
             if intervalCheck == false { return false }
             
-            switch monthlyRecurrence {
-            case .daysOfTheMonth(let daysOfTheMonth):
-                if daysOfTheMonth.contains(day) { return true }
-                else { return false }
-            case .computedDayOfTheMonth(let computedDayOfTheMonth):
-                
-                guard ordinalityIsCorrect(computedDayOfTheMonth, currentDate) == true else { return false }
-                
-                switch computedDayOfTheMonth {
-                case .first(let computedDayOfTheWeek):
-                    switch computedDayOfTheWeek {
-                    case .normalWeekday(let dayOfTheWeek):
-                        return dayOfTheWeek.rawValue == weekday
-                    case .day:
-                        return weekday == 1
-                    case .weekday:
-                        return weekday == 2
-                    case .weekendDay:
-                        return weekday == 6
-                    }
-                case .second(let computedDayOfTheWeek): break
-                case .third(let computedDayOfTheWeek): break
-                case .fourth(let computedDayOfTheWeek): break
-                case .fifth(let computedDayOfTheWeek): break
-                case .last(let computedDayOfTheWeek): break
-                }
-                
-                return false
-            }
+            return checkMonthlyRecurrence(monthlyRecurrence, day: day, weekday: weekday, currentDate: currentDate)
         case .yearly:
             let intervalCheck = check(interval: interval, for: .yearly, given: startDate, currentDate: currentDate)
             if intervalCheck == false { return false }
             
-            return false
+            return checkMonthlyRecurrence(monthlyRecurrence, day: day, weekday: weekday, currentDate: currentDate)
         }
     }
     
@@ -121,6 +93,19 @@ struct Recurrence {
         }
     }
     
+    private func checkMonthlyRecurrence(_ monthlyRecurrence: MonthlyRecurrence, day: Int, weekday: Int, currentDate: Date) -> Bool {
+        switch monthlyRecurrence {
+        case .daysOfTheMonth(let daysOfTheMonth):
+            if daysOfTheMonth.contains(day) { return true }
+            else { return false }
+        case .computedDayOfTheMonth(let computedDayOfTheMonth):
+            
+            guard ordinalityIsCorrect(computedDayOfTheMonth, currentDate) == true else { return false }
+            
+            return isDayOfTheWeek(given: computedDayOfTheMonth, weekday: weekday)
+        }
+    }
+    
     private func ordinalityIsCorrect(_ computedDayOfTheMonth: MonthlyRecurrence.ComputedDayOfTheMonth, _ currentDate: Date) -> Bool {
         let ordinality = Calendar.current.ordinality(of: .weekday, in: .month, for: currentDate)
         
@@ -141,6 +126,36 @@ struct Recurrence {
             return true
         } else {
             return false
+        }
+    }
+    
+    private func isDayOfTheWeek(given computedDayOfTheMonth: MonthlyRecurrence.ComputedDayOfTheMonth, weekday: Int) -> Bool {
+        switch computedDayOfTheMonth {
+        case .first(let computedDayOfTheWeek):
+            return isComputedDayOfTheWeek(given: computedDayOfTheWeek, weekday: weekday)
+        case .second(let computedDayOfTheWeek):
+            return isComputedDayOfTheWeek(given: computedDayOfTheWeek, weekday: weekday)
+        case .third(let computedDayOfTheWeek):
+            return isComputedDayOfTheWeek(given: computedDayOfTheWeek, weekday: weekday)
+        case .fourth(let computedDayOfTheWeek):
+            return isComputedDayOfTheWeek(given: computedDayOfTheWeek, weekday: weekday)
+        case .fifth(let computedDayOfTheWeek):
+            return isComputedDayOfTheWeek(given: computedDayOfTheWeek, weekday: weekday)
+        case .last(let computedDayOfTheWeek):
+            return isComputedDayOfTheWeek(given: computedDayOfTheWeek, weekday: weekday)
+        }
+    }
+    
+    private func isComputedDayOfTheWeek(given computedDayOfTheWeek: MonthlyRecurrence.ComputedDayOfTheWeek, weekday: Int) -> Bool {
+        switch computedDayOfTheWeek {
+        case .normalWeekday(let dayOfTheWeek):
+            return dayOfTheWeek.rawValue == weekday
+        case .day:
+            return weekday == 1
+        case .weekday:
+            return weekday == 2
+        case .weekendDay:
+            return weekday == 6
         }
     }
     
