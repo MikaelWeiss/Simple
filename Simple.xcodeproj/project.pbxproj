@@ -56,6 +56,9 @@
 		A577F22F25F8683000B80162 /* RecurrenceGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A577F22E25F8683000B80162 /* RecurrenceGrid.swift */; };
 		A57ABE4425E85CF200083BDA /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3725E4B4C700070FF3 /* UIImage+Extensions.swift */; };
 		A58999D82610305A00EFD21C /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58999D72610305A00EFD21C /* Calendar+Extensions.swift */; };
+		A598839E261031D10078EFD8 /* DefaultRecurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A598839D261031D10078EFD8 /* DefaultRecurrence.swift */; };
+		A59883A3261031DD0078EFD8 /* DayOfTheWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59883A2261031DD0078EFD8 /* DayOfTheWeek.swift */; };
+		A59883A8261031EA0078EFD8 /* MonthsOfTheYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59883A7261031EA0078EFD8 /* MonthsOfTheYear.swift */; };
 		A5A9918B25F4615D0050E982 /* RecurrenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */; };
 		A5ABEF4025FDA0AA00C58427 /* EditTaskPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C3225D855F100247227 /* EditTaskPresenterTests.swift */; };
 		A5ABEF4125FDA0AA00C58427 /* EditTaskServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C3325D855F100247227 /* EditTaskServiceTests.swift */; };
@@ -187,6 +190,9 @@
 		A5709A2F25DB589E0050B3B5 /* StorageToDomainTransformerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageToDomainTransformerTests.swift; sourceTree = "<group>"; };
 		A577F22E25F8683000B80162 /* RecurrenceGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceGrid.swift; sourceTree = "<group>"; };
 		A58999D72610305A00EFD21C /* Calendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
+		A598839D261031D10078EFD8 /* DefaultRecurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRecurrence.swift; sourceTree = "<group>"; };
+		A59883A2261031DD0078EFD8 /* DayOfTheWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfTheWeek.swift; sourceTree = "<group>"; };
+		A59883A7261031EA0078EFD8 /* MonthsOfTheYear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsOfTheYear.swift; sourceTree = "<group>"; };
 		A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceTests.swift; sourceTree = "<group>"; };
 		A5ABEF5325FDA8A700C58427 /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
 		A5AC06CB25D7830900504FEE /* Simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simple.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,6 +308,9 @@
 				A5BF0D6225F2859200044D86 /* Frequency.swift */,
 				A56F52BF25F7161A0007DDB4 /* MonthlyRecurrence.swift */,
 				A53AC71425F1DBEA003B305E /* Recurrence.swift */,
+				A59883A7261031EA0078EFD8 /* MonthsOfTheYear.swift */,
+				A59883A2261031DD0078EFD8 /* DayOfTheWeek.swift */,
+				A598839D261031D10078EFD8 /* DefaultRecurrence.swift */,
 				A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */,
 				A56F52D125F71F9B0007DDB4 /* RecurrenceEnd.swift */,
 				A55AE8E925FBA66C0006FF89 /* RecurrenceFactory.swift */,
@@ -808,6 +817,7 @@
 				A57099F625DB0CAC0050B3B5 /* CoreDataStoreStorageFactory.swift in Sources */,
 				A5709A1B25DB2F870050B3B5 /* DomainToStorageTransformer.swift in Sources */,
 				A5709A1625DB2F130050B3B5 /* StorageToDomainTransformer.swift in Sources */,
+				A598839E261031D10078EFD8 /* DefaultRecurrence.swift in Sources */,
 				A570996625DAE01D0050B3B5 /* TaskRepository.swift in Sources */,
 				A53D4A3B25E4B4C700070FF3 /* Date+Extensions.swift in Sources */,
 				A56E0C2725D855E600247227 /* EditTaskPresenter.swift in Sources */,
@@ -826,6 +836,7 @@
 				A56F52C025F7161A0007DDB4 /* MonthlyRecurrence.swift in Sources */,
 				A5B0F47626103137001DEFDA /* InteractorSupport.swift in Sources */,
 				A514523A25D8A8800005070F /* TextEntry.swift in Sources */,
+				A59883A8261031EA0078EFD8 /* MonthsOfTheYear.swift in Sources */,
 				A514526E25D8BCEF0005070F /* Styles.swift in Sources */,
 				A56F52D225F71F9B0007DDB4 /* RecurrenceEnd.swift in Sources */,
 				A514522C25D8A7520005070F /* CellStyle.swift in Sources */,
@@ -834,6 +845,7 @@
 				A5BF0D8E25F2905300044D86 /* DomainError.swift in Sources */,
 				A5AC071C25D7865E00504FEE /* TasksOverviewInteractor.swift in Sources */,
 				A514523225D8A7B10005070F /* Color+Extensions.swift in Sources */,
+				A59883A3261031DD0078EFD8 /* DayOfTheWeek.swift in Sources */,
 				A53D4A3D25E4B4C700070FF3 /* Task.swift in Sources */,
 				A514523925D8A8800005070F /* DateSelection.swift in Sources */,
 				A56E0C2925D855E600247227 /* EditTaskScene.swift in Sources */,

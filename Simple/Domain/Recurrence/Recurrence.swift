@@ -178,15 +178,3 @@ struct Recurrence {
         }
     }
 }
-
-enum DefaultRecurrence: CaseIterable {
-    case never, daily, weekly, biweekly, monthly, everyThreeMonths, everySixMonths, yearly
-}
-
-enum DayOfTheWeek: Int {
-    case sunday = 1, monday, tuesday, wednesday, thursday, friday, saturday
-}
-
-enum MonthsOfTheYear: Int {
-    case january = 1, february, march, april, may, june, july, august, september, october, november, december
-}
