@@ -149,7 +149,7 @@ class RecurrenceTests: XCTestCase {
         // Given
         let today = Date(dateString: "01/03/2021")!
         let twoMonthsAgo = today.adding(months: -2)
-        let recurrence = Recurrence(frequency: .monthly, monthlyRecurrence: .computedDayOfTheMonth(.init(weekOfTheMonth: .ordinal(1), dayOfTheWeekOfTheMonth: .normalWeekday(.sunday))))
+        let recurrence = Recurrence(frequency: .monthly, monthlyRecurrence: .computedDayOfTheMonth(.first(.normalWeekday(.sunday))))
         
         // When
         let shouldRecur = recurrence.shouldRecur(startDate: twoMonthsAgo, currentDate: today)
@@ -164,7 +164,7 @@ class RecurrenceTests: XCTestCase {
         let components = DateComponents(month: 4)
         let today = cal.date(from: components)!
         let twoMonthsAgo = today.adding(months: -2)
-        let recurrence = Recurrence(frequency: .monthly, monthlyRecurrence: .computedDayOfTheMonth(.init(weekOfTheMonth: .ordinal(1), dayOfTheWeekOfTheMonth: .normalWeekday(.sunday))))
+        let recurrence = Recurrence(frequency: .monthly, monthlyRecurrence: .computedDayOfTheMonth(.first(.normalWeekday(.sunday))))
         
         // When
         let shouldRecur = recurrence.shouldRecur(startDate: twoMonthsAgo, currentDate: today)
