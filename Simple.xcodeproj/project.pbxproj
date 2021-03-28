@@ -76,6 +76,8 @@
 		A5AC072725D7868900504FEE /* TasksOverviewViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC072325D7868900504FEE /* TasksOverviewViewTests.swift */; };
 		A5AC072825D7868900504FEE /* TasksOverviewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC072425D7868900504FEE /* TasksOverviewPresenterTests.swift */; };
 		A5AC072925D7868900504FEE /* TasksOverviewServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC072525D7868900504FEE /* TasksOverviewServiceTests.swift */; };
+		A5B0F471261030EC001DEFDA /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0F470261030EC001DEFDA /* DateFormatter+Extensions.swift */; };
+		A5B0F47626103137001DEFDA /* InteractorSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0F47526103137001DEFDA /* InteractorSupport.swift */; };
 		A5BF0D6325F2859200044D86 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF0D6225F2859200044D86 /* Frequency.swift */; };
 		A5BF0D8925F28FAB00044D86 /* Swift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF0D8825F28FAB00044D86 /* Swift+Extensions.swift */; };
 		A5BF0D8E25F2905300044D86 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF0D8D25F2905300044D86 /* DomainError.swift */; };
@@ -206,6 +208,8 @@
 		A5AC072325D7868900504FEE /* TasksOverviewViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksOverviewViewTests.swift; sourceTree = "<group>"; };
 		A5AC072425D7868900504FEE /* TasksOverviewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksOverviewPresenterTests.swift; sourceTree = "<group>"; };
 		A5AC072525D7868900504FEE /* TasksOverviewServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksOverviewServiceTests.swift; sourceTree = "<group>"; };
+		A5B0F470261030EC001DEFDA /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		A5B0F47526103137001DEFDA /* InteractorSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorSupport.swift; sourceTree = "<group>"; };
 		A5BF0D5A25F27FC800044D86 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = Simple/CHANGELOG.md; sourceTree = "<group>"; };
 		A5BF0D6225F2859200044D86 /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
 		A5BF0D8825F28FAB00044D86 /* Swift+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Extensions.swift"; sourceTree = "<group>"; };
@@ -308,8 +312,9 @@
 		A53D4A3525E4B4C700070FF3 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A53D4A3625E4B4C700070FF3 /* Date+Extensions.swift */,
 				A58999D72610305A00EFD21C /* Calendar+Extensions.swift */,
+				A53D4A3625E4B4C700070FF3 /* Date+Extensions.swift */,
+				A5B0F470261030EC001DEFDA /* DateFormatter+Extensions.swift */,
 				A53AC71925F1DBFC003B305E /* Int+Extensions.swift */,
 				A5BF0D8825F28FAB00044D86 /* Swift+Extensions.swift */,
 				A53D4A3725E4B4C700070FF3 /* UIImage+Extensions.swift */,
@@ -527,6 +532,7 @@
 				A514523625D8A8680005070F /* Cells */,
 				A514523025D8A7A00005070F /* Extensions */,
 				A5AC070D25D785E600504FEE /* Scenes */,
+				A5B0F47A26103157001DEFDA /* SceneSupport */,
 				A514522A25D8A7380005070F /* Styles */,
 				A577F22D25F8680100B80162 /* VisualComponents */,
 			);
@@ -561,6 +567,14 @@
 				A5AC06DC25D7830A00504FEE /* Info.plist */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		A5B0F47A26103157001DEFDA /* SceneSupport */ = {
+			isa = PBXGroup;
+			children = (
+				A5B0F47526103137001DEFDA /* InteractorSupport.swift */,
+			);
+			path = SceneSupport;
 			sourceTree = "<group>";
 		};
 		A5C60D7125E186CE00C61ABE /* Repositories */ = {
@@ -803,12 +817,14 @@
 				A56E0C2825D855E600247227 /* EditTaskModels.swift in Sources */,
 				A54005812606872200E4F78C /* List.swift in Sources */,
 				A5AC071B25D7865E00504FEE /* TasksOverviewScene.swift in Sources */,
+				A5B0F471261030EC001DEFDA /* DateFormatter+Extensions.swift in Sources */,
 				A53AC71525F1DBEA003B305E /* Recurrence.swift in Sources */,
 				A54005892606876900E4F78C /* ObservedTask.swift in Sources */,
 				A514524925D8A9540005070F /* View+Extensions.swift in Sources */,
 				A56FD37D2601A76900F5FE99 /* TaskFilter.swift in Sources */,
 				A56E0C2A25D855E600247227 /* EditTaskInteractor.swift in Sources */,
 				A56F52C025F7161A0007DDB4 /* MonthlyRecurrence.swift in Sources */,
+				A5B0F47626103137001DEFDA /* InteractorSupport.swift in Sources */,
 				A514523A25D8A8800005070F /* TextEntry.swift in Sources */,
 				A514526E25D8BCEF0005070F /* Styles.swift in Sources */,
 				A56F52D225F71F9B0007DDB4 /* RecurrenceEnd.swift in Sources */,

@@ -16,6 +16,12 @@ extension Date {
         return Date()
     }
     
+    static func oneWeekAgo() -> Date {
+        Date().adding(days: -7)
+    }
+}
+
+extension Date {
     func adding(days: Int16) -> Date {
         let cal = Calendar.current
         let newDate = cal.date(byAdding: .day, value: Int(days), to: self)
@@ -34,11 +40,9 @@ extension Date {
         let newDate = cal.date(byAdding: .month, value: Int(months), to: self)
         return newDate!
     }
-    
-    static func oneWeekAgo() -> Date {
-        Date().adding(days: -7)
-    }
-    
+}
+
+extension Date {
     var day: Int {
         let cal = Calendar.current
         let day = cal.component(.day, from: self)
@@ -61,5 +65,17 @@ extension Date {
         let cal = Calendar.current
         let weekday = cal.component(.weekday, from: self)
         return weekday
+    }
+}
+
+extension Date {
+    init?(dateString: String) {
+        let sanitized = InteractorSupport.sanitize(dateString: dateString)
+        
+        if let date = DateFormatter.standard.date(from: sanitized) {
+            self = date
+        } else {
+            return nil
+        }
     }
 }
