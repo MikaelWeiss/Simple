@@ -183,72 +183,12 @@ enum DefaultRecurrence: CaseIterable {
     case never, daily, weekly, biweekly, monthly, everyThreeMonths, everySixMonths, yearly
 }
 
-extension Date {
-    func adding(days: Int16) -> Date {
-        let cal = Calendar.current
-        let newDate = cal.date(byAdding: .day, value: Int(days), to: self)
-        return newDate!
-    }
-    
-    func adding(weeks: Int16) -> Date {
-        let cal = Calendar.current
-        let weeksInDays = weeks * 7
-        let newDate = cal.date(byAdding: .day, value: Int(weeksInDays), to: self)
-        return newDate!
-    }
-    
-    func adding(months: Int16) -> Date {
-        let cal = Calendar.current
-        let newDate = cal.date(byAdding: .month, value: Int(months), to: self)
-        return newDate!
-    }
-    
-    static func oneWeekAgo() -> Date {
-        Date().adding(days: -7)
-    }
-    
-    var day: Int {
-        let cal = Calendar.current
-        let day = cal.component(.day, from: self)
-        return day
-    }
-    
-    var month: Int {
-        let cal = Calendar.current
-        let month = cal.component(.month, from: self)
-        return month
-    }
-    
-    var weekOfMonth: Int {
-        let cal = Calendar.current
-        let weekOfMonth = cal.component(.weekOfMonth, from: self)
-        return weekOfMonth
-    }
-    
-    var weekday: Int {
-        let cal = Calendar.current
-        let weekday = cal.component(.weekday, from: self)
-        return weekday
-    }
-}
-
 enum DayOfTheWeek: Int {
     case sunday = 1, monday, tuesday, wednesday, thursday, friday, saturday
 }
 
 enum MonthsOfTheYear: Int {
     case january = 1, february, march, april, may, june, july, august, september, october, november, december
-}
-
-extension Calendar {
-    func interval(of unit: Calendar.Component, from startDate: Date, to endDate: Date) -> Int {
-        let rangeOfStart = self.dateInterval(of: unit, for: startDate)!
-        let rangeOfEnd = self.dateInterval(of: unit, for: endDate)!
-        let startOfStart = rangeOfStart.start
-        let endOfEnd = rangeOfEnd.end.addingTimeInterval(-1)
-        let interval = self.dateComponents([unit], from: startOfStart, to: endOfEnd)
-        return interval.value(for: unit) ?? 0
-    }
 }
 
 extension DateFormatter {

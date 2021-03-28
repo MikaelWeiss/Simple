@@ -172,4 +172,49 @@ class RecurrenceTests: XCTestCase {
         // Then
         XCTAssertFalse(shouldRecur)
     }
+    
+    func testFifthOrEighthDayOfTheMonthFifth() {
+        // Given
+        let cal = Calendar.current
+        let components = DateComponents(day: 5)
+        let today = cal.date(from: components)!
+        let twoMonthsAgo = today.adding(months: -2)
+        let recurrence = Recurrence(frequency: .monthly, monthlyRecurrence: .daysOfTheMonth([5,8]))
+        
+        // When
+        let shouldRecur = recurrence.shouldRecur(startDate: twoMonthsAgo, currentDate: today)
+        
+        // Then
+        XCTAssertTrue(shouldRecur)
+    }
+    
+    func testFifthOrEighthDayOfTheMonthEighth() {
+        // Given
+        let cal = Calendar.current
+        let components = DateComponents(day: 8)
+        let today = cal.date(from: components)!
+        let twoMonthsAgo = today.adding(months: -2)
+        let recurrence = Recurrence(frequency: .monthly, monthlyRecurrence: .daysOfTheMonth([5,8]))
+        
+        // When
+        let shouldRecur = recurrence.shouldRecur(startDate: twoMonthsAgo, currentDate: today)
+        
+        // Then
+        XCTAssertTrue(shouldRecur)
+    }
+    
+    func testFifthOrEighthDayOfTheMonthFalse() {
+        // Given
+        let cal = Calendar.current
+        let components = DateComponents(day: 3)
+        let today = cal.date(from: components)!
+        let twoMonthsAgo = today.adding(months: -2)
+        let recurrence = Recurrence(frequency: .monthly, monthlyRecurrence: .daysOfTheMonth([5,8]))
+        
+        // When
+        let shouldRecur = recurrence.shouldRecur(startDate: twoMonthsAgo, currentDate: today)
+        
+        // Then
+        XCTAssertFalse(shouldRecur)
+    }
 }

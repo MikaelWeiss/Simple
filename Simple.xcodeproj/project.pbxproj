@@ -55,6 +55,7 @@
 		A5709A3025DB589E0050B3B5 /* StorageToDomainTransformerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5709A2F25DB589E0050B3B5 /* StorageToDomainTransformerTests.swift */; };
 		A577F22F25F8683000B80162 /* RecurrenceGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A577F22E25F8683000B80162 /* RecurrenceGrid.swift */; };
 		A57ABE4425E85CF200083BDA /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A53D4A3725E4B4C700070FF3 /* UIImage+Extensions.swift */; };
+		A58999D82610305A00EFD21C /* Calendar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58999D72610305A00EFD21C /* Calendar+Extensions.swift */; };
 		A5A9918B25F4615D0050E982 /* RecurrenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */; };
 		A5ABEF4025FDA0AA00C58427 /* EditTaskPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C3225D855F100247227 /* EditTaskPresenterTests.swift */; };
 		A5ABEF4125FDA0AA00C58427 /* EditTaskServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C3325D855F100247227 /* EditTaskServiceTests.swift */; };
@@ -183,6 +184,7 @@
 		A5709A1A25DB2F870050B3B5 /* DomainToStorageTransformer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomainToStorageTransformer.swift; sourceTree = "<group>"; };
 		A5709A2F25DB589E0050B3B5 /* StorageToDomainTransformerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageToDomainTransformerTests.swift; sourceTree = "<group>"; };
 		A577F22E25F8683000B80162 /* RecurrenceGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceGrid.swift; sourceTree = "<group>"; };
+		A58999D72610305A00EFD21C /* Calendar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Calendar+Extensions.swift"; sourceTree = "<group>"; };
 		A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceTests.swift; sourceTree = "<group>"; };
 		A5ABEF5325FDA8A700C58427 /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
 		A5AC06CB25D7830900504FEE /* Simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simple.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				A53D4A3625E4B4C700070FF3 /* Date+Extensions.swift */,
+				A58999D72610305A00EFD21C /* Calendar+Extensions.swift */,
 				A53AC71925F1DBFC003B305E /* Int+Extensions.swift */,
 				A5BF0D8825F28FAB00044D86 /* Swift+Extensions.swift */,
 				A53D4A3725E4B4C700070FF3 /* UIImage+Extensions.swift */,
@@ -818,6 +821,7 @@
 				A53D4A3D25E4B4C700070FF3 /* Task.swift in Sources */,
 				A514523925D8A8800005070F /* DateSelection.swift in Sources */,
 				A56E0C2925D855E600247227 /* EditTaskScene.swift in Sources */,
+				A58999D82610305A00EFD21C /* Calendar+Extensions.swift in Sources */,
 				A5AC071D25D7865E00504FEE /* TasksOverviewView.swift in Sources */,
 				A56FD3782601A70B00F5FE99 /* TaskAnalyzer.swift in Sources */,
 				A5BF0D6325F2859200044D86 /* Frequency.swift in Sources */,
