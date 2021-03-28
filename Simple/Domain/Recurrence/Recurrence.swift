@@ -46,7 +46,6 @@ struct Recurrence {
         
         let weekday = currentDate.weekday
         let day = currentDate.day
-        let month = currentDate.month
         
         switch frequency {
         case .never: return false
@@ -65,35 +64,35 @@ struct Recurrence {
                 if daysOfTheMonth.contains(day) { return true }
                 else { return false }
             case .computedDayOfTheMonth(let computedDayOfTheMonth):
-                if !isTheWeekOfTheMonth(currentWeek: currentDate, computedWeek: computedDayOfTheMonth.weekOfTheMonth) {
-                    return false
+                
+                guard ordinalityIsCorrect(computedDayOfTheMonth, currentDate) == true else { return false }
+                
+                switch computedDayOfTheMonth {
+                case .first(let computedDayOfTheWeek):
+                    switch computedDayOfTheWeek {
+                    case .normalWeekday(let dayOfTheWeek):
+                        return dayOfTheWeek.rawValue == weekday
+                    case .day:
+                        return weekday == 1
+                    case .weekday:
+                        return weekday == 2
+                    case .weekendDay:
+                        return weekday == 6
+                    }
+                case .second(let computedDayOfTheWeek): break
+                case .third(let computedDayOfTheWeek): break
+                case .fourth(let computedDayOfTheWeek): break
+                case .fifth(let computedDayOfTheWeek): break
+                case .last(let computedDayOfTheWeek): break
                 }
                 
-                if isDayOfTheMonth(weekday: weekday, computedDayOfTheMonth: computedDayOfTheMonth) {
-                    return true
-                }
                 return false
             }
         case .yearly:
             let intervalCheck = check(interval: interval, for: .yearly, given: startDate, currentDate: currentDate)
             if intervalCheck == false { return false }
             
-            if !monthsOfTheYear.contains(where: { $0.rawValue == month }) { return false }
-            
-            switch monthlyRecurrence {
-            case .daysOfTheMonth(let daysOfTheMonth):
-                if daysOfTheMonth.contains(day) { return true }
-                else { return false }
-            case .computedDayOfTheMonth(let computedDayOfTheMonth):
-                if !isTheWeekOfTheMonth(currentWeek: currentDate, computedWeek: computedDayOfTheMonth.weekOfTheMonth) {
-                    return false
-                }
-                
-                if isDayOfTheMonth(weekday: weekday, computedDayOfTheMonth: computedDayOfTheMonth) {
-                    return true
-                }
-                return false
-            }
+            return false
         }
     }
     
@@ -122,27 +121,17 @@ struct Recurrence {
         }
     }
     
-    private func isDayOfTheMonth(weekday: Int, computedDayOfTheMonth: MonthlyRecurrence.ComputedDayOfTheMonth) -> Bool {
-        switch computedDayOfTheMonth.dayOfTheWeekOfTheMonth {
-        case .normalWeekday(let dayOfTheWeek):
-            return dayOfTheWeek.rawValue == weekday
-        case .day:
-            return weekday == 1
-        case .weekday:
-            return weekday == 2
-        case .weekendDay:
-            return weekday == 6
+    private func ordinalityIsCorrect(_ computedDayOfTheMonth: MonthlyRecurrence.ComputedDayOfTheMonth, _ currentDate: Date) -> Bool {
+        let ordinality = Calendar.current.ordinality(of: .weekday, in: .month, for: currentDate)
+        
+        switch computedDayOfTheMonth {
+        case .first: return ordinality == 1
+        case .second: return ordinality == 2
+        case .third: return ordinality == 3
+        case .fourth: return ordinality == 4
+        case .fifth: return ordinality == 5
+        case .last: return isLastWeekOfMonth(currentDate)
         }
-    }
-    
-    // This fails most months because the first sunday of the month is not the first week of the month
-    private func isTheWeekOfTheMonth(currentWeek: Date, computedWeek: MonthlyRecurrence.ComputedDayOfTheMonth.WeekOfTheMonth) -> Bool {
-        switch computedWeek {
-        case .ordinal(let week):
-            if week == currentWeek.weekOfMonth { return true }
-        case .last: if isLastWeekOfMonth(currentWeek) { return true }
-        }
-        return false
     }
     
     private func isLastWeekOfMonth(_ date: Date) -> Bool {

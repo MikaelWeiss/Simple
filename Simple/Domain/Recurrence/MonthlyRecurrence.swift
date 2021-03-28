@@ -11,21 +11,16 @@ enum MonthlyRecurrence {
     case daysOfTheMonth(Set<Int>)
     case computedDayOfTheMonth(ComputedDayOfTheMonth)
     
-    struct ComputedDayOfTheMonth {
-        let weekOfTheMonth: WeekOfTheMonth
-        let dayOfTheWeekOfTheMonth: DayOfTheWeekOfTheMonth
-        
-        init(weekOfTheMonth: WeekOfTheMonth, dayOfTheWeekOfTheMonth: DayOfTheWeekOfTheMonth) {
-            self.weekOfTheMonth = weekOfTheMonth
-            self.dayOfTheWeekOfTheMonth = dayOfTheWeekOfTheMonth
-        }
-        
-        enum DayOfTheWeekOfTheMonth {
-            case normalWeekday(DayOfTheWeek), day, weekday, weekendDay
-        }
-        
-        enum WeekOfTheMonth {
-            case ordinal(Int), last
-        }
+    enum ComputedDayOfTheMonth {
+        case first(ComputedDayOfTheWeek)
+        case second(ComputedDayOfTheWeek)
+        case third(ComputedDayOfTheWeek)
+        case fourth(ComputedDayOfTheWeek)
+        case fifth(ComputedDayOfTheWeek)
+        case last(ComputedDayOfTheWeek)
+    }
+    
+    enum ComputedDayOfTheWeek {
+        case normalWeekday(DayOfTheWeek), day, weekday, weekendDay
     }
 }
