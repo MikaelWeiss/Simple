@@ -217,4 +217,32 @@ class RecurrenceTests: XCTestCase {
         // Then
         XCTAssertFalse(shouldRecur)
     }
+    
+    func testMorningNoonAndNight() {
+        // Given
+        let yesterday = Date(dateString: "12/12/11")!
+        let morningDate = Date(dateString: "12/12/12 7:00:00")!
+        print(Calendar.current.component(.hour, from: morningDate))
+        
+        let noonDate = Date(dateString: "12/12/12 13:00:00")!
+        print(Calendar.current.component(.hour, from: noonDate))
+        
+        let nightDate = Date(dateString: "12/12/12 20:00:00")!
+        print(Calendar.current.component(.hour, from: nightDate))
+        
+        let morning = TimeFrame(startHour: 5, startMinute: 0, endHour: 11, endMinute: 59)
+        let noon = TimeFrame(startHour: 12, startMinute: 0, endHour: 17, endMinute: 59)
+        let night = TimeFrame(startHour: 18, startMinute: 0, endHour: 23, endMinute: 59)
+        let recurrence = Recurrence(frequency: .daily,
+                                    timeFrames: [morning, noon, night])
+        // When
+        let shouldRecurMorning = recurrence.shouldRecur(startDate: yesterday, currentDate: morningDate)
+        let shouldRecurNoon = recurrence.shouldRecur(startDate: yesterday, currentDate: noonDate)
+        let shouldRecurNight = recurrence.shouldRecur(startDate: yesterday, currentDate: nightDate)
+        
+        // Then
+        XCTAssertTrue(shouldRecurMorning)
+        XCTAssertTrue(shouldRecurNoon)
+        XCTAssertTrue(shouldRecurNight)
+    }
 }

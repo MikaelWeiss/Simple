@@ -70,9 +70,22 @@ extension Date {
 
 extension Date {
     init?(dateString: String) {
-        let sanitized = InteractorSupport.sanitize(dateString: dateString)
         
-        if let date = DateFormatter.standard.date(from: sanitized) {
+        let dateFormatter = DateFormatter.standard
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .medium
+        
+        var date: Date?
+        let formats = ["MM/dd/yyyy", "M/dd/yyyy", "MM/d/yyyy", "M/d/yyyy", "dd MMM yyyy", "MM/dd/yyyy HH:mm:ss"]
+        for format in formats {
+            dateFormatter.dateFormat = format
+            if let parsedDate = dateFormatter.date(from: dateString) {
+                date = parsedDate
+                break
+            }
+        }
+        
+        if let date = date {
             self = date
         } else {
             return nil

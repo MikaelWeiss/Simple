@@ -59,6 +59,7 @@
 		A598839E261031D10078EFD8 /* DefaultRecurrence.swift in Sources */ = {isa = PBXBuildFile; fileRef = A598839D261031D10078EFD8 /* DefaultRecurrence.swift */; };
 		A59883A3261031DD0078EFD8 /* DayOfTheWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59883A2261031DD0078EFD8 /* DayOfTheWeek.swift */; };
 		A59883A8261031EA0078EFD8 /* MonthsOfTheYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59883A7261031EA0078EFD8 /* MonthsOfTheYear.swift */; };
+		A59C74AF262488470096CFB2 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C74AE262488470096CFB2 /* DateFormatter+Extensions.swift */; };
 		A5A9918B25F4615D0050E982 /* RecurrenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */; };
 		A5ABEF4025FDA0AA00C58427 /* EditTaskPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C3225D855F100247227 /* EditTaskPresenterTests.swift */; };
 		A5ABEF4125FDA0AA00C58427 /* EditTaskServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C3325D855F100247227 /* EditTaskServiceTests.swift */; };
@@ -79,8 +80,8 @@
 		A5AC072725D7868900504FEE /* TasksOverviewViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC072325D7868900504FEE /* TasksOverviewViewTests.swift */; };
 		A5AC072825D7868900504FEE /* TasksOverviewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC072425D7868900504FEE /* TasksOverviewPresenterTests.swift */; };
 		A5AC072925D7868900504FEE /* TasksOverviewServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5AC072525D7868900504FEE /* TasksOverviewServiceTests.swift */; };
-		A5B0F471261030EC001DEFDA /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0F470261030EC001DEFDA /* DateFormatter+Extensions.swift */; };
-		A5B0F47626103137001DEFDA /* InteractorSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B0F47526103137001DEFDA /* InteractorSupport.swift */; };
+		A5B2C07A26228822009B5C4F /* XCTests+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2C07826228822009B5C4F /* XCTests+ExtensionsTests.swift */; };
+		A5B2C07B26228822009B5C4F /* XCTests+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2C07926228822009B5C4F /* XCTests+Extensions.swift */; };
 		A5BF0D6325F2859200044D86 /* Frequency.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF0D6225F2859200044D86 /* Frequency.swift */; };
 		A5BF0D8925F28FAB00044D86 /* Swift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF0D8825F28FAB00044D86 /* Swift+Extensions.swift */; };
 		A5BF0D8E25F2905300044D86 /* DomainError.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5BF0D8D25F2905300044D86 /* DomainError.swift */; };
@@ -193,6 +194,7 @@
 		A598839D261031D10078EFD8 /* DefaultRecurrence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRecurrence.swift; sourceTree = "<group>"; };
 		A59883A2261031DD0078EFD8 /* DayOfTheWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfTheWeek.swift; sourceTree = "<group>"; };
 		A59883A7261031EA0078EFD8 /* MonthsOfTheYear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsOfTheYear.swift; sourceTree = "<group>"; };
+		A59C74AE262488470096CFB2 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 		A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceTests.swift; sourceTree = "<group>"; };
 		A5ABEF5325FDA8A700C58427 /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
 		A5AC06CB25D7830900504FEE /* Simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simple.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -214,8 +216,8 @@
 		A5AC072325D7868900504FEE /* TasksOverviewViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksOverviewViewTests.swift; sourceTree = "<group>"; };
 		A5AC072425D7868900504FEE /* TasksOverviewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksOverviewPresenterTests.swift; sourceTree = "<group>"; };
 		A5AC072525D7868900504FEE /* TasksOverviewServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksOverviewServiceTests.swift; sourceTree = "<group>"; };
-		A5B0F470261030EC001DEFDA /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
-		A5B0F47526103137001DEFDA /* InteractorSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorSupport.swift; sourceTree = "<group>"; };
+		A5B2C07826228822009B5C4F /* XCTests+ExtensionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTests+ExtensionsTests.swift"; sourceTree = "<group>"; };
+		A5B2C07926228822009B5C4F /* XCTests+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTests+Extensions.swift"; sourceTree = "<group>"; };
 		A5BF0D5A25F27FC800044D86 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = Simple/CHANGELOG.md; sourceTree = "<group>"; };
 		A5BF0D6225F2859200044D86 /* Frequency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frequency.swift; sourceTree = "<group>"; };
 		A5BF0D8825F28FAB00044D86 /* Swift+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift+Extensions.swift"; sourceTree = "<group>"; };
@@ -305,15 +307,15 @@
 		A53AC71325F1DBD3003B305E /* Recurrence */ = {
 			isa = PBXGroup;
 			children = (
-				A5BF0D6225F2859200044D86 /* Frequency.swift */,
-				A56F52BF25F7161A0007DDB4 /* MonthlyRecurrence.swift */,
-				A53AC71425F1DBEA003B305E /* Recurrence.swift */,
-				A59883A7261031EA0078EFD8 /* MonthsOfTheYear.swift */,
 				A59883A2261031DD0078EFD8 /* DayOfTheWeek.swift */,
 				A598839D261031D10078EFD8 /* DefaultRecurrence.swift */,
-				A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */,
+				A5BF0D6225F2859200044D86 /* Frequency.swift */,
+				A56F52BF25F7161A0007DDB4 /* MonthlyRecurrence.swift */,
+				A59883A7261031EA0078EFD8 /* MonthsOfTheYear.swift */,
+				A53AC71425F1DBEA003B305E /* Recurrence.swift */,
 				A56F52D125F71F9B0007DDB4 /* RecurrenceEnd.swift */,
 				A55AE8E925FBA66C0006FF89 /* RecurrenceFactory.swift */,
+				A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */,
 			);
 			path = Recurrence;
 			sourceTree = "<group>";
@@ -322,8 +324,8 @@
 			isa = PBXGroup;
 			children = (
 				A58999D72610305A00EFD21C /* Calendar+Extensions.swift */,
+				A59C74AE262488470096CFB2 /* DateFormatter+Extensions.swift */,
 				A53D4A3625E4B4C700070FF3 /* Date+Extensions.swift */,
-				A5B0F470261030EC001DEFDA /* DateFormatter+Extensions.swift */,
 				A53AC71925F1DBFC003B305E /* Int+Extensions.swift */,
 				A5BF0D8825F28FAB00044D86 /* Swift+Extensions.swift */,
 				A53D4A3725E4B4C700070FF3 /* UIImage+Extensions.swift */,
@@ -528,6 +530,7 @@
 		A5AC06E425D7830A00504FEE /* SimpleTests */ = {
 			isa = PBXGroup;
 			children = (
+				A5B2C07726228822009B5C4F /* Extensions */,
 				A5AC06E525D7830A00504FEE /* SimpleTests.swift */,
 				A5AC06E725D7830A00504FEE /* Info.plist */,
 				A5ABEF5325FDA8A700C58427 /* TestSupport.swift */,
@@ -541,7 +544,6 @@
 				A514523625D8A8680005070F /* Cells */,
 				A514523025D8A7A00005070F /* Extensions */,
 				A5AC070D25D785E600504FEE /* Scenes */,
-				A5B0F47A26103157001DEFDA /* SceneSupport */,
 				A514522A25D8A7380005070F /* Styles */,
 				A577F22D25F8680100B80162 /* VisualComponents */,
 			);
@@ -578,12 +580,13 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
-		A5B0F47A26103157001DEFDA /* SceneSupport */ = {
+		A5B2C07726228822009B5C4F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				A5B0F47526103137001DEFDA /* InteractorSupport.swift */,
+				A5B2C07926228822009B5C4F /* XCTests+Extensions.swift */,
+				A5B2C07826228822009B5C4F /* XCTests+ExtensionsTests.swift */,
 			);
-			path = SceneSupport;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		A5C60D7125E186CE00C61ABE /* Repositories */ = {
@@ -827,14 +830,12 @@
 				A56E0C2825D855E600247227 /* EditTaskModels.swift in Sources */,
 				A54005812606872200E4F78C /* List.swift in Sources */,
 				A5AC071B25D7865E00504FEE /* TasksOverviewScene.swift in Sources */,
-				A5B0F471261030EC001DEFDA /* DateFormatter+Extensions.swift in Sources */,
 				A53AC71525F1DBEA003B305E /* Recurrence.swift in Sources */,
 				A54005892606876900E4F78C /* ObservedTask.swift in Sources */,
 				A514524925D8A9540005070F /* View+Extensions.swift in Sources */,
 				A56FD37D2601A76900F5FE99 /* TaskFilter.swift in Sources */,
 				A56E0C2A25D855E600247227 /* EditTaskInteractor.swift in Sources */,
 				A56F52C025F7161A0007DDB4 /* MonthlyRecurrence.swift in Sources */,
-				A5B0F47626103137001DEFDA /* InteractorSupport.swift in Sources */,
 				A514523A25D8A8800005070F /* TextEntry.swift in Sources */,
 				A59883A8261031EA0078EFD8 /* MonthsOfTheYear.swift in Sources */,
 				A514526E25D8BCEF0005070F /* Styles.swift in Sources */,
@@ -855,6 +856,7 @@
 				A5BF0D6325F2859200044D86 /* Frequency.swift in Sources */,
 				A5AC06CF25D7830900504FEE /* SimpleApp.swift in Sources */,
 				A57099FB25DB0EF80050B3B5 /* Storage.swift in Sources */,
+				A59C74AF262488470096CFB2 /* DateFormatter+Extensions.swift in Sources */,
 				A55DCA7725DD6085009D933E /* RepositoryRoot.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -871,6 +873,8 @@
 				A5A9918B25F4615D0050E982 /* RecurrenceTests.swift in Sources */,
 				A5ABEF4025FDA0AA00C58427 /* EditTaskPresenterTests.swift in Sources */,
 				A5ABEF4225FDA0AA00C58427 /* EditTaskViewTests.swift in Sources */,
+				A5B2C07A26228822009B5C4F /* XCTests+ExtensionsTests.swift in Sources */,
+				A5B2C07B26228822009B5C4F /* XCTests+Extensions.swift in Sources */,
 				A5285AC225DB619A0072F7DF /* CoreDataStoreStorageFactoryTests.swift in Sources */,
 				A5AC072725D7868900504FEE /* TasksOverviewViewTests.swift in Sources */,
 				A542CD4525DB78AA0082C365 /* TaskRepositoryTests.swift in Sources */,

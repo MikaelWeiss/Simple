@@ -11,7 +11,6 @@ extension DateFormatter {
     class var standard: DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale.current
-        dateFormatter.dateStyle = .medium
         return dateFormatter
     }
 }
