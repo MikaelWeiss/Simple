@@ -72,8 +72,6 @@ extension Date {
     init?(dateString: String) {
         
         let dateFormatter = DateFormatter.standard
-        dateFormatter.dateStyle = .medium
-        dateFormatter.timeStyle = .medium
         
         var date: Date?
         let formats = ["MM/dd/yyyy", "M/dd/yyyy", "MM/d/yyyy", "M/d/yyyy", "dd MMM yyyy", "MM/dd/yyyy HH:mm:ss"]
