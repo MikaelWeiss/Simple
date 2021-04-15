@@ -94,9 +94,7 @@ struct TextEntry: View {
 struct TextEntry_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            ZStack {
-                TextEntry("Some title", value: "asdf", state: .error, onTextChanged: {_ in })
-            }.frame(height: 100)
+            TextEntry("Some title", value: "asdf", state: .error, onTextChanged: {_ in })
             
             ZStack {
                 TextEntry("Some title", infoText: "Something here", value: "asdf", state: .error, onTextChanged: {_ in })

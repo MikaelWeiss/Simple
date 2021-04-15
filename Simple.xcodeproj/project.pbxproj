@@ -90,6 +90,7 @@
 		A5EEDBE72601B77D0006489A /* Analyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EEDBE62601B77D0006489A /* Analyzer.swift */; };
 		A5FA9BC525DE068400595C33 /* CoreDataStorage+ReadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC5D4E25DE0647002B3D94 /* CoreDataStorage+ReadTests.swift */; };
 		A5FA9BD425DE06AE00595C33 /* CoreDataStorage+WriteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FA9BCF25DE06A900595C33 /* CoreDataStorage+WriteTests.swift */; };
+		A5FD49C62628FEC1003D3764 /* DataEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5FD49C52628FEC1003D3764 /* DataEntryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -227,6 +228,7 @@
 		A5EC5D4E25DE0647002B3D94 /* CoreDataStorage+ReadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStorage+ReadTests.swift"; sourceTree = "<group>"; };
 		A5EEDBE62601B77D0006489A /* Analyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analyzer.swift; sourceTree = "<group>"; };
 		A5FA9BCF25DE06A900595C33 /* CoreDataStorage+WriteTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CoreDataStorage+WriteTests.swift"; sourceTree = "<group>"; };
+		A5FD49C52628FEC1003D3764 /* DataEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataEntryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -482,6 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				A577F22E25F8683000B80162 /* RecurrenceGrid.swift */,
+				A5FD49C52628FEC1003D3764 /* DataEntryCell.swift */,
 			);
 			path = VisualComponents;
 			sourceTree = "<group>";
@@ -843,6 +846,7 @@
 				A514522C25D8A7520005070F /* CellStyle.swift in Sources */,
 				A5BF0D8925F28FAB00044D86 /* Swift+Extensions.swift in Sources */,
 				A5EEDBE72601B77D0006489A /* Analyzer.swift in Sources */,
+				A5FD49C62628FEC1003D3764 /* DataEntryCell.swift in Sources */,
 				A5BF0D8E25F2905300044D86 /* DomainError.swift in Sources */,
 				A5AC071C25D7865E00504FEE /* TasksOverviewInteractor.swift in Sources */,
 				A514523225D8A7B10005070F /* Color+Extensions.swift in Sources */,
