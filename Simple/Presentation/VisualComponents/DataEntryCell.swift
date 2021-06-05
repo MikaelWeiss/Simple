@@ -3,7 +3,6 @@
 //  Elements
 //
 //  Created by Mikael Weiss on 4/14/21.
-//  Copyright © 2021 Elements Advisors, LLC. All rights reserved.
 //
 
 import SwiftUI
