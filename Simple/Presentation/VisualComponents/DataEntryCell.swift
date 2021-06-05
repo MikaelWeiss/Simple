@@ -27,7 +27,7 @@ struct DataEntryCell: View {
     private let text: String
     private let attributedText: Text?
     private let image: Image?
-    private let tintColor: UIColor
+    private let tintColor: Color
     private let state: DataEntryViewState
     private let type: DataEntryType
     private let isRequired: Bool
@@ -40,7 +40,7 @@ struct DataEntryCell: View {
          text: String,
          attributedText: Text? = nil,
          image: Image? = nil,
-         tintColor: UIColor = .appTintColor,
+         tintColor: Color = .appTintColor,
          state: DataEntryViewState = .normal,
          type: DataEntryType = .textEntry,
          isRequired: Bool = false,
@@ -79,13 +79,13 @@ struct DataEntryCell: View {
     }
     
     private var imageToUse: Image? {
-        if type == .selection { return Image(uiImage: .dropDownIcon) }
+        if type == .selection { return .dropDownIcon }
         if let image = image { return image }
         if isTyping == true {
-            return Image(uiImage: .clearTextIcon)
+            return .clearTextIcon
         } else {
             if isRequired == true && state == .error {
-                return Image(uiImage: .errorIcon)
+                return .errorIcon
             }
         }
         return nil
@@ -97,10 +97,10 @@ struct DataEntryCell: View {
     }
     
     private var tintColorToUse: Color {
-        if state == .error { return Color(.appErrorColor) }
-        if isTyping, isRequired, text == "" { return Color(.appErrorColor) }
-        if isTyping, state == .normal { return Color(tintColor) }
-        return Color(.appGrayMedium)
+        if state == .error { return .appErrorColor }
+        if isTyping, isRequired, text == "" { return .appErrorColor }
+        if isTyping, state == .normal { return tintColor }
+        return .appGrayMedium
     }
     
     private var infoMessageToUse: Text? {
@@ -124,7 +124,7 @@ struct DataEntryCell: View {
                 HStack {
                     attributedTextToUse
                     LegacyTextField(text: binding, isFirstResponder: $isTyping, onCommit: onCommit) {
-                        $0.tintColor = tintColor
+                        $0.tintColor = UIColor(tintColor)
                     }
                     if image == nil, !isTyping {
                         imageToUse

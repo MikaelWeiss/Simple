@@ -60,6 +60,7 @@
 		A59883A3261031DD0078EFD8 /* DayOfTheWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59883A2261031DD0078EFD8 /* DayOfTheWeek.swift */; };
 		A59883A8261031EA0078EFD8 /* MonthsOfTheYear.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59883A7261031EA0078EFD8 /* MonthsOfTheYear.swift */; };
 		A59C74AF262488470096CFB2 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59C74AE262488470096CFB2 /* DateFormatter+Extensions.swift */; };
+		A5A8940326688507007969D4 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A8940226688507007969D4 /* Image+Extensions.swift */; };
 		A5A9918B25F4615D0050E982 /* RecurrenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */; };
 		A5ABEF4025FDA0AA00C58427 /* EditTaskPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C3225D855F100247227 /* EditTaskPresenterTests.swift */; };
 		A5ABEF4125FDA0AA00C58427 /* EditTaskServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56E0C3325D855F100247227 /* EditTaskServiceTests.swift */; };
@@ -196,6 +197,7 @@
 		A59883A2261031DD0078EFD8 /* DayOfTheWeek.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayOfTheWeek.swift; sourceTree = "<group>"; };
 		A59883A7261031EA0078EFD8 /* MonthsOfTheYear.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthsOfTheYear.swift; sourceTree = "<group>"; };
 		A59C74AE262488470096CFB2 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
+		A5A8940226688507007969D4 /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
 		A5A9918A25F4615D0050E982 /* RecurrenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurrenceTests.swift; sourceTree = "<group>"; };
 		A5ABEF5325FDA8A700C58427 /* TestSupport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSupport.swift; sourceTree = "<group>"; };
 		A5AC06CB25D7830900504FEE /* Simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simple.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -278,6 +280,7 @@
 			isa = PBXGroup;
 			children = (
 				A514523125D8A7B10005070F /* Color+Extensions.swift */,
+				A5A8940226688507007969D4 /* Image+Extensions.swift */,
 				A514524825D8A9540005070F /* View+Extensions.swift */,
 			);
 			path = Extensions;
@@ -818,6 +821,7 @@
 				A53AC71A25F1DBFC003B305E /* Int+Extensions.swift in Sources */,
 				A5AC071E25D7865E00504FEE /* TasksOverviewService.swift in Sources */,
 				A5EC5D4A25DE04DB002B3D94 /* RepositoryAction.swift in Sources */,
+				A5A8940326688507007969D4 /* Image+Extensions.swift in Sources */,
 				A5709A0B25DB2D7D0050B3B5 /* CoreDataStorage+Read.swift in Sources */,
 				A5AC071A25D7865E00504FEE /* TasksOverviewModels.swift in Sources */,
 				A57099F625DB0CAC0050B3B5 /* CoreDataStoreStorageFactory.swift in Sources */,

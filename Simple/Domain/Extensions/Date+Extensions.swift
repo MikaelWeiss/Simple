@@ -8,11 +8,12 @@
 import Foundation
 
 extension Date {
-    static var today: Date { // Sometimes this reads better
+    /// Sometimes this reads better
+    static var today: Date {
         return Date()
     }
-    
-    static var now: Date { // Sometimes this reads better
+    /// Sometimes this reads better
+    static var now: Date {
         return Date()
     }
     

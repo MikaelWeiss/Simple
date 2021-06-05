@@ -93,7 +93,7 @@ struct TextEntry: View {
 
 struct TextEntry_Previews: PreviewProvider {
     static var previews: some View {
-        Group {
+        VStack {
             TextEntry("Some title", value: "asdf", state: .error, onTextChanged: {_ in })
             
             ZStack {
@@ -110,6 +110,6 @@ struct TextEntry_Previews: PreviewProvider {
             }.frame(height: 100)
             .background(Color(.systemBackground))
             .colorScheme(.dark)
-        }.previewLayout(.sizeThatFits)
+        }
     }
 }
