@@ -21,95 +21,97 @@ protocol EditTaskRequesting {
     func didTapSave()
 }
 
-struct EditTaskInteractor: EditTaskRequesting {
-    private let service: EditTaskService
-    private let presenter: EditTaskPresenting
-    
-    private var updateSubscriber: AnyCancellable?
-    
-    init(service: EditTaskService, presenter: EditTaskPresenting) {
-        self.service = service
-        self.presenter = presenter
+extension EditTask {
+    struct Interactor: EditTaskRequesting {
+        private let service: EditTaskService
+        private let presenter: EditTaskPresenting
         
-        updateSubscriber = service.updatePublisher
-            .receive(on: RunLoop.main)
-            .sink { [self] _ in
-                // TODO: Implement alert asking if the user wants to refresh their data (This is in the case of someone else editing this task and pushing an update)
-                self.fetchTask()
+        private var updateSubscriber: AnyCancellable?
+        
+        init(service: EditTaskService, presenter: EditTaskPresenting) {
+            self.service = service
+            self.presenter = presenter
+            
+            updateSubscriber = service.updatePublisher
+                .receive(on: RunLoop.main)
+                .sink { [self] _ in
+                    // TODO: Implement alert asking if the user wants to refresh their data (This is in the case of someone else editing this task and pushing an update)
+                    self.fetchTask()
+                }
+        }
+        
+        func updateTheme() {
+            presenter.presentUpdateTheme()
+        }
+        
+        func fetchTask() {
+            tryOrThrow {
+                let task = try service.fetchTask()
+                let response = EditTask.FetchTask.Response(task: task)
+                presenter.presentFetchTask(with: response)
             }
-    }
-    
-    func updateTheme() {
-        presenter.presentUpdateTheme()
-    }
-    
-    func fetchTask() {
-        tryOrThrow {
-            let task = try service.fetchTask()
-            let response = EditTask.FetchTask.Response(task: task)
-            presenter.presentFetchTask(with: response)
         }
-    }
-    
-    func didChangeName(with request: EditTask.ValidateName.Request) {
-        do {
-            try service.validateTaskName(to: request.value)
-            let response = EditTask.ValidateName.Response(value: request.value, valid: true)
-            presenter.presentDidChangeName(with: response)
-        } catch {
-            let response = EditTask.ValidateName.Response(value: request.value, valid: false)
-            presenter.presentDidChangeName(with: response)
+        
+        func didChangeName(with request: EditTask.ValidateName.Request) {
+            do {
+                try service.validateTaskName(to: request.value)
+                let response = EditTask.ValidateName.Response(value: request.value, valid: true)
+                presenter.presentDidChangeName(with: response)
+            } catch {
+                let response = EditTask.ValidateName.Response(value: request.value, valid: false)
+                presenter.presentDidChangeName(with: response)
+            }
         }
-    }
-    
-    func didChangeDate(with request: EditTask.ValidateDate.Request) {
-        tryOrThrow {
-            try service.validateTaskPreferredTime(to: request.value)
-            let response = EditTask.ValidateDate.Response(value: request.value)
-            presenter.presentDidChangeDate(with: response)
+        
+        func didChangeDate(with request: EditTask.ValidateDate.Request) {
+            tryOrThrow {
+                try service.validateTaskPreferredTime(to: request.value)
+                let response = EditTask.ValidateDate.Response(value: request.value)
+                presenter.presentDidChangeDate(with: response)
+            }
         }
-    }
-    
-//    func didChangeFrequency(with request: EditTask.ValidateFrequencySelection.Request) {
-//        tryOrThrow {
-//            try service.validateTaskFrequency(to: request.selectedFrequency)
-//            let response = EditTask.ValidateFrequencySelection.Response(selectedFrequency: request.selectedFrequency)
-//            presenter.presentDidChangeFrequency(with: response)
-//        }
-//    }
-    
-    func didTapRecurrenceSelection() {
-        presenter.presentDidTapRecurrenceSelection()
-    }
-    
-    func didTapDelete() {
-        tryOrThrow {
-            try service.deleteTask()
-            let response = EditTask.DidTapDelete.Response(didDelete: true)
-            presenter.presentDidTapDelete(with: response)
+        
+    //    func didChangeFrequency(with request: EditTask.ValidateFrequencySelection.Request) {
+    //        tryOrThrow {
+    //            try service.validateTaskFrequency(to: request.selectedFrequency)
+    //            let response = EditTask.ValidateFrequencySelection.Response(selectedFrequency: request.selectedFrequency)
+    //            presenter.presentDidChangeFrequency(with: response)
+    //        }
+    //    }
+        
+        func didTapRecurrenceSelection() {
+            presenter.presentDidTapRecurrenceSelection()
         }
-    }
-    
-    func didTapSave() {
-        tryOrThrow {
-            try service.save()
-            let response = EditTask.DidTapSave.Response(didSave: true)
-            presenter.presentDidTapSave(with: response)
+        
+        func didTapDelete() {
+            tryOrThrow {
+                try service.deleteTask()
+                let response = EditTask.DidTapDelete.Response(didDelete: true)
+                presenter.presentDidTapDelete(with: response)
+            }
         }
-    }
-    
-    func checkCanSave() {
-        let canSave = service.canSave()
-        let response = EditTask.CanSave.Response(canSave: canSave)
-        presenter.presentCanSave(with: response)
-    }
-    
-    private func tryOrThrow(_ do: () throws -> Void) {
-        do {
-            try `do`()
-        } catch {
-            let response = EditTask.ShowError.Response(error: error as? EditTask.ServiceError ?? .unknown)
-            presenter.presentShowError(with: response)
+        
+        func didTapSave() {
+            tryOrThrow {
+                try service.save()
+                let response = EditTask.DidTapSave.Response(didSave: true)
+                presenter.presentDidTapSave(with: response)
+            }
+        }
+        
+        func checkCanSave() {
+            let canSave = service.canSave()
+            let response = EditTask.CanSave.Response(canSave: canSave)
+            presenter.presentCanSave(with: response)
+        }
+        
+        private func tryOrThrow(_ do: () throws -> Void) {
+            do {
+                try `do`()
+            } catch {
+                let response = EditTask.ShowError.Response(error: error as? EditTask.ServiceError ?? .unknown)
+                presenter.presentShowError(with: response)
+            }
         }
     }
 }
